@@ -5,6 +5,9 @@ culling tool for RAW+JPEG pairs with Lightroom-style develop built in.
 
 **→ Grab the newest DMG from the [Releases page](../../releases/latest).**
 
+**→ Read the [user manual](manual/README.md)** — from first launch to
+develop, sources and export, with screenshots.
+
 ## Install
 
 1. Open the DMG and drag **culler.app** to Applications.
