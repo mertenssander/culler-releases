@@ -8,6 +8,8 @@ culling tool for RAW+JPEG pairs with Lightroom-style develop built in.
 **→ Read the [user manual](manual/README.md)** — from first launch to
 develop, sources and export, with screenshots.
 
+**→ See [what's new per release](CHANGELOG.md).**
+
 ## Install
 
 1. Open the DMG and drag **culler.app** to Applications.
