@@ -36,6 +36,26 @@ Add an Immich server with its URL and an API key; **Test & add** checks
 both against the server before saving. The key goes into the OS keychain
 (macOS Keychain / Windows Credential Manager), not into a file on disk.
 
+To create the key: in the Immich web app, click your avatar → **Account
+Settings** → **API Keys** → **New API Key**. The simplest choice is to
+grant **all permissions** — culler reads, rates, uploads and trashes on
+your behalf, so a broadly-scoped key is what the integration expects. If
+you prefer a scoped key, this is what each part of culler needs
+(permission names as of current Immich; older servers only offer
+all-powerful keys):
+
+| To be able to… | the key needs |
+| --- | --- |
+| browse and cull (incl. stepping into stacks) | `asset.read`, `asset.view`, `asset.download`, `timeline.read`, `album.read`, `stack.read`, `user.read` |
+| sync picks, stars and archive | `asset.update` |
+| move rejects to the server trash | `asset.delete` |
+| upload (including edited JPEGs, with stacking) | `asset.upload`, `albumAsset.create`, `stack.create`, `stack.delete` |
+
+A key missing a write permission surfaces the server's error where the
+operation lives: batch failures in the status line, sync failures in
+the pending-work pill (where the sync queue keeps retrying until the
+key is fixed).
+
 Culling a server works exactly like culling a folder — the server renders
 the previews, culler streams them through a local disk cache (revisits
 are instant), and the keys are the same. Opening a big timeline is

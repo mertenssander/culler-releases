@@ -4,6 +4,21 @@ User-facing notes per release. This file is the source of truth: each
 GitHub release (on the source repo and on `culler-releases`) carries its
 version's section verbatim, plus the standing install note below.
 
+## 0.2.1 — 2026-07-30
+
+- **Server-side ratings now show up.** Stars set in Immich's own web app
+  (or by any other tool) were silently invisible when browsing a server:
+  real servers report the rating in a different place than culler read.
+- **Archive now works against a real server.** The batch Archive action
+  used a legacy API field that current Immich accepts and then ignores —
+  archived photos now actually leave the timeline.
+- **The Immich form teaches the API key**: where to create one (Account
+  Settings → API Keys) is written right under the field, and the manual
+  gained a permission table for locked-down keys.
+- Under the hood: every release is now built by a pipeline that must
+  first pass a live integration suite against a real Immich server —
+  the two fixes above are what its first run caught.
+
 ## 0.2.0 — 2026-07-30
 
 - **Batch from the grid**: press `A` inside the Grid view (`K`) to open
