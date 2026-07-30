@@ -34,7 +34,8 @@ develop edits show in the cells.
 | `P` `X` `U`, `0`–`5`, `6`–`9` | mark the cursored photo — writes immediately, and with auto-advance on the cursor walks on |
 | `Z` | cycle the cell size (small / medium / large) |
 | `Space` / double-click | **peek** the cursored cell full-size; `Space`/`Esc` pops back |
-| `E` `C` `V` `N` `M` `A` `S` | leave the grid, then act on the cursored photo |
+| `A` | the [batch panel](07-batch-and-export.md#the-apply-panel-a), in place — scope a copy/move/trash while the whole set is in view |
+| `E` `C` `V` `N` `M` `S` | leave the grid, then act on the cursored photo |
 | `Esc` / `Enter` / `K` | exit onto the cursored photo |
 
 `Space` on the cursored cell **peeks** it full-size — a real loupe

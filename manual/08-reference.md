@@ -56,7 +56,8 @@
 | `Space` | peek the cursored photo full-size (real zoom; `Space`/`Esc` pops back, arrows flip neighbors) |
 | `T` | toggle auto-advance |
 | `Z` | cycle cell size (while peeking: zoom, as in the loupe) |
-| `E` `C` `V` `N` `M` `A` `S` | exit, then act on the cursored photo |
+| `A` | batch panel, in place (the grid stays up) |
+| `E` `C` `V` `N` `M` `S` | exit, then act on the cursored photo |
 | `H` | help overlay |
 | `Esc` / `Enter` / `K` | exit onto the cursored photo |
 
