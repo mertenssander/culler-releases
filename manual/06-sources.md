@@ -41,9 +41,11 @@ the previews, culler streams them through a local disk cache (revisits
 are instant), and the keys are the same. Opening a big timeline is
 immediate: the first thousand photos appear within about a second and
 you can start culling right away while the rest stream in behind them
-(the pending-work pill counts them up; new photos append at the end,
-and the library settles into capture-time order once everything has
-arrived, without moving the photo you're on). If some pages fail to
+(the pending-work pill counts the scan — that's culler reading the
+server's catalog, not downloading your photos; image bytes are only
+ever fetched around where you're looking. New photos append at the
+end, and the library settles into capture-time order once everything
+has arrived, without moving the photo you're on). If some pages fail to
 load — a straining server, a network blip — culler keeps everything
 that arrived and the pill tells you how much is missing and how to
 retry; you never lose a loaded timeline to one bad request. Videos are
