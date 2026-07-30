@@ -2,35 +2,9 @@
 
 ## Install and launch
 
-culler is a single pure-Rust binary with no system dependencies:
-
-```sh
-cargo build --release
-```
-
-It runs on macOS and Windows (and Linux). Launch it on a folder, or with
-no arguments to land on the [sources pane](06-sources.md) and pick a
-saved folder or Immich server from there:
-
-```sh
-culler /path/to/photos
-culler
-```
-
-### The Mac app
-
-On macOS the same binary packages into a normal `culler.app` you can keep
-in the Dock and send to other people:
-
-```sh
-scripts/package-macos.sh          # → dist/culler-<version>.dmg
-```
-
-Open the DMG, drag `culler.app` into Applications, launch it, and
-right-click the Dock icon → Options → Keep in Dock. `UNIVERSAL=1` adds an
-Intel slice (an Apple-silicon-only build won't launch on Intel Macs at
-all); `SIGN_IDENTITY` and `NOTARY_PROFILE`/`APPLE_ID` upgrade the
-signature and notarize if you have an Apple Developer certificate.
+On a Mac, install from the release DMG: open it, drag `culler.app` into
+Applications, launch it, and right-click the Dock icon → Options → Keep
+in Dock. Everything in this manual starts from there.
 
 Two prompts are normal on a machine the app was *sent* to:
 
@@ -42,9 +16,15 @@ Two prompts are normal on a machine the app was *sent* to:
   drives may trigger a one-time folder-access prompt on the next launch —
   see [macOS folder permissions](06-sources.md#macos-folder-permissions).
 
-A folder is scanned immediately: RAW and JPEG files with the same name
-are treated as one photo, existing `.xmp` sidecars (yours or Lightroom's)
-are read, and decoding starts around the first photo.
+First launch lands on the [sources pane](06-sources.md): add a photo
+folder (or an Immich server) and open it. A folder is scanned
+immediately: RAW and JPEG files with the same name are treated as one
+photo, existing `.xmp` sidecars (yours or Lightroom's) are read, and
+decoding starts around the first photo.
+
+*(Building from source — for people working in the source repository:
+`cargo build --release`, and `scripts/package-macos.sh` produces the
+Mac app and DMG.)*
 
 ## The screen at a glance
 

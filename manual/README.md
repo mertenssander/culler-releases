@@ -21,8 +21,8 @@ the in-app cheat sheet.
 
 ## Contents
 
-1. [Getting started](01-getting-started.md) — building, launching, and a
-   tour of the screen.
+1. [Getting started](01-getting-started.md) — installing, launching, and
+   a tour of the screen.
 2. [Culling](02-culling.md) — ratings, picks and rejects, labels, filters,
    and the one-pass workflow.
 3. [Viewing and comparing](03-viewing.md) — zoom, Compare view, Survey
