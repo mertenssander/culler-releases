@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Batch operations and export — culler manual</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -115,14 +115,33 @@ and <strong>Upload to Immich</strong> when a server is configured.</li>
 carrying your edits), Archive on server, and Delete to trash on the
 server (same two-click confirm).</li>
 </ul>
-<p><strong>Upload to Immich</strong> sends RAW+JPEG pairs (stacked on the server, sidecar
-included so ratings import) and offers an <strong>Album</strong> destination — the
-default, <em>No album (timeline only)</em>, is plain upload; choosing an album
-adds every uploaded file to it, and the completion summary names it.
-If the album list can't be fetched, the panel says so (with a <strong>Retry</strong>
-button) instead of loading forever, and uploading to the timeline keeps
-working regardless.
-Uploading <strong>copies</strong>: your local files stay. A "move" variant (trash
+<p><strong>Upload to Immich</strong> sends RAW+JPEG pairs (stacked on the server with
+the <strong>JPEG as the stack cover</strong>, sidecar included so ratings import) and
+offers two destinations: a <strong>Server</strong> — with one Immich server
+configured it's pre-selected and inert; with several, the upload waits
+until you pick one (there is deliberately no silent default, and the
+completion summary names the server it went to) — and an <strong>Album</strong>. The
+album default, <em>No album (timeline only)</em>, is plain upload; choosing an
+album adds every uploaded file to it, and the summary names it. Album
+choices are per-server: switching the Server resets the Album. If the
+album list can't be fetched, the panel says so (with a <strong>Retry</strong> button)
+instead of loading forever, and uploading to the timeline keeps working
+regardless.</p>
+<p>If the photos upload fine but the pair can't be stacked or the album
+add fails, that's reported as a <strong>warning</strong> on an uploaded photo, never
+as a failed upload. The common cause for the stack case is an API key
+minted before stacking shipped — add the <code>stack.create</code> permission to
+the key (or mint a fresh one) and re-run the upload: the server
+recognizes the duplicates and only the stacks are created.</p>
+<p>While a batch runs the panel shows a live <strong>"Uploading N of M"</strong> count
+with a progress bar, and a <strong>Cancel</strong> button: cancel finishes the photo
+in flight, then stops — no half-uploaded pair — and the summary says
+what happened ("Cancelled — 12 of 37 uploaded"). A cancelled upload is
+safe to re-run; the server answers the already-sent photos as
+duplicates without storing anything twice. (Archive and server-trash
+are single server calls — nothing to count or cancel, they just show a
+spinner.)</p>
+<p>Uploading <strong>copies</strong>: your local files stay. A "move" variant (trash
 locals after upload) is deliberately not offered yet — it would delete
 your only local copy based on a server response that some Immich versions
 get wrong for duplicates, so it waits until that success signal can be
@@ -166,15 +185,19 @@ so the server's Info panel reads the same on both. From an
 one export/upload runs at a time — a second <code>J</code> tells you one is already
 running and points at the pill.</p>
 <h2 id="the-pending-work-pill">The pending-work pill</h2>
-<p>Anything running against a server shows in a small pill at the top-right:
-syncing ratings, a batch with its live <code>3/12</code> progress, an upload by
-name, a stack loading, previews downloading. Hover it for the full list.
-It exists to explain two things: why the app might feel slow right now
-(the wait is on the wire, not in the app), and why an action was just
-refused — a blocked keypress flashes the pill to point at the operation
-in its way. A failing sync shows here too, in amber, with the server's
-error; it keeps retrying on its own. When nothing is pending, the pill
-doesn't exist — a local session never shows it.</p>
+<p>Anything running in the background shows in a small pill at the
+top-right: a batch with its live count ("Uploading · 12 of 37") right
+in the collapsed label, syncing ratings, a scan with its running total,
+an export by name, a stack loading, previews downloading. Hover it for
+the full list — and while a cancellable batch runs, its row in that
+list carries a <strong>✕</strong> that stops the batch after the current photo (the
+same cancel as the batch panel's button, for when the panel is closed).
+The pill exists to explain two things: why the app might feel slow
+right now (the wait is on the wire, not in the app), and why an action
+was just refused — a blocked keypress flashes the pill to point at the
+operation in its way. A failing sync shows here too, in amber, with the
+server's error; it keeps retrying on its own. When nothing is pending,
+the pill doesn't exist.</p>
 <p><img src="../img/14-pending-ops.png" alt="The pill during a slow remote load" /></p>
 
     <nav class="pagenav">
@@ -190,7 +213,7 @@ doesn't exist — a local session never shows it.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

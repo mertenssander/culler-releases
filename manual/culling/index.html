@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Culling — culler manual</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -120,7 +120,7 @@ never waits on the disk.</p>
 </tbody></table>
 <p>Stars, flags and labels are three independent axes — a photo can be a
 4-star, picked, red-labeled photo. Labels show as a colored bar on the
-filmstrip thumbnail and persist as Lightroom's own <code>xmp:Label</code>, so they
+filmstrip thumbnail and persist as the standard <code>xmp:Label</code> field, so they
 survive a round trip through other tools.</p>
 <p><strong>Auto-advance</strong> (<code>T</code> toggles it) moves to the next photo after every
 rating or flag, which is what makes a first pass fast: <code>P</code>, <code>X</code>, <code>3</code>,
@@ -177,8 +177,8 @@ the same slot.</li>
 <a href="https://mertenssander.github.io/culler-releases/manual/crop/">crop</a> them.</li>
 <li><code>F</code> to Rejects, then <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">batch-move or trash them</a>.</li>
 </ol>
-<p>Everything you set here follows the photo: Lightroom reads the same
-sidecars on import, and on an Immich source the ratings sync to the
+<p>Everything you set here follows the photo: editors that understand
+XMP sidecars read the same fields on import, and on an Immich source the ratings sync to the
 server as you press the keys (<a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">details</a>).</p>
 
     <nav class="pagenav">
@@ -194,7 +194,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

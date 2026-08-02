@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reference — culler manual</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -217,7 +217,7 @@ Immich source for one session without persisting anything.</p>
 <tr><td><code>crs:ParametricHighlights/Lights/Darks/Shadows</code></td><td>tone curve regions</td></tr>
 <tr><td><code>crs:PostCropVignetteAmount</code> (+ <code>Style</code>)</td><td>vignette</td></tr>
 <tr><td><code>crs:HasCrop</code>, <code>crs:CropLeft/Top/Right/Bottom</code>, <code>crs:CropAngle</code></td><td>crop + straighten</td></tr>
-<tr><td><code>culler:OrientationQuarter</code></td><td>90° turns (Lightroom handles these separately)</td></tr>
+<tr><td><code>culler:OrientationQuarter</code></td><td>90° turns (the <code>crs:</code> schema has no field for them)</td></tr>
 </tbody></table>
 <h2 id="known-limitations">Known limitations</h2>
 <ul>
@@ -246,7 +246,7 @@ pass is on the roadmap.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

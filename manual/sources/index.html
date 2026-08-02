@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sources — culler manual</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -114,6 +114,10 @@ never silently saved. Add them explicitly if you want them to stick.</li>
 <li><code>Backspace</code> removes the selected source: the first press arms (the row
 turns red), the second confirms. Only the registry entry is removed —
 your photos and sidecars are untouched.</li>
+<li><code>R</code> renames the selected source in place — type the new name, <code>Enter</code>
+keeps it, <code>Esc</code> reverts. Names matter most with several Immich
+servers: the upload destination dropdown shows them, so "Home NAS"
+reads better there than an IP and port.</li>
 <li>Each source remembers your position and filter, so switching back
 resumes where you left off.</li>
 </ul>
@@ -126,9 +130,12 @@ re-confirming direct access outside the picker, not reporting a bug.
 Click Allow (or approve it under System Settings → Privacy &amp; Security →
 Files and Folders) and it won't ask again for that folder.</p>
 <h2 id="immich">Immich</h2>
-<p>Add an Immich server with its URL and an API key; <strong>Test &amp; add</strong> checks
-both against the server before saving. The key goes into the OS keychain
-(macOS Keychain / Windows Credential Manager), not into a file on disk.</p>
+<p>Add an Immich server with its URL, an API key, and an optional <strong>name</strong>
+(left empty, the server's address becomes the name — the field's hint
+shows exactly what you'd get; <code>R</code> in the pane renames later). <strong>Test &amp;
+add</strong> checks the URL and key against the server before saving. The key
+goes into the OS keychain (macOS Keychain / Windows Credential Manager),
+not into a file on disk.</p>
 <p>To create the key: in the Immich web app, click your avatar → <strong>Account
 Settings</strong> → <strong>API Keys</strong> → <strong>New API Key</strong>. The simplest choice is to
 grant <strong>all permissions</strong> — culler reads, rates, uploads and trashes on
@@ -146,6 +153,14 @@ all-powerful keys):</p>
 operation lives: batch failures in the status line, sync failures in
 the pending-work pill (where the sync queue keeps retrying until the
 key is fixed).</p>
+<p>One case deserves its own warning, because Immich adds permissions over
+time: <strong>a key created before your server knew about stacks doesn't gain
+<code>stack.create</code> when the server upgrades</strong> — even if you ticked every box
+at the time. Uploads then succeed but pairs land unstacked, reported as
+"uploaded, but could not stack" warnings. Add <code>stack.create</code> and
+<code>stack.delete</code> to the key (Account Settings → API Keys) and re-run the
+upload — the server dedupes the already-sent photos and just creates
+the stacks.</p>
 <p>Culling a server works exactly like culling a folder — the server renders
 the previews, culler streams them through a local disk cache (revisits
 are instant), and the keys are the same. Opening a big timeline is
@@ -208,7 +223,7 @@ the apply panel itself) are unavailable inside a stack.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The culler manual — culler</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -49,8 +49,8 @@ next to each RAW (or the full-size preview embedded inside the RAW) is
 what you see, decoded in the background around your position, so
 flipping through photos is instant.</li>
 <li><strong>Nothing is destructive.</strong> Every rating, flag, label, develop setting
-and crop is written to an XMP sidecar next to the photo, in the same
-schema Lightroom uses. Your originals are never modified — the one
+and crop is written to an XMP sidecar next to the photo, in standard
+fields most editing tools read. Your originals are never modified — the one
 deliberate exception (<code>Shift+J</code>) asks twice and keeps a backup.</li>
 </ul>
 <p>Every action has a key, and the keys are always one press away: <code>H</code> shows
@@ -80,7 +80,7 @@ the in-app cheat sheet.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

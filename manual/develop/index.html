@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Develop — culler manual</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -107,7 +107,8 @@ JPEG</strong> on RAW-paired photos — and a footer row carries <strong>Copy</st
 spine tab (right edge) offers Auto tone and Reset without opening the
 panel at all. Adjustments render on the GPU, so every
 slider is realtime at any image size, and everything persists to the XMP
-sidecar in Lightroom's schema — Lightroom applies your edits on import.</p>
+sidecar in the standard <code>crs:</code> schema — editors that read it apply
+your edits on import.</p>
 <p><img src="../img/12-develop-graded.png" alt="The develop panel on a graded photo: non-default sliders and the live histogram" /></p>
 <h2 id="raw-paired-photos-develop-the-raw">RAW-paired photos develop the RAW</h2>
 <p>Culling always shows the camera JPEG — but when a photo has a RAW file
@@ -151,7 +152,7 @@ gets most of the travel) whose home position is the file's <strong>As Shot</stro
 white balance; hover the slider to see it, double-click to return to
 it. Tint stays −100..+100, zero meaning As Shot. The number format is
 the tell: "5500K" is a RAW, "+12" is a JPEG. The two settings are
-stored separately per photo — RAW-mode edits write Lightroom's real
+stored separately per photo — RAW-mode edits write the real
 <code>crs:Temperature</code>/<code>crs:Tint</code> fields, JPEG-mode edits keep the
 Incremental pair, and neither ever touches the other.</p>
 <h2 id="the-histogram-is-a-control">The histogram is a control</h2>
@@ -200,8 +201,8 @@ so pushed highlights bloom instead of clipping flat.</li>
 <li><strong>Highlights / Shadows</strong> — recover the bright end or lift the dark end.
 Up to ±50 the effect follows each pixel's own tone; <strong>beyond ±50 it
 becomes neighborhood-aware</strong>: a strong shadow lift brightens a dark
-doorway without washing out the bright wall next to it, the way
-Lightroom's sliders behave at the extremes.</li>
+doorway without washing out the bright wall next to it — strong pulls stay
+local instead of flattening the frame.</li>
 <li><strong>Vibrance / Saturation</strong> — Vibrance boosts muted colors more than
 already-vivid ones (protecting what's already saturated); Saturation is
 uniform. −100 Saturation is black &amp; white.</li>
@@ -221,8 +222,8 @@ to see the naked lens. Files without correction data show a quiet
 </ul>
 <h2 id="clipping-warnings-w">Clipping warnings: <code>W</code></h2>
 <p><code>W</code> paints <strong>clipping warnings</strong> straight onto the photo: pixels blown
-to white glow red, pixels crushed to black glow blue — Lightroom's
-J-overlay, applied to the final render (so a heavy vignette can
+to white glow red, pixels crushed to black glow blue — the classic
+clipping overlay, applied to the final render (so a heavy vignette can
 legitimately warn in the corners). The histogram's top corners carry
 small always-on indicators that light up whenever the current photo
 clips (shadows left, highlights right); clicking one toggles the same
@@ -351,7 +352,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

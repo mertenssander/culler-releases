@@ -1,17 +1,18 @@
 {
   "schema_version": 1,
-  "version": "0.3.0",
-  "tag": "v0.3.0",
-  "published_at": "2026-08-02T11:14:37Z",
+  "version": "0.4.0",
+  "tag": "v0.4.0",
+  "published_at": "2026-08-02T12:17:54Z",
   "min_os_version": "11.0",
   "download": {
-    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.3.0/culler-0.3.0.dmg",
-    "sha256": "9ab4bf835d0ec3290b9868fd6f34f6617a6be60cba8a6d85d9770a0c473a6486",
-    "size_bytes": 11956908,
+    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.4.0/culler-0.4.0.dmg",
+    "sha256": "1e19a88b68a7965479a07ba8211fe1dede4a04e6f6ada86301e3514beddd37f7",
+    "size_bytes": 25826637,
     "arch": [
+      "x86_64",
       "arm64"
     ]
   },
-  "notes_markdown": "\n**Buttons that teach their keys.** A commissioned design exploration\nbecame culler's new edge chrome \u2014 every mouse control now shows the\nkeyboard shortcut it stands for, then gets out of your way.\n\n- **The rail** (left edge): the current mode's verbs as keycap buttons \u2014\n  Pick, Reject, Clear, Rate, Grid, Compare, Filter while culling.\n  Hovering teaches; the **Filter** and **Rate** buttons open real\n  palettes (click a filter to jump straight to it; click a star chip).\n  Buttons you've used about five times politely dim \u2014 the rail retires\n  itself as you learn. `\u2039\u2039` collapses it to a thin line; rest the\n  pointer on the line to bring it back.\n- **The spine tabs** (right edge): CULL \u00b7 DEVELOP \u00b7 CROP \u00b7 BATCH name\n  the workflow. Click to switch; rest on a tab and a palette fires that\n  mode's one-shot actions (auto tone, reset\u2026) \u2014 from anywhere.\n- **The develop panel** grew up: Auto / Reset / Match JPEG as a\n  full-width row under the title, Copy / Paste / Before-After at the\n  foot, keycap chips on everything, and the sliders scroll on small\n  windows instead of clipping.\n- **Overviews got stronger**: Survey gained the Grid's peek (`Space` \u2014\n  a real loupe with zoom, winnowing keeps working), both overviews now\n  accept filter changes in place (the grid re-points live, Survey\n  re-deals), every mode hop works uniformly from both (`E C V M S`,\n  plus `K`\u21c4`N` between them), and `A` reaches the batch panel from\n  each. Persistent styled key-hint strips replace the old status-line\n  text that any action would overwrite.\n- **New filter: Picks + unrated** \u2014 everything except your rejects, in\n  the `F` cycle right after Picks and in the Filter menu.\n- The old bottom action dock is retired \u2014 everything it did lives on\n  in the rail, the spines, and the `\u22ef` menu (now beside the rail,\n  styled like the palettes).\n- Fixed: the develop pane could slowly widen until it covered the\n  window.",
-  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.3.0"
+  "notes_markdown": "\n**culler goes public.** Downloads, the manual and these release notes\nnow live at https://mertenssander.github.io/culler-releases/ \u2014 no\ninvitation needed. And a field session against a real Immich server\nshaped a batch of upload improvements:\n\n- **Uploads show progress and can be cancelled.** The batch panel shows\n  a live \"Uploading N of M\" with a progress bar, plus a **Cancel**\n  button that finishes the photo in flight and then stops \u2014 no\n  half-uploaded pair, and re-running is safe (the server recognizes\n  what's already there). While the panel is closed, the batch's row in\n  the top-right pill carries the same \u2715.\n- **Pick which server an upload goes to.** With several Immich servers\n  configured, the batch panel gains a Server picker \u2014 no silent\n  default \u2014 and album choices follow the chosen server. The completion\n  summary names where everything went.\n- **Sources have names.** The Immich form takes an optional name\n  (\"Home NAS\" reads better than an IP in the server picker), and `R`\n  renames any saved source in place.\n- **RAW+JPEG pairs stack with the JPEG as the cover** on the server,\n  matching what culling shows you.\n- **\"Uploaded, but\u2026\" is a warning now, not a failure.** When photos\n  land but stacking or the album add fails \u2014 commonly an API key\n  minted before your server knew about stacks; the manual's permission\n  table covers it \u2014 the batch says so honestly instead of calling\n  uploaded photos failed.\n- **culler now runs on Intel Macs**: releases are universal binaries.",
+  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.4.0"
 }

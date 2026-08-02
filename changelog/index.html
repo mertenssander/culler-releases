@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Changelog — culler</title>
-<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, develop and crop built in, everything non-destructive.">
 <link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
 <link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
 <link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,35 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-3-0-2026-08-02">0.3.0 — 2026-08-02</h2>
+    <h2 id="0-4-0-2026-08-02">0.4.0 — 2026-08-02</h2>
+<p><strong>culler goes public.</strong> Downloads, the manual and these release notes
+now live at https://mertenssander.github.io/culler-releases/ — no
+invitation needed. And a field session against a real Immich server
+shaped a batch of upload improvements:</p>
+<ul>
+<li><strong>Uploads show progress and can be cancelled.</strong> The batch panel shows
+a live "Uploading N of M" with a progress bar, plus a <strong>Cancel</strong>
+button that finishes the photo in flight and then stops — no
+half-uploaded pair, and re-running is safe (the server recognizes
+what's already there). While the panel is closed, the batch's row in
+the top-right pill carries the same ✕.</li>
+<li><strong>Pick which server an upload goes to.</strong> With several Immich servers
+configured, the batch panel gains a Server picker — no silent
+default — and album choices follow the chosen server. The completion
+summary names where everything went.</li>
+<li><strong>Sources have names.</strong> The Immich form takes an optional name
+("Home NAS" reads better than an IP in the server picker), and <code>R</code>
+renames any saved source in place.</li>
+<li><strong>RAW+JPEG pairs stack with the JPEG as the cover</strong> on the server,
+matching what culling shows you.</li>
+<li><strong>"Uploaded, but…" is a warning now, not a failure.</strong> When photos
+land but stacking or the album add fails — commonly an API key
+minted before your server knew about stacks; the manual's permission
+table covers it — the batch says so honestly instead of calling
+uploaded photos failed.</li>
+<li><strong>culler now runs on Intel Macs</strong>: releases are universal binaries.</li>
+</ul>
+<h2 id="0-3-0-2026-08-02">0.3.0 — 2026-08-02</h2>
 <p><strong>Buttons that teach their keys.</strong> A commissioned design exploration
 became culler's new edge chrome — every mouse control now shows the
 keyboard shortcut it stands for, then gets out of your way.</p>
@@ -107,11 +135,11 @@ explains what the scan does and doesn't download.</li>
 </ul>
 <h2 id="0-1-0-2026-07-29">0.1.0 — 2026-07-29</h2>
 <p>First packaged release — a native macOS app for extremely fast,
-keyboard-driven culling of RAW+JPEG photo pairs, with Lightroom-style
-develop baked in.</p>
+keyboard-driven culling of RAW+JPEG photo pairs, with develop
+baked in.</p>
 <ul>
 <li><strong>JPEG-first culling</strong>: flags, stars, color labels, filters —
-everything writes to Lightroom-compatible XMP sidecars, originals
+everything writes to standard XMP sidecars, originals
 untouched.</li>
 <li><strong>Develop on the RAW</strong>: opening the develop panel demosaics the RAW
 (Sony in-camera lens correction included); white balance in real
@@ -132,7 +160,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.3.0</span>
+  <span>© Sander Mertens · culler v0.4.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
