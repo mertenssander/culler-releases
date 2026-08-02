@@ -2,8 +2,8 @@
 
 Extremely fast, keyboard-driven photo culling for macOS — RAW+JPEG pairs,
 Lightroom-style develop and crop, everything non-destructive: ratings,
-flags and edits live in Lightroom-compatible XMP sidecars, and your
-originals are never modified.
+flags and edits live in standard XMP sidecars most editing tools read,
+and your originals are never modified.
 
 **[Website · manual · download →](https://mertenssander.github.io/culler-releases/)**
 
