@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "version": "0.4.0",
-  "tag": "v0.4.0",
-  "published_at": "2026-08-02T12:17:54Z",
+  "version": "0.4.1",
+  "tag": "v0.4.1",
+  "published_at": "2026-08-02T15:05:50Z",
   "min_os_version": "11.0",
   "download": {
-    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.4.0/culler-0.4.0.dmg",
-    "sha256": "1e19a88b68a7965479a07ba8211fe1dede4a04e6f6ada86301e3514beddd37f7",
-    "size_bytes": 25826637,
+    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.4.1/culler-0.4.1.dmg",
+    "sha256": "1708983bcf67d6a319f518660caea6d6fc9d38531eb2bad1f4e5234220a42a28",
+    "size_bytes": 25889549,
     "arch": [
       "x86_64",
       "arm64"
     ]
   },
-  "notes_markdown": "\n**culler goes public.** Downloads, the manual and these release notes\nnow live at https://mertenssander.github.io/culler-releases/ \u2014 no\ninvitation needed. And a field session against a real Immich server\nshaped a batch of upload improvements:\n\n- **Uploads show progress and can be cancelled.** The batch panel shows\n  a live \"Uploading N of M\" with a progress bar, plus a **Cancel**\n  button that finishes the photo in flight and then stops \u2014 no\n  half-uploaded pair, and re-running is safe (the server recognizes\n  what's already there). While the panel is closed, the batch's row in\n  the top-right pill carries the same \u2715.\n- **Pick which server an upload goes to.** With several Immich servers\n  configured, the batch panel gains a Server picker \u2014 no silent\n  default \u2014 and album choices follow the chosen server. The completion\n  summary names where everything went.\n- **Sources have names.** The Immich form takes an optional name\n  (\"Home NAS\" reads better than an IP in the server picker), and `R`\n  renames any saved source in place.\n- **RAW+JPEG pairs stack with the JPEG as the cover** on the server,\n  matching what culling shows you.\n- **\"Uploaded, but\u2026\" is a warning now, not a failure.** When photos\n  land but stacking or the album add fails \u2014 commonly an API key\n  minted before your server knew about stacks; the manual's permission\n  table covers it \u2014 the batch says so honestly instead of calling\n  uploaded photos failed.\n- **culler now runs on Intel Macs**: releases are universal binaries.",
-  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.4.0"
+  "notes_markdown": "\n**Field fixes from a real holiday-culling session** against a live\nImmich server, same day as 0.4.0 \u2014 all remote browsing:\n\n- **Portrait photos from a server now develop and export the right way\n  up.** Server previews arrive pre-rotated, but the original files \u2014\n  used for full zoom, RAW develop and export \u2014 don't; culler treated\n  both the same, so portrait RAWs developed sideways and a\n  compensating crop then baked wrong-way exports. Orientation is now\n  tracked separately for the preview, the original, and the RAW member\n  of a stack, so every path decodes upright.\n- **Stacks appear while the library is still loading.** Server-side\n  stacks used to snap into place only after the whole scan finished \u2014\n  on a big library that read as duplicate RAW+JPEG pairs for a minute.\n  The stack relations are fetched once up front, so photos group\n  correctly the moment they stream in.\n- **Big remote libraries open newest-first and stay put.** The\n  end-of-scan swap used to reverse the order out from under you (and\n  leave the filmstrip showing stale thumbnails).\n- **Re-exporting an edit (`J`) replaces your previous culler edit** on\n  the server instead of piling up a new version each time \u2014 and the\n  new render joins the albums the photo was already in, so albums keep\n  showing it. A camera pair inside a server stack keeps its stack\n  identity too: the re-render joins the *real* stack (edit + JPEG +\n  RAW), never a partial one that would orphan the RAW.\n- **If stack information can't be loaded** (a key without permission, a\n  slow server), the scan now says so in the warning pill instead of\n  silently showing everything unstacked.\n- Fixed: the \u00d7 that removes a saved source flickered away under the\n  pointer and the click opened the source instead.",
+  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.4.1"
 }

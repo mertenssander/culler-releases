@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
     </div>
   </details>
 </header>
@@ -177,7 +177,11 @@ The edit is always <strong>stacked with its original</strong>: a photo that wasn
 a stack founds a new one (edit on top, original behind it), and inside
 an existing <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a> the edit becomes the new
 <strong>stack cover</strong> — either way the server timeline shows your version
-fronting the original. The edit carries the original's metadata: camera,
+fronting the original. Re-rendering the same photo <strong>replaces culler's
+previous version</strong> (it goes to the server trash) — the camera originals
+are never touched, and the stack never accumulates old renders. The new
+render also <strong>joins every album the photo belongs to</strong>, so albums keep
+showing the photo, fronted by the newest version. The edit carries the original's metadata: camera,
 lens, exposure, GPS and the local capture time ride along even when the
 original is a format culler can't decode itself (an iPhone HEIC, say),
 so the server's Info panel reads the same on both. From an
@@ -213,7 +217,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.0</span>
+  <span>© Sander Mertens · culler v0.4.1</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

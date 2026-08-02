@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
     </div>
   </details>
 </header>
@@ -179,9 +179,14 @@ left out: culler is a photo culler.</p>
 culled as <strong>one photo</strong>, exactly like a local folder pairs them: the
 camera JPEG is what you see, the overlay says so ("DSC09 · ARW+JPG" —
 every remote photo shows its file kind there), and whole-photo actions
-(rating, archive, trash, download) cover both assets. Server-side
-stacks are a different thing — distinct shots grouped behind a cover —
-and keep their own badge, count and <code>G</code> step-into.</p>
+(rating, archive, trash, download) cover both assets. The server's own
+stack grouping counts too: a pair stacked on the server (culler's
+uploads arrive that way) is the same one photo, and a stack holding
+more — an edit version, extra frames — shows its <strong>cover</strong> with a
+member-count badge and <code>G</code> step-into. When a stack contains a RAW, the
+develop panel grades that RAW, exactly like a plain pair. The timeline
+orders <strong>newest first</strong>, matching the server's own view, and stacks
+group <strong>as the scan streams in</strong> — not only when it finishes.</p>
 <p>The difference from a folder is where state goes:</p>
 <h3 id="write-through-sync">Write-through sync</h3>
 <p>Ratings, picks and labels write through to the server as you press the
@@ -223,7 +228,7 @@ the apply panel itself) are unavailable inside a stack.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.0</span>
+  <span>© Sander Mertens · culler v0.4.1</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

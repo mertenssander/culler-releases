@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,38 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-4-0-2026-08-02">0.4.0 — 2026-08-02</h2>
+    <h2 id="0-4-1-2026-08-02">0.4.1 — 2026-08-02</h2>
+<p><strong>Field fixes from a real holiday-culling session</strong> against a live
+Immich server, same day as 0.4.0 — all remote browsing:</p>
+<ul>
+<li><strong>Portrait photos from a server now develop and export the right way
+up.</strong> Server previews arrive pre-rotated, but the original files —
+used for full zoom, RAW develop and export — don't; culler treated
+both the same, so portrait RAWs developed sideways and a
+compensating crop then baked wrong-way exports. Orientation is now
+tracked separately for the preview, the original, and the RAW member
+of a stack, so every path decodes upright.</li>
+<li><strong>Stacks appear while the library is still loading.</strong> Server-side
+stacks used to snap into place only after the whole scan finished —
+on a big library that read as duplicate RAW+JPEG pairs for a minute.
+The stack relations are fetched once up front, so photos group
+correctly the moment they stream in.</li>
+<li><strong>Big remote libraries open newest-first and stay put.</strong> The
+end-of-scan swap used to reverse the order out from under you (and
+leave the filmstrip showing stale thumbnails).</li>
+<li><strong>Re-exporting an edit (<code>J</code>) replaces your previous culler edit</strong> on
+the server instead of piling up a new version each time — and the
+new render joins the albums the photo was already in, so albums keep
+showing it. A camera pair inside a server stack keeps its stack
+identity too: the re-render joins the <em>real</em> stack (edit + JPEG +
+RAW), never a partial one that would orphan the RAW.</li>
+<li><strong>If stack information can't be loaded</strong> (a key without permission, a
+slow server), the scan now says so in the warning pill instead of
+silently showing everything unstacked.</li>
+<li>Fixed: the × that removes a saved source flickered away under the
+pointer and the click opened the source instead.</li>
+</ul>
+<h2 id="0-4-0-2026-08-02">0.4.0 — 2026-08-02</h2>
 <p><strong>culler goes public.</strong> Downloads, the manual and these release notes
 now live at https://mertenssander.github.io/culler-releases/ — no
 invitation needed. And a field session against a real Immich server
@@ -160,7 +191,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.0</span>
+  <span>© Sander Mertens · culler v0.4.1</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
