@@ -1,28 +1,17 @@
-# culler — releases
+# culler
 
-Download builds of **culler**, an extremely fast, keyboard-driven photo
-culling tool for RAW+JPEG pairs with Lightroom-style develop built in.
+Extremely fast, keyboard-driven photo culling for macOS — RAW+JPEG pairs,
+Lightroom-style develop and crop, everything non-destructive: ratings,
+flags and edits live in Lightroom-compatible XMP sidecars, and your
+originals are never modified.
 
-**→ Grab the newest DMG from the [Releases page](../../releases/latest).**
+**[Website · manual · download →](https://mertenssander.github.io/culler-releases/)**
 
-**→ Read the [user manual](manual/README.md)** — from first launch to
-develop, sources and export, with screenshots.
+- Latest DMG: [releases/latest](https://github.com/mertenssander/culler-releases/releases/latest)
+- [Changelog](https://mertenssander.github.io/culler-releases/changelog/)
+- First launch: builds aren't Apple-notarized yet, so macOS refuses the
+  first open — right-click `culler.app` → **Open** (or System Settings →
+  Privacy & Security → **Open Anyway**), once per copy.
 
-**→ See [what's new per release](CHANGELOG.md).**
-
-## Install
-
-1. Open the DMG and drag **culler.app** to Applications.
-2. First launch: macOS will refuse the unsigned build once — approve it
-   via **System Settings → Privacy & Security → "Open Anyway"**.
-   That's a one-time step per machine.
-
-## Quick start
-
-- Open a photo folder (or press `S` for sources), then judge with
-  `P` (pick), `X` (reject), `1`–`5` (stars).
-- `K` shows the whole set as a grid; `H` shows every shortcut.
-- Everything is non-destructive: all edits live in XMP sidecars next to
-  your photos — originals are never modified.
-
-*This repository contains releases only. Access is by invitation.*
+culler is free to use. It is not open source — this repository
+distributes binaries and the website only; see [LICENSE.md](LICENSE.md).
