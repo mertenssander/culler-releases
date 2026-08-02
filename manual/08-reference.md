@@ -11,7 +11,7 @@
 | `6`–`9` | color label red / yellow / green / blue (again clears) |
 | `Z` / `Space` / double-click | zoom 100% ⇄ fit (drag to pan) |
 | Scroll / pinch | continuous zoom around the pointer (to 8×; snaps back to fit) |
-| `F` / `Shift+F` | cycle filter (All → Picks → Rejects → Unrated → Edited → Labeled) / show all |
+| `F` / `Shift+F` | cycle filter (All → Picks → Picks+unrated → Rejects → Unrated → Edited → Labeled) / show all |
 | `Cmd/Ctrl+1`–`5`, `0` | filter to at least N stars / show all |
 | `K` | Grid view — overview of the working set (see [Viewing](03-viewing.md#grid-view-k)) |
 | `V` | Compare view |
@@ -57,7 +57,8 @@
 | `T` | toggle auto-advance |
 | `Z` | cycle cell size (while peeking: zoom, as in the loupe) |
 | `A` | batch panel, in place (the grid stays up) |
-| `E` `C` `V` `N` `M` `S` | exit, then act on the cursored photo |
+| `F` / `Cmd+1`–`5`, `0` | change the filter — the grid re-points live |
+| `E` `C` `V` `N` `M` `S` | exit, then act on the cursored photo (also from a peek) |
 | `H` | help overlay |
 | `Esc` / `Enter` / `K` | exit onto the cursored photo |
 
@@ -82,6 +83,11 @@
 | arrows | move the focus through the grid |
 | `X` | reject + remove from the grid |
 | `⌫` / `Delete` | remove without judging |
+| `Space` | peek the focused photo full-size (real zoom with `Z`/scroll; `Space`/`Esc` pops back, arrows keep moving the focus, `X` keeps winnowing) |
+| `A` | exit onto the focused survivor, then open the batch panel |
+| `K` | hop to the Grid view |
+| `E` `C` `V` `M` `S` | exit onto the focused survivor, then act |
+| `F` / `Cmd+1`–`5`, `0` | change the filter — the survey re-deals from the new set |
 | `P` `U`, `0`–`5`, `6`–`9` | mark the focused photo |
 | `H` | help overlay |
 | `Esc` / `N` | exit onto the focused survivor |

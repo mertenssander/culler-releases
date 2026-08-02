@@ -47,8 +47,10 @@ neighbors without leaving the peek, and marking keys work throughout.
 The grid is **live but steady**: badges and edits update the instant you
 mark, but a photo whose new flag would drop it from the active filter
 stays on screen until you exit — nothing is ever yanked out from under
-your cursor. Filter keys (`F`, `Cmd+1`–`5`) are inactive inside for the
-same reason; exit, change the filter, come back.
+your cursor. An **explicit filter change** is different — that's you
+asking for a reshuffle: `F`, `Cmd+1`–`5`, and the rail's Filter palette
+work inside, and the grid re-points at the new set immediately. In
+Survey the same keys re-deal the survey from the new set.
 
 ## Compare view: `V`
 
@@ -87,8 +89,15 @@ position out in a grid; survivors grow as losers leave.
 | `1`–`5`, `P`, `U`, `6`–`9` | mark the focused photo (never removes it) |
 | `Esc` / `N` | exit onto the focused survivor |
 
+`Space` **peeks** the focused photo full-size through the real loupe —
+zoom with `Z` or scroll, flip through survivors with the arrows, keep
+winnowing with `X` — and `Space`/`Esc` pops back to the grid exactly as
+you left it (same gesture as the Grid view's peek).
+
 Winnowing all the way to zero exits by itself — rejecting an entire bad
-burst is a legal outcome. Develop edits show in every cell.
+burst is a legal outcome. Develop edits show in every cell. The rail
+keeps the marking verbs at the left edge in both Survey and Grid —
+they act on the focused cell, and Reject winnows just like `X`.
 
 There is a third multi-photo mode: **Match Look** (`M`) grades a frozen
 burst as one, fitting every photo's tone to the one you're standing on.

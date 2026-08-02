@@ -4,6 +4,41 @@ User-facing notes per release. This file is the source of truth: each
 GitHub release (on the source repo and on `culler-releases`) carries its
 version's section verbatim, plus the standing install note below.
 
+## 0.3.0 — 2026-08-02
+
+**Buttons that teach their keys.** A commissioned design exploration
+became culler's new edge chrome — every mouse control now shows the
+keyboard shortcut it stands for, then gets out of your way.
+
+- **The rail** (left edge): the current mode's verbs as keycap buttons —
+  Pick, Reject, Clear, Rate, Grid, Compare, Filter while culling.
+  Hovering teaches; the **Filter** and **Rate** buttons open real
+  palettes (click a filter to jump straight to it; click a star chip).
+  Buttons you've used about five times politely dim — the rail retires
+  itself as you learn. `‹‹` collapses it to a thin line; rest the
+  pointer on the line to bring it back.
+- **The spine tabs** (right edge): CULL · DEVELOP · CROP · BATCH name
+  the workflow. Click to switch; rest on a tab and a palette fires that
+  mode's one-shot actions (auto tone, reset…) — from anywhere.
+- **The develop panel** grew up: Auto / Reset / Match JPEG as a
+  full-width row under the title, Copy / Paste / Before-After at the
+  foot, keycap chips on everything, and the sliders scroll on small
+  windows instead of clipping.
+- **Overviews got stronger**: Survey gained the Grid's peek (`Space` —
+  a real loupe with zoom, winnowing keeps working), both overviews now
+  accept filter changes in place (the grid re-points live, Survey
+  re-deals), every mode hop works uniformly from both (`E C V M S`,
+  plus `K`⇄`N` between them), and `A` reaches the batch panel from
+  each. Persistent styled key-hint strips replace the old status-line
+  text that any action would overwrite.
+- **New filter: Picks + unrated** — everything except your rejects, in
+  the `F` cycle right after Picks and in the Filter menu.
+- The old bottom action dock is retired — everything it did lives on
+  in the rail, the spines, and the `⋯` menu (now beside the rail,
+  styled like the palettes).
+- Fixed: the develop pane could slowly widen until it covered the
+  window.
+
 ## 0.2.1 — 2026-07-30
 
 - **Server-side ratings now show up.** Stars set in Immich's own web app

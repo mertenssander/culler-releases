@@ -41,23 +41,35 @@ The keyboard is the fast path, but everything above is clickable the
 moment the mouse moves — and every control shows its key, so the buttons
 teach the shortcuts as you go:
 
-- **The action dock** (bottom-center) carries Pick, Reject, Crop,
-  Develop and Export. Its last button, **▾ More**, opens a small menu
-  with the rest: the live filter, Compare, Survey, Match Look, Batch,
-  Sources, Auto-advance and Help
-  ([screenshot](img/16-more-popover.png)).
+- **The rail** (left edge) carries the culling verbs as keycap
+  buttons — Pick, Reject, Clear, Rate, Grid, Compare, Filter — each
+  showing its key with the name under it; hovering flares the full
+  teaching line — and the **Filter** and **Rate** buttons open real
+  palettes: click a filter to jump straight to it, click a star chip
+  (1–5, 0) to rate. Its **⋯** button opens the menu with the rest: the
+  live filter, Survey, Match Look, Batch, Sources, Auto-advance and
+  Help ([screenshot](img/16-more-popover.png)). Buttons you've used
+  about five times (key or click) politely dim — the rail retires
+  itself as you learn. The **‹‹** at its foot collapses it to a thin
+  line; click the line (or rest the pointer on it) to bring it back.
+- **The spine tabs** (right edge) name the workflow — CULL · DEVELOP ·
+  CROP. Click one to switch; rest the pointer on an inactive tab and a
+  small palette appears to fire that mode's one-shot actions (auto
+  tone, reset…) without switching at all.
 - **The stars in the top-left overlay** become five click targets while
   the pointer is moving — hover previews, clicking sets the rating, and
   clicking the same star again clears it, exactly like the number keys.
 - **Hover a side edge of the photo** for previous/next arrows (at fit
   zoom; when zoomed in, the mouse pans instead).
 
-When your hands return to the keyboard, all of it fades away. The first
-launch shows a one-line hint above the dock, once, and never again.
+The photo itself stays untouched: the rail is a slim gutter, never an
+overlay, and collapsing it gets you within three pixels of a bare
+photo. The first launch shows a one-line hint beside the rail, once,
+and never again.
 
 ## Filters: working in passes
 
-`F` cycles the view: **All → Picks → Rejects → Unrated → Edited →
+`F` cycles the view: **All → Picks → Picks+unrated → Rejects → Unrated → Edited →
 Labeled** and back. `Shift+F` returns straight to All. The overlay shows
 the active filter, and the position counter (`3/12`) counts within it.
 

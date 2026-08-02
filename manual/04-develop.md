@@ -1,6 +1,12 @@
 # Develop
 
-`E` opens the develop panel. Adjustments render on the GPU, so every
+`E` opens the develop panel. Its one-shot verbs sit right under the
+title as a full-width quick row — **Auto**, **Reset**, and **Match
+JPEG** on RAW-paired photos — and a footer row carries **Copy**,
+**Paste** and **B / A** (the same actions as `Shift+C`, `Shift+V` and
+`\`). While the panel is closed, resting the pointer on the DEVELOP
+spine tab (right edge) offers Auto tone and Reset without opening the
+panel at all. Adjustments render on the GPU, so every
 slider is realtime at any image size, and everything persists to the XMP
 sidecar in Lightroom's schema — Lightroom applies your edits on import.
 

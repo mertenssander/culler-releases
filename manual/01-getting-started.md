@@ -28,7 +28,7 @@ Mac app and DMG.)*
 
 ## The screen at a glance
 
-![The culling view: overlay text top-left, counters bottom-right, badges in the filmstrip, and the action dock bottom-center](img/01-culling-counters.png)
+![The culling view: overlay text top-left, counters bottom-right, badges in the filmstrip, the rail on the left edge and the spine tabs on the right](img/01-culling-counters.png)
 
 - **The photo** fills the window, fitted. All text drawn over it carries a
   thin dark halo so it stays readable even on a blown-out sky
@@ -46,14 +46,15 @@ Mac app and DMG.)*
   hint for `J` and `H`.
 - **The status line** (bottom-left) narrates what just happened: the
   rating you set, an export finishing, a confirmation prompt.
-- **The action dock** (bottom-center: *Pick · Reject · Crop · Develop ·
-  Export · ▾*) appears when the mouse moves and fades away when your hands
-  are on the keyboard. The **▾** opens a menu with everything else —
-  Compare, Survey, Match Look, the live filter, Batch, Sources, Help —
-  each row naming its keyboard key. In a narrow window the dock compacts to the
-  bare keycap letters — hover any of them for the full name
-  ([compact form](img/13-compact-dock.png)). See
-  [culling with the mouse](02-culling.md#culling-with-the-mouse).
+- **The rail** (left edge) is a slim column of keycap buttons for the
+  current mode's verbs — Pick, Reject, Rate and friends while culling —
+  each teaching its keyboard key. It collapses to a thin line when you
+  want a bare photo, and buttons you've clearly learned dim out of the
+  way. The **⋯** opens a menu with everything else, each row naming its
+  key. See [culling with the mouse](02-culling.md#culling-with-the-mouse).
+- **The spine tabs** (right edge: *CULL · DEVELOP · CROP*) are the
+  workflow's table of contents — click to switch, or rest the pointer
+  on one to fire its quick actions without switching.
 - **The system menu bar** (Mac app): everything above is also in the
   regular macOS menus — File, View, Photo, Window, Help — with each
   item naming its culler key, so the menu bar doubles as a shortcut
