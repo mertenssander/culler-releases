@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The culler manual — culler</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+<div class="docs docs--index">
+  <article class="prose">
+    <h1>The culler manual</h1>
+    <p><strong>culler</strong> is an extremely fast, keyboard-driven tool for going through a
+shoot and deciding what survives: rate, pick, reject and label thousands of
+RAW(+JPEG) photos, fix tone and crop on the keepers, and move the results
+where they belong — a folder, the trash, or an Immich server.</p>
+<p>Two ideas shape everything:</p>
+<ul>
+<li><strong>JPEG-first speed.</strong> Culling never decodes RAW data. The camera JPEG
+next to each RAW (or the full-size preview embedded inside the RAW) is
+what you see, decoded in the background around your position, so
+flipping through photos is instant.</li>
+<li><strong>Nothing is destructive.</strong> Every rating, flag, label, develop setting
+and crop is written to an XMP sidecar next to the photo, in the same
+schema Lightroom uses. Your originals are never modified — the one
+deliberate exception (<code>Shift+J</code>) asks twice and keeps a backup.</li>
+</ul>
+<p>Every action has a key, and the keys are always one press away: <code>H</code> shows
+the in-app cheat sheet.</p>
+
+    <ol class="chapter-list">
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a></li>
+      
+      <li><a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a></li>
+      
+    </ol>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Develop — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Develop</summary>
+      <nav>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Develop</h1>
+    <p><code>E</code> opens the develop panel. Its one-shot verbs sit right under the
+title as a full-width quick row — <strong>Auto</strong>, <strong>Reset</strong>, and <strong>Match
+JPEG</strong> on RAW-paired photos — and a footer row carries <strong>Copy</strong>,
+<strong>Paste</strong> and <strong>B / A</strong> (the same actions as <code>Shift+C</code>, <code>Shift+V</code> and
+<code>\</code>). While the panel is closed, resting the pointer on the DEVELOP
+spine tab (right edge) offers Auto tone and Reset without opening the
+panel at all. Adjustments render on the GPU, so every
+slider is realtime at any image size, and everything persists to the XMP
+sidecar in Lightroom's schema — Lightroom applies your edits on import.</p>
+<p><img src="../img/12-develop-graded.png" alt="The develop panel on a graded photo: non-default sliders and the live histogram" /></p>
+<h2 id="raw-paired-photos-develop-the-raw">RAW-paired photos develop the RAW</h2>
+<p>Culling always shows the camera JPEG — but when a photo has a RAW file
+beside it, opening the develop panel switches the image to a <strong>fresh
+demosaic of the RAW</strong>, developed with the file's own white balance and
+color matrix. A soft render appears near-instantly and sharpens in place
+a moment later; close the panel and the <strong>plain</strong> JPEG is back — your
+adjustments were graded against the flat RAW rendition, so they are
+deliberately <em>not</em> re-applied to the already-cooked camera JPEG (they
+would read overbaked there). The edits aren't lost: they live in the
+develop panel and in <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">exports</a>, which bake from
+the RAW — and a quiet <code>[edited]</code> tag in the top-left overlay row marks
+any photo carrying RAW edits you can't currently see. Only the crop
+follows you out of the panel: geometry means the same thing on both
+files. The tag next to
+the panel's title says which one you're looking at: <strong><code>[RAW]</code></strong> or
+<strong><code>[JPEG]</code></strong> — it always describes the pixels actually on screen, so a
+photo whose RAW is still decoding (or downloading) reads <code>[JPEG]</code> until
+the real thing lands. The same moment, an accent-colored <strong><code>[RAW]</code></strong>
+tag appears over the photo itself, in the top-left row next to
+<code>[stack]</code> and <code>[before]</code> — inside a stack of mixed RAW and JPEG
+members it appears and disappears per member as you step through, so
+there's never a doubt about which file you're grading.</p>
+<p>Expect the RAW to look different from the JPEG: flatter and often
+darker. The camera's JPEG has its own cooked tone curve, sharpening and
+lens corrections baked in; the RAW render is the neutral starting point
+your adjustments build on (lens correction is applied from the file's
+own parameters — see the slider list below). The histogram follows the same rule as the
+tag — it describes whichever image is displayed.</p>
+<p>Photos with no RAW (plain JPEG, HEIC) keep developing the JPEG exactly
+as before, and a RAW that can't be decoded falls back the same way — the
+tag tells the truth either way. On a server source the RAW original
+downloads first ("Downloading RAW" in the pending-work pill); the panel
+opens instantly on the server preview and the tag flips to <code>[RAW]</code> when
+the real pixels land. The download is a one-time cost per photo.</p>
+<p><strong>White balance becomes real in RAW mode.</strong> On a JPEG, Temp and Tint
+are relative nudges (−100..+100 around 0) — a JPEG has no true white
+balance left to change. On a RAW, the Temp slider turns into an actual
+<strong>Kelvin</strong> scale (2000–25000, log-spaced so the everyday 3000–9000 band
+gets most of the travel) whose home position is the file's <strong>As Shot</strong>
+white balance; hover the slider to see it, double-click to return to
+it. Tint stays −100..+100, zero meaning As Shot. The number format is
+the tell: "5500K" is a RAW, "+12" is a JPEG. The two settings are
+stored separately per photo — RAW-mode edits write Lightroom's real
+<code>crs:Temperature</code>/<code>crs:Tint</code> fields, JPEG-mode edits keep the
+Incremental pair, and neither ever touches the other.</p>
+<h2 id="the-histogram-is-a-control">The histogram is a control</h2>
+<p>The live RGB histogram at the top reflects your adjustments, and you can
+grab it directly:</p>
+<ul>
+<li>Drag in the <strong>left third</strong> to move Shadows, the <strong>middle</strong> for
+Exposure, the <strong>right third</strong> for Highlights. The tone you press on
+tracks the pointer — it feels like dragging the histogram mass itself.</li>
+<li><strong>Double-click</strong> a zone to reset that parameter.</li>
+<li>The histogram is computed over the <strong>cropped region</strong>, so it describes
+the photo you're actually keeping.</li>
+</ul>
+<h3 id="the-curve">The curve</h3>
+<p>The white line across the histogram is the <strong>tone curve</strong>: for every
+input tone (left = black, right = white) it shows the tone your sliders
+turn it into (bottom = black, top = white). Untouched, it lies on the
+faint diagonal — except a small dip near white, the built-in highlight
+shoulder that rolls bright pushes off softly instead of clipping them.
+Raise Exposure and the whole line lifts; add Contrast and it steepens
+into an S; pull Highlights and the top end bends down. While you drag a
+tonal slider the line brightens to the accent color, and dragging one of
+the four <strong>Tone curve</strong> sliders also thickens the stretch of the curve
+that slider owns, so you can see exactly where "Darks" ends and "Lights"
+begins. White balance, Vibrance/Saturation and Vignette don't move the
+line — they change color or corners, not tones.</p>
+<p>Hovering any slider and scrolling nudges it — slower than dragging, for
+fine work.</p>
+<h2 id="sections">Sections</h2>
+<p>The sliders live in three collapsible sections — <strong>Tone</strong> (Exposure,
+Contrast, Highlights, Shadows), <strong>Color</strong> (Temp, Tint, Vibrance,
+Saturation) and <strong>Curve &amp; Effects</strong> (the tone curve regions and
+Vignette). Click a header to collapse or expand it; the app remembers
+your arrangement across restarts. On a fresh install only Tone is open —
+the every-photo section — keeping the pane compact. A collapsed section
+can never hide an edit silently: a small accent dot on the header means
+something inside is off its default.</p>
+<h2 id="the-sliders">The sliders</h2>
+<ul>
+<li><strong>Temp / Tint</strong> — white balance: Temp seesaws red/blue (negative cools,
+positive warms), Tint moves the green–magenta axis. Neutral grays keep
+their brightness while the color shifts.</li>
+<li><strong>Exposure</strong> — brightness in EV, in linear light, with a soft shoulder
+so pushed highlights bloom instead of clipping flat.</li>
+<li><strong>Contrast</strong> — an S-curve around the midtones.</li>
+<li><strong>Highlights / Shadows</strong> — recover the bright end or lift the dark end.
+Up to ±50 the effect follows each pixel's own tone; <strong>beyond ±50 it
+becomes neighborhood-aware</strong>: a strong shadow lift brightens a dark
+doorway without washing out the bright wall next to it, the way
+Lightroom's sliders behave at the extremes.</li>
+<li><strong>Vibrance / Saturation</strong> — Vibrance boosts muted colors more than
+already-vivid ones (protecting what's already saturated); Saturation is
+uniform. −100 Saturation is black &amp; white.</li>
+<li><strong>Tone curve</strong> (Highlights / Lights / Darks / Shadows) — four regions
+of a parametric curve, for shaping after the basic tone is set: lift
+the darks a touch, ease the lights, without touching exposure.</li>
+<li><strong>Vignette</strong> — post-crop corner darkening (0 to −100). It follows the
+crop, so the falloff is always centered on your final frame.</li>
+<li><strong>Lens correction</strong> (RAW mode only) — a checkbox at the bottom of
+Curve &amp; Effects, on by default whenever the RAW carries the camera's
+own correction data (Sony bodies bake per-shot distortion, chromatic
+aberration and vignetting parameters into every ARW — the same data
+the camera used for its JPEG, so no lens profiles to manage). With it
+on, the RAW's framing matches the corrected camera JPEG; turn it off
+to see the naked lens. Files without correction data show a quiet
+"no profile" note instead.</li>
+</ul>
+<h2 id="clipping-warnings-w">Clipping warnings: <code>W</code></h2>
+<p><code>W</code> paints <strong>clipping warnings</strong> straight onto the photo: pixels blown
+to white glow red, pixels crushed to black glow blue — Lightroom's
+J-overlay, applied to the final render (so a heavy vignette can
+legitimately warn in the corners). The histogram's top corners carry
+small always-on indicators that light up whenever the current photo
+clips (shadows left, highlights right); clicking one toggles the same
+overlay, and while it's active they get an accent ring and the top
+overlay shows <code>[clipping]</code>. The warnings are near-clip rather than
+exact-255 — the develop pipeline's highlight shoulder deliberately
+rolls pushed whites off before they hard-clip, and the warning
+respects what your eyes actually get. Exports never include them.</p>
+<p><img src="../img/15-clipping.png" alt="Clipping warnings on a blown frame: the image paints red, the histogram corner indicator is lit and ringed" /></p>
+<p><strong>On a RAW render, blown isn't always gone.</strong> The sensor usually keeps
+detail past the point where the display clips, so in <code>[RAW]</code> mode the
+warnings split: <strong>gold</strong> marks highlights that are blown on screen but
+still recoverable — pull Highlights or Exposure down and real detail
+comes back — while <strong>red</strong> stays reserved for pixels the sensor itself
+clipped in the file. Even those pull down gracefully: where only some
+color channels clipped (a bright sky almost always loses green first),
+the missing channel is reconstructed from the surviving ones, so blown
+whites come back as white — not the pink cast naive RAW converters
+show — and only fully clipped pixels settle for neutral gray. Crushed
+blacks stay blue in both modes. The histogram's highlight indicator and
+the <code>[clipping]</code>/<code>[recoverable]</code> overlay tag follow the same split, with
+red winning whenever any true sensor clip is present. The split exists
+only while the RAW render is on screen — with the panel closed, <code>W</code>
+describes the plain camera JPEG, so a sky can read blown while culling
+yet recoverable the moment you press <code>E</code>. That's the two files talking,
+not a bug.</p>
+<h2 id="auto-tone-shift-a">Auto tone: <code>Shift+A</code></h2>
+<p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) computes a starting point from
+the histogram: exposure toward a balanced midtone, highlight/shadow
+rescues where mass piles up at the ends, a touch of contrast for flat
+frames. It is deliberately a nudge, not a look — and it only touches the
+four tonal sliders. Your white balance, presence, curve and vignette
+survive it. <strong>Reset</strong> clears everything.</p>
+<h2 id="match-jpeg">Match JPEG</h2>
+<p><strong>Match JPEG</strong> (RAW mode only, in the button row next to Auto and Reset)
+computes a starting point that approximates the paired camera JPEG's
+look: it fits the RAW histogram onto the JPEG's. Three things are
+fitted, all measured from this photo's own two renditions, never
+guessed: the four tone sliders (histogram percentiles), <strong>Saturation</strong>
+(cameras cook color well beyond the neutral matrix render — the fit
+measures the actual chroma gap and accounts for how much of it the tone
+push already restores), and <strong>white balance</strong> (the channel balance
+difference between the two renditions of the same pixels; a near-zero
+delta stays As Shot). Vibrance, the tone curve and Vignette carry over
+unchanged, and Reset undoes everything. It's an approximation, not a
+pixel match: the camera's hue twists and local contrast aren't
+reproducible from histograms.
+The button appears the moment real RAW pixels are on screen (the same
+moment the <code>[RAW]</code> tag lights up); on a photo with no separate JPEG the
+reference is the camera's embedded preview, and on a server source the
+server-rendered preview.</p>
+<h2 id="match-look-m">Match Look: <code>M</code></h2>
+<p><strong>Match Look</strong> grades a whole burst as one. Stand on the photo whose
+look you like and press <code>M</code>: up to 24 photos around it freeze into a
+set, the one you were on becomes the <strong>reference</strong>, and every other
+photo is automatically fitted toward it — exposure, contrast and the
+two tail rescues, each from its own starting point. The fit reads each
+frame's histogram <em>and</em> its EXIF exposure settings, so a frame shot a
+stop darker (faster shutter, smaller aperture) gets the physical
+correction, while a frame where the scene genuinely changed (a shadow
+crossing, more sky) is only nudged, never forced — a sudden shadow is
+real, not a mistake.</p>
+<p>While the mode is on, the develop panel edits the <strong>reference</strong>, and
+every slider move carries the whole linked set with it — each photo
+keeping its own hidden offset, so the group shifts together instead of
+snapping to identical numbers. Walk the set with <code>←</code>/<code>→</code> (the filmstrip
+marks the reference with a solid accent ring), check any photo against
+its original with <code>\</code> (<a href="../img/17-match-look.png">screenshot</a>), and:</p>
+<ul>
+<li><code>R</code> makes the focused photo the new reference (everything re-fits).</li>
+<li><code>L</code> unlinks the focused photo — its sliders are its own from there —
+or links it back. Unlinked members wear a thin <strong>amber ring</strong> in the
+filmstrip (the reference's ring is solid blue; linked members have
+none). A RAW-paired photo that already carries a develop grade starts
+unlinked, so the automatic fit can never overwrite deliberate work;
+<code>L</code> opts it in.</li>
+<li><code>P</code>/<code>X</code>/ratings/labels still work on the focused photo — a bad burst
+frame gets rejected without leaving.</li>
+</ul>
+<p>RAW-paired members' filmstrip thumbnails warm up once per session — a
+few seconds, one at a time (the pending pill counts them: <em>"Preparing
+thumbnails"</em>) — into live renders that track every slider move, so a
+matched burst visibly matches without leaving the panel. They revert
+to their normal plain thumbnails the moment the session ends.</p>
+<p>The panel itself changes shape for the session: a quiet
+<code>reference: &lt;name&gt;</code> line under the heading always names the photo
+driving the set, <strong>Auto</strong> and <strong>Match JPEG</strong> step aside (they'd drag
+the whole group through an unrelated fit), and the buttons become
+<strong>Reset all</strong> — every photo back to its freshly-matched state, without
+leaving the mode — and <strong>Re-match</strong>, which runs the automatic fit
+again. If a photo's fitted tone hits a slider's end of travel, it
+stops tracking the group on that axis: a small amber dot appears in
+its thumbnail corner and a <code>[clamped]</code> tag joins the panel header
+while it's focused — drag back toward center and it reconnects.</p>
+<p><strong>Nothing is written until you decide</strong>: <code>M</code> again commits — every
+changed photo's sidecar is written once — and <code>Esc</code> cancels, restoring
+every photo exactly as it was. It's the same "starting point, not a
+pixel match" honesty as Match JPEG: the fit gets the set close, your
+eyes make the call.</p>
+<h2 id="copying-settings-across-photos-shift-c-shift-v">Copying settings across photos: <code>Shift+C</code> / <code>Shift+V</code></h2>
+<p><code>Shift+C</code> copies the current photo's develop settings <em>and</em> crop
+(including rotation); <code>Shift+V</code> pastes them onto the current photo. A
+burst shot in identical light becomes one keystroke per frame.</p>
+<h2 id="where-it-all-lives">Where it all lives</h2>
+<p>Edits are stored per photo in its sidecar as <code>crs:</code> fields (the full list
+is in the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#xmp-fields">reference</a>) and never touch the
+image file. For photos developed on their JPEG, filmstrip thumbnails
+re-render with your tone baked in, so edited photos are recognizable at
+a glance; RAW-paired photos keep plain thumbnails (same reason their
+culling view stays plain) and announce their edits through the
+<code>[edited]</code> overlay tag instead. The Edited filter
+(<a href="https://mertenssander.github.io/culler-releases/manual/culling/#filters-working-in-passes">culling</a>) collects both
+kinds. To turn an edit into an actual JPEG, see
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j">export</a>.</p>
+
+    <nav class="pagenav">
+      
+      <a class="pagenav-prev" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">← Viewing and comparing</a>
+      
+      
+      <a class="pagenav-next" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten →</a>
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

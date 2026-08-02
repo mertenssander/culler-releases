@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>culler — keyboard-driven photo culling for macOS</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+
+
+  
+
+
+<section class="hero">
+  <div class="hero-copy">
+    <h1>Cull thousands of photos without touching the mouse.</h1>
+    <p class="lead">Keyboard-driven culling for RAW+JPEG pairs, with
+    Lightroom-style develop and crop. Every rating, edit and crop writes to
+    a standard XMP sidecar — your originals never change.</p>
+    <ul class="hero-keys">
+      <li><kbd class="keycap keycap--lg">P</kbd> Pick</li>
+      <li><kbd class="keycap keycap--lg">X</kbd> Reject</li>
+      <li><kbd class="keycap keycap--lg">1–5</kbd> Rate</li>
+      <li><kbd class="keycap keycap--lg">E</kbd> Develop</li>
+      <li><kbd class="keycap keycap--lg">H</kbd> Help</li>
+    </ul>
+    <div class="hero-cta">
+      <a class="btn btn--accent btn--lg" href="https:&#x2F;&#x2F;github.com&#x2F;mertenssander&#x2F;culler-releases&#x2F;releases&#x2F;download&#x2F;v0.3.0&#x2F;culler-0.3.0.dmg">Download for Mac — v0.3.0</a>
+      <a class="link-arrow" href="https://mertenssander.github.io/culler-releases/manual/">Read the manual →</a>
+    </div>
+    <p class="hero-meta">macOS 11+ · Apple Silicon (M1 or later) · free</p>
+  </div>
+  <figure class="hero-shot">
+    <img src="https://mertenssander.github.io/culler-releases/manual/img/01-culling-counters.png"
+         alt="The culling view: a photo full-screen, pick and reject counters, the keycap rail on the left" width="1600" height="1000">
+  </figure>
+</section>
+
+<section class="band">
+  <div class="band-card">
+    <h3>JPEG-first speed</h3>
+    <p>Culling never demosaics RAW. You see the camera JPEG (or the RAW's
+    embedded preview), decoded ahead of your cursor — browsing thousands of
+    photos is instant.</p>
+  </div>
+  <div class="band-card">
+    <h3>Keyboard-driven</h3>
+    <p>Every action is one key, taught by a rail that dims once you've
+    learned it. <kbd class="keycap">P</kbd> <kbd class="keycap">X</kbd> <kbd class="keycap">1–5</kbd>
+    <kbd class="keycap">K</kbd></p>
+  </div>
+  <div class="band-card">
+    <h3>Non-destructive</h3>
+    <p>Ratings, flags, develop and crop live in an XMP sidecar next to the
+    photo, in the same schema Lightroom uses. Originals are never
+    modified.</p>
+  </div>
+</section>
+
+<section class="feature">
+  <figure class="feature-shot">
+    <img src="https://mertenssander.github.io/culler-releases/manual/img/12-develop-graded.png"
+         alt="The develop pane: histogram, tone and color sliders, a graded photo" loading="lazy" width="1600" height="1000">
+  </figure>
+  <div class="feature-copy">
+    <h2>Develop, even on the RAW</h2>
+    <p>White balance, exposure, tone curve, vibrance — as a live GPU
+    pipeline. Press <kbd class="keycap">E</kbd> to demosaic the RAW itself, one
+    click matches the camera JPEG's look, and Match Look grades a whole
+    burst against your reference frame.</p>
+  </div>
+</section>
+
+<section class="feature feature--flip">
+  <figure class="feature-shot feature-shot--pair">
+    <img src="https://mertenssander.github.io/culler-releases/manual/img/09-compare.png"
+         alt="Compare view: two photos side by side" loading="lazy" width="1600" height="1000">
+    <img src="https://mertenssander.github.io/culler-releases/manual/img/18-grid.png"
+         alt="Grid view: the working set as thumbnails with a live tally" loading="lazy" width="1600" height="1000">
+  </figure>
+  <div class="feature-copy">
+    <h2>See more before you decide</h2>
+    <p>Compare <kbd class="keycap">V</kbd> pits two frames head to head, Survey
+    <kbd class="keycap">N</kbd> winnows a burst down, Grid <kbd class="keycap">K</kbd>
+    keeps the whole working set in view while you mark.</p>
+  </div>
+</section>
+
+<section class="feature">
+  <figure class="feature-shot">
+    <img src="https://mertenssander.github.io/culler-releases/manual/img/06-sources-pane.png"
+         alt="The sources pane: folders, SD cards and an Immich server with albums" loading="lazy" width="1600" height="1000">
+  </figure>
+  <div class="feature-copy">
+    <h2>One tool, any source</h2>
+    <p>Folders, SD cards, network shares — or an Immich server and its
+    albums, culled in place with ratings written back. Batch copy, move,
+    export and upload treat a RAW+JPEG pair as one photo.</p>
+  </div>
+</section>
+
+<section class="download" id="download">
+  <h2>Download</h2>
+  <p class="download-meta">v0.3.0 · August  2, 2026 ·
+  macOS 11+ · Apple Silicon (M1 or later)</p>
+  <a class="btn btn--accent btn--lg" href="https:&#x2F;&#x2F;github.com&#x2F;mertenssander&#x2F;culler-releases&#x2F;releases&#x2F;download&#x2F;v0.3.0&#x2F;culler-0.3.0.dmg">Download culler-0.3.0.dmg</a>
+  <p class="download-alt">Older versions and checksums on the
+  <a href="https://github.com/mertenssander/culler-releases/releases">releases page</a>.</p>
+  <div class="firstlaunch">
+    <h3>First launch</h3>
+    <p>Builds aren't Apple-notarized yet, so macOS will refuse to open the
+    app the first time — normal for any app from outside the App Store, and
+    a one-time step per copy:</p>
+    <ol>
+      <li>Open the DMG and drag <strong>culler.app</strong> into Applications.</li>
+      <li>Right-click the app → <strong>Open</strong> — or System Settings →
+      Privacy &amp; Security → <strong>Open Anyway</strong>.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

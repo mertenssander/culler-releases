@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop, rotate and straighten — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Crop, rotate and straighten</summary>
+      <nav>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Crop, rotate and straighten</h1>
+    <p><code>C</code> enters crop mode: the full photo is shown with your crop window over
+it, a rule-of-thirds grid, and a floating toolbar.</p>
+<p><img src="../img/03-crop.png" alt="Crop mode: handles, thirds grid, dimmed surround, toolbar" /></p>
+<h2 id="the-crop-window">The crop window</h2>
+<ul>
+<li>Drag any of the 8 corner/edge handles to resize; drag inside the window
+to move it.</li>
+<li>The <strong>aspect picker</strong> locks a ratio: Free, original, 1:1, 3:2, 4:3,
+16:9 — matched to the photo's orientation, with the <code>⇄</code> button to cut a
+portrait crop from a landscape photo or vice versa. Switching aspect
+re-fits your existing crop around its center instead of resetting it.</li>
+<li><strong>Enter</strong> or <code>C</code> applies; <strong>Esc</strong> cancels and restores what you had
+when you entered. (Adjustments write live while you work, so leaving
+the app mid-crop loses nothing.)</li>
+</ul>
+<h2 id="rotation">Rotation</h2>
+<ul>
+<li><code>R</code> / <code>Shift+R</code> rotate 90° clockwise / counter-clockwise — these also
+work <em>outside</em> crop mode, so a sideways photo is a one-key fix while
+culling. The toolbar has matching <code>-90°</code>/<code>+90°</code> buttons.</li>
+<li>The <strong>Straighten</strong> slider covers fine angles up to ±45°. In crop mode
+the arrow keys nudge it by 0.1°, <code>Shift+arrows</code> by 1°.</li>
+<li>Straightening auto-fits the crop so blank corners can never appear, and
+rotated photos cost nothing to display — thumbnails show crop and
+rotation live.</li>
+</ul>
+<h2 id="the-level-tool-l">The Level tool: <code>L</code></h2>
+<p>For horizons and doorframes, skip the slider: press <code>L</code> in crop mode,
+then click (or press-drag-release) two points that should form a level
+line. The photo rotates by exactly the required angle. Lines closer to
+vertical level to vertical, so a wall works as well as a horizon.</p>
+<p>While you aim, a <strong>6× loupe</strong> floats beside the pointer with a crosshair
+on the exact pixel you're on — precise placement without your own cursor
+hiding the spot. It flips sides at the panel edges and always reflects
+your current develop settings.</p>
+<p><img src="../img/08-level-loupe.png" alt="The Level tool with its loupe" /></p>
+<p><code>Esc</code> while the Level tool is armed backs out of the tool only; a second
+<code>Esc</code> cancels crop mode itself.</p>
+<h2 id="where-it-lives">Where it lives</h2>
+<p>Crop and straighten persist in Lightroom's own schema
+(<code>crs:CropLeft/Top/Right/Bottom</code>, <code>crs:HasCrop</code>, <code>crs:CropAngle</code>);
+quarter turns use a culler-specific field since Lightroom treats 90°
+rotation separately. Cropped photos count as "edited" for the Edited
+filter, and exports render exactly what you framed
+(<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">export</a>).</p>
+
+    <nav class="pagenav">
+      
+      <a class="pagenav-prev" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">← Develop</a>
+      
+      
+      <a class="pagenav-next" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources →</a>
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

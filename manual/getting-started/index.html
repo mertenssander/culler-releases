@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Getting started</summary>
+      <nav>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Getting started</h1>
+    <h2 id="install-and-launch">Install and launch</h2>
+<p>On a Mac, install from the release DMG — the latest one is on the
+<a rel="external" href="https://mertenssander.github.io/culler-releases/">downloads page</a>, older
+versions on the
+<a rel="external" href="https://github.com/mertenssander/culler-releases/releases">releases page</a>.
+Open the DMG, drag <code>culler.app</code> into Applications, launch it, and
+right-click the Dock icon → Options → Keep in Dock. Everything in this
+manual starts from there.</p>
+<p>Two prompts are normal for a downloaded app:</p>
+<ul>
+<li>macOS may refuse the first launch because it "cannot check it for
+malicious software". System Settings → Privacy &amp; Security → scroll to
+the blocked-app notice → <strong>Open Anyway</strong>, once per copy. A notarized
+build (paid Apple Developer ID) skips this entirely.</li>
+<li>Sources on the Desktop, in Documents/Downloads, on SD cards or network
+drives may trigger a one-time folder-access prompt on the next launch —
+see <a href="https://mertenssander.github.io/culler-releases/manual/sources/#macos-folder-permissions">macOS folder permissions</a>.</li>
+</ul>
+<p>First launch lands on the <a href="https://mertenssander.github.io/culler-releases/manual/sources/">sources pane</a>: add a photo
+folder (or an Immich server) and open it. A folder is scanned
+immediately: RAW and JPEG files with the same name are treated as one
+photo, existing <code>.xmp</code> sidecars (yours or Lightroom's) are read, and
+decoding starts around the first photo.</p>
+<p><em>(Building from source — for people working in the source repository:
+<code>cargo build --release</code>, and <code>scripts/package-macos.sh</code> produces the
+Mac app and DMG.)</em></p>
+<h2 id="the-screen-at-a-glance">The screen at a glance</h2>
+<p><img src="../img/01-culling-counters.png" alt="The culling view: overlay text top-left, counters bottom-right, badges in the filmstrip, the rail on the left edge and the spine tabs on the right" /></p>
+<ul>
+<li><strong>The photo</strong> fills the window, fitted. All text drawn over it carries a
+thin dark halo so it stays readable even on a blown-out sky
+(<a href="../img/07-bright-overlay.png">example</a>).</li>
+<li><strong>Top-left overlay</strong>: filename, position in the current view (<code>3/128</code>),
+and mode tags such as the active filter, <code>[manual advance]</code>, <code>[stack]</code>
+or <code>[before]</code>. Below it: capture time and exposure info, then your
+stars, PICK/REJECT state, and stack size where relevant.</li>
+<li><strong>The filmstrip</strong> along the bottom shows thumbnails with your culling
+state at a glance: a green dot for picks, red for rejects, a star count,
+and a colored bar for color labels. The accent ring marks the current
+photo. Crop, rotation <em>and develop edits</em> show live in the thumbnails.</li>
+<li><strong>Bottom-right counters</strong>: whole-folder totals of picks, rejects, rated
+and edited photos, in the same colors as the filmstrip badges, plus a
+hint for <code>J</code> and <code>H</code>.</li>
+<li><strong>The status line</strong> (bottom-left) narrates what just happened: the
+rating you set, an export finishing, a confirmation prompt.</li>
+<li><strong>The rail</strong> (left edge) is a slim column of keycap buttons for the
+current mode's verbs — Pick, Reject, Rate and friends while culling —
+each teaching its keyboard key. It collapses to a thin line when you
+want a bare photo, and buttons you've clearly learned dim out of the
+way. The <strong>⋯</strong> opens a menu with everything else, each row naming its
+key. See <a href="https://mertenssander.github.io/culler-releases/manual/culling/#culling-with-the-mouse">culling with the mouse</a>.</li>
+<li><strong>The spine tabs</strong> (right edge: <em>CULL · DEVELOP · CROP</em>) are the
+workflow's table of contents — click to switch, or rest the pointer
+on one to fire its quick actions without switching.</li>
+<li><strong>The system menu bar</strong> (Mac app): everything above is also in the
+regular macOS menus — File, View, Photo, Window, Help — with each
+item naming its culler key, so the menu bar doubles as a shortcut
+reference. Quitting mid-session is always safe: an open Match Look or
+crop session is committed, never discarded.</li>
+<li><strong>The pending-work pill</strong> (top-right) appears only while something is
+running against a server — syncing ratings, uploading, fetching
+previews. See <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">batch operations</a>.</li>
+</ul>
+<p><img src="../img/14-pending-ops.png" alt="The pending-work pill naming an in-flight operation" /></p>
+<p>Press <code>H</code> at any time for the built-in key overlay:</p>
+<p><img src="../img/11-help.png" alt="The help overlay" /></p>
+<p>Now go cull something: <a href="https://mertenssander.github.io/culler-releases/manual/culling/">Culling</a>.</p>
+
+    <nav class="pagenav">
+      <span></span>
+      
+      <a class="pagenav-next" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling →</a>
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

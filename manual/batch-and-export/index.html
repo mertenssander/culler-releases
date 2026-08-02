@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch operations and export — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Batch operations and export</summary>
+      <nav>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Batch operations and export</h1>
+    <h2 id="the-apply-panel-a">The apply panel: <code>A</code></h2>
+<p><code>A</code> opens the apply panel: pick a <strong>scope</strong> (Rejects, Picks, Unrated,
+<strong>All but rejects</strong> — the survivors of a cull, everything you didn't
+throw out — or All), an <strong>action</strong>, and run it. Every action treats
+RAW + JPEG + sidecar as one unit — a moved photo takes its ratings
+with it.</p>
+<p><img src="../img/04-export-panel.png" alt="The apply panel set up for a JPEG export" /></p>
+<p>The actions adapt to the active source:</p>
+<ul>
+<li><strong>Local folders</strong>: Copy to folder, Move to folder, Delete to trash
+(arm/confirm — the button asks for a second click), Export as JPEG,
+and <strong>Upload to Immich</strong> when a server is configured.</li>
+<li><strong>Immich sources</strong>: Download to folder (each photo lands with a sidecar
+carrying your edits), Archive on server, and Delete to trash on the
+server (same two-click confirm).</li>
+</ul>
+<p><strong>Upload to Immich</strong> sends RAW+JPEG pairs (stacked on the server, sidecar
+included so ratings import) and offers an <strong>Album</strong> destination — the
+default, <em>No album (timeline only)</em>, is plain upload; choosing an album
+adds every uploaded file to it, and the completion summary names it.
+If the album list can't be fetched, the panel says so (with a <strong>Retry</strong>
+button) instead of loading forever, and uploading to the timeline keeps
+working regardless.
+Uploading <strong>copies</strong>: your local files stay. A "move" variant (trash
+locals after upload) is deliberately not offered yet — it would delete
+your only local copy based on a server response that some Immich versions
+get wrong for duplicates, so it waits until that success signal can be
+verified.</p>
+<h2 id="single-export-j-and-overwrite-shift-j">Single export: <code>J</code> — and overwrite: <code>Shift+J</code></h2>
+<p><code>J</code> renders the current photo's edits (tone + crop) at full resolution
+through the same GPU pipeline that draws the screen — the file is
+pixel-identical to what you see — and writes a JPEG using the export
+preset (folder, filename suffix, quality, overwrite policy). For a
+photo with a RAW file, the export comes from a fresh full-resolution
+<strong>demosaic of the RAW</strong> (color, lens correction and your white balance
+included), exactly like the <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">develop panel</a>
+shows it; photos without a RAW export from the JPEG as before. Edit the
+preset in the apply panel under <em>Export as JPEG</em>; it persists between
+runs. Exports keep the camera's EXIF (MakerNotes intact), with
+orientation and pixel dimensions corrected for your crop.</p>
+<p><code>Shift+J</code> replaces the paired <strong>camera JPEG</strong> in place with the rendered
+edit — the one destructive file operation in the app. It asks for a
+second press and keeps the original as <code>&lt;name&gt;.JPG.orig</code>. What happens
+to your settings afterwards depends on what they were grading: a photo
+developed on its <strong>JPEG</strong> has its develop and crop reset — those edits
+are baked into the very pixels the sliders acted on, and left up they
+would apply twice. A <strong>RAW-paired</strong> photo keeps its develop sliders:
+they grade the RAW, which the overwrite never touches, so reopening the
+develop panel shows the exact grade that produced the new JPEG. The
+crop resets in both cases — the new JPEG is already cropped.</p>
+<p><img src="../img/05-overwrite-armed.png" alt="Shift+J armed: the status line asks for the second press" /></p>
+<h2 id="edit-uploads-on-a-server-source">Edit uploads on a server source</h2>
+<p>On an Immich source, <code>J</code> downloads the original, renders your edit
+locally and <strong>uploads</strong> it — a RAW original gets the same full demosaic
+treatment as a local one.
+The edit is always <strong>stacked with its original</strong>: a photo that wasn't in
+a stack founds a new one (edit on top, original behind it), and inside
+an existing <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a> the edit becomes the new
+<strong>stack cover</strong> — either way the server timeline shows your version
+fronting the original. The edit carries the original's metadata: camera,
+lens, exposure, GPS and the local capture time ride along even when the
+original is a format culler can't decode itself (an iPhone HEIC, say),
+so the server's Info panel reads the same on both. From an
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#albums">album view</a>, the edit also joins that album. Only
+one export/upload runs at a time — a second <code>J</code> tells you one is already
+running and points at the pill.</p>
+<h2 id="the-pending-work-pill">The pending-work pill</h2>
+<p>Anything running against a server shows in a small pill at the top-right:
+syncing ratings, a batch with its live <code>3/12</code> progress, an upload by
+name, a stack loading, previews downloading. Hover it for the full list.
+It exists to explain two things: why the app might feel slow right now
+(the wait is on the wire, not in the app), and why an action was just
+refused — a blocked keypress flashes the pill to point at the operation
+in its way. A failing sync shows here too, in amber, with the server's
+error; it keeps retrying on its own. When nothing is pending, the pill
+doesn't exist — a local session never shows it.</p>
+<p><img src="../img/14-pending-ops.png" alt="The pill during a slow remote load" /></p>
+
+    <nav class="pagenav">
+      
+      <a class="pagenav-prev" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">← Sources</a>
+      
+      
+      <a class="pagenav-next" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference →</a>
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

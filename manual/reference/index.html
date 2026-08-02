@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Reference</summary>
+      <nav>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Reference</h1>
+    <h2 id="keys-normal-view">Keys — normal view</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>←</code> <code>→</code> / <code>↑</code> <code>↓</code></td><td>previous / next photo (±10)</td></tr>
+<tr><td><code>Home</code> / <code>End</code></td><td>first / last</td></tr>
+<tr><td><code>P</code> / <code>X</code> / <code>U</code></td><td>pick / reject / clear flag</td></tr>
+<tr><td><code>1</code>–<code>5</code>, <code>0</code></td><td>star rating / clear (same number again clears)</td></tr>
+<tr><td><code>6</code>–<code>9</code></td><td>color label red / yellow / green / blue (again clears)</td></tr>
+<tr><td><code>Z</code> / <code>Space</code> / double-click</td><td>zoom 100% ⇄ fit (drag to pan)</td></tr>
+<tr><td>Scroll / pinch</td><td>continuous zoom around the pointer (to 8×; snaps back to fit)</td></tr>
+<tr><td><code>F</code> / <code>Shift+F</code></td><td>cycle filter (All → Picks → Picks+unrated → Rejects → Unrated → Edited → Labeled) / show all</td></tr>
+<tr><td><code>Cmd/Ctrl+1</code>–<code>5</code>, <code>0</code></td><td>filter to at least N stars / show all</td></tr>
+<tr><td><code>K</code></td><td>Grid view — overview of the working set (see <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grid-view-k">Viewing</a>)</td></tr>
+<tr><td><code>V</code></td><td>Compare view</td></tr>
+<tr><td><code>N</code></td><td>Survey view</td></tr>
+<tr><td><code>M</code></td><td>Match Look — fit a burst's tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
+<tr><td><code>R</code> / <code>L</code> (match)</td><td>re-anchor the reference / unlink-link the focused photo</td></tr>
+<tr><td><code>E</code></td><td>develop panel — RAW-paired photos develop the RAW (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">Develop</a>)</td></tr>
+<tr><td><code>Shift+A</code></td><td>auto tone</td></tr>
+<tr><td><code>Shift+C</code> / <code>Shift+V</code></td><td>copy / paste develop + crop settings</td></tr>
+<tr><td><code>C</code></td><td>crop mode</td></tr>
+<tr><td><code>R</code> / <code>Shift+R</code></td><td>rotate 90° clockwise / counter-clockwise</td></tr>
+<tr><td><code>\</code></td><td>before / after (untouched original)</td></tr>
+<tr><td><code>W</code></td><td>clipping warnings on the photo (red = blown, blue = crushed; RAW mode adds gold = recoverable, red = clipped in the file)</td></tr>
+<tr><td><code>S</code></td><td>sources pane</td></tr>
+<tr><td><code>G</code></td><td>step into / out of a stack (Immich)</td></tr>
+<tr><td><code>A</code></td><td>apply panel</td></tr>
+<tr><td><code>J</code> / <code>Shift+J</code></td><td>export JPEG / overwrite the paired JPEG (press twice)</td></tr>
+<tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
+<tr><td><code>O</code></td><td>open another folder (ad-hoc, not saved)</td></tr>
+<tr><td><code>D</code></td><td>debug HUD</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+<tr><td><code>Esc</code></td><td>step out of a stack</td></tr>
+</tbody></table>
+<h2 id="keys-crop-mode-c">Keys — crop mode (<code>C</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>Enter</code> / <code>C</code></td><td>apply and exit</td></tr>
+<tr><td><code>Esc</code></td><td>cancel (with the Level tool armed: disarm it first; press again to cancel the crop)</td></tr>
+<tr><td><code>←</code> / <code>→</code></td><td>nudge the straighten angle by 0.1° (<code>Shift</code> = 1°)</td></tr>
+<tr><td><code>R</code> / <code>Shift+R</code></td><td>quarter turn</td></tr>
+<tr><td><code>L</code></td><td>arm / disarm the Level tool</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+</tbody></table>
+<h2 id="keys-grid-view-k">Keys — Grid view (<code>K</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>arrows</td><td>move the cursor a cell / a row</td></tr>
+<tr><td><code>Home</code> / <code>End</code>, <code>PgUp</code> / <code>PgDn</code></td><td>first / last photo, page up / down</td></tr>
+<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo</td></tr>
+<tr><td><code>Space</code></td><td>peek the cursored photo full-size (real zoom; <code>Space</code>/<code>Esc</code> pops back, arrows flip neighbors)</td></tr>
+<tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
+<tr><td><code>Z</code></td><td>cycle cell size (while peeking: zoom, as in the loupe)</td></tr>
+<tr><td><code>A</code></td><td>batch panel, in place (the grid stays up)</td></tr>
+<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code></td><td>change the filter — the grid re-points live</td></tr>
+<tr><td><code>E</code> <code>C</code> <code>V</code> <code>N</code> <code>M</code> <code>S</code></td><td>exit, then act on the cursored photo (also from a peek)</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+<tr><td><code>Esc</code> / <code>Enter</code> / <code>K</code></td><td>exit onto the cursored photo</td></tr>
+</tbody></table>
+<h2 id="keys-compare-view-v">Keys — Compare view (<code>V</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>←</code> / <code>→</code></td><td>advance the Candidate</td></tr>
+<tr><td><code>↑</code></td><td>promote the Candidate to Select</td></tr>
+<tr><td><code>↓</code></td><td>swap Select ⇄ Candidate</td></tr>
+<tr><td><code>Tab</code> (or click)</td><td>focus the other pane — marking keys hit the focused pane</td></tr>
+<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the focused pane</td></tr>
+<tr><td><code>Z</code> / <code>Space</code> / double-click</td><td>synced zoom</td></tr>
+<tr><td><code>\</code></td><td>before / after (both panes)</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+<tr><td><code>Esc</code> / <code>V</code></td><td>exit onto the Select</td></tr>
+</tbody></table>
+<h2 id="keys-survey-view-n">Keys — Survey view (<code>N</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>arrows</td><td>move the focus through the grid</td></tr>
+<tr><td><code>X</code></td><td>reject + remove from the grid</td></tr>
+<tr><td><code>⌫</code> / <code>Delete</code></td><td>remove without judging</td></tr>
+<tr><td><code>Space</code></td><td>peek the focused photo full-size (real zoom with <code>Z</code>/scroll; <code>Space</code>/<code>Esc</code> pops back, arrows keep moving the focus, <code>X</code> keeps winnowing)</td></tr>
+<tr><td><code>A</code></td><td>exit onto the focused survivor, then open the batch panel</td></tr>
+<tr><td><code>K</code></td><td>hop to the Grid view</td></tr>
+<tr><td><code>E</code> <code>C</code> <code>V</code> <code>M</code> <code>S</code></td><td>exit onto the focused survivor, then act</td></tr>
+<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code></td><td>change the filter — the survey re-deals from the new set</td></tr>
+<tr><td><code>P</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the focused photo</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+<tr><td><code>Esc</code> / <code>N</code></td><td>exit onto the focused survivor</td></tr>
+</tbody></table>
+<h2 id="keys-sources-pane-s">Keys — sources pane (<code>S</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>↑</code> / <code>↓</code></td><td>select a row</td></tr>
+<tr><td><code>Enter</code></td><td>open the selected source or album</td></tr>
+<tr><td><code>→</code> / <code>←</code></td><td>expand an Immich row into its albums / collapse</td></tr>
+<tr><td><code>N</code></td><td>add a source</td></tr>
+<tr><td><code>⌫</code> / <code>Delete</code></td><td>remove the selected source (press twice; albums: no-op)</td></tr>
+<tr><td><code>H</code></td><td>help overlay</td></tr>
+<tr><td><code>Esc</code> / <code>S</code></td><td>close the pane (Esc closes the add-row first)</td></tr>
+</tbody></table>
+<h2 id="configuration-files">Configuration files</h2>
+<p>Everything lives in <code>~/.culler/</code>:</p>
+<table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody>
+<tr><td><code>sources.conf</code></td><td>the saved sources (tab-separated; Immich API keys are <strong>not</strong> here — they live in the OS keychain)</td></tr>
+<tr><td><code>export.conf</code></td><td>the JPEG export preset</td></tr>
+<tr><td><code>state/</code></td><td>per-server culling state for Immich sources (the write-through queue's source of truth)</td></tr>
+<tr><td><code>cache/</code></td><td>disk cache of remote previews and embedded RAW previews (4 GB, least-recently-used eviction)</td></tr>
+</tbody></table>
+<p>Environment overrides: <code>CULLER_CONFIG_DIR</code> and <code>CULLER_CACHE_DIR</code> relocate
+the above; <code>CULLER_IMMICH_URL</code> + <code>CULLER_IMMICH_KEY</code> inject a temporary
+Immich source for one session without persisting anything.</p>
+<h2 id="xmp-fields">XMP fields</h2>
+<p>Sidecars are edited in place — fields written by other tools survive.</p>
+<table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>xmp:Rating</code></td><td>stars 0–5; −1 marks a reject (per the XMP spec)</td></tr>
+<tr><td><code>xmp:Label</code></td><td>color label name</td></tr>
+<tr><td><code>culler:Flag</code></td><td>pick / reject / none</td></tr>
+<tr><td><code>crs:Exposure2012</code>, <code>crs:Contrast2012</code>, <code>crs:Highlights2012</code>, <code>crs:Shadows2012</code></td><td>basic tone</td></tr>
+<tr><td><code>crs:IncrementalTemperature</code>, <code>crs:IncrementalTint</code></td><td>white balance while developing a JPEG (the non-raw form)</td></tr>
+<tr><td><code>crs:Temperature</code>, <code>crs:Tint</code></td><td>white balance while developing a RAW (real Kelvin; absent = As Shot)</td></tr>
+<tr><td><code>culler:DevelopMode</code></td><td>"Raw" when the photo carries RAW-mode WB edits</td></tr>
+<tr><td><code>crs:LensProfileEnable</code></td><td>"0" when in-camera lens correction is turned off (absent = on)</td></tr>
+<tr><td><code>crs:Vibrance</code>, <code>crs:Saturation</code></td><td>presence</td></tr>
+<tr><td><code>crs:ParametricHighlights/Lights/Darks/Shadows</code></td><td>tone curve regions</td></tr>
+<tr><td><code>crs:PostCropVignetteAmount</code> (+ <code>Style</code>)</td><td>vignette</td></tr>
+<tr><td><code>crs:HasCrop</code>, <code>crs:CropLeft/Top/Right/Bottom</code>, <code>crs:CropAngle</code></td><td>crop + straighten</td></tr>
+<tr><td><code>culler:OrientationQuarter</code></td><td>90° turns (Lightroom handles these separately)</td></tr>
+</tbody></table>
+<h2 id="known-limitations">Known limitations</h2>
+<ul>
+<li>Old Sony ARW files embed only a 1616×1080 preview — that's the best a
+RAW-only ARW can display <em>while culling</em> (the develop panel demosaics
+the RAW itself, at full quality).</li>
+<li>Lens correction reads the camera's own embedded parameters (Sony
+ARW). RAWs from other makes develop uncorrected for now, so their
+framing can drift slightly from the corrected camera JPEG's.</li>
+<li>Develop and crop on an Immich source stay local until you export or
+upload; only ratings, flags and labels sync live.</li>
+<li>Upload to Immich copies — there is no "move" yet, deliberately (see
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-apply-panel-a">batch operations</a>).</li>
+<li>The app is exercised primarily on macOS so far; a Windows validation
+pass is on the roadmap.</li>
+</ul>
+
+    <nav class="pagenav">
+      
+      <a class="pagenav-prev" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">← Batch operations and export</a>
+      
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>

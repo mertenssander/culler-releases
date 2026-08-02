@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Culling — culler manual</title>
+<meta name="description" content="Extremely fast, keyboard-driven photo culling for macOS. RAW+JPEG pairs, Lightroom-style develop and crop, everything non-destructive.">
+<link rel="icon" type="image/png" href="https://mertenssander.github.io/culler-releases/img/icon-256.png">
+<link rel="apple-touch-icon" href="https://mertenssander.github.io/culler-releases/img/icon-512.png">
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://mertenssander.github.io/culler-releases/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://mertenssander.github.io/culler-releases/css/site.css?h=91cbe195ef2dc306fa63">
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="https://mertenssander.github.io/culler-releases/">
+    <img src="https://mertenssander.github.io/culler-releases/img/icon-256.png" alt="" width="24" height="24">
+    <span>culler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+    <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+  </nav>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <div class="nav-menu-panel">
+      <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+      <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.3.0</a>
+    </div>
+  </details>
+</header>
+<main>
+
+
+<div class="docs">
+  <aside class="docs-sidebar">
+    <details class="docs-toc">
+      <summary>Culling</summary>
+      <nav>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+        
+        <a class="active" aria-current="page"
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+        
+        <a 
+           href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+        
+      </nav>
+    </details>
+    <nav class="docs-nav">
+      <a href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;">Manual</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">Getting started</a>
+      
+      <a class="active" aria-current="page"
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;culling&#x2F;">Culling</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;develop&#x2F;">Develop</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;crop&#x2F;">Crop, rotate and straighten</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;sources&#x2F;">Sources</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;batch-and-export&#x2F;">Batch operations and export</a>
+      
+      <a 
+         href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;reference&#x2F;">Reference</a>
+      
+    </nav>
+  </aside>
+  <article class="prose">
+    <h1>Culling</h1>
+    <p>Culling is a keyboard rhythm: look, judge, move on. Every judgment is
+written to the photo's XMP sidecar immediately — there is no save step.</p>
+<h2 id="moving-around">Moving around</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>←</code> <code>→</code></td><td>previous / next photo</td></tr>
+<tr><td><code>↑</code> <code>↓</code></td><td>jump 10 back / forward</td></tr>
+<tr><td><code>Home</code> / <code>End</code></td><td>first / last photo</td></tr>
+</tbody></table>
+<p>Decoding runs ahead of you in both directions, so holding an arrow key
+never waits on the disk.</p>
+<h2 id="judging">Judging</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>1</code>–<code>5</code></td><td>star rating (press the same number again to clear)</td></tr>
+<tr><td><code>0</code></td><td>clear the rating</td></tr>
+<tr><td><code>P</code></td><td>pick (press again to un-pick)</td></tr>
+<tr><td><code>X</code></td><td>reject (press again to un-reject)</td></tr>
+<tr><td><code>U</code></td><td>clear the flag</td></tr>
+<tr><td><code>6</code>–<code>9</code></td><td>color label: red, yellow, green, blue (again clears)</td></tr>
+</tbody></table>
+<p>Stars, flags and labels are three independent axes — a photo can be a
+4-star, picked, red-labeled photo. Labels show as a colored bar on the
+filmstrip thumbnail and persist as Lightroom's own <code>xmp:Label</code>, so they
+survive a round trip through other tools.</p>
+<p><strong>Auto-advance</strong> (<code>T</code> toggles it) moves to the next photo after every
+rating or flag, which is what makes a first pass fast: <code>P</code>, <code>X</code>, <code>3</code>,
+<code>X</code>, <code>P</code>… and you're ten photos in. Turn it off when you want to stack
+multiple judgments on one photo; the overlay shows <code>[manual advance]</code>.</p>
+<h2 id="culling-with-the-mouse">Culling with the mouse</h2>
+<p>The keyboard is the fast path, but everything above is clickable the
+moment the mouse moves — and every control shows its key, so the buttons
+teach the shortcuts as you go:</p>
+<ul>
+<li><strong>The rail</strong> (left edge) carries the culling verbs as keycap
+buttons — Pick, Reject, Clear, Rate, Grid, Compare, Filter — each
+showing its key with the name under it; hovering flares the full
+teaching line — and the <strong>Filter</strong> and <strong>Rate</strong> buttons open real
+palettes: click a filter to jump straight to it, click a star chip
+(1–5, 0) to rate. Its <strong>⋯</strong> button opens the menu with the rest: the
+live filter, Survey, Match Look, Batch, Sources, Auto-advance and
+Help (<a href="../img/16-more-popover.png">screenshot</a>). Buttons you've used
+about five times (key or click) politely dim — the rail retires
+itself as you learn. The <strong>‹‹</strong> at its foot collapses it to a thin
+line; click the line (or rest the pointer on it) to bring it back.</li>
+<li><strong>The spine tabs</strong> (right edge) name the workflow — CULL · DEVELOP ·
+CROP. Click one to switch; rest the pointer on an inactive tab and a
+small palette appears to fire that mode's one-shot actions (auto
+tone, reset…) without switching at all.</li>
+<li><strong>The stars in the top-left overlay</strong> become five click targets while
+the pointer is moving — hover previews, clicking sets the rating, and
+clicking the same star again clears it, exactly like the number keys.</li>
+<li><strong>Hover a side edge of the photo</strong> for previous/next arrows (at fit
+zoom; when zoomed in, the mouse pans instead).</li>
+</ul>
+<p>The photo itself stays untouched: the rail is a slim gutter, never an
+overlay, and collapsing it gets you within three pixels of a bare
+photo. The first launch shows a one-line hint beside the rail, once,
+and never again.</p>
+<h2 id="filters-working-in-passes">Filters: working in passes</h2>
+<p><code>F</code> cycles the view: <strong>All → Picks → Picks+unrated → Rejects → Unrated → Edited →
+Labeled</strong> and back. <code>Shift+F</code> returns straight to All. The overlay shows
+the active filter, and the position counter (<code>3/12</code>) counts within it.</p>
+<p>For a second pass over your ratings, <code>Cmd/Ctrl+1</code>–<code>5</code> shows only photos
+with <em>at least</em> that many stars, and <code>Cmd/Ctrl+0</code> (or <code>F</code>) clears it.</p>
+<p>A photo that stops matching the filter leaves the view as you judge it —
+rejecting a photo in the Picks view removes it and advances, which is
+exactly the winnowing motion you want.</p>
+<h2 id="the-one-pass-workflow">The one-pass workflow</h2>
+<ol>
+<li>Open the folder, <code>T</code> on (the default), and run through everything with
+<code>P</code> / <code>X</code> / arrows. Don't deliberate — that's what the next passes are
+for. Use <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#survey-view-n">Survey view</a> on bursts.</li>
+<li><code>F</code> to Picks. Rate the keepers <code>1</code>–<code>5</code>; use
+<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#compare-view-v">Compare view</a> when two frames fight for
+the same slot.</li>
+<li><code>Cmd+4</code> to see only the best, <a href="https://mertenssander.github.io/culler-releases/manual/develop/">develop</a> and
+<a href="https://mertenssander.github.io/culler-releases/manual/crop/">crop</a> them.</li>
+<li><code>F</code> to Rejects, then <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">batch-move or trash them</a>.</li>
+</ol>
+<p>Everything you set here follows the photo: Lightroom reads the same
+sidecars on import, and on an Immich source the ratings sync to the
+server as you press the keys (<a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">details</a>).</p>
+
+    <nav class="pagenav">
+      
+      <a class="pagenav-prev" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;getting-started&#x2F;">← Getting started</a>
+      
+      
+      <a class="pagenav-next" href="https:&#x2F;&#x2F;mertenssander.github.io&#x2F;culler-releases&#x2F;manual&#x2F;viewing&#x2F;">Viewing and comparing →</a>
+      
+    </nav>
+  </article>
+</div>
+
+</main>
+<footer class="footer">
+  <span>© Sander Mertens · culler v0.3.0</span>
+  <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
+  <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
+</footer>
+</body>
+</html>
