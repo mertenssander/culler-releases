@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
     </div>
   </details>
 </header>
@@ -117,6 +117,14 @@ build (paid Apple Developer ID) skips this entirely.</li>
 drives may trigger a one-time folder-access prompt on the next launch —
 see <a href="https://mertenssander.github.io/culler-releases/manual/sources/#macos-folder-permissions">macOS folder permissions</a>.</li>
 </ul>
+<p>culler checks for a newer version on launch with a single anonymous
+HTTPS request to GitHub for a small version file — no account,
+telemetry, or usage data involved. If you're offline or GitHub is
+unreachable, the check fails silently and nothing appears. When a newer
+version exists, a small <code>● update vX.Y.Z</code> note joins the corner readout
+(and an "Update available" item joins the Help menu); clicking either
+opens the release notes in your browser — nothing updates by itself.
+Add <code>disabled=1</code> to <code>~/.culler/update.conf</code> to turn the check off.</p>
 <p>First launch lands on the <a href="https://mertenssander.github.io/culler-releases/manual/sources/">sources pane</a>: add a photo
 folder (or an Immich server) and open it. A folder is scanned
 immediately: RAW and JPEG files with the same name are treated as one
@@ -178,7 +186,7 @@ previews. See <a href="https://mertenssander.github.io/culler-releases/manual/ba
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.1</span>
+  <span>© Sander Mertens · culler v0.5.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

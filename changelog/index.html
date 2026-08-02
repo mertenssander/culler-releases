@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,40 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-4-1-2026-08-02">0.4.1 — 2026-08-02</h2>
+    <h2 id="0-5-0-2026-08-02">0.5.0 — 2026-08-02</h2>
+<p><strong>culler now tells you when there's a new culler</strong> — plus a batch of
+fixes and polish straight from the same live-server field session.</p>
+<ul>
+<li><strong>Update notice.</strong> On launch, culler makes a single anonymous HTTPS
+request to GitHub for a small version file (at most once a day — no
+account, telemetry, or usage data). When a newer version exists, a
+quiet <code>● update vX.Y.Z</code> note joins the corner readout and an
+"Update available" item joins the Help menu; clicking either opens
+the release notes in your browser. Nothing pops up, nothing installs
+itself, and if you're offline the check fails silently. Add
+<code>disabled=1</code> to <code>~/.culler/update.conf</code> to turn it off.</li>
+<li><strong>Server exports now match your screen.</strong> On an Immich source, <code>J</code>
+for a RAW+JPEG pair used to render the camera JPEG with your slider
+values — not the RAW render the develop panel was showing — so the
+uploaded picture could look different from what you graded. The
+export now bakes the same full RAW demosaic the panel shows, and a
+new server round-trip test proves the uploaded file is byte-for-byte
+what was rendered.</li>
+<li><strong>Re-uploading a pair can't double its stack.</strong> When part of a pair
+is already on the server (say the RAW, from an earlier upload), a new
+upload now joins the existing stack — newest JPEG in front, old
+members kept — instead of creating a second stack over the same
+photo. Re-running an already-finished batch changes nothing at all.</li>
+<li><strong>"Some photos didn't load" now says why.</strong> When timeline pages fail
+to load from a server, the warning names the failed pages and the
+server's actual error instead of only a count — and each failure is
+also logged to the console (look for <code>culler: scan:</code> lines in
+Console.app), so a recurring problem can actually be diagnosed.</li>
+<li><strong>The manual shows real photographs.</strong> Every screenshot in the
+<a rel="external" href="https://mertenssander.github.io/culler-releases/manual/">manual</a> is
+reshot with real RAW+JPEG pairs instead of generated test images.</li>
+</ul>
+<h2 id="0-4-1-2026-08-02">0.4.1 — 2026-08-02</h2>
 <p><strong>Field fixes from a real holiday-culling session</strong> against a live
 Immich server, same day as 0.4.0 — all remote browsing:</p>
 <ul>
@@ -191,7 +224,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.1</span>
+  <span>© Sander Mertens · culler v0.5.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

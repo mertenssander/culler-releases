@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "version": "0.4.1",
-  "tag": "v0.4.1",
-  "published_at": "2026-08-02T15:05:50Z",
+  "version": "0.5.0",
+  "tag": "v0.5.0",
+  "published_at": "2026-08-02T16:46:31Z",
   "min_os_version": "11.0",
   "download": {
-    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.4.1/culler-0.4.1.dmg",
-    "sha256": "1708983bcf67d6a319f518660caea6d6fc9d38531eb2bad1f4e5234220a42a28",
-    "size_bytes": 25889549,
+    "url": "https://github.com/mertenssander/culler-releases/releases/download/v0.5.0/culler-0.5.0.dmg",
+    "sha256": "d2914f25dc9b31150707a97b983bbb90cfed5416b145e32ba1f7712efaacdd58",
+    "size_bytes": 25965820,
     "arch": [
       "x86_64",
       "arm64"
     ]
   },
-  "notes_markdown": "\n**Field fixes from a real holiday-culling session** against a live\nImmich server, same day as 0.4.0 \u2014 all remote browsing:\n\n- **Portrait photos from a server now develop and export the right way\n  up.** Server previews arrive pre-rotated, but the original files \u2014\n  used for full zoom, RAW develop and export \u2014 don't; culler treated\n  both the same, so portrait RAWs developed sideways and a\n  compensating crop then baked wrong-way exports. Orientation is now\n  tracked separately for the preview, the original, and the RAW member\n  of a stack, so every path decodes upright.\n- **Stacks appear while the library is still loading.** Server-side\n  stacks used to snap into place only after the whole scan finished \u2014\n  on a big library that read as duplicate RAW+JPEG pairs for a minute.\n  The stack relations are fetched once up front, so photos group\n  correctly the moment they stream in.\n- **Big remote libraries open newest-first and stay put.** The\n  end-of-scan swap used to reverse the order out from under you (and\n  leave the filmstrip showing stale thumbnails).\n- **Re-exporting an edit (`J`) replaces your previous culler edit** on\n  the server instead of piling up a new version each time \u2014 and the\n  new render joins the albums the photo was already in, so albums keep\n  showing it. A camera pair inside a server stack keeps its stack\n  identity too: the re-render joins the *real* stack (edit + JPEG +\n  RAW), never a partial one that would orphan the RAW.\n- **If stack information can't be loaded** (a key without permission, a\n  slow server), the scan now says so in the warning pill instead of\n  silently showing everything unstacked.\n- Fixed: the \u00d7 that removes a saved source flickered away under the\n  pointer and the click opened the source instead.",
-  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.4.1"
+  "notes_markdown": "\n**culler now tells you when there's a new culler** \u2014 plus a batch of\nfixes and polish straight from the same live-server field session.\n\n- **Update notice.** On launch, culler makes a single anonymous HTTPS\n  request to GitHub for a small version file (at most once a day \u2014 no\n  account, telemetry, or usage data). When a newer version exists, a\n  quiet `\u25cf update vX.Y.Z` note joins the corner readout and an\n  \"Update available\" item joins the Help menu; clicking either opens\n  the release notes in your browser. Nothing pops up, nothing installs\n  itself, and if you're offline the check fails silently. Add\n  `disabled=1` to `~/.culler/update.conf` to turn it off.\n- **Server exports now match your screen.** On an Immich source, `J`\n  for a RAW+JPEG pair used to render the camera JPEG with your slider\n  values \u2014 not the RAW render the develop panel was showing \u2014 so the\n  uploaded picture could look different from what you graded. The\n  export now bakes the same full RAW demosaic the panel shows, and a\n  new server round-trip test proves the uploaded file is byte-for-byte\n  what was rendered.\n- **Re-uploading a pair can't double its stack.** When part of a pair\n  is already on the server (say the RAW, from an earlier upload), a new\n  upload now joins the existing stack \u2014 newest JPEG in front, old\n  members kept \u2014 instead of creating a second stack over the same\n  photo. Re-running an already-finished batch changes nothing at all.\n- **\"Some photos didn't load\" now says why.** When timeline pages fail\n  to load from a server, the warning names the failed pages and the\n  server's actual error instead of only a count \u2014 and each failure is\n  also logged to the console (look for `culler: scan:` lines in\n  Console.app), so a recurring problem can actually be diagnosed.\n- **The manual shows real photographs.** Every screenshot in the\n  [manual](https://mertenssander.github.io/culler-releases/manual/) is\n  reshot with real RAW+JPEG pairs instead of generated test images.",
+  "notes_url": "https://github.com/mertenssander/culler-releases/releases/tag/v0.5.0"
 }

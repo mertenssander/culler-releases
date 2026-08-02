@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
     </div>
   </details>
 </header>
@@ -127,6 +127,11 @@ choices are per-server: switching the Server resets the Album. If the
 album list can't be fetched, the panel says so (with a <strong>Retry</strong> button)
 instead of loading forever, and uploading to the timeline keeps working
 regardless.</p>
+<p>Re-uploading is always safe: the server recognizes files it already
+has, and when part of a pair was uploaded before — say the RAW is
+already up and sitting in a stack — the new upload <strong>joins that
+existing stack</strong> (newest JPEG in front) instead of creating a second
+one. Re-running a batch that already finished changes nothing.</p>
 <p>If the photos upload fine but the pair can't be stacked or the album
 add fails, that's reported as a <strong>warning</strong> on an uploaded photo, never
 as a failed upload. The common cause for the stack case is an API key
@@ -171,8 +176,9 @@ crop resets in both cases — the new JPEG is already cropped.</p>
 <p><img src="../img/05-overwrite-armed.png" alt="Shift+J armed: the status line asks for the second press" /></p>
 <h2 id="edit-uploads-on-a-server-source">Edit uploads on a server source</h2>
 <p>On an Immich source, <code>J</code> downloads the original, renders your edit
-locally and <strong>uploads</strong> it — a RAW original gets the same full demosaic
-treatment as a local one.
+locally and <strong>uploads</strong> it — a RAW original, or the RAW behind a
+RAW+JPEG pair, gets the same full demosaic treatment as a local one:
+what the develop panel shows is what gets uploaded.
 The edit is always <strong>stacked with its original</strong>: a photo that wasn't in
 a stack founds a new one (edit on top, original behind it), and inside
 an existing <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a> the edit becomes the new
@@ -217,7 +223,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.1</span>
+  <span>© Sander Mertens · culler v0.5.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

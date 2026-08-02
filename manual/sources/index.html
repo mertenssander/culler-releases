@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.4.1</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
     </div>
   </details>
 </header>
@@ -172,8 +172,12 @@ ever fetched around where you're looking. New photos append at the
 end, and the library settles into capture-time order once everything
 has arrived, without moving the photo you're on). If some pages fail to
 load — a straining server, a network blip — culler keeps everything
-that arrived and the pill tells you how much is missing and how to
-retry; you never lose a loaded timeline to one bad request. Videos are
+that arrived and the pill tells you how much is missing, <strong>which pages
+failed and why</strong> (the server's actual error), and how to retry; you
+never lose a loaded timeline to one bad request. When it keeps
+happening, the same per-page causes are printed to the console — open
+Console.app (or run culler from a terminal) and look for lines starting
+with <code>culler: scan:</code> to see exactly what the server said. Videos are
 left out: culler is a photo culler.</p>
 <p>RAW+JPEG shot pairs that live on the server as two separate assets are
 culled as <strong>one photo</strong>, exactly like a local folder pairs them: the
@@ -228,7 +232,7 @@ the apply panel itself) are unavailable inside a stack.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.4.1</span>
+  <span>© Sander Mertens · culler v0.5.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
