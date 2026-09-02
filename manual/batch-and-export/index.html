@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -105,6 +105,15 @@
 throw out — or All), an <strong>action</strong>, and run it. Every action treats
 RAW + JPEG + sidecar as one unit — a moved photo takes its ratings
 with it.</p>
+<p>With a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a> built, the scope
+menu leads with <strong>Selected (N)</strong> — the live count of exactly the
+photos you hand-picked, whatever the current filter shows (a caption
+notes any that are filtered out of view). The scope never switches
+itself: pick it deliberately. If the selection empties while the scope
+still points at it, the panel reads <strong>Selected (0)</strong> and the button
+waits — it never quietly falls back to a broader scope. After a copy,
+export or upload the selection stays put for the next action; trash
+and move clear it with the photos.</p>
 <p><img src="../img/04-export-panel.png" alt="The apply panel set up for a JPEG export" /></p>
 <p>The actions adapt to the active source:</p>
 <ul>
@@ -127,30 +136,95 @@ choices are per-server: switching the Server resets the Album. If the
 album list can't be fetched, the panel says so (with a <strong>Retry</strong> button)
 instead of loading forever, and uploading to the timeline keeps working
 regardless.</p>
-<p>Re-uploading is always safe: the server recognizes files it already
-has, and when part of a pair was uploaded before — say the RAW is
+<p>Re-uploading is always safe — and since the checksum check landed,
+<strong>cheap</strong>: before any bytes move, culler asks the server which files it
+already holds (by content, not by name), and those are verified and
+skipped without re-sending anything. A re-run of a mostly-finished
+batch flies through in seconds, only actually transferring what's
+missing. While that check runs the counter reads <strong>Verifying</strong> instead
+of Uploading. When part of a pair was uploaded before — say the RAW is
 already up and sitting in a stack — the new upload <strong>joins that
 existing stack</strong> (newest JPEG in front) instead of creating a second
 one. Re-running a batch that already finished changes nothing.</p>
+<p>One honest edge: if a photo's exact bytes already sit in the server's
+<strong>trash</strong>, the server reports it as a duplicate but leaves it trashed —
+uploading can't restore it, and culler can't either. That photo counts
+as uploaded <strong>with a warning</strong> naming the state; restore it in Immich's
+web UI to make it visible. It also never counts toward the
+trash-originals offer below — a copy in a trash that auto-empties is
+not a safe copy.</p>
 <p>If the photos upload fine but the pair can't be stacked or the album
 add fails, that's reported as a <strong>warning</strong> on an uploaded photo, never
 as a failed upload. The common cause for the stack case is an API key
 minted before stacking shipped — add the <code>stack.create</code> permission to
-the key (or mint a fresh one) and re-run the upload: the server
-recognizes the duplicates and only the stacks are created.</p>
-<p>While a batch runs the panel shows a live <strong>"Uploading N of M"</strong> count
-with a progress bar, and a <strong>Cancel</strong> button: cancel finishes the photo
-in flight, then stops — no half-uploaded pair — and the summary says
-what happened ("Cancelled — 12 of 37 uploaded"). A cancelled upload is
-safe to re-run; the server answers the already-sent photos as
-duplicates without storing anything twice. (Archive and server-trash
-are single server calls — nothing to count or cancel, they just show a
-spinner.)</p>
-<p>Uploading <strong>copies</strong>: your local files stay. A "move" variant (trash
-locals after upload) is deliberately not offered yet — it would delete
-your only local copy based on a server response that some Immich versions
-get wrong for duplicates, so it waits until that success signal can be
-verified.</p>
+the key (or mint a fresh one) and re-run the upload: already-stored
+photos are verified and skipped, and only the stacks are created.</p>
+<p>Before you click, the scope line shows what the batch weighs — <strong>"22
+photos · 45 files · 1.18 GB"</strong>. While it runs the panel shows a live
+<strong>"Uploading · N of M"</strong> count and a <strong>Cancel</strong> button; the bar under
+them fills by <strong>bytes</strong>, not photo count, so a batch of big RAWs can't
+paint itself half-done while most of the data is still queued. Under
+the bar, one line tracks what's left — <strong>"838 MB left · 3.1 MB/s"</strong> —
+and a small <strong>speed graph</strong> draws the transfer rate over the last two
+minutes in five-second bars. It has no warning colors on purpose: bars
+shrinking to the baseline IS what a stall looks like, and bars coming
+back is recovery. Cancel finishes the photo in flight, then stops — no
+half-uploaded pair — and the summary says what happened ("Cancelled —
+12 of 37 uploaded"). A cancelled upload is safe to re-run; already-sent
+photos verify and skip. (Archive and server-trash are single server
+calls — nothing to count or cancel, they just show a spinner.)</p>
+<p>Big files never look stalled: once a file has been on the wire for
+half a second, a second line appears under the batch readout with the
+file's name, its byte progress and the current speed — "DSC08551.ARW ·
+34.2 of 118.4 MB · 3.1 MB/s" — plus its own thin bar. When the last
+byte is sent the line says <strong>finishing…</strong> while the server checks the
+file in (normal, can take a few seconds); if bytes genuinely stop
+moving mid-transfer the line turns amber and says so plainly ("no
+movement for 8s") — a statement of fact, not a failure: a transfer
+that never recovers ends as that photo's error and the batch moves on.
+Cancelling mid-file adds "finishing, then stopping", because the
+current photo always completes. The same readout follows the batch
+into the corner pill's hover panel (which also carries the "MB left"
+line), and a single <code>J</code> upload to a server shows it too.</p>
+<p>When a batch ends with failures, the summary <strong>names the photos</strong> —
+"20 photos uploaded to prd — 2 failed: DSC07717, DSC07803 (timed out
+waiting for a response)" — and hovering it shows the full technical
+error. The primary button becomes <strong>Retry 2 failed…</strong>: one click
+re-runs the batch, the stored photos verify and skip in moments, and
+only the failures actually re-send. A clean retry ends with every
+photo verified — "22 photos uploaded · 20 already stored" — and the
+trash-originals offer appears as if the batch had succeeded the first
+time. Changing any selector (photos, action, server, album) retires
+the Retry button; the plain Upload button does the same thing anyway,
+just without the count.</p>
+<p>Uploading <strong>copies</strong>: your local files stay. When every photo in the
+batch is verified stored on the server — nothing failed, nothing
+cancelled — a second, separate offer appears under the summary:
+<strong>Trash N originals…</strong>. It is never automatic and never part of the
+upload itself. Click it once to arm, and it tells you exactly what will
+happen: originals go to the <strong>system Trash</strong> (recoverable there if you
+change your mind), and the server <strong>re-verifies every photo the moment
+you confirm</strong> — not at upload time, <em>now</em>. Click again to commit; a
+brief "Verifying" precedes the trashing, then the pair and its sidecar
+leave the folder together, with the same live progress and Cancel as
+any batch.</p>
+<p>That last-second check is what makes the offer safe to trust. Before
+anything is trashed, culler asks the server — the one that actually
+took the uploads, even if you've browsed the server selector since —
+whether it still holds every photo's exact bytes, visible in its
+library. A photo whose server copy was deleted or moved to the
+server's trash in the meantime is <strong>kept</strong> on disk and the summary
+says so ("1 kept — no longer verified"): a copy in a trash that
+auto-empties is not a safe copy. And if the server can't be reached at
+all, <strong>nothing</strong> is trashed — "couldn't verify" never silently falls
+back to trusting the upload-time answer.</p>
+<p>The offer is deliberately cautious. It only ever acts on the batch you
+just watched finish — close the panel, switch sources, or start
+anything else and it's gone (re-running the upload brings it back in
+seconds; already-stored photos are verified without storing anything
+twice). A photo whose file changed on disk between the upload and your
+click is skipped, never trashed. And if any upload failed, there is no
+offer at all — the Retry button is the path back to one.</p>
 <h2 id="single-export-j-and-overwrite-shift-j">Single export: <code>J</code> — and overwrite: <code>Shift+J</code></h2>
 <p><code>J</code> renders the current photo's edits (tone + crop) at full resolution
 through the same GPU pipeline that draws the screen — the file is
@@ -160,12 +234,25 @@ photo with a RAW file, the export comes from a fresh full-resolution
 <strong>demosaic of the RAW</strong> (color, lens correction and your white balance
 included), exactly like the <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">develop panel</a>
 shows it; photos without a RAW export from the JPEG as before. Edit the
-preset in the apply panel under <em>Export as JPEG</em>; it persists between
-runs. Exports keep the camera's EXIF (MakerNotes intact), with
+folder, filename suffix and overwrite policy in the apply panel under
+<em>Export as JPEG</em>; everything persists between runs. The <strong>Quality</strong>
+slider sits in its own <em>JPEG Quality</em> card near the top of the same
+panel — visible on every source and under every action, because it
+governs every JPEG culler encodes: folder exports, <code>Shift+J</code> overwrites
+and <code>J</code> uploads to a server alike (the card says so in place). The
+default of 95 with full-resolution
+color (no chroma subsampling) lands in the same size and fidelity class
+as the camera's own JPEGs; raise or lower it once and it's remembered.
+Exports keep the camera's EXIF (MakerNotes intact), with
 orientation and pixel dimensions corrected for your crop.</p>
 <p><code>Shift+J</code> replaces the paired <strong>camera JPEG</strong> in place with the rendered
 edit — the one destructive file operation in the app. It asks for a
-second press and keeps the original as <code>&lt;name&gt;.JPG.orig</code>. What happens
+second press and keeps the original as <code>&lt;name&gt;.JPG.orig</code>. If a
+<code>.orig</code> file already exists but is damaged or unreadable — a leftover
+from an interrupted run, or an unrelated file that happens to share the
+name — culler refuses the overwrite and tells you, rather than replacing
+your original with no good backup; remove that <code>.orig</code> and try again.
+What happens
 to your settings afterwards depends on what they were grading: a photo
 developed on its <strong>JPEG</strong> has its develop and crop reset — those edits
 are baked into the very pixels the sliders acted on, and left up they
@@ -187,13 +274,26 @@ fronting the original. Re-rendering the same photo <strong>replaces culler's
 previous version</strong> (it goes to the server trash) — the camera originals
 are never touched, and the stack never accumulates old renders. The new
 render also <strong>joins every album the photo belongs to</strong>, so albums keep
-showing the photo, fronted by the newest version. The edit carries the original's metadata: camera,
+showing the photo, fronted by the newest version. The photo in front of
+you follows immediately: the thumbnail and the full view swap to the
+uploaded render and the stack badge reflects the new grouping — no
+rescan needed. (Since the render already carries your grade, reopening
+develop shows it plainly while the RAW downloads, then switches to the
+live RAW rendition.) The upload renders at the <em>JPEG Quality</em> card's
+value — press <code>A</code> to see or change it, on a server source too, no
+batch action needed. The edit carries the original's metadata: camera,
 lens, exposure, GPS and the local capture time ride along even when the
 original is a format culler can't decode itself (an iPhone HEIC, say),
 so the server's Info panel reads the same on both. From an
 <a href="https://mertenssander.github.io/culler-releases/manual/sources/#albums">album view</a>, the edit also joins that album. Only
 one export/upload runs at a time — a second <code>J</code> tells you one is already
 running and points at the pill.</p>
+<p>A re-render bakes from the RAW, so it needs it: if the RAW can't be
+downloaded or decoded, the <code>J</code> stops with the cause in the status line
+and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
+previous version as if it were your new edit. Big originals get the
+same generous download time budget uploads have, so a slow connection
+means a longer wait, not a failure.</p>
 <h2 id="the-pending-work-pill">The pending-work pill</h2>
 <p>Anything running in the background shows in a small pill at the
 top-right: a batch with its live count ("Uploading · 12 of 37") right
@@ -223,7 +323,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

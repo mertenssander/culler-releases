@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -135,7 +135,16 @@ Files and Folders) and it won't ask again for that folder.</p>
 shows exactly what you'd get; <code>R</code> in the pane renames later). <strong>Test &amp;
 add</strong> checks the URL and key against the server before saving. The key
 goes into the OS keychain (macOS Keychain / Windows Credential Manager),
-not into a file on disk.</p>
+not into a file on disk. To <strong>rotate a key</strong> later, add the same server
+again with the new key — the existing entry updates in place and keeps
+its name, albums and cursor memory.</p>
+<p><strong>Test &amp; add</strong> also reports the server's <strong>compatibility</strong>: culler is
+built and tested against Immich v2 and v3, and the confirmation line tells
+you whether your server is fully supported or falls outside that range. If
+a saved server is outside the tested range, opening it repeats the caution
+in the scan-warning pill — browsing and culling still work, but archive,
+edit upload, and stacks are the parts that may need a culler update. You
+always know what will and won't work before relying on it.</p>
 <p>To create the key: in the Immich web app, click your avatar → <strong>Account
 Settings</strong> → <strong>API Keys</strong> → <strong>New API Key</strong>. The simplest choice is to
 grant <strong>all permissions</strong> — culler reads, rates, uploads and trashes on
@@ -218,6 +227,210 @@ view — and <code>G</code> or <code>Esc</code> steps back out. Rejecting inside
 local until you archive or trash via the
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">apply panel</a>; some actions (Compare, Survey,
 the apply panel itself) are unavailable inside a stack.</p>
+<h3 id="large-immich-libraries">Large Immich libraries</h3>
+<p>A library past a few thousand photos doesn't load whole. culler loads
+the newest stretch first — you're culling in seconds — and older months
+stream in on demand: scroll or arrow toward the end of what's loaded and
+the next window fetches by itself, with a quiet chip past the filmstrip's
+tail (and a band under the grid's last row) naming what's next — "2,500
+more in Jun 2026". Click it to load without waiting, click again if a
+fetch fails.</p>
+<p>To go straight to a date, press <strong><code>Shift+S</code></strong> — a <strong>Jump to date</strong> picker
+lists every month with photos and its exact count. Type to filter ("mar",
+"2025"), <code>↑</code>/<code>↓</code> to choose, <code>Enter</code> jumps, <code>Esc</code> cancels. A month already
+loaded is a plain cursor move; an unloaded month fetches <strong>just that
+month's window</strong> — the picker stays up with a small <strong>"Loading … "</strong>
+spinner for the moment that takes, then closes by itself and lands you on
+the month (<code>Esc</code> while it loads cancels the jump; the fetched photos
+still arrive quietly). The months in between stay unloaded, marked by a
+divider in the timeline ("⋯ 2,500 more in Jun 2026") that loads on click,
+or automatically as you browse toward it. The view stays in newest-first
+order throughout.</p>
+<p>The sources pane row shows how much is loaded ("1,412 of ~6,500
+loaded"); hovering it reveals <strong>Load all</strong>, which keeps loading window
+after window until the whole library is in (click again to stop). None
+of this applies to albums or smaller libraries — they load whole, and
+<code>Shift+S</code> does nothing there.</p>
+<h2 id="the-info-panel-on-immich-sources">The info panel on Immich sources</h2>
+<p>The <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#info-panel-i">info panel</a> (<code>I</code>) grows an extra
+section on Immich sources: description, recognized people, album
+membership, favorite state and the capture location. People and album
+membership are fetched per photo the moment you focus it (never during
+the scan), so a slow server delays only those two rows — everything
+else is already there. If that fetch fails the rows read "unavailable";
+focusing another photo and coming back retries.</p>
+<p><strong>Editing the description</strong>: click the description in the info panel to
+edit it in place — the whole text starts selected, so typing replaces
+it. Click anywhere else to save; <code>Esc</code> throws the edit away. <code>Enter</code>
+starts a new line (descriptions are prose), which is why clicking away
+is the save gesture. The edit is written to the photo's display asset
+on the server; clearing the text clears it there too.</p>
+<p><strong>The locked folder</strong> (Immich v3 and newer): the info panel offers
+<strong>Move to locked folder</strong> for sensitive photos — the whole RAW+JPEG
+pair moves behind Immich's PIN in one step and disappears from culler's
+view immediately. Be aware that culler cannot see, browse or unlock a
+locked photo afterwards: bringing it back is done in Immich's own web
+app. On servers without a locked folder (v2) the action simply isn't
+there.</p>
+<p><strong>Sorting into albums mid-cull</strong>: <code>Shift+I</code> opens the <strong>album picker</strong>
+— the panel's album list becomes togglable. <code>↑</code>/<code>↓</code> move, <code>Space</code> (or
+<code>Enter</code>) toggles the focused photo in or out of the selected album,
+typing filters the list, <code>Esc</code> closes. A check marks the albums the
+photo is in. Toggles apply immediately — the whole RAW+JPEG pair moves
+as one — and a toggle the server refuses flips back with the reason in
+the status line. The picker never auto-closes: sort a photo into
+several albums in one visit.</p>
+<h2 id="tethered-shooting-usb-camera">Tethered shooting (USB camera)</h2>
+<p>Plug a supported camera in over USB (on Sony bodies: USB mode → <strong>Remote
+Shoot (PC Remote)</strong>, and for RAW+JPEG set <em>Still Img. Save Dest.</em> to
+PC+Camera with <em>RAW+J PC Save Img</em> on RAW &amp; JPEG) and it appears at the
+top of the sources pane as a <code>[CAM]</code> row with a green dot. Press
+<code>Enter</code> on it and a tethered session starts: culler creates a dated
+folder under <code>~/Pictures/Culler Tether/</code> (one per day — reopening the
+same day reuses it) and opens it as the active source. From that
+moment, <strong>every picture you take lands in culler within about a
+second</strong>, RAW+JPEG pair complete, appearing at the end of the
+filmstrip. If you're sitting on the newest shot, the view follows each
+arrival; if you've stepped back to compare earlier frames, it stays
+put and a quiet <code>+N new</code> tag over the filmstrip counts what's waiting
+(click it, or press <code>End</code>, to catch up). Everything else is ordinary
+culling — rate, flag, develop, and upload picks to Immich while you
+shoot.</p>
+<p><strong>Past sessions — continue, rename, clean up.</strong> Every session lives in
+its own dated folder, and the camera row remembers them: as soon as a
+first session folder exists, the row grows a chevron — <code>→</code> (or a
+click) expands it into the past sessions, newest first, each with its
+photo count. No camera plugged in? The same slot shows a <strong>Tether
+sessions</strong> row instead — <code>Enter</code> (or <code>→</code>) expands the same list, so
+yesterday's shoot is always a pane away; opening a session then just
+opens its folder, and plugging the camera back in picks it up from
+there. <code>Enter</code> on one continues it: with the camera connected,
+new shots land in that folder again (a session running elsewhere ends
+silently first); with the camera unplugged, the folder opens as an
+ordinary source so you can keep culling it — once the camera is back,
+<code>Enter</code> on the session again resumes shooting into it. <code>R</code> renames a
+session inline — the folder on disk is renamed, and a name that's
+already taken is refused with the reason under the row. <code>⌫</code> deletes
+one with a second confirming press: the row turns red and spells out
+exactly what will happen — the folder goes to the system Trash, not
+deleted outright, so it's recoverable there if you change your mind.
+The session that's live or currently open refuses rename and delete
+(end or leave it first), and while the Mirror is still sending photos
+from a session, deleting it waits until that finishes. The pinned
+<code>+  New session</code> row forces a fresh folder even on the same day — the
+second session of 2026-08-20 becomes <code>2026-08-20-2</code>, and so on.</p>
+<p><strong>Mirror — automatic backup as you shoot.</strong> The rail's Mirror
+button (visible while a session is live) sends every photo to a
+second home the moment its RAW+JPEG pair finishes landing — an
+Immich server, any saved source, or a folder you pick. The cell
+glows when mirroring is on, the corner shows the running tally
+("mirror 7/9"), and the corner pill narrates the file in flight. A photo
+mirrors exactly once, as shot — later edits stay local until you
+upload them yourself. If a send fails it retries a few times, then
+steps aside so newer shots keep mirroring; the tally turns amber and
+the ordinary batch upload catches stragglers later (already-stored
+files skip in milliseconds). The setting is remembered — every new
+session announces "mirroring to …" in the status line so it's never
+on without you knowing.</p>
+<p><strong>Timer — interval shooting, self-timer, bulb.</strong> The rail's Timer
+button (below Mirror while a session is live) opens three tools:
+<strong>Interval shooting</strong> fires the remote shutter every N seconds (5s
+minimum — each shot takes about 4s to focus, fire, and land), until
+stopped or for a set count, with the running tally in the corner
+("timer 12 of 40 · next 0:04"); <strong>Self-timer</strong> fires once after
+2/5/10 seconds, counting down in the corner pill so you can get in
+front of the lens; <strong>Bulb exposure</strong> holds the shutter open for as
+long as you choose, timed from the laptop — the corner and pill show
+elapsed time, and <em>Release now</em> ends it early (you still get the
+photo). Bulb only starts when culler can confirm the camera is set to
+Bulb and Single drive — otherwise it tells you what to change instead
+of pretending. Esc cancels a counting self-timer or a running bulb
+exposure; a running interval stops from the Timer button (so a stray
+Esc can't kill a timelapse). Your last-used interval and bulb
+duration are remembered.</p>
+<p>The camera row's second line keeps you honest about the connection:
+after each transfer it shows the <strong>measured speed</strong> ("34 MB/s"), with
+a "slow link" tag when transfers crawl. While the session is live the
+bottom-right corner also shows the camera's own vitals — battery, and
+shots remaining where the camera reports it — turning amber when
+either runs low. For the full picture, press <code>I</code> — the info panel's
+Camera rows show what the body is <strong>set to</strong> right now (shutter,
+aperture, ISO, exposure compensation, drive mode), its battery, the
+last transfer speed, <strong>and the negotiated USB link</strong> ("USB 2.0 ·
+480 Mb/s"), which is how you catch a fast camera plugged into a slow
+port or cable; a USB 2 link gets a plain nudge that a USB 3
+port/cable would be faster. Turn a dial on the camera and the numbers
+follow within a couple of seconds. Transfers never block culling; a
+slower RAW shows the same per-file progress line in the corner pill
+that uploads use.</p>
+<p>Those Camera rows aren't just a readout — while the session is live
+they grow <strong>− / + steppers</strong>, so you can set aperture, shutter speed,
+ISO (including back to Auto), exposure compensation, and white
+balance from the keyboard-and-mouse side of the tether. Each step
+moves to the next value the camera itself says is available right
+now, so you can never ask for a setting the body would refuse. A
+freshly stepped value shows in the accent color for the beat it takes
+the camera to confirm; if the body refuses (wrong mode dial,
+typically), the corner pill tells you why and the row falls back to
+what the camera actually did. The camera's own dials always win —
+turn one and the rows follow.</p>
+<p>With the camera on <strong>manual focus</strong>, <code>[</code> and <code>]</code> nudge focus nearer
+and farther in small steps — <code>Shift+[</code> / <code>Shift+]</code> take big steps for
+coarse travel, <code>Cmd+[</code> / <code>Cmd+]</code> fine ones for the last breath of
+focus. The keys appear on the left rail while they're available and
+do nothing on AF (the camera would refuse). One trap worth knowing:
+set MF <strong>on the body</strong> (Fn or menu → Focus Mode → MF) with the lens's
+AF/MF switch left on AF. Flipping the switch on the lens barrel also
+reports MF, but it hands the focus motor to the ring alone — the
+camera then politely accepts remote focus commands and moves nothing. Combined with the remote shutter this
+is a full touch-free loop: frame, focus, fire — without a hand on the
+camera.</p>
+<p>Culler's remote-control features (shutter, Hold Focus, the Timer,
+the exposure steppers, focus nudging) currently speak Sony's control
+protocol and appear only for Sony bodies. Any other PTP camera still
+tethers fully for <strong>ingest</strong> — start a session and shots land as you
+take them — the control surfaces are simply absent, and the shutter
+key says so instead of pretending.</p>
+<p><strong>Remote shutter</strong>: while a session is live, <code>Shift+Space</code> fires the
+camera from the keyboard (also on the left rail and in the ▾ More
+menu). The gesture takes about 2.5 seconds — the camera genuinely
+needs a long half-press to focus — and the pill narrates it
+(<code>Focusing…</code> → <code>Capturing…</code> → the photo appears). If nothing arrives,
+the pill says <code>no frame — check focus or drive mode</code>: in
+focus-priority the camera refuses to fire without focus lock.</p>
+<p><strong>Hold Focus (<code>L</code>)</strong> removes that delay for the shots that matter.
+Press <code>L</code> once and culler parks the camera's half-press: focus locks
+(or keeps tracking, in AF-C) and stays that way — the <code>AF-L</code> cell on
+the rail lights up and the corner shows <code>focus held</code>. From then on
+every <code>Shift+Space</code> is just the shutter click, firing the instant you
+press it, as many times as you like; timer and self-timer shots use
+the held focus too. Press <code>L</code> again to let go. The mode is available
+with the camera on autofocus (on manual focus the trigger is already
+instant), and culler always releases the half-press when the session
+ends or you quit — the camera is never left with a phantom finger on
+its shutter. One honest limit: <code>focus held</code> means the button is held,
+not that the subject is sharp — recompose too far and the camera will
+still refuse the shot in focus-priority.</p>
+<p><strong>Live view (<code>B</code>)</strong> turns the culling screen into a viewfinder
+between shots: press <code>B</code> during a session and a continuous preview
+from the camera replaces the photo — same filmstrip, same shutter
+keys, so you can frame, fire with <code>Shift+Space</code>, and keep watching.
+When a shot lands it holds the screen for a moment (tagged
+<code>reviewing</code>), then the stream resumes on its own; <code>B</code> skips the
+review, and any arrow key, view key or a filmstrip click simply
+returns you to your photos. The stream pauses by itself while the
+camera is focusing, capturing or transferring — the corner pill
+narrates those as usual — and if the camera is unplugged the view
+waits and resumes on reconnect. Live view is available for camera
+models culler can stream from; on others <code>B</code> says so and tethered
+ingest continues unchanged.</p>
+<p>A session ends with <code>Backspace</code> on the camera row (single press —
+nothing is deleted, the photos stay on disk), or simply by opening any
+other source. Unplugging mid-session is harmless: the row grays out,
+everything already transferred stays, and replugging resumes into the
+same session. The session folder is an ordinary folder — reopen it any
+time via <code>O</code> or add it as a persisted source with <code>N</code> if you want it
+in the list.</p>
 
     <nav class="pagenav">
       
@@ -232,7 +445,7 @@ the apply panel itself) are unavailable inside a stack.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

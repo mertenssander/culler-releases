@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -100,12 +100,19 @@
   <article class="prose">
     <h1>Crop, rotate and straighten</h1>
     <p><code>C</code> enters crop mode: the full photo is shown with your crop window over
-it, a rule-of-thirds grid, and a floating toolbar.</p>
+it and a rule-of-thirds grid, with the crop controls docked in a side
+pane — nothing covers the photo while you work.</p>
 <p><img src="../img/03-crop.png" alt="Crop mode: handles, thirds grid, dimmed surround, toolbar" /></p>
 <h2 id="the-crop-window">The crop window</h2>
 <ul>
 <li>Drag any of the 8 corner/edge handles to resize; drag inside the window
 to move it.</li>
+<li>The window may extend <strong>past the photo's edges</strong> — the outside renders
+(and exports) as clean white padding. This is what lets a series of
+differently-framed photos share one frame: when a tighter shot needs
+the subject placed beyond its own edge, slide the window out and the
+export pads the difference. You can never lose the photo entirely — a
+slice always stays inside the window.</li>
 <li>The <strong>aspect picker</strong> locks a ratio: Free, original, 1:1, 3:2, 4:3,
 16:9 — matched to the photo's orientation, with the <code>⇄</code> button to cut a
 portrait crop from a landscape photo or vice versa. Switching aspect
@@ -118,7 +125,7 @@ the app mid-crop loses nothing.)</li>
 <ul>
 <li><code>R</code> / <code>Shift+R</code> rotate 90° clockwise / counter-clockwise — these also
 work <em>outside</em> crop mode, so a sideways photo is a one-key fix while
-culling. The toolbar has matching <code>-90°</code>/<code>+90°</code> buttons.</li>
+culling. The crop pane has matching <code>-90°</code>/<code>+90°</code> buttons.</li>
 <li>The <strong>Straighten</strong> slider covers fine angles up to ±45°. In crop mode
 the arrow keys nudge it by 0.1°, <code>Shift+arrows</code> by 1°.</li>
 <li>Straightening auto-fits the crop so blank corners can never appear, and
@@ -144,6 +151,9 @@ quarter turns use a culler-specific field since the <code>crs:</code> schema has
 no field for 90° rotation. Cropped photos count as "edited" for the Edited
 filter, and exports render exactly what you framed
 (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">export</a>).</p>
+<p>Cropping a whole series to one matching frame — seeded from a
+reference, with a ghost guide for lining up the subject — lives inside
+Match Look: see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Matching a series</a>.</p>
 
     <nav class="pagenav">
       
@@ -158,7 +168,7 @@ filter, and exports render exactly what you framed
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

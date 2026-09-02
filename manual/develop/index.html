@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -100,8 +100,8 @@
   <article class="prose">
     <h1>Develop</h1>
     <p><code>E</code> opens the develop panel. Its one-shot verbs sit right under the
-title as a full-width quick row — <strong>Auto</strong>, <strong>Reset</strong>, and <strong>Match
-JPEG</strong> on RAW-paired photos — and a footer row carries <strong>Copy</strong>,
+title as a full-width quick row — <strong>Auto</strong>, <strong>Reset</strong>, and a <strong>look</strong>
+picker on RAW-paired photos — and a footer row carries <strong>Copy</strong>,
 <strong>Paste</strong> and <strong>B / A</strong> (the same actions as <code>Shift+C</code>, <code>Shift+V</code> and
 <code>\</code>). While the panel is closed, resting the pointer on the DEVELOP
 spine tab (right edge) offers Auto tone and Reset without opening the
@@ -179,46 +179,113 @@ the four <strong>Tone curve</strong> sliders also thickens the stretch of the cu
 that slider owns, so you can see exactly where "Darks" ends and "Lights"
 begins. White balance, Vibrance/Saturation and Vignette don't move the
 line — they change color or corners, not tones.</p>
-<p>Hovering any slider and scrolling nudges it — slower than dragging, for
-fine work.</p>
+<p>Sliders drag <strong>relative to where you grab</strong> — the value moves with your
+pointer's travel, damped so a wide drag is a moderate change, which makes
+fine adjustment easier and means a stray click never jumps the value.
+For an exact number, <strong>click the value and type it</strong>; <strong>double-click</strong> the
+track to reset; and hovering a slider and <strong>scrolling</strong> nudges it — slower
+still, for the finest work.</p>
 <h2 id="sections">Sections</h2>
-<p>The sliders live in three collapsible sections — <strong>Tone</strong> (Exposure,
+<p>The sliders live in four collapsible sections — <strong>Tone</strong> (Exposure,
 Contrast, Highlights, Shadows), <strong>Color</strong> (Temp, Tint, Vibrance,
-Saturation) and <strong>Curve &amp; Effects</strong> (the tone curve regions and
-Vignette). Click a header to collapse or expand it; the app remembers
+Saturation), <strong>Color Mix</strong> (per-hue Hue/Saturation/Luminance) and
+<strong>Curve &amp; Effects</strong> (the tone curve regions, Vignette, and — while a RAW
+is on screen — Denoise and Lens
+correction). Click a header to collapse or expand it; the app remembers
 your arrangement across restarts. On a fresh install only Tone is open —
 the every-photo section — keeping the pane compact. A collapsed section
 can never hide an edit silently: a small accent dot on the header means
 something inside is off its default.</p>
 <h2 id="the-sliders">The sliders</h2>
 <ul>
-<li><strong>Temp / Tint</strong> — white balance: Temp seesaws red/blue (negative cools,
+<li>
+<p><strong>Temp / Tint</strong> — white balance: Temp seesaws red/blue (negative cools,
 positive warms), Tint moves the green–magenta axis. Neutral grays keep
-their brightness while the color shifts.</li>
-<li><strong>Exposure</strong> — brightness in EV, in linear light, with a soft shoulder
-so pushed highlights bloom instead of clipping flat.</li>
-<li><strong>Contrast</strong> — an S-curve around the midtones.</li>
-<li><strong>Highlights / Shadows</strong> — recover the bright end or lift the dark end.
+their brightness while the color shifts.</p>
+</li>
+<li>
+<p><strong>Pick gray point</strong> (<code>Q</code>) — the white-balance eyedropper, at the top of
+the Color card. Click it (or press <code>Q</code>), then click something in the photo that should be
+neutral gray (a gray card in the shot is ideal): culler sets Temp and
+Tint so that point renders neutral — in Kelvin on a RAW, as slider
+offsets on a JPEG — and the status line names the result. A blown or
+crushed spot is refused ("that point is clipped") and the picker stays
+armed so you can try another; <code>Esc</code> cancels, and moving to another
+photo quietly puts the tool away. To carry one reference across a
+whole series shot in the same light, pick once and use <code>Shift+C</code> /
+<code>Shift+V</code> to copy the settings along.</p>
+</li>
+<li>
+<p><strong>Exposure</strong> — brightness in EV, in linear light, with a soft shoulder
+so pushed highlights bloom instead of clipping flat.</p>
+</li>
+<li>
+<p><strong>Contrast</strong> — an S-curve around the midtones.</p>
+</li>
+<li>
+<p><strong>Highlights / Shadows</strong> — recover the bright end or lift the dark end.
 Up to ±50 the effect follows each pixel's own tone; <strong>beyond ±50 it
 becomes neighborhood-aware</strong>: a strong shadow lift brightens a dark
 doorway without washing out the bright wall next to it — strong pulls stay
-local instead of flattening the frame.</li>
-<li><strong>Vibrance / Saturation</strong> — Vibrance boosts muted colors more than
+local instead of flattening the frame.</p>
+</li>
+<li>
+<p><strong>Vibrance / Saturation</strong> — Vibrance boosts muted colors more than
 already-vivid ones (protecting what's already saturated); Saturation is
-uniform. −100 Saturation is black &amp; white.</li>
-<li><strong>Tone curve</strong> (Highlights / Lights / Darks / Shadows) — four regions
+uniform. −100 Saturation is black &amp; white.</p>
+</li>
+<li>
+<p><strong>Color Mix</strong> — eight per-hue bands (Red · Orange · Yellow · Green ·
+Aqua · Blue · Purple · Magenta), where <strong>Hue</strong> rotates a range of hues,
+<strong>Saturation</strong> deepens or mutes it, and <strong>Luminance</strong> brightens or
+darkens it — leaving the other colors alone. Reach for it to lift a sky
+without touching skin, or calm one loud color. It works on any photo,
+RAW or JPEG, and is part of what gives a <strong>camera look</strong> its per-hue
+colour rendering rather than just its tone. A toggle at the top of the
+section picks how you steer the eight bands — and it <strong>remembers your
+choice</strong>:</p>
+<ul>
+<li><strong>Sliders</strong> — pick a swatch, then adjust its Hue / Saturation /
+Luminance. Precise and familiar, one band at a time.</li>
+<li><strong>Graph</strong> — one curve over a rainbow hue axis: drag a point up or down
+to boost or cut that hue. A Hue / Sat / Lum tab picks what the curve
+controls; you see all eight bands at once.</li>
+<li><strong>All</strong> — the three curves (Hue, Saturation, Luminance) stacked over a
+single shared hue bar, nothing hidden.</li>
+</ul>
+<p>All three write the same values — the toggle only chooses the interface.</p>
+</li>
+<li>
+<p><strong>Tone curve</strong> (Highlights / Lights / Darks / Shadows) — four regions
 of a parametric curve, for shaping after the basic tone is set: lift
-the darks a touch, ease the lights, without touching exposure.</li>
-<li><strong>Vignette</strong> — post-crop corner darkening (0 to −100). It follows the
-crop, so the falloff is always centered on your final frame.</li>
-<li><strong>Lens correction</strong> (RAW mode only) — a checkbox at the bottom of
+the darks a touch, ease the lights, without touching exposure.</p>
+</li>
+<li>
+<p><strong>Vignette</strong> — post-crop corner darkening (0 to −100). It follows the
+crop, so the falloff is always centered on your final frame.</p>
+</li>
+<li>
+<p><strong>Denoise</strong> (RAW mode only) — grain reduction, baked into the RAW
+render before tone. It starts on an <strong>automatic strength scaled to the
+photo's ISO</strong> — a base-ISO frame gets none, a dim high-ISO frame gets a
+real dose — so most photos are already dialed in; the value reads dim
+while automatic and brightens once you set your own. Hover the row to
+see what Auto chose for this ISO; <strong>double-click returns to Auto</strong> (not
+to zero — drag to 0 if you want the grain). Because the smoothing is
+part of the demosaic, the photo refines a beat after you release the
+slider, behind the same "Refining detail" notice as opening the pane.
+Judge the result at 100% (<code>Z</code>).</p>
+</li>
+<li>
+<p><strong>Lens correction</strong> (RAW mode only) — a checkbox at the bottom of
 Curve &amp; Effects, on by default whenever the RAW carries the camera's
 own correction data (Sony bodies bake per-shot distortion, chromatic
 aberration and vignetting parameters into every ARW — the same data
 the camera used for its JPEG, so no lens profiles to manage). With it
 on, the RAW's framing matches the corrected camera JPEG; turn it off
 to see the naked lens. Files without correction data show a quiet
-"no profile" note instead.</li>
+"no profile" note instead.</p>
+</li>
 </ul>
 <h2 id="clipping-warnings-w">Clipping warnings: <code>W</code></h2>
 <p><code>W</code> paints <strong>clipping warnings</strong> straight onto the photo: pixels blown
@@ -250,42 +317,67 @@ only while the RAW render is on screen — with the panel closed, <code>W</code>
 describes the plain camera JPEG, so a sky can read blown while culling
 yet recoverable the moment you press <code>E</code>. That's the two files talking,
 not a bug.</p>
-<h2 id="auto-tone-shift-a">Auto tone: <code>Shift+A</code></h2>
-<p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) computes a starting point from
-the histogram: exposure toward a balanced midtone, highlight/shadow
-rescues where mass piles up at the ends, a touch of contrast for flat
-frames. It is deliberately a nudge, not a look — and it only touches the
-four tonal sliders. Your white balance, presence, curve and vignette
-survive it. <strong>Reset</strong> clears everything.</p>
-<h2 id="match-jpeg">Match JPEG</h2>
-<p><strong>Match JPEG</strong> (RAW mode only, in the button row next to Auto and Reset)
-computes a starting point that approximates the paired camera JPEG's
-look: it fits the RAW histogram onto the JPEG's. Three things are
-fitted, all measured from this photo's own two renditions, never
-guessed: the four tone sliders (histogram percentiles), <strong>Saturation</strong>
-(cameras cook color well beyond the neutral matrix render — the fit
-measures the actual chroma gap and accounts for how much of it the tone
-push already restores), and <strong>white balance</strong> (the channel balance
-difference between the two renditions of the same pixels; a near-zero
-delta stays As Shot). Vibrance, the tone curve and Vignette carry over
-unchanged, and Reset undoes everything. It's an approximation, not a
-pixel match: the camera's hue twists and local contrast aren't
-reproducible from histograms.
-The button appears the moment real RAW pixels are on screen (the same
-moment the <code>[RAW]</code> tag lights up); on a photo with no separate JPEG the
-reference is the camera's embedded preview, and on a server source the
-server-rendered preview.</p>
+<h2 id="auto-shift-a">Auto: <code>Shift+A</code></h2>
+<p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) does the smart thing for the
+photo in front of you. On a RAW the camera shot in a look culler has a
+profile for, it <strong>applies that camera look</strong> in one press — the same
+result as picking it from the dropdown, so you can run a whole set without
+touching the picker (Auto's tooltip names the look it will apply). On
+everything else — a JPEG, or a RAW with no recognized look — it falls back
+to <strong>auto tone</strong>: a starting point computed from the histogram (exposure
+toward a balanced midtone, highlight/shadow rescues where mass piles up at
+the ends, a touch of contrast for flat frames), a nudge that only touches
+the four tonal sliders and leaves white balance, presence, curve and
+vignette alone. Either way it's an explicit press, so it applies over
+whatever's there; <strong>Reset</strong> clears everything.</p>
+<h2 id="camera-looks">Camera looks</h2>
+<p>The <strong>look</strong> picker (RAW mode only, the dropdown next to Auto and Reset)
+applies a camera look profile to the RAW in one click — a fixed,
+consistent grade rather than a per-photo guess. Pick a look and it's
+applied immediately: the develop sliders are set to that profile
+(contrast, a saturation push that ramps in with a color's own vividness —
+real color gets the boost, mist and gray cloud stay quiet — a gentle
+highlight rolloff and deepened shadows, and the per-hue Color Mix that
+gives the look its character), the RAW's
+<strong>As-Shot</strong> white balance is kept (the same white balance the camera used
+for its JPEG), and only <strong>exposure</strong> is matched to the scene. Because the
+look itself is fixed, every photo gets the same character — no railing, no
+surprises — and you can refine from there with the ordinary sliders; Reset
+undoes it. The picker appears the moment real RAW pixels are on screen
+(the same moment the <code>[RAW]</code> tag lights up).</p>
+<p><strong>It knows what the camera shot.</strong> If the RAW records an in-body creative
+look (Sony bodies do), the picker reads it and pre-highlights the matching
+profile with a <em>(from camera)</em> tag — so on a Sony shot in Vivid, opening
+the picker lands on <strong>Vivid</strong> already. That's a suggestion, not an action:
+nothing is applied until you actually pick it, so navigating your photos
+never rewrites a grade you've already dialed in. If the camera used a look
+there's no profile for yet, the picker names it with a "no profile yet"
+line rather than guessing.</p>
+<p><strong>The fast way — just press <code>Shift+A</code>.</strong> When the camera's look is one you
+have a profile for, <code>Shift+A</code> (or the <strong>Auto</strong> button) applies it directly,
+no dropdown needed — so a whole set is one keypress each. The picker is
+then for the exceptions: overriding to a different look, or seeing what's
+applied. (See <em>Auto</em> above.)</p>
+<p>A look is a starting point, not a pixel-for-pixel copy of the camera JPEG:
+in-camera noise reduction and sharpening aren't reproduced, and a few
+scenes (blown light sources, very high ISO) diverge more. <strong>Vivid</strong> ships
+today; more looks are on the way, and you can add your own — drop a
+<code>&lt;name&gt;.conf</code> in <code>~/.culler/looks/</code> (a <code>name=</code> line sets its display name)
+and it joins the list.</p>
 <h2 id="match-look-m">Match Look: <code>M</code></h2>
 <p><strong>Match Look</strong> grades a whole burst as one. Stand on the photo whose
 look you like and press <code>M</code>: up to 24 photos around it freeze into a
-set, the one you were on becomes the <strong>reference</strong>, and every other
-photo is automatically fitted toward it — exposure, contrast and the
-two tail rescues, each from its own starting point. The fit reads each
-frame's histogram <em>and</em> its EXIF exposure settings, so a frame shot a
-stop darker (faster shutter, smaller aperture) gets the physical
-correction, while a frame where the scene genuinely changed (a shadow
-crossing, more sky) is only nudged, never forced — a sudden shadow is
-real, not a mistake.</p>
+set, and the one you were on becomes the <strong>reference</strong>. Nothing changes
+yet — entering the mode never touches your photos. Press <strong>Match</strong> in
+the develop panel when you want the fit: every linked photo's tone is
+fitted toward the reference — exposure, contrast and the two tail
+rescues, each from its own starting point. The fit reads each frame's
+histogram <em>and</em> its EXIF exposure settings, so a frame shot a stop
+darker (faster shutter, smaller aperture) gets the physical correction,
+while a frame where the scene genuinely changed (a shadow crossing,
+more sky) is only nudged, never forced — a sudden shadow is real, not a
+mistake. Don't like the result? <strong>Reset all</strong> backs the whole set out,
+without leaving the mode.</p>
 <p>While the mode is on, the develop panel edits the <strong>reference</strong>, and
 every slider move carries the whole linked set with it — each photo
 keeping its own hidden offset, so the group shifts together instead of
@@ -293,13 +385,15 @@ snapping to identical numbers. Walk the set with <code>←</code>/<code>→</cod
 marks the reference with a solid accent ring), check any photo against
 its original with <code>\</code> (<a href="../img/17-match-look.png">screenshot</a>), and:</p>
 <ul>
-<li><code>R</code> makes the focused photo the new reference (everything re-fits).</li>
+<li><code>R</code> makes the focused photo the new reference (a fit you've run
+re-fits against it; before the first Match, re-anchoring changes
+nothing).</li>
 <li><code>L</code> unlinks the focused photo — its sliders are its own from there —
 or links it back. Unlinked members wear a thin <strong>amber ring</strong> in the
 filmstrip (the reference's ring is solid blue; linked members have
 none). A RAW-paired photo that already carries a develop grade starts
-unlinked, so the automatic fit can never overwrite deliberate work;
-<code>L</code> opts it in.</li>
+unlinked, so a fit can never overwrite deliberate work; <code>L</code> opts it
+in.</li>
 <li><code>P</code>/<code>X</code>/ratings/labels still work on the focused photo — a bad burst
 frame gets rejected without leaving.</li>
 </ul>
@@ -310,23 +404,162 @@ matched burst visibly matches without leaving the panel. They revert
 to their normal plain thumbnails the moment the session ends.</p>
 <p>The panel itself changes shape for the session: a quiet
 <code>reference: &lt;name&gt;</code> line under the heading always names the photo
-driving the set, <strong>Auto</strong> and <strong>Match JPEG</strong> step aside (they'd drag
-the whole group through an unrelated fit), and the buttons become
-<strong>Reset all</strong> — every photo back to its freshly-matched state, without
-leaving the mode — and <strong>Re-match</strong>, which runs the automatic fit
-again. If a photo's fitted tone hits a slider's end of travel, it
+driving the set, <strong>Auto</strong> and the <strong>look</strong> picker step aside (they'd
+drag the whole group through an unrelated fit), and the buttons become
+<strong>Match</strong> — the fit itself, run when you ask, re-run after a re-anchor
+— and <strong>Reset all</strong>, every photo back to how it was when you entered.
+Until you've pressed Match, slider moves still carry the linked set —
+each photo shifting by the same amount from its own values, no fit
+implied. If a photo's fitted tone hits a slider's end of travel, it
 stops tracking the group on that axis: a small amber dot appears in
 its thumbnail corner and a <code>[clamped]</code> tag joins the panel header
 while it's focused — drag back toward center and it reconnects.</p>
 <p><strong>Nothing is written until you decide</strong>: <code>M</code> again commits — every
 changed photo's sidecar is written once — and <code>Esc</code> cancels, restoring
 every photo exactly as it was. It's the same "starting point, not a
-pixel match" honesty as Match JPEG: the fit gets the set close, your
+pixel match" honesty as a camera look: the fit gets the set close, your
 eyes make the call.</p>
+<h3 id="matching-a-series">Matching a series</h3>
+<p>Match Look isn't only for bursts. A series shot weeks apart — a
+pregnancy progression, a growing kid on the same bench — lives
+scattered across your library, and the frozen window follows whatever
+you're looking at. So build the view first: <strong>select</strong> the series
+(<code>Y</code> on each photo, or <code>Cmd</code>/<code>Shift</code>+click), press <strong><code>Shift+Y</code></strong> to
+show just the selection, then <code>M</code> — the set is now exactly your series,
+in date order, and the photo you were standing on is the reference.</p>
+<p>Photos from different sessions rarely share a color cast, and the tone
+fit deliberately leaves white balance alone (it can't tell a cast from
+a real scene change). Neutralize each photo first — <code>Q</code> works right
+inside the session, on the focused photo: click something gray, walk
+to the next, repeat — then press Match: the fit does the tone, the
+eyedropper has already done the color. Samples made inside the session
+commit with <code>M</code> and unwind with <code>Esc</code>, like everything else. A
+selection larger than 24 photos gets
+truncated to the window cap; the entry line says so
+(<code>24 of 31 selected photos</code>) — narrow the selection to match exactly
+the set you mean.</p>
+<p><strong>Matching the crop.</strong> A consistent series wants consistent framing,
+and <code>C</code> works inside Match Look: on the <strong>reference</strong> it's the
+ordinary crop tool — set the frame that leads the series. On any other
+member, <code>C</code> opens the <strong>align view</strong>: the reference's finished frame
+fills the screen, solid, and <em>never moves</em> — your photo rides on top
+as a faint overlay, pre-placed from the reference's frame (never over
+a crop the photo already carries). Now manipulate <em>your photo</em>, not a
+window: <strong>drag</strong> it until the subject sits where the reference's does,
+<strong>scroll, pinch or <code>↑</code>/<code>↓</code></strong> to size it in
+the frame, <strong><code>Cmd/Ctrl+arrows</code></strong> to nudge it precisely (<code>Shift</code> makes
+every step coarser), <code>←</code>/<code>→</code> to straighten, <code>R</code> for quarter turns. A
+quiet outline shows where your photo's actual edges are — <strong>its
+corners carry drag handles that size the photo</strong> too, so the
+reference's frame itself stays free of controls. The overlay is exactly what will commit —
+<code>\</code> flips to a solid preview of the result and back. A caption names
+which is which (<code>solid: &lt;reference&gt; · faint: &lt;this photo&gt;</code>). The
+aspect stays locked to <code>Matched</code> in the crop pane (pick another ratio to
+deliberately break ranks; a <code>[custom]</code> tag says you have), and when a
+tighter-framed photo needs its subject placed beyond its own edge,
+just keep dragging — the uncovered part exports as white padding.
+<strong>Reset</strong> in the pass means <em>back to the reference's placement</em>, not
+back to full. The subject
+moved between sessions, so placement stays yours per photo; the shape
+is what stays identical. Every crop lives in memory with the rest of
+the session: <code>M</code> commits them all at once (and writes one history
+entry per changed photo), <code>Esc</code> throws them all away.</p>
+<p><strong>Landmark align (<code>Shift+C</code>).</strong> When the pose shifted too much to
+eyeball, align by <em>matching points</em> instead of dragging: in the align
+view, press <code>Shift+C</code> (or the crop pane's <strong>Landmarks</strong> chip) for a
+three-pane layout — the reference, your photo, and the live result.
+Click 2–8 distinctive points on the reference (an ankle, the nose, a
+hip ridge), then click the same numbered points on your photo; from
+the second point the third pane shows the solved placement — position,
+size and tilt all at once — as a faint overlay on the reference's
+frame. A point you can't see on this photo (an ankle out of frame) is
+no problem: <strong><code>Tab</code> skips it</strong>, and any two shared points are enough —
+the numbered chips above your photo show what's placed and aim the
+next click. A magnifier follows the cursor for precise placement; drag
+a dot to adjust, <code>⌫</code> undoes the last one, and a right-click on a dot
+(or its hover <code>×</code>) removes it.
+<code>Enter</code> accepts and moves to the next photo (on the last it returns to
+Match Look); <code>Shift+C</code> instead drops back to the drag view with the
+solve applied, for hand fine-tuning. culler still only crops, never
+warps — if the pose truly changed, the dots can't all land exactly,
+and the preview shows that honest compromise rather than pretending.
+Landmarks live only in the session: <code>M</code> commits the crops they
+produced, <code>Esc</code> unwinds, and the points themselves are never written
+anywhere. Committed crops show at once in every view — on photos that
+already carry an uploaded edit too — so scrolling the series plays
+like a stop-motion film; press <code>J</code> on each photo when you want the
+server copies re-rendered with the new framing.</p>
+<p><strong>Seeing the series whole.</strong> <code>K</code> inside Match Look lays the frozen set
+out as a grid — every photo with its live tone <em>and</em> crop, exactly
+what the committed series will look like side by side. It's
+read-only: click a photo to jump focus to it (the grid closes), <code>K</code>
+or <code>Esc</code> just closes. Slider moves in the panel track live in the
+grid, so it doubles as the place to spot the one frame the fit got
+wrong.</p>
 <h2 id="copying-settings-across-photos-shift-c-shift-v">Copying settings across photos: <code>Shift+C</code> / <code>Shift+V</code></h2>
 <p><code>Shift+C</code> copies the current photo's develop settings <em>and</em> crop
 (including rotation); <code>Shift+V</code> pastes them onto the current photo. A
 burst shot in identical light becomes one keystroke per frame.</p>
+<h2 id="edit-history-snapshots">Edit history &amp; snapshots</h2>
+<p>Every edit is remembered. <code>Cmd/Ctrl+Z</code> <strong>undoes</strong> the last change,
+<code>Shift+Cmd/Ctrl+Z</code> <strong>redoes</strong> it — and it's not just develop sliders:
+ratings, flags, color labels, crop, straighten, a pasted look, a Reset,
+they all step back and forth the same way. Each step restores the whole
+photo to exactly how it stood, and writes that state back to the sidecar,
+so undo is as durable as any other edit.</p>
+<p>The develop panel shows the full trail. Two cards at the bottom of the
+panel — collapsed by default, click the header to open — make it visible:</p>
+<ul>
+<li><strong>History</strong> — the running list of what you did, newest at the top, each
+row dotted in its action's color (a rating in gold, a pick in green, a
+develop move in blue). <strong>‹ Undo</strong> and <strong>Redo ›</strong> buttons sit above it,
+and the row marked <em>current</em> is where you are now. <strong>Click any row to
+restore that state</strong> — rewind six edits in one click. Restoring is
+<em>non-destructive</em>: it lands as a new entry on top, so nothing in between
+is lost, and the restore itself is undoable. The very first entry is
+always <strong>Opened</strong> — the photo as it was when you started. Hovering a row
+reveals a <strong><code>+</code></strong> on its right: click it to save that exact state as a
+snapshot (named after the entry) without leaving where you are — handy
+for keeping a version you might want back.</li>
+<li><strong>Snapshots</strong> — history is a timeline; a snapshot is a <strong>bookmark you
+name</strong>. Dial in a look you like, type a name (or leave it blank for an
+auto-numbered one) and press <strong>Save</strong> — that exact state is pinned.
+Later, however far you've wandered, <strong>Restore</strong> brings it back in one
+click (and the restore is itself an undoable step). Click a snapshot's
+name to rename it, or <code>×</code> to remove it. Unlike history, snapshots are
+never pruned — they're the states you deliberately kept.</li>
+</ul>
+<p>The whole trail lives in the photo's sidecar (<code>culler:History</code> /
+<code>culler:Snapshots</code>), so it survives closing and reopening culler — pick a
+photo back up next week and its history and snapshots are right where you
+left them. History is capped generously (about two thousand steps, always
+keeping the oldest <strong>Opened</strong> anchor); in practice it's effectively
+complete. Undo isn't available while a crop or Match Look session is open
+— finish or cancel it first (those have their own <code>Esc</code>).</p>
+<h2 id="editing-photos-from-an-immich-source">Editing photos from an Immich source</h2>
+<p>Photos from a folder save every edit the instant you make it (to the
+sidecar next to the file). Photos from an <strong>Immich</strong> source work a little
+differently, because there's no sidecar on the server — so culler keeps
+your develop grade, crop, and edit history <strong>in Immich itself</strong>, and writes
+them <strong>when you press <code>J</code></strong> (the same key that renders the edit and uploads
+it). Until you press <code>J</code>, the grade lives only in this session, and a quiet
+<strong><code>[unsaved]</code></strong> tag shows (in the develop panel's title row, and on the
+photo when the panel is closed) to remind you. Ratings and flags are the
+exception — those save to Immich immediately, as always.</p>
+<p>The practical upshot:</p>
+<ul>
+<li><strong>Press <code>J</code> to keep a grade.</strong> Then it's stored in Immich; reopen culler
+later — or open the same library on another computer — and your grade,
+crop, and full history come right back.</li>
+<li><strong>A grade you never <code>J</code>'d is temporary.</strong> Develop a photo, then close
+culler without pressing <code>J</code>, and that grade is gone next time (the
+<code>[unsaved]</code> tag was the warning). Switching to another photo and back
+during the same session keeps it, though — it's only lost on reload.</li>
+<li>Undo/redo and snapshots work on Immich photos too, the same as local ones.</li>
+<li>Just after you move to an Immich photo there's a brief moment (a fraction
+of a second) while culler reads its saved grade back; if you press <code>J</code>
+that instant it'll say "still loading" — wait a beat and press it again.</li>
+</ul>
 <h2 id="where-it-all-lives">Where it all lives</h2>
 <p>Edits are stored per photo in its sidecar as <code>crs:</code> fields (the full list
 is in the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#xmp-fields">reference</a>) and never touch the
@@ -352,7 +585,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

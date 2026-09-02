@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -142,7 +142,11 @@ thin dark halo so it stays readable even on a blown-out sky
 <li><strong>Top-left overlay</strong>: filename, position in the current view (<code>3/128</code>),
 and mode tags such as the active filter, <code>[manual advance]</code>, <code>[stack]</code>
 or <code>[before]</code>. Below it: capture time and exposure info, then your
-stars, PICK/REJECT state, and stack size where relevant.</li>
+stars, PICK/REJECT state, and stack size where relevant. When two
+photos in the library share a filename (the same shot in two folders,
+say), each shows a quiet folder tag like <code>[testset/]</code> so you always
+know which one you're judging — unique filenames stay untagged. The
+same tag appears in Compare panes and on Survey's focused photo.</li>
 <li><strong>The filmstrip</strong> along the bottom shows thumbnails with your culling
 state at a glance: a green dot for picks, red for rejects, a star count,
 and a colored bar for color labels. The accent ring marks the current
@@ -186,7 +190,7 @@ previews. See <a href="https://mertenssander.github.io/culler-releases/manual/ba
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -132,8 +132,8 @@ moment the mouse moves — and every control shows its key, so the buttons
 teach the shortcuts as you go:</p>
 <ul>
 <li><strong>The rail</strong> (left edge) carries the culling verbs as keycap
-buttons — Pick, Reject, Clear, Rate, Grid, Compare, Filter — each
-showing its key with the name under it; hovering flares the full
+buttons — Pick, Reject, Clear, Rate, Select, Grid, Compare, Filter —
+each showing its key with the name under it; hovering flares the full
 teaching line — and the <strong>Filter</strong> and <strong>Rate</strong> buttons open real
 palettes: click a filter to jump straight to it, click a star chip
 (1–5, 0) to rate. Its <strong>⋯</strong> button opens the menu with the rest: the
@@ -156,6 +156,44 @@ zoom; when zoomed in, the mouse pans instead).</li>
 overlay, and collapsing it gets you within three pixels of a bare
 photo. The first launch shows a one-line hint beside the rail, once,
 and never again.</p>
+<h2 id="selecting-a-set">Selecting a set</h2>
+<p>Sometimes the thing you want to act on isn't "all my picks" but <em>these
+twelve, exactly</em>. Build a <strong>selection</strong> in the filmstrip or the Grid
+with the standard gestures:</p>
+<ul>
+<li><strong><code>Cmd/Ctrl</code>+click</strong> a thumbnail to select or deselect it;
+<strong><code>Shift</code>+click</strong> selects the whole run from the photo you're on to
+the one you clicked. From the keyboard, <strong><code>Y</code></strong> toggles the current
+photo and <strong><code>Shift</code>+arrows</strong> sweep a run as you step;
+<strong><code>Cmd/Ctrl+A</code></strong> selects everything in the current view and
+<strong><code>Cmd/Ctrl+D</code></strong> clears the selection. Sweeps follow your last
+toggle's direction: deselect a photo first (<code>Y</code> or <code>Cmd</code>+click) and
+the very next <code>Shift</code>+click or <code>Shift</code>+arrows <strong>deselects</strong> the run
+— pruning a big selection is one gesture, not one click per photo.</li>
+<li><strong><code>Shift+Y</code></strong> filters the view to just the selected photos — cull a
+hand-picked shortlist with every tool (the grid included), then
+<code>Shift+Y</code> (or <code>F</code>) returns to the full view. The view tracks the
+selection live: deselecting a photo drops it from the filtered view
+on the spot, and clearing the selection falls back to the All
+filter with a status note.</li>
+<li>Every selected photo wears a small blue <strong>check chip</strong> in its
+thumbnail corner, the corner readout counts the set (<code>12 selected</code> —
+the Grid header counts it too), and a plain click never touches it:
+clicking around to compare photos won't cost you the set.</li>
+</ul>
+<p>The selection multiplies the <strong>marking verbs</strong>: when the photo you're
+on is part of the selection, <code>P</code> / <code>X</code> / <code>U</code>, the star ratings and the
+color labels mark the <em>whole</em> set at once (the status line confirms,
+e.g. <code>Rejected 12 selected</code>). If every selected photo already carries
+the value, the same key clears it from all of them — the familiar
+toggle, set-wide. And in the batch panel (<code>A</code>), the Scope menu gains
+<strong>Selected (N)</strong> so copy, move, export, upload — any batch action —
+can run on exactly the set you built (see
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">Batch operations</a>).</p>
+<p>The selection follows the photos, not the view: changing the filter
+keeps it (the batch panel notes how many are filtered out of sight),
+and it survives non-destructive batch actions. It clears when you load
+a different library — the status line says so — or on <code>Cmd/Ctrl+D</code>.</p>
 <h2 id="filters-working-in-passes">Filters: working in passes</h2>
 <p><code>F</code> cycles the view: <strong>All → Picks → Picks+unrated → Rejects → Unrated → Edited →
 Labeled</strong> and back. <code>Shift+F</code> returns straight to All. The overlay shows
@@ -194,7 +232,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

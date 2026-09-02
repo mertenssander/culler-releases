@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -116,15 +116,19 @@ tags the overlay <code>[before]</code>. Press again for your edit.</p>
 <h2 id="grid-view-k">Grid view: <code>K</code></h2>
 <p>Zooming all the way out: <code>K</code> spreads the <strong>whole working set</strong> (the
 current filter) across a scrolling grid, with a live tally at the top —
-photos, picked, rejected, undecided — so one glance answers "where are
-we?". Every cell wears the filmstrip's badges (flag dot, stars, color
-bar), rejected photos dim so the undecided work pops forward, and
-develop edits show in the cells.</p>
+photos, picked, rejected, undecided, and the selection count while one
+exists — so one glance answers "where are we?". Every cell wears the
+filmstrip's badges (flag dot, stars, color bar, and the blue check chip
+on <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selected</a> photos), rejected photos
+dim so the undecided work pops forward, and develop edits show in the
+cells. <code>Cmd/Ctrl</code>+click and <code>Shift</code>+click build a selection here
+exactly as in the filmstrip.</p>
 <p><img src="../img/18-grid.png" alt="Grid view: the live tally on top, dimmed rejects, the cursor ring" /></p>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>arrows</td><td>move the cursor a cell / a row</td></tr>
 <tr><td><code>Home</code> / <code>End</code>, <code>PgUp</code> / <code>PgDn</code></td><td>jump to the ends / scroll a page</td></tr>
-<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo — writes immediately, and with auto-advance on the cursor walks on</td></tr>
+<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo — writes immediately, and with auto-advance on the cursor walks on; with the cursored photo in a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>, marks the whole set</td></tr>
+<tr><td><code>Y</code>, <code>Shift</code>+arrows, <code>Cmd/Ctrl+A</code> / <code>Cmd/Ctrl+D</code></td><td>select the cursored cell / sweep a run / select all · none — <code>Shift+Y</code> shows only selected (deselecting then drops the cell live)</td></tr>
 <tr><td><code>Z</code></td><td>cycle the cell size (small / medium / large)</td></tr>
 <tr><td><code>Space</code> / double-click</td><td><strong>peek</strong> the cursored cell full-size; <code>Space</code>/<code>Esc</code> pops back</td></tr>
 <tr><td><code>A</code></td><td>the <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-apply-panel-a">batch panel</a>, in place — scope a copy/move/trash while the whole set is in view</td></tr>
@@ -185,6 +189,24 @@ It lives with the develop tools — see
 <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Match Look</a>.</p>
 <p>Compare and Survey are both unavailable inside a
 <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a>; step out first.</p>
+<h2 id="info-panel-i">Info panel: <code>I</code></h2>
+<p><code>I</code> (or the <strong>INFO</strong> tab on the right spine) opens a right-side panel
+with the focused photo's details: filename, capture time, camera and
+lens, the exposure triangle, pixel dimensions and file size, and your
+own culling state. It stays put while you keep culling — the panel
+always describes the photo you're on — and works inside the Grid and
+Survey views too, where the small cells have no room for metadata.</p>
+<p>On an <a href="https://mertenssander.github.io/culler-releases/manual/sources/#immich">Immich source</a> the panel adds the server's
+knowledge of the photo: its description, recognized <strong>people</strong>, the
+<strong>albums</strong> it belongs to, its favorite state, and where it was taken.
+People and albums come from the server on demand — the panel shows
+quiet placeholder bars for the moment that takes, and photos you have
+already visited show instantly. A local folder has none of this, and
+the panel simply ends after the file details — no empty rows, no
+placeholder text.</p>
+<p>The <strong>Favorite</strong> row is the same thing as your Pick flag on Immich
+sources — picking a photo stars it on the server, and a photo starred
+elsewhere arrives here already Picked. One axis, two names.</p>
 
     <nav class="pagenav">
       
@@ -199,7 +221,7 @@ It lives with the develop tools — see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

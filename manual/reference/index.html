@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -106,6 +106,9 @@
 <tr><td><code>P</code> / <code>X</code> / <code>U</code></td><td>pick / reject / clear flag</td></tr>
 <tr><td><code>1</code>–<code>5</code>, <code>0</code></td><td>star rating / clear (same number again clears)</td></tr>
 <tr><td><code>6</code>–<code>9</code></td><td>color label red / yellow / green / blue (again clears)</td></tr>
+<tr><td><code>Y</code> / <code>Shift+Y</code></td><td>select / deselect this photo (build a set for marking + batch actions) / show only selected</td></tr>
+<tr><td><code>Cmd/Ctrl+A</code> / <code>Cmd/Ctrl+D</code></td><td>select all in view / deselect all</td></tr>
+<tr><td><code>Cmd/Ctrl+Click</code> / <code>Shift+Click</code> / <code>Shift+arrows</code></td><td>toggle / range / sweep the selection (filmstrip + Grid; a sweep straight after a deselect deselects the run)</td></tr>
 <tr><td><code>Z</code> / <code>Space</code> / double-click</td><td>zoom 100% ⇄ fit (drag to pan)</td></tr>
 <tr><td>Scroll / pinch</td><td>continuous zoom around the pointer (to 8×; snaps back to fit)</td></tr>
 <tr><td><code>F</code> / <code>Shift+F</code></td><td>cycle filter (All → Picks → Picks+unrated → Rejects → Unrated → Edited → Labeled) / show all</td></tr>
@@ -115,22 +118,34 @@
 <tr><td><code>N</code></td><td>Survey view</td></tr>
 <tr><td><code>M</code></td><td>Match Look — fit a burst's tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
 <tr><td><code>R</code> / <code>L</code> (match)</td><td>re-anchor the reference / unlink-link the focused photo</td></tr>
+<tr><td><code>C</code> (match)</td><td>align the focused photo over the reference's fixed frame — drag moves it, corners/scroll/<code>↑</code>/<code>↓</code> size it, <code>Cmd/Ctrl+arrows</code> nudge it, <code>\</code> previews the result (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
+<tr><td><code>Shift+C</code> (match)</td><td>landmark align — click the same numbered points on both photos (an ankle, the nose) and the crop solves itself; <code>Tab</code> skips an out-of-view point, <code>⌫</code> undoes the last, <code>Enter</code> accepts and moves to the next photo (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
+<tr><td><code>K</code> (match)</td><td>matched preview — the frozen set as a grid with its live tone and crop; click a photo to focus it, <code>K</code>/<code>Esc</code> closes</td></tr>
 <tr><td><code>E</code></td><td>develop panel — RAW-paired photos develop the RAW (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">Develop</a>)</td></tr>
-<tr><td><code>Shift+A</code></td><td>auto tone</td></tr>
+<tr><td><code>Shift+A</code></td><td>Auto — apply the camera's look if recognized, else auto tone</td></tr>
 <tr><td><code>Shift+C</code> / <code>Shift+V</code></td><td>copy / paste develop + crop settings</td></tr>
+<tr><td><code>Cmd/Ctrl+Z</code> / <code>Shift+Cmd/Ctrl+Z</code></td><td>undo / redo the last edit (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#edit-history-snapshots">Develop</a>)</td></tr>
 <tr><td><code>C</code></td><td>crop mode</td></tr>
 <tr><td><code>R</code> / <code>Shift+R</code></td><td>rotate 90° clockwise / counter-clockwise</td></tr>
 <tr><td><code>\</code></td><td>before / after (untouched original)</td></tr>
 <tr><td><code>W</code></td><td>clipping warnings on the photo (red = blown, blue = crushed; RAW mode adds gold = recoverable, red = clipped in the file)</td></tr>
+<tr><td><code>Q</code></td><td>pick a gray point — the white-balance eyedropper (develop pane open; click something neutral, <code>Esc</code> cancels; inside Match Look it samples the focused photo, committed with <code>M</code>)</td></tr>
 <tr><td><code>S</code></td><td>sources pane</td></tr>
+<tr><td><code>Shift+S</code></td><td>jump to date — pick a month and go (large Immich libraries; type filters, ↑↓ move, Enter jumps, Esc cancels)</td></tr>
+<tr><td><code>I</code></td><td>info panel (photo details; on Immich sources adds description, people and albums)</td></tr>
+<tr><td><code>Shift+I</code></td><td>album picker — toggle the photo in / out of albums (Immich; ↑↓ move, Space toggles, type filters, Esc closes)</td></tr>
 <tr><td><code>G</code></td><td>step into / out of a stack (Immich)</td></tr>
 <tr><td><code>A</code></td><td>apply panel</td></tr>
 <tr><td><code>J</code> / <code>Shift+J</code></td><td>export JPEG / overwrite the paired JPEG (press twice)</td></tr>
 <tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
+<tr><td><code>Shift+Space</code></td><td>fire the shutter remotely (tethered camera session only; ~2.5s of focus, then capture)</td></tr>
+<tr><td><code>[</code> / <code>]</code></td><td>nudge manual focus near / far (tethered, lens on MF; <code>Shift</code> = big step, <code>Cmd</code> = fine)</td></tr>
+<tr><td><code>L</code></td><td>hold focus (AF-L, tethered AF only): park the half-press so every fire is instant; <code>L</code> again releases</td></tr>
+<tr><td><code>B</code></td><td>live viewfinder stream (tethered): a continuous preview between shots — <code>B</code> or <code>Esc</code> returns to the photos</td></tr>
 <tr><td><code>O</code></td><td>open another folder (ad-hoc, not saved)</td></tr>
 <tr><td><code>D</code></td><td>debug HUD</td></tr>
 <tr><td><code>H</code></td><td>help overlay</td></tr>
-<tr><td><code>Esc</code></td><td>step out of a stack</td></tr>
+<tr><td><code>Esc</code></td><td>step out of a stack (or close the live view)</td></tr>
 </tbody></table>
 <h2 id="keys-crop-mode-c">Keys — crop mode (<code>C</code>)</h2>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
@@ -145,9 +160,11 @@
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>arrows</td><td>move the cursor a cell / a row</td></tr>
 <tr><td><code>Home</code> / <code>End</code>, <code>PgUp</code> / <code>PgDn</code></td><td>first / last photo, page up / down</td></tr>
-<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo</td></tr>
+<tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo — or every selected photo, when the cursored one is in the selection</td></tr>
+<tr><td><code>Y</code>, <code>Cmd+Click</code> / <code>Shift+Click</code> / <code>Shift+arrows</code>, <code>Cmd+A</code> / <code>Cmd+D</code></td><td>select the cursored cell / toggle · range · sweep / all · none (<code>Shift+Y</code> shows only selected)</td></tr>
 <tr><td><code>Space</code></td><td>peek the cursored photo full-size (real zoom; <code>Space</code>/<code>Esc</code> pops back, arrows flip neighbors)</td></tr>
 <tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
+<tr><td><code>Shift+Space</code></td><td>fire the shutter remotely (tethered camera session only; ~2.5s of focus, then capture)</td></tr>
 <tr><td><code>Z</code></td><td>cycle cell size (while peeking: zoom, as in the loupe)</td></tr>
 <tr><td><code>A</code></td><td>batch panel, in place (the grid stays up)</td></tr>
 <tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code></td><td>change the filter — the grid re-points live</td></tr>
@@ -184,10 +201,11 @@
 <h2 id="keys-sources-pane-s">Keys — sources pane (<code>S</code>)</h2>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td><code>↑</code> / <code>↓</code></td><td>select a row</td></tr>
-<tr><td><code>Enter</code></td><td>open the selected source or album</td></tr>
-<tr><td><code>→</code> / <code>←</code></td><td>expand an Immich row into its albums / collapse</td></tr>
+<tr><td><code>Enter</code></td><td>open the selected source or album — or continue the selected tether session (<code>+  New session</code> starts a fresh dated folder; the Tether sessions row expands its list)</td></tr>
+<tr><td><code>→</code> / <code>←</code></td><td>expand an Immich row into its albums, or the camera row (the Tether sessions row when no camera is plugged in) into its past sessions / collapse</td></tr>
 <tr><td><code>N</code></td><td>add a source</td></tr>
-<tr><td><code>⌫</code> / <code>Delete</code></td><td>remove the selected source (press twice; albums: no-op)</td></tr>
+<tr><td><code>R</code></td><td>rename the selected source or session inline (Enter commits, Esc reverts)</td></tr>
+<tr><td><code>⌫</code> / <code>Delete</code></td><td>remove the selected source, or delete the selected session to the system Trash (press twice; albums: no-op; the live or open session refuses)</td></tr>
 <tr><td><code>H</code></td><td>help overlay</td></tr>
 <tr><td><code>Esc</code> / <code>S</code></td><td>close the pane (Esc closes the add-row first)</td></tr>
 </tbody></table>
@@ -213,17 +231,32 @@ Immich source for one session without persisting anything.</p>
 <tr><td><code>crs:Temperature</code>, <code>crs:Tint</code></td><td>white balance while developing a RAW (real Kelvin; absent = As Shot)</td></tr>
 <tr><td><code>culler:DevelopMode</code></td><td>"Raw" when the photo carries RAW-mode WB edits</td></tr>
 <tr><td><code>crs:LensProfileEnable</code></td><td>"0" when in-camera lens correction is turned off (absent = on)</td></tr>
+<tr><td><code>crs:LuminanceSmoothing</code> (+ <code>ColorNoiseReduction</code>)</td><td>grain reduction while developing a RAW (absent = ISO-scaled automatic)</td></tr>
 <tr><td><code>crs:Vibrance</code>, <code>crs:Saturation</code></td><td>presence</td></tr>
 <tr><td><code>crs:ParametricHighlights/Lights/Darks/Shadows</code></td><td>tone curve regions</td></tr>
 <tr><td><code>crs:PostCropVignetteAmount</code> (+ <code>Style</code>)</td><td>vignette</td></tr>
 <tr><td><code>crs:HasCrop</code>, <code>crs:CropLeft/Top/Right/Bottom</code>, <code>crs:CropAngle</code></td><td>crop + straighten</td></tr>
 <tr><td><code>culler:OrientationQuarter</code></td><td>90° turns (the <code>crs:</code> schema has no field for them)</td></tr>
+<tr><td><code>culler:History</code>, <code>culler:Snapshots</code></td><td>the photo's edit history + named snapshots (undo/redo; culler-private)</td></tr>
 </tbody></table>
 <h2 id="known-limitations">Known limitations</h2>
 <ul>
 <li>Old Sony ARW files embed only a 1616×1080 preview — that's the best a
 RAW-only ARW can display <em>while culling</em> (the develop panel demosaics
 the RAW itself, at full quality).</li>
+<li>Match Look's Temp slider doesn't link across a set that mixes RAW
+and JPEG-only photos (Tint does).</li>
+<li>Inside a Match Look session, nothing — tone, matched crops, gray-point
+samples — touches disk until <code>M</code> commits; a member is pre-placed from
+the reference's frame only while it carries no crop of its own (Reset
+in the pass re-places deliberately).</li>
+<li>A crop window extended past the photo's edges (white padding) is
+stored honestly in the standard fields, but other editors reading the
+sidecar may clamp it back to the frame.</li>
+<li>After <code>J</code> on an Immich photo that has no RAW file, the uploaded
+render becomes the photo culler shows — plain, exactly as rendered.
+Editing it <em>again</em> (a new crop or grade on top) isn't supported yet:
+a further <code>J</code> re-uploads the same picture.</li>
 <li>Lens correction reads the camera's own embedded parameters (Sony
 ARW). RAWs from other makes develop uncorrected for now, so their
 framing can drift slightly from the corrected camera JPEG's.</li>
@@ -246,7 +279,7 @@ pass is on the roadmap.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

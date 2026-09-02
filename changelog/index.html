@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.5.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,306 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-5-0-2026-08-02">0.5.0 — 2026-08-02</h2>
+    <h2 id="0-6-0-2026-09-02">0.6.0 — 2026-09-02</h2>
+<p><strong>Tethered shooting, per-photo edit history with undo, look profiles,
+a RAW denoiser, windowed big-library scans, and a top-to-bottom visual
+refresh</strong> — everything that has landed while release publishing was
+paused.</p>
+<h3 id="tethered-shooting-sony-first">Tethered shooting (Sony first)</h3>
+<ul>
+<li><strong>Plug in a camera and shoot.</strong> With a Sony body in PC Remote mode
+(validated live on an a7C II), every shot appears in culler moments
+after the shutter: the JPEG shows the instant it lands and the RAW
+attaches behind it, so the screen never waits on a 47 MB file, and
+bursts drain at full wire speed. Downloads retry on their own and
+the app stays awake for the whole session. Any other camera gets the
+same tethered ingest; remote control is Sony-only for now, and
+culler says so honestly.</li>
+<li><strong>Remote shutter</strong>: <code>Shift+Space</code> fires the camera from culler —
+from the grid too.</li>
+<li><strong>Live view</strong> (<code>B</code>): the camera's live feed takes the photo's place
+on the cull screen (about 25 fps over USB). A fresh capture holds
+briefly for review, and <code>Shift+Space</code> fires straight through it.</li>
+<li><strong>Hold focus</strong> (<code>L</code>): park the half-press once and every following
+shot fires instantly at that focus — for catching the exact moment.</li>
+<li><strong>Timer</strong>: intervalometer, self-timer and bulb exposures from one
+rail button, with a live countdown in the corner readout.</li>
+<li><strong>Camera control from the info panel</strong>: aperture, shutter speed, ISO
+(with Auto), exposure compensation and white balance as − / +
+steppers, plus manual-focus nudge keys <code>[</code> / <code>]</code> (Shift for coarse,
+Cmd for fine). Rapid steps queue smoothly — no waiting between
+clicks.</li>
+<li><strong>Camera vitals</strong>: battery, drive mode and shots remaining in the
+corner readout and the info panel — polled gently, always yielding
+to photo transfer.</li>
+<li><strong>Session folders in the sources pane.</strong> Tethered shots land in a
+dated folder per day, and the camera row expands into past sessions:
+continue one, rename, delete (two-click confirm) or start a fresh
+one — browsable even with no camera plugged in.</li>
+<li><strong>Live mirror</strong>: every shot can back up automatically as it lands,
+to a folder or straight to an Immich server, with retries and a loud
+warning if the destination goes away — a dead destination never
+holds up newer shots.</li>
+<li><strong>USB link speed</strong> in the info panel ("USB 2.0 · 480 Mb/s"), with a
+nudge when a faster port would help — a slow hub is the usual reason
+transfers crawl.</li>
+</ul>
+<h3 id="develop">Develop</h3>
+<ul>
+<li><strong>Edit history and snapshots, per photo.</strong> <code>⌘Z</code> / <code>⌘⇧Z</code> undo and
+redo everything — ratings, flags, develop, crop. A History card in
+the develop panel lists every step: click one to restore that state
+(non-destructively — the restore is itself undoable), or promote it
+to a named snapshot; a Snapshots card keeps named states to return
+to. All of it persists in the sidecar and survives restarts.</li>
+<li><strong>Look profiles replace the Match JPEG button.</strong> The develop panel's
+look picker applies a complete camera-style look — tone, color and
+per-hue adjustments — with the exposure matched per shot. Built-in:
+Vivid (Sony); drop your own profiles in <code>~/.culler/looks/</code>. The
+picture style the camera recorded in the photo is recognized and
+pre-highlighted (never applied on its own), and <strong>Auto (<code>Shift+A</code>)
+on a RAW applies it</strong> — one key per photo gives a whole set the
+camera's own look.</li>
+<li><strong>Color Mix</strong>: eight per-hue bands of hue / saturation / luminance —
+as sliders or a draggable curve — for the color work a global
+saturation slider can't do. Saved to the sidecar like everything
+else.</li>
+<li><strong>RAW noise reduction.</strong> Developing a RAW now applies denoising —
+ISO-aware on Auto, adjustable via the new Denoise slider
+(double-click returns to Auto). Dark, high-ISO shots stop looking
+grainier than the camera's JPEG, and exports carry it too.</li>
+<li><strong>A redesigned develop panel</strong>: grouped cards, rebuilt sliders with
+finer damped drags, scroll-to-nudge (the panel no longer scrolls
+underneath), click-the-value-to-type, double-click-to-reset, and
+values that light up when off default.</li>
+<li><strong>White-balance eyedropper.</strong> "Pick gray point" in the Color card
+(or press <code>Q</code>): click something neutral in the photo (a gray card
+works great) and
+Temp/Tint are set so it renders neutral — real Kelvin on a RAW,
+slider offsets on a JPEG. Clipped spots are refused with a clear
+message, and <code>Esc</code> cancels.</li>
+<li><strong>Match Look no longer fits automatically.</strong> Entering <code>M</code> freezes
+the set and changes nothing; the fit runs when you press the new
+<strong>Match</strong> button in the panel, and <strong>Reset all</strong> returns every photo
+to how it was at entry — so a fit you don't like is one click to
+inspect and one click to back out.</li>
+<li><strong>Match a scattered series.</strong> Select photos from anywhere in the
+library, <code>Shift+Y</code> to show just the selection, <code>M</code> — Match Look now
+works over exactly that set (a progression series, not just a
+burst), with an honest count when a selection exceeds the 24-photo
+window.</li>
+<li><strong>Matched crops.</strong> <code>C</code> now works inside Match Look: crop the
+reference to set the series' frame, then each other photo opens in
+an <strong>align view</strong> — the reference stays put, solid, while your photo
+rides on top as a faint overlay that you drag, scroll-to-size and
+straighten until the subjects line up. <code>\</code> previews the result
+solid. Reset means "back to the reference's placement", and — like
+the rest of the session — nothing is written until <code>M</code> commits.</li>
+<li><strong>Re-rendering from inside a stack updates the cover on exit.</strong>
+<code>G</code> into a stack, develop, <code>J</code>, <code>G</code> out used to keep showing the old
+version until you switched albums — the collapsed cover now swaps to
+the fresh upload immediately.</li>
+<li><strong>Crops show on already-uploaded edits immediately.</strong> A new crop on
+a photo whose display is culler's own uploaded render used to stay
+invisible everywhere until the next <code>J</code> — committing a matched
+series then looked like nothing happened. It now shows at once in
+every view (scrolling, grid, previews), and <code>J</code> bakes it into the
+server copy as before.</li>
+<li><strong>The crop controls are a side pane now.</strong> They used to float over
+the top of the photo — and over the landmark panes — as a card;
+cropping now docks its controls on the right like the develop panel,
+so nothing ever covers the image while you frame it.</li>
+<li><strong>Landmark align.</strong> When poses shift too much for hand-dragging,
+align by matching points instead: <code>Shift+C</code> (or the <strong>Landmarks</strong>
+chip) in the align view opens a three-pane layout — the reference,
+your photo, and the live result. Click 2–8 distinctive points on the
+reference (an ankle, the nose, a hip ridge), click the same numbered
+points on your photo, and from the second point the crop solves
+itself — position, size and tilt at once. <code>Tab</code> skips a point that's
+out of view (any two shared points are enough), a magnifier follows
+the cursor for precision, <code>⌫</code> undoes, right-click (or the hover <code>×</code>)
+removes a specific point, and <code>Enter</code> accepts and moves to the next
+photo. Nothing is written until <code>M</code> commits, as ever.</li>
+<li><strong>Landmark-view captions sit under their photos.</strong> Each pane's
+caption used to anchor to the bottom of the screen, where it collided
+with the status line into overlapping text; captions now ride
+directly beneath the photo they describe.</li>
+<li><strong>Match Look sessions now write history.</strong> Committing with <code>M</code>
+records one entry per changed photo ("Match look" / "Matched crop"),
+so <code>Cmd/Ctrl+Z</code> can step a committed session back per photo.</li>
+<li><strong>Matched preview.</strong> <code>K</code> inside Match Look shows the whole set as a
+grid with its live tone and crop — the series exactly as it will
+commit, tracking every slider move; click a photo to focus it.</li>
+<li><strong>The eyedropper works inside Match Look.</strong> <code>Q</code> on the focused photo
+neutralizes its white balance — the per-photo color step a
+months-apart series needs before the tone fit. Samples stay with the
+session: <code>M</code> commits them, <code>Esc</code> unwinds them.</li>
+<li><strong>The crop window slides past the frame.</strong> When a tighter-framed
+photo needs its subject placed beyond its own edge — matching a
+series often does — keep dragging: the outside renders and exports as
+clean white padding, in the editor, the preview and the file alike.</li>
+<li><strong>The align view has a legend.</strong> A caption under the photo names
+which is which (<code>solid: &lt;reference&gt; · faint: &lt;this photo&gt;</code>), both
+while aligning and in the result preview.</li>
+<li><strong>Full controls in the align view.</strong> Corner handles on the frame
+drag-scale your photo, <code>↑</code>/<code>↓</code> size it from the keyboard,
+<code>Cmd/Ctrl+arrows</code> nudge its position (<code>Shift</code> = coarser steps
+everywhere), and a quiet outline shows where your photo's actual
+edges are.</li>
+<li><strong>Fixed: the double apply after saving a JPEG-only photo.</strong> On a
+photo without a RAW file, <code>J</code>'s render replaced the display and the
+crop, rotation and tone were then applied <em>again</em> on top — a tighter,
+re-rotated picture on screen, and a second <code>J</code> made it worse. Baked
+renders now paint plain everywhere (main view, filmstrip, grids,
+Compare), and a re-<code>J</code> re-uploads the same picture.</li>
+</ul>
+<h3 id="immich">Immich</h3>
+<ul>
+<li><strong>Your edits and history now live on the server.</strong> On a remote
+photo, <code>J</code> saves the develop settings, crop, full edit history and
+snapshots with the photo on the server, alongside the rendered JPEG
+it already uploads — reload the library or open it from another
+machine and everything is back where you left it. Edits you haven't
+committed with <code>J</code> stay local to the session.</li>
+<li><strong>Big libraries open in windows.</strong> Past roughly 5,000 photos, a
+library no longer loads whole: the newest couple of thousand open
+immediately and older months load as you approach them. Markers show
+where the gaps are (click one to load it), <code>Shift+S</code> opens a date
+picker that jumps straight to any month, and the sources row offers
+"Load all" with a live tally.</li>
+<li><strong>Scans recover instead of failing.</strong> Failed pages retry with
+backoff on their own, the partial-scan warning gained a one-click
+<strong>Retry</strong>, and scanning is gentler on modest home servers.</li>
+<li><strong>Both current Immich generations are supported.</strong> culler discovers
+the server's API version and reports a compatibility verdict when
+you add or open a server. On v3 servers, archived photos stay out of
+the timeline and culler's edits keep their identity.</li>
+<li><strong>The info panel</strong> (<code>I</code>): camera, lens, file size, place and
+description for every photo on every source. On Immich it grows
+server powers: edit the description in place, Favorite (the same
+axis as your Pick — starring works both ways), the people the server
+recognized, and the photo's albums.</li>
+<li><strong>Album picker</strong> (<code>Shift+I</code>): sort photos into server albums without
+leaving the cull — type to filter, Space toggles membership.</li>
+<li><strong>Locked folder</strong> (v3 servers): move a photo into the server's
+locked folder from the info panel. It's one-way from culler — only
+Immich's own web app can bring it back, and the panel says so.</li>
+<li><strong>Favorites and flags on unrated photos now stick.</strong> Newer servers
+reject the "no stars" value culler used to send, so every favorite
+or flag write on an unrated photo failed and silently retried
+forever. culler now says "no rating" the way the server expects.</li>
+<li><strong>No more black previews after <code>J</code>.</strong> The uploaded render becomes
+the photo's preview immediately instead of racing the server's
+thumbnail job, and a preview that failed to download retries when
+you return to the photo.</li>
+<li><strong>Re-rendering an edit is safe.</strong> <code>J</code> on an already-edited photo
+renders from the RAW again (never from its own previous output) and
+keeps filenames sane instead of stacking "-edit" onto "-edit" — and
+when nothing actually changed, it recognizes the identical render
+and leaves the stack alone (that corner case used to trash the
+stack's own cover, hiding the whole stack from the server's
+timeline).</li>
+<li><strong>Same-named photos say where they live</strong>: photos with the same
+filename in different folders carry a quiet folder tag in the
+overlay, so stacking no longer looks broken.</li>
+</ul>
+<h3 id="uploads">Uploads</h3>
+<ul>
+<li><strong>Already-stored photos skip in milliseconds.</strong> Before any bytes
+move, a checksum precheck asks the server what it already has —
+re-running a batch flies through everything that made it the first
+time.</li>
+<li><strong>Retry is the button.</strong> After a batch with errors the primary
+button becomes "Retry N failed…": one click re-runs the batch, the
+precheck skips the stored photos, and the summary names which photos
+failed and why.</li>
+<li><strong>Honest progress</strong>: the batch's total size up front, a
+byte-accurate bar per file, "838 MB left · 3.1 MB/s", a live speed
+graph, and an amber note when nothing has moved for a while.</li>
+<li><strong>Big files on slow connections no longer fail at exactly
+20 seconds</strong> — a whole-request time limit was cutting them off;
+uploads now take the time they need.</li>
+<li><strong>Move to Immich, safely.</strong> When a batch is verified fully stored on
+the server, a "Trash N originals…" offer appears under the summary:
+arm with one click, confirm with a second — and at that moment the
+server re-verifies every single file once more. Anything it can't
+vouch for is kept, and if the server can't be reached, nothing is
+touched. Originals go to the system Trash.</li>
+<li><strong>Sending files to the Trash is instant</strong> — it used to route through
+Finder, which on some Macs sat out a two-minute timeout and failed.</li>
+</ul>
+<h3 id="export">Export</h3>
+<ul>
+<li><strong>Exports now match straight-out-of-camera quality</strong>: JPEGs encode
+at quality 95 with full-resolution color by default (a saved setting
+keeps its old value).</li>
+<li><strong>The JPEG Quality slider is always reachable</strong>: it now has its own
+card in the batch panel on every source — it also governs <code>J</code>, which
+quietly followed it all along; the first <code>J</code> mentions it once.</li>
+</ul>
+<h3 id="multi-select">Multi-select</h3>
+<ul>
+<li><strong>Select several photos and act on them at once.</strong> <code>Cmd/Ctrl</code>+click
+toggles a photo in the filmstrip or Grid, <code>Shift</code>+click selects the
+run, and from the keyboard <code>Y</code> toggles the current photo,
+<code>Shift</code>+arrows sweep, <code>Cmd/Ctrl+A</code> selects the whole view and
+<code>Cmd/Ctrl+D</code> clears. Selected photos wear a blue check chip, the
+corner readout and Grid header count the set, the marking keys
+(pick/reject/stars/labels) act on all of it when you're on a
+selected photo, and the batch panel's Scope menu gains
+<strong>Selected (N)</strong> so any batch action runs on exactly those.</li>
+<li><strong><code>Shift+Y</code> shows only the selected photos</strong> — cull a hand-picked
+shortlist with every tool, the grid included. The view tracks the
+selection live (deselecting drops the photo on the spot), and
+clearing the selection returns to All with a note.</li>
+<li><strong>Sweeping deselection</strong>: deselect a photo, and the very next
+<code>Shift</code>+click or <code>Shift</code>+arrows deselects the whole run — pruning a
+big selection is one gesture. <code>Shift</code>+click ranges always start at
+the photo you're on.</li>
+</ul>
+<h3 id="the-new-look">The new look</h3>
+<ul>
+<li><strong>A top-to-bottom visual refresh.</strong> Every panel — batch, crop
+toolbar, sources form, timer, help — now shares one consistent dark
+design: uniform control sizes, type, forms and keycap chips. The
+help overlay is grouped by topic and finally scrolls instead of
+clipping, and the phantom resize cursor on the side rails is gone.</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>The info panel's <strong>Move to locked folder</strong> action now looks like a
+button (hover highlight) instead of a bare text line.</li>
+<li>Grid view: <code>Shift+Space</code> now fires the tethered shutter as the menu
+says (it used to peek the photo instead).</li>
+<li><code>Shift+A</code> auto tone on a RAW now reads the RAW histogram, matching
+what the panel's Auto button always did.</li>
+<li>Filenames arriving from a server or camera are reduced to a safe
+name before writing, so a malicious or confused source can no longer
+write outside the chosen folder.</li>
+<li><code>Shift+J</code> (overwrite JPEG) now verifies its backup and writes it
+atomically — a stale or partial backup can no longer cost a camera
+original.</li>
+<li>A sidecar that exists but can't be read is left untouched instead of
+templated over — other tools' metadata in it survives.</li>
+<li>A batch finishing while Compare, Survey or Match Look was open could
+crash or mark the wrong photo; it now waits until you leave the
+view.</li>
+<li>Re-adding a server you already saved updates its API key instead of
+creating a duplicate entry — the natural key-rotation path.</li>
+<li>Grid view: clicking a photo far from the current one no longer makes
+the surrounding thumbnails flicker while they re-render.</li>
+<li>Re-editing an already-uploaded edit (a new crop or grade, then <code>J</code>)
+no longer silently re-uploads the previous picture when the RAW
+can't be downloaded or decoded — the upload stops and the status
+line names the real cause, so the retry actually carries your edit.</li>
+<li>Downloading a large RAW (for <code>J</code>'s re-render or 1:1 zoom) now gets
+the same generous time budget as uploads instead of dying at 20
+seconds on a slow connection.</li>
+<li>Match Look's align view: the size handles now sit on <em>your photo's</em>
+outline corners instead of the reference frame — the reference
+carries no drag controls.</li>
+</ul>
+<h2 id="0-5-0-2026-08-02">0.5.0 — 2026-08-02</h2>
 <p><strong>culler now tells you when there's a new culler</strong> — plus a batch of
 fixes and polish straight from the same live-server field session.</p>
 <ul>
@@ -224,7 +523,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.5.0</span>
+  <span>© Sander Mertens · culler v0.6.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
