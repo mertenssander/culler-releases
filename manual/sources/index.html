@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
     </div>
   </details>
 </header>
@@ -184,10 +184,11 @@ load — a straining server, a network blip — culler keeps everything
 that arrived and the pill tells you how much is missing, <strong>which pages
 failed and why</strong> (the server's actual error), and how to retry; you
 never lose a loaded timeline to one bad request. When it keeps
-happening, the same per-page causes are printed to the console — open
-Console.app (or run culler from a terminal) and look for lines starting
-with <code>culler: scan:</code> to see exactly what the server said. Videos are
-left out: culler is a photo culler.</p>
+happening, the same per-page causes land in culler's
+<a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>
+(<code>~/.culler/logs/culler.log</code>) and on the console — look for lines
+tagged <code>[scan]</code> to see exactly what the server said. Videos are left
+out: culler is a photo culler.</p>
 <p>RAW+JPEG shot pairs that live on the server as two separate assets are
 culled as <strong>one photo</strong>, exactly like a local folder pairs them: the
 camera JPEG is what you see, the overlay says so ("DSC09 · ARW+JPG" —
@@ -197,7 +198,9 @@ stack grouping counts too: a pair stacked on the server (culler's
 uploads arrive that way) is the same one photo, and a stack holding
 more — an edit version, extra frames — shows its <strong>cover</strong> with a
 member-count badge and <code>G</code> step-into. When a stack contains a RAW, the
-develop panel grades that RAW, exactly like a plain pair. The timeline
+develop panel grades that RAW, exactly like a plain pair — also from an
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#albums">album</a> that holds only the render: the RAW comes from the
+server's stack membership, so develop and <code>J</code> work there too. The timeline
 orders <strong>newest first</strong>, matching the server's own view, and stacks
 group <strong>as the scan streams in</strong> — not only when it finishes.</p>
 <p>The difference from a folder is where state goes:</p>
@@ -445,7 +448,7 @@ in the list.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.6.0</span>
+  <span>© Sander Mertens · culler v0.7.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

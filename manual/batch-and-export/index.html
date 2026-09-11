@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
     </div>
   </details>
 </header>
@@ -294,6 +294,23 @@ and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
 previous version as if it were your new edit. Big originals get the
 same generous download time budget uploads have, so a slow connection
 means a longer wait, not a failure.</p>
+<p>One more safety catch on a photo that already fronts a culler edit:
+if <strong>no grade and no crop are loaded</strong> for it — the state a photo is
+in when culler couldn't read its saved edit back from the server —
+<code>J</code> would replace that edit with a plain, uncropped render of the RAW.
+So the first <code>J</code> only <strong>arms</strong>, with the status line naming the photo
+and the consequence ("press J again to do that"); a second <code>J</code> runs it,
+any other key stands it down. The same catch applies to <code>J</code> on a
+member row inside a <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a>: that re-renders
+the member's own state, not the cover's. If you meant to bake your
+edits and the arm appears instead, don't confirm — the grade didn't
+load; step away and back to the photo to re-read it, and check the
+<a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>.</p>
+<p>The grade itself (sliders, crop, history) is saved to the server with
+the render. When that save fails the status line says so on <strong>every</strong>
+upload until you restart culler — the photo keeps its <code>[unsaved]</code> tag,
+and the grade stays safe in culler's own state file meanwhile, so the
+next <code>J</code> after a restart still bakes what you see.</p>
 <h2 id="the-pending-work-pill">The pending-work pill</h2>
 <p>Anything running in the background shows in a small pill at the
 top-right: a batch with its live count ("Uploading · 12 of 37") right
@@ -323,7 +340,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.6.0</span>
+  <span>© Sander Mertens · culler v0.7.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

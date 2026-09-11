@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
     </div>
   </details>
 </header>
@@ -116,7 +116,7 @@
 <tr><td><code>K</code></td><td>Grid view — overview of the working set (see <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grid-view-k">Viewing</a>)</td></tr>
 <tr><td><code>V</code></td><td>Compare view</td></tr>
 <tr><td><code>N</code></td><td>Survey view</td></tr>
-<tr><td><code>M</code></td><td>Match Look — fit a burst's tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
+<tr><td><code>M</code></td><td>Match Look — fit a burst's tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (once anything's changed, <code>Esc</code> arms first and a second <code>Esc</code> discards) (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
 <tr><td><code>R</code> / <code>L</code> (match)</td><td>re-anchor the reference / unlink-link the focused photo</td></tr>
 <tr><td><code>C</code> (match)</td><td>align the focused photo over the reference's fixed frame — drag moves it, corners/scroll/<code>↑</code>/<code>↓</code> size it, <code>Cmd/Ctrl+arrows</code> nudge it, <code>\</code> previews the result (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
 <tr><td><code>Shift+C</code> (match)</td><td>landmark align — click the same numbered points on both photos (an ankle, the nose) and the crop solves itself; <code>Tab</code> skips an out-of-view point, <code>⌫</code> undoes the last, <code>Enter</code> accepts and moves to the next photo (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
@@ -214,12 +214,30 @@
 <table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody>
 <tr><td><code>sources.conf</code></td><td>the saved sources (tab-separated; Immich API keys are <strong>not</strong> here — they live in the OS keychain)</td></tr>
 <tr><td><code>export.conf</code></td><td>the JPEG export preset</td></tr>
-<tr><td><code>state/</code></td><td>per-server culling state for Immich sources (the write-through queue's source of truth)</td></tr>
+<tr><td><code>state/</code></td><td>per-server culling state for Immich sources (the write-through queue's source of truth; develop + crop per asset)</td></tr>
 <tr><td><code>cache/</code></td><td>disk cache of remote previews and embedded RAW previews (4 GB, least-recently-used eviction)</td></tr>
+<tr><td><code>logs/culler.log</code></td><td>the diagnostic log (below)</td></tr>
 </tbody></table>
 <p>Environment overrides: <code>CULLER_CONFIG_DIR</code> and <code>CULLER_CACHE_DIR</code> relocate
 the above; <code>CULLER_IMMICH_URL</code> + <code>CULLER_IMMICH_KEY</code> inject a temporary
 Immich source for one session without persisting anything.</p>
+<h2 id="the-diagnostic-log">The diagnostic log</h2>
+<p>culler keeps a plain-text trace of what it did at
+<code>~/.culler/logs/culler.log</code> — one line per thing you did or the app
+decided, never per frame: the source you opened, what the scan found,
+the photo you focused (its asset ids, crop, grade, whether it fronts a
+culler edit and what the server's saved copy of the grade says), every
+edit you committed, every step of a <code>J</code> (which file it rendered from,
+what crop and grade it applied, the upload id, what replaced what in
+the stack, whether the grade saved), and every server hiccup. Nothing
+in it identifies your photos beyond file names and server ids. It is
+small (rotated at 8 MB, one backup kept) and always on.</p>
+<p>When something looks wrong — an upload that doesn't match what you
+saw, an edit that didn't come back — the log is the first thing to
+send along with the report:</p>
+<pre class="giallo" style="color: #BFBDB6; background-color: #0D1017;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #59C2FF;">tail</span><span style="color: #95E6CB;"> -200</span><span style="color: #AAD94C;"> ~/.culler/logs/culler.log</span></span></code></pre>
+<p>Launch with <code>--verbose</code> (or <code>CULLER_LOG=1</code> in the environment) to
+mirror every line to the terminal as it happens.</p>
 <h2 id="xmp-fields">XMP fields</h2>
 <p>Sidecars are edited in place — fields written by other tools survive.</p>
 <table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
@@ -279,7 +297,7 @@ pass is on the roadmap.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.6.0</span>
+  <span>© Sander Mertens · culler v0.7.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

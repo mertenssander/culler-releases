@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
     </div>
   </details>
 </header>
@@ -416,7 +416,10 @@ its thumbnail corner and a <code>[clamped]</code> tag joins the panel header
 while it's focused — drag back toward center and it reconnects.</p>
 <p><strong>Nothing is written until you decide</strong>: <code>M</code> again commits — every
 changed photo's sidecar is written once — and <code>Esc</code> cancels, restoring
-every photo exactly as it was. It's the same "starting point, not a
+every photo exactly as it was. <code>Esc</code> is instant on an untouched
+session; once anything is matched or aligned it arms instead — the
+sidebar's <code>Esc</code> hint names the count, and a second <code>Esc</code> actually
+discards. It's the same "starting point, not a
 pixel match" honesty as a camera look: the fit gets the set close, your
 eyes make the call.</p>
 <h3 id="matching-a-series">Matching a series</h3>
@@ -463,7 +466,8 @@ back to full. The subject
 moved between sessions, so placement stays yours per photo; the shape
 is what stays identical. Every crop lives in memory with the rest of
 the session: <code>M</code> commits them all at once (and writes one history
-entry per changed photo), <code>Esc</code> throws them all away.</p>
+entry per changed photo), <code>Esc</code> throws them all away — pressed twice,
+since an aligned series arms the confirm first.</p>
 <p><strong>Landmark align (<code>Shift+C</code>).</strong> When the pose shifted too much to
 eyeball, align by <em>matching points</em> instead of dragging: in the align
 view, press <code>Shift+C</code> (or the crop pane's <strong>Landmarks</strong> chip) for a
@@ -585,7 +589,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.6.0</span>
+  <span>© Sander Mertens · culler v0.7.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

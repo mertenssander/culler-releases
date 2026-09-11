@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.6.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,47 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-6-0-2026-09-02">0.6.0 — 2026-09-02</h2>
+    <h2 id="0-7-0-2026-09-11">0.7.0 — 2026-09-11</h2>
+<p><strong>A diagnostic log that narrates what culler did, safer server
+re-renders, and a confirm before Match Look throws aligned work away.</strong>
+The server-side fixes came out of one live session on a real aligned
+series, with the new log open beside the app.</p>
+<ul>
+<li><strong>Match Look asks before throwing work away.</strong> <code>Esc</code> on an untouched
+session still leaves at once, but once anything is matched or aligned
+it arms instead — "press Esc again to discard 4 aligned photos" — and
+only a second <code>Esc</code> discards. Any other key or click stands down (and
+still does its own job), <code>M</code> commits as ever, and the sidebar's <code>Esc</code>
+hint shows the count before you ever press it.</li>
+<li><strong>A diagnostic log, always on.</strong> <code>~/.culler/logs/culler.log</code> records
+what culler did — the photo you focused and everything it knew about
+it, each edit, each step of a <code>J</code>, each server hiccup — one line per
+event, rotated at 8 MB. Send its tail with a bug report; launch with
+<code>--verbose</code> to watch it live in a terminal.</li>
+<li><strong><code>J</code> asks before replacing an edit with a plain render.</strong> On a photo
+that already fronts a culler edit, a <code>J</code> with no grade and no crop
+loaded (the state after a server read that came back empty) used to
+bake the RAW plain over your edit — an aligned series lost a frame
+that way. It now arms first ("press J again") and only a second <code>J</code>
+runs it; any other key stands it down.</li>
+<li><strong>Your grade survives a restart even when the server save failed.</strong>
+After a <code>J</code> the photo's develop and crop now follow it into culler's
+own state file, so a restart with an empty or unreachable server
+copy still shows — and bakes — the edit you made. When the server
+save fails, every later upload says so until you restart culler.</li>
+<li><strong>Album views find the RAW.</strong> A photo whose server stack holds the
+RAW now develops and re-renders from it even when the album only
+contains the render; <code>J</code> used to refuse there with "its stack carries
+none".</li>
+<li><strong>A grade and its crop can no longer lose each other.</strong> Committing a
+crop on a photo whose grade had come from the server used to leave a
+half-empty local record, so the next launch showed the crop without
+the grade (or the reverse) and a <code>J</code> would have baked it that way.
+culler now fills the missing half from the server copy, keeps the
+local record whole, and saves the grade with <strong>every</strong> upload, not
+only when something changed since the last one.</li>
+</ul>
+<h2 id="0-6-0-2026-09-02">0.6.0 — 2026-09-02</h2>
 <p><strong>Tethered shooting, per-photo edit history with undo, look profiles,
 a RAW denoiser, windowed big-library scans, and a top-to-bottom visual
 refresh</strong> — everything that has landed while release publishing was
@@ -523,7 +563,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.6.0</span>
+  <span>© Sander Mertens · culler v0.7.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
