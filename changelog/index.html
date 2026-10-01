@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,272 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-7-0-2026-09-11">0.7.0 — 2026-09-11</h2>
+    <h2 id="0-8-0-2026-10-01">0.8.0 — 2026-10-01</h2>
+<ul>
+<li>
+<p><strong>Albums no longer show every photo twice.</strong> Uploading to an Immich
+album, or adding a photo with the album picker (<code>Shift+I</code>), used to put
+both the RAW and the JPEG in the album, and the Immich album view shows
+them as two separate photos. culler now adds the JPEG only; the RAW
+stays behind it in the stack, so developing from an album still works.
+Albums filled earlier keep their doubles — toggle a photo out and back
+in with <code>Shift+I</code> to fix it, or remove the RAWs in Immich.</p>
+</li>
+<li>
+<p><strong>Photos from an Immich server show the time they were taken.</strong> Their
+capture time used to read in UTC, so in Amsterdam a photo taken at 08:37
+showed 07:37, and an evening shot could sort under the next day. culler
+now uses the camera's own local time, the same one the Immich timeline
+shows.</p>
+</li>
+<li>
+<p><strong>Every filter shows its size.</strong> The rail's Filter palette counts each
+filter before you pick it. Empty filters are greyed out but still
+clickable, and a row of ≥1★ … ≥5★ chips appears once anything is
+rated. <code>F</code>, <code>Cmd+1</code>–<code>5</code>, <code>Shift+Y</code> and <code>Shift+U</code> name the filter and
+its count on the status line (<code>Filter: Picks · 312</code>), as does the ⋯
+menu's Filter row. An empty filter says which one it is and how to
+move on. The bottom-right counters gain a hollow ring counting the
+photos still <strong>undecided</strong> (no pick or reject yet), so the work left
+in a cull is always in view. On a partly loaded large Immich library
+the counts carry a <code>+</code>.</p>
+</li>
+<li>
+<p><strong>Moments are found for you.</strong> Photos of the same situation — from
+one camera, each taken within 4 s of the previous one by default (read
+from the capture time, to the millisecond where the camera records
+it) — now group into moments, whether that's a burst of fast frames
+or a slower run of the same scene: a thin bracket under their
+thumbnails in the filmstrip, a <code>[moment 3/8]</code> tag on the photo, and
+<code>,</code> / <code>.</code> to jump to the previous / next moment in the normal view,
+the Grid and Survey. <code>N</code> on a moment now surveys exactly that moment
+(the 24 around you in a longer one) instead of whatever happened to
+sit nearby. Moments follow the filter, so under Unrated the ones
+you've judged simply drop out of the way. Change the gap in Settings
+(<code>Cmd+,</code>) — 0.5 s groups only strict bursts.</p>
+</li>
+<li>
+<p><strong>Settings (<code>Cmd+,</code>).</strong> A small sheet over the photo — from the
+culler menu, the ⋯ menu or <code>Cmd+,</code> — gathers the things you might want
+to change: the moment gap (the filmstrip regroups behind the sheet as
+you drag it, and two lines count your moments and name the one you're
+on), auto-advance, how fast every slider moves when you drag it (Fine,
+Standard or Direct), the JPEG quality <code>J</code> and exports use (the same
+value as the Batch panel's Quality card, whose slider now also moves
+cleanly one step at a time on a slow drag), how much disk the preview
+cache may use (with how much it holds now, and buttons to show or clear
+it), whether culler checks for updates at launch, <strong>Show tips again</strong>
+for the one-time hints, and <strong>Show log file</strong>, which shows culler's
+diagnostic log in Finder for a problem report. Every change applies at
+once and is remembered; the keyboard drives it too (<code>↑</code>/<code>↓</code>, <code>←</code>/<code>→</code>,
+<code>Tab</code>, <code>R</code> resets, <code>Esc</code> closes). Auto-advance (<code>T</code>) is now remembered
+across launches.</p>
+</li>
+<li>
+<p><strong><code>Enter</code> in Survey keeps one.</strong> It picks the focused photo and
+rejects every other photo in the grid you haven't flagged or rated
+yet — earlier picks and rated photos are never touched — and with
+auto-advance on, deals the next moment.</p>
+</li>
+<li>
+<p><strong>Sort photos into folders with the number keys.</strong> Pin up to nine
+folders under <strong>Sort destinations</strong> in the apply panel (<code>A</code>, with Copy
+or Move chosen), each set to move or copy, then press <code>Shift+D</code> for
+sort mode: <code>1</code>–<code>9</code> send the photo — or your selection — to that folder,
+RAW, JPEG and sidecar together, with a receipt on the status line. A
+blue <strong>[sort]</strong> tag and a rail of your folders show the mode is on;
+<code>Shift+D</code>, <code>Esc</code> or the rail's <strong>Done</strong> leaves it. The first move into
+each folder asks for a second press, a same-named file already there
+leaves your photo in place, and an unplugged drive is refused instead
+of recreated. The batch <strong>Move</strong> and <strong>Copy</strong> also got stricter: a
+photo whose JPEG or sidecar name is already taken in the destination
+is now left entirely in place, where before its RAW could go ahead
+alone.</p>
+</li>
+<li>
+<p><strong>Pivot to the same day, camera, lens or moment — and come straight
+back.</strong> <code>Shift+G</code> (or a click on the info panel's Captured, Moment,
+Camera or Lens row, which now show how many photos share them) narrows
+the view to every photo that shares that detail with the one you're
+on, with a strip above the photo saying where you are. Judge, filter
+and select inside as usual; <code>Esc</code> returns to the exact photo, filter
+and grid scroll you left, and <code>Enter</code> leaves the pivot but stays on
+the photo you're looking at. The batch panel offers <strong>This view (N)</strong>
+while you're in one.</p>
+</li>
+<li>
+<p><strong>Group the grid by day or by moment.</strong> <code>G</code> in the grid (<code>K</code>) puts
+each capture day — or each moment, with the single photos between them
+gathered into one quiet group — under its own header, and <code>G</code> again
+moves on to the next grouping and back to the plain grid. Each header
+counts its picks, rejects and undecided photos as you go, has a box
+that selects (or deselects) the whole group, jumps to the group's
+first photo when you click its title, and on a moment offers a
+<strong>Survey</strong> button that opens that moment straight away. The arrow keys
+step over the headers row by row.</p>
+</li>
+<li>
+<p><strong>Save every unsaved server edit in one go.</strong> The apply panel (<code>A</code>) on
+an Immich source gains <strong>Save edits to server</strong> — the batch form of
+<code>J</code>: every photo in the scope that still needs saving is rendered,
+uploaded as its stack cover and has its grade saved, one after the
+other, with "Saving · 4 of 12" and the current photo's phase in the
+panel and the pill, and Cancel stopping cleanly between photos. An
+<strong>Unsaved</strong> scope (this action only) targets exactly the photos behind
+the corner count; a selection works too. Photos culler couldn't load a
+grade or crop for are skipped and named — never re-rendered plain over
+an existing edit — and on a large library the summary says how many
+unsaved photos sit outside the loaded part. Failures name the photos
+and the primary button becomes "Retry N failed…".</p>
+</li>
+<li>
+<p><strong>Unsaved server edits now have a place on every screen.</strong> A blue
+"12 unsaved" chip in the bottom-right corner totals the develop, crop
+and landmark edits you haven't saved with <code>J</code>, across every Immich
+source you've added; click it (or press <code>Shift+U</code>) to see just those
+photos on the open server — each drops out of the view the moment it
+saves — and rest the pointer on it for the per-server breakdown, where
+a click opens that server straight onto its unsaved photos. The number
+is exact within seconds of opening a server: culler now checks every
+edited photo it hadn't proven saved against the server in the
+background, one request at a time, so a photo whose saved grade
+already matches stops counting and one deleted on the server is
+forgotten — including photos outside the loaded window of a large
+library. <code>Shift+U</code> is also in the Filter menu and the ⋯ popover.</p>
+</li>
+<li>
+<p><strong>The diagnostic log now narrates every batch.</strong> Copy, move, trash,
+export, download, archive and upload from the apply panel each write
+what was dispatched (action, scope, photo count, destination), one
+line per photo with its outcome or the reason it failed, a line when
+you cancel, and a closing count with the elapsed time — so a batch
+from last week can be reconstructed from <code>~/.culler/logs/culler.log</code>
+instead of from memory.</p>
+</li>
+<li>
+<p><strong>The sources pane counts your unsaved server edits.</strong> Each Immich
+source's row now says "12 unsaved" — the photos whose develop, crop or
+landmark alignment hasn't been saved with <code>J</code> yet, for every server
+you've added, not only the open one. Ratings and picks sync on their
+own and never count; folders never show it. culler now also records
+which edits it has proven saved, so the count survives a restart, and
+a <code>J</code> no longer leaves a stale copy of the photo's state behind under
+its old name. The first launch after this version may read high until
+the photos are opened. A landmark-only change (an alignment without a
+crop or grade) finally shows as unsaved too.</p>
+</li>
+<li>
+<p><strong>Quitting with unsaved server edits now reminds you once.</strong> Close
+culler while develop grades or crops on an Immich source haven't been
+saved with <code>J</code>, and the first Quit is held back with a count on the
+status line; press Quit again to leave them for later — they stay in
+culler's own state file, nothing is lost — or save first.</p>
+</li>
+<li>
+<p><strong>Inside a stack, culler's own render row no longer applies its crop
+and grade a second time.</strong> Stepping into a server stack with <code>G</code> and
+looking at the re-rendered cover showed the crop over an already
+cropped picture, and <code>J</code> from that row cropped the render itself
+again. The row now knows it is culler's render and renders from the
+stack's RAW, exactly like the cover outside the stack.</p>
+</li>
+<li>
+<p><strong>Landmark align no longer doubles a server photo's previous crop.</strong>
+Aligning a photo that culler had already re-rendered once, with its
+RAW showing in the pane, stored the old crop applied twice — the
+frame drifted away from the reference the moment you accepted. The
+solve now knows whether it was made on the RAW or on the rendered
+JPEG and stores the crop once either way. If a series you aligned
+today looks off, re-enter the pass on that photo and press <code>Enter</code>
+again; the stored points are fine.</p>
+</li>
+<li>
+<p><strong>The upload speed graph holds still and says what it means.</strong> Its
+bars used to re-slice a sliding window every frame and rescale to
+whatever peak happened to be in view, so they wobbled constantly
+without meaning anything. Each bar is now a fixed five seconds of the
+batch that never changes once complete, the row steps left one bar at
+a time, the lighter rightmost bar is the five seconds in progress
+drawn at its current speed, and a caption ("up to 20 MB/s") says what
+a full-height bar means — a scale that only steps up during a batch.
+The speed next to "MB left" now stays put between files instead of
+blinking out.</p>
+</li>
+<li>
+<p><strong>The info panel says "no value" one way, everywhere.</strong> Camera, lens,
+place, description, people and album rows that have nothing to show
+now render nothing at all — never a stray dash. A description with
+nothing typed reads "Add a description" (a click-to-edit invitation,
+the one field that has to stay visible), and a people/albums fetch
+that fails now reads "Couldn't load people &amp; albums" — leaving that
+photo and coming back genuinely retries it, instead of staying stuck
+for the rest of the session.</p>
+</li>
+<li>
+<p><strong>Landmarks are saved with the photos, and the walk starts on the
+reference.</strong> <code>Shift+C</code> now works on the reference's own crop pass:
+place its points once, then <code>Enter</code> walks the series with those dots
+already on every photo. <code>M</code> saves the points alongside the crops (in
+the sidecar, or with the server copy), so adding a photo to an
+aligned series later means opening Match Look, pressing <code>Enter</code>, and
+clicking that one photo's points — already-aligned photos are skipped.
+A <strong>Clear landmarks</strong> button in the crop pane forgets the set, and
+<code>Esc</code>'s confirm now counts landmark edits too.</p>
+</li>
+<li>
+<p><strong><code>J</code> on a server photo says what it is waiting on.</strong> The pending-work
+pill used to read "Uploading" from the first moment, while a
+tens-of-megabytes RAW was still coming <em>down</em>. It now walks the real
+phases — "Downloading RAW · name" with the megabytes so far, the total
+and the speed on hover (amber when nothing moves for five seconds,
+like uploads), then "Rendering · name", then "Uploading · name" with
+the upload's own count. The diagnostic log records the same steps.</p>
+</li>
+<li>
+<p><strong>Rating and flagging server photos writes to disk less.</strong> culler's
+local copy of a server library's edits used to be rewritten whole on
+every keystroke; it now settles a quarter of a second after the last
+change (and always on quit). The one trade: a hard crash inside that
+quarter second can lose the very last edit — a rating or flag is
+re-sent to the server on the next launch regardless.</p>
+</li>
+<li>
+<p><strong>Oversized server responses are refused, not swallowed.</strong> A server
+answer far larger than any sane one (a runaway page, a corrupt saved
+grade) now fails that one step with a clear message instead of
+reading without limit into memory.</p>
+</li>
+<li>
+<p><strong>A sources pane you can read at a glance.</strong> The pane (<code>S</code>) groups
+your sources under <strong>Folders</strong> and <strong>Servers</strong>, draws a small icon
+for each kind instead of a bracketed tag, and shows where each one
+lives — your home folder as <code>~</code>, long paths shortened from the front
+so the folder's own name survives. The always-green dot is gone: a
+row only carries a mark when something is wrong (amber = out of reach
+for now, red = needs you), with the reason spelled out beside it, and
+a scanning source shows a spinner and its progress. Adding is a
+compact <strong>+ Add</strong> beside the heading, an empty pane offers one <strong>Add
+source</strong> button, the keys for the row you're on sit at the pane's
+foot, renaming happens in a proper edit field, and a large server's
+<strong>Load all</strong> is always visible on its row. Pointing at a row
+highlights it without moving your selection. Opening an album now
+marks that album — not its server too — as the one you're in.</p>
+</li>
+<li>
+<p><strong>Every source shows its photo count, and says when it's in trouble.</strong>
+The sources pane shows each source's photo count on the right — live
+for the one you have open, and from your last visit for the others
+(culler never reads a folder you don't have open just to count it, so
+macOS doesn't prompt you). A saved folder, card or share that's gone
+reads "Not found" or "Card not inserted"; a server that didn't answer
+last time reads "Can't reach …"; a server whose API key was refused —
+or whose key this copy of culler can no longer read from the
+keychain — says so in red, with the fix: add the server again. The
+pane also no longer checks every saved folder on disk while it's
+drawing; it checks once, in the background, each time it opens.</p>
+</li>
+</ul>
+<h2 id="0-7-0-2026-09-11">0.7.0 — 2026-09-11</h2>
 <p><strong>A diagnostic log that narrates what culler did, safer server
 re-renders, and a confirm before Match Look throws aligned work away.</strong>
 The server-side fixes came out of one live session on a real aligned
@@ -563,7 +828,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

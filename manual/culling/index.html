@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -125,7 +125,9 @@ survive a round trip through other tools.</p>
 <p><strong>Auto-advance</strong> (<code>T</code> toggles it) moves to the next photo after every
 rating or flag, which is what makes a first pass fast: <code>P</code>, <code>X</code>, <code>3</code>,
 <code>X</code>, <code>P</code>… and you're ten photos in. Turn it off when you want to stack
-multiple judgments on one photo; the overlay shows <code>[manual advance]</code>.</p>
+multiple judgments on one photo; the overlay shows <code>[manual advance]</code>.
+culler remembers your choice across launches — it's the same switch as
+the Auto-advance checkbox in <a href="https://mertenssander.github.io/culler-releases/manual/getting-started/#settings-cmd">Settings</a>.</p>
 <h2 id="culling-with-the-mouse">Culling with the mouse</h2>
 <p>The keyboard is the fast path, but everything above is clickable the
 moment the mouse moves — and every control shows its key, so the buttons
@@ -135,9 +137,10 @@ teach the shortcuts as you go:</p>
 buttons — Pick, Reject, Clear, Rate, Select, Grid, Compare, Filter —
 each showing its key with the name under it; hovering flares the full
 teaching line — and the <strong>Filter</strong> and <strong>Rate</strong> buttons open real
-palettes: click a filter to jump straight to it, click a star chip
-(1–5, 0) to rate. Its <strong>⋯</strong> button opens the menu with the rest: the
-live filter, Survey, Match Look, Batch, Sources, Auto-advance and
+palettes: click a filter to jump straight to it (each one shows how
+many photos it holds), click a star chip (1–5, 0) to rate. Its <strong>⋯</strong>
+button opens the menu with the rest: the live filter and its count,
+Survey, Match Look, Batch, Sources, Settings, Auto-advance and
 Help (<a href="../img/16-more-popover.png">screenshot</a>). Buttons you've used
 about five times (key or click) politely dim — the rail retires
 itself as you learn. The <strong>‹‹</strong> at its foot collapses it to a thin
@@ -197,17 +200,90 @@ a different library — the status line says so — or on <code>Cmd/Ctrl+D</code
 <h2 id="filters-working-in-passes">Filters: working in passes</h2>
 <p><code>F</code> cycles the view: <strong>All → Picks → Picks+unrated → Rejects → Unrated → Edited →
 Labeled</strong> and back. <code>Shift+F</code> returns straight to All. The overlay shows
-the active filter, and the position counter (<code>3/12</code>) counts within it.</p>
+the active filter, and the position counter (<code>3/12</code>) counts within it.
+<strong>Unrated</strong> means <em>no flag and no stars</em>; a photo you've starred but not
+yet picked or rejected isn't in it.</p>
 <p>For a second pass over your ratings, <code>Cmd/Ctrl+1</code>–<code>5</code> shows only photos
 with <em>at least</em> that many stars, and <code>Cmd/Ctrl+0</code> (or <code>F</code>) clears it.</p>
+<p>Every filter tells you its size. Landing on one names it and counts it
+on the status line (<code>Filter: Picks · 312</code>). The rail's <strong>Filter</strong>
+palette lists every filter with its count <em>before</em> you choose. Filters
+with nothing in them are greyed out but still clickable. <strong>Selected</strong>
+and <strong>Unsaved</strong> show up in the list while they hold photos, and once
+anything is rated, a row of <strong>≥1★ … ≥5★</strong> chips shows how many photos
+each star filter would keep. <code>F</code> still steps through empty filters, so
+the order you've learned never changes. Landing on an empty filter
+says which one it is and how to move on ("No rejects yet — F for the
+next filter · Shift+F shows all"). On a large Immich library that's
+only partly loaded, the counts cover the loaded photos and carry a <code>+</code>
+(<code>312+</code>); the palette notes how many are loaded. Inside a stack
+(<code>G</code>), filters are off, and the palette says so.</p>
+<p>On a server source, <strong><code>Shift+U</code></strong> shows only the photos whose develop,
+crop or landmark edits haven't been saved with <code>J</code> yet — the same photos
+the corner's <strong>"N unsaved"</strong> chip counts (clicking the chip is the same
+gesture). A photo drops out of that view the moment it's saved, and
+<code>Shift+U</code> again (or <code>F</code>) returns to All. Folder photos save as you edit
+them, so there the key just says so.</p>
 <p>A photo that stops matching the filter leaves the view as you judge it —
 rejecting a photo in the Picks view removes it and advances, which is
 exactly the winnowing motion you want.</p>
+<h2 id="pivot-same-day-camera-lens-or-moment-shift-g">Pivot: same day, camera, lens or moment — <code>Shift+G</code></h2>
+<p>Sometimes the photo in front of you raises a question about its
+neighbours: <em>what else did I shoot that day? everything from this lens?
+the rest of this moment?</em> <strong><code>Shift+G</code></strong> opens a small card that answers
+it. It offers what this photo has, each with a count:</p>
+<ul>
+<li><strong>Same moment</strong> (<code>M</code>) — the moment the photo belongs to
+(<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moments</a>);</li>
+<li><strong>Same day</strong> (<code>D</code>) — every photo captured that day;</li>
+<li><strong>Same camera</strong> (<code>C</code>) and <strong>Same lens</strong> (<code>L</code>) — every photo from that
+body or lens.</li>
+</ul>
+<p>Pick a row with its letter, or <code>↑</code>/<code>↓</code> and <code>Enter</code>, or click it (<code>Esc</code>
+closes the card). A row only appears when the photo has that detail — no
+lens name, no Same lens row. The <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#info-panel-i">info panel</a>
+offers the same pivots from its <strong>Captured</strong>, <strong>Moment</strong>, <strong>Camera</strong> and
+<strong>Lens</strong> rows: each carries a small count and an arrow, and a click
+pivots.</p>
+<p>The view becomes just those photos, with the cursor still on the photo
+you pivoted from. A strip above the photo says where you are — <em>Same day
+· Tue 29 Sep 2026 · 214 photos · 12 picked · 30 rejected · 172
+undecided</em> — and in the grid the header says it instead. Everything
+works as usual inside: judge, rate, select, <code>N</code> to survey, and <code>F</code> or
+<code>Cmd/Ctrl+1</code>–<code>5</code> to narrow further ("same day, picks only"). Marks never
+move a photo out of the pivot itself — a day is still that day after you
+reject a frame.</p>
+<p>Two ways out:</p>
+<ul>
+<li><strong><code>Esc</code></strong> (or a click anywhere on the strip) goes <strong>back</strong> — to the
+exact photo you pivoted from, with the filter you were using, and back
+into the grid at the same scroll if that's where you came from. If
+that photo is gone (you moved it, say), the cursor lands where it was
+and the status line says so.</li>
+<li><strong><code>Enter</code></strong> <strong>stays</strong>: it leaves the pivot but keeps the cursor on the
+photo you're looking at now. If that photo isn't in the filter you had
+before, the view widens to All and the status line tells you.</li>
+</ul>
+<p>Pivoting again from inside a pivot swaps what you're looking at, but
+<code>Esc</code> still takes you all the way back to where you started. What you
+did inside stays done — marks, ratings, and the selection, which is one
+set across every view (pivot, gather with <code>Y</code>, pivot again, then batch
+the set). In the <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-apply-panel-a">batch panel</a>
+the Scope menu gains <strong>This view (N)</strong> while you're pivoted.</p>
+<p>Pivots don't start from Compare, Survey, Match Look, crop or inside a
+stack — the status line says why — and a stack can't be opened from
+inside a pivot (<code>Esc</code> first). On a large Immich library that's only
+partly loaded, a pivot covers the loaded photos (the strip says
+"loaded"), and older months don't load in automatically while you're in
+one. A rescan or a batch that removes photos ends the pivot and says so.</p>
 <h2 id="the-one-pass-workflow">The one-pass workflow</h2>
 <ol>
 <li>Open the folder, <code>T</code> on (the default), and run through everything with
 <code>P</code> / <code>X</code> / arrows. Don't deliberate — that's what the next passes are
-for. Use <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#survey-view-n">Survey view</a> on bursts.</li>
+for. Use <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#survey-view-n">Survey view</a> on
+<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moments</a>: <code>N</code> on a moment opens exactly that
+moment, <code>Enter</code> keeps the photo you're on and rejects the rest, and
+<code>.</code> jumps to the next moment.</li>
 <li><code>F</code> to Picks. Rate the keepers <code>1</code>–<code>5</code>; use
 <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#compare-view-v">Compare view</a> when two frames fight for
 the same slot.</li>
@@ -232,7 +308,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

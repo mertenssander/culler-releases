@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -124,7 +124,8 @@ unreachable, the check fails silently and nothing appears. When a newer
 version exists, a small <code>● update vX.Y.Z</code> note joins the corner readout
 (and an "Update available" item joins the Help menu); clicking either
 opens the release notes in your browser — nothing updates by itself.
-Add <code>disabled=1</code> to <code>~/.culler/update.conf</code> to turn the check off.</p>
+Turn the check off under <a href="https://mertenssander.github.io/culler-releases/manual/getting-started/#settings-cmd">Settings</a> → General → <strong>Check
+for updates on launch</strong>.</p>
 <p>First launch lands on the <a href="https://mertenssander.github.io/culler-releases/manual/sources/">sources pane</a>: add a photo
 folder (or an Immich server) and open it. A folder is scanned
 immediately: RAW and JPEG files with the same name are treated as one
@@ -140,8 +141,9 @@ Mac app and DMG.)</em></p>
 thin dark halo so it stays readable even on a blown-out sky
 (<a href="../img/07-bright-overlay.png">example</a>).</li>
 <li><strong>Top-left overlay</strong>: filename, position in the current view (<code>3/128</code>),
-and mode tags such as the active filter, <code>[manual advance]</code>, <code>[stack]</code>
-or <code>[before]</code>. Below it: capture time and exposure info, then your
+and mode tags such as the active filter, <code>[manual advance]</code>, <code>[stack]</code>,
+<code>[before]</code> or <code>[moment 3/8]</code> (the photo's place in a
+<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a>). Below it: capture time and exposure info, then your
 stars, PICK/REJECT state, and stack size where relevant. When two
 photos in the library share a filename (the same shot in two folders,
 say), each shows a quiet folder tag like <code>[testset/]</code> so you always
@@ -150,10 +152,19 @@ same tag appears in Compare panes and on Survey's focused photo.</li>
 <li><strong>The filmstrip</strong> along the bottom shows thumbnails with your culling
 state at a glance: a green dot for picks, red for rejects, a star count,
 and a colored bar for color labels. The accent ring marks the current
-photo. Crop, rotation <em>and develop edits</em> show live in the thumbnails.</li>
-<li><strong>Bottom-right counters</strong>: whole-folder totals of picks, rejects, rated
-and edited photos, in the same colors as the filmstrip badges, plus a
-hint for <code>J</code> and <code>H</code>.</li>
+photo, and a thin bracket under the thumbnails groups each
+<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a> — the bright one is the moment you're on. Crop, rotation <em>and develop edits</em> show live in the thumbnails.</li>
+<li><strong>Bottom-right counters</strong>: whole-folder totals of picks (green dot),
+rejects (red dot), <strong>undecided</strong> photos (a hollow ring: no pick or
+reject yet, stars or not), rated and edited photos, in the same colors
+as the filmstrip badges, plus a hint for <code>J</code> and <code>H</code>. The ring is
+your remaining work: it counts down as you cull. On a partly loaded
+large Immich library the counts carry a <code>+</code>. When any server source holds edits you haven't
+saved with <code>J</code>, a blue <strong>"12 unsaved"</strong> chip joins them — the total
+across every server you've added, on every screen. Click it to see
+just those photos (<code>Shift+U</code> does the same); rest the pointer on it for
+the per-server breakdown, and click a server there to open it straight
+onto its unsaved photos. See <a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">Sources</a>.</li>
 <li><strong>The status line</strong> (bottom-left) narrates what just happened: the
 rating you set, an export finishing, a confirmation prompt.</li>
 <li><strong>The rail</strong> (left edge) is a slim column of keycap buttons for the
@@ -177,6 +188,43 @@ previews. See <a href="https://mertenssander.github.io/culler-releases/manual/ba
 <p><img src="../img/14-pending-ops.png" alt="The pending-work pill naming an in-flight operation" /></p>
 <p>Press <code>H</code> at any time for the built-in key overlay:</p>
 <p><img src="../img/11-help.png" alt="The help overlay" /></p>
+<h2 id="settings-cmd">Settings (<code>Cmd+,</code>)</h2>
+<p><code>Cmd+,</code> (<code>Ctrl+,</code> off the Mac) — or <strong>culler → Settings…</strong> in the menu
+bar, or <strong>Settings…</strong> in the rail's <strong>⋯</strong> menu — opens a small sheet over
+the photo. Its sections list down the left; everything in it takes effect
+the moment you change it and is remembered across launches.</p>
+<ul>
+<li><strong>Culling</strong> — how far apart photos can be and still form one
+<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a> (drag it and watch the brackets under
+the filmstrip regroup behind the sheet; the two lines under it say how
+many moments your library holds and which one you're on), and
+<strong>Auto-advance</strong> — the same switch as <code>T</code>.</li>
+<li><strong>Develop &amp; export</strong> — <strong>Slider drag speed</strong> for every slider in the
+app: <em>Fine</em> (half of Standard, for precise work), <em>Standard</em>, or
+<em>Direct</em> (the value follows the pointer); and the <strong>JPEG quality</strong> <code>J</code>
+and exports render at — the same value as the apply panel's
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j">JPEG Quality card</a>.</li>
+<li><strong>Storage</strong> — the <strong>Cache limit</strong> (1, 2, 4, 8 or 16 GB; 4 GB by
+default) for the previews culler keeps from servers and RAW files so
+they open instantly, with how much it holds right now; <strong>Show cache
+folder</strong>; and <strong>Clear cache</strong> — safe at any time, everything in it is
+fetched again when needed.</li>
+<li><strong>General</strong> — <strong>Check for updates on launch</strong> (on by default: once a
+day at launch, culler fetches one small version file from GitHub; off,
+it never contacts GitHub — the change applies from the next launch);
+<strong>Show tips again</strong> (every one-time hint on the status line shows once
+more — they wait until the sheet is closed), and <strong>Show log file</strong>,
+which shows culler's <a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>
+in Finder, ready to attach to a problem report.</li>
+</ul>
+<p>The keyboard drives it like everything else: <code>↑</code>/<code>↓</code> pick a row, <code>←</code>/<code>→</code>
+change it (hold <code>Shift</code> for bigger steps), <code>Space</code> flips a checkbox, <code>Tab</code>
+moves to the next section, <code>R</code> puts the row back to its default, and
+<code>Esc</code> (or <code>Cmd+,</code> again, or a click outside) closes it. A section with
+something changed shows a dot in the list and a <strong>Reset</strong> beside its
+heading. Settings is unavailable in Compare, Survey, Match Look and crop —
+the status line says how to leave first. Every setting, its default and
+where it is stored is listed in the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">reference</a>.</p>
 <p>Now go cull something: <a href="https://mertenssander.github.io/culler-releases/manual/culling/">Culling</a>.</p>
 
     <nav class="pagenav">
@@ -190,7 +238,7 @@ previews. See <a href="https://mertenssander.github.io/culler-releases/manual/ba
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

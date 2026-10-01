@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -103,6 +103,7 @@
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td><code>←</code> <code>→</code> / <code>↑</code> <code>↓</code></td><td>previous / next photo (±10)</td></tr>
 <tr><td><code>Home</code> / <code>End</code></td><td>first / last</td></tr>
+<tr><td><code>,</code> / <code>.</code></td><td>first photo of the previous / next moment — photos from one camera each within 4 s of the last (the gap is a <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">setting</a>); single photos are skipped (see <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">Viewing</a>)</td></tr>
 <tr><td><code>P</code> / <code>X</code> / <code>U</code></td><td>pick / reject / clear flag</td></tr>
 <tr><td><code>1</code>–<code>5</code>, <code>0</code></td><td>star rating / clear (same number again clears)</td></tr>
 <tr><td><code>6</code>–<code>9</code></td><td>color label red / yellow / green / blue (again clears)</td></tr>
@@ -111,15 +112,16 @@
 <tr><td><code>Cmd/Ctrl+Click</code> / <code>Shift+Click</code> / <code>Shift+arrows</code></td><td>toggle / range / sweep the selection (filmstrip + Grid; a sweep straight after a deselect deselects the run)</td></tr>
 <tr><td><code>Z</code> / <code>Space</code> / double-click</td><td>zoom 100% ⇄ fit (drag to pan)</td></tr>
 <tr><td>Scroll / pinch</td><td>continuous zoom around the pointer (to 8×; snaps back to fit)</td></tr>
-<tr><td><code>F</code> / <code>Shift+F</code></td><td>cycle filter (All → Picks → Picks+unrated → Rejects → Unrated → Edited → Labeled) / show all</td></tr>
+<tr><td><code>F</code> / <code>Shift+F</code></td><td>cycle filter (All → Picks → Picks+unrated → Rejects → Unrated → Edited → Labeled) / show all — the status line counts the view you land on</td></tr>
 <tr><td><code>Cmd/Ctrl+1</code>–<code>5</code>, <code>0</code></td><td>filter to at least N stars / show all</td></tr>
+<tr><td><code>Shift+U</code></td><td>show only unsaved server edits — the photos the corner's "N unsaved" chip counts (Immich; <code>Shift+U</code> or <code>F</code> returns to all; see <a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">Sources</a>)</td></tr>
 <tr><td><code>K</code></td><td>Grid view — overview of the working set (see <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grid-view-k">Viewing</a>)</td></tr>
 <tr><td><code>V</code></td><td>Compare view</td></tr>
-<tr><td><code>N</code></td><td>Survey view</td></tr>
-<tr><td><code>M</code></td><td>Match Look — fit a burst's tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (once anything's changed, <code>Esc</code> arms first and a second <code>Esc</code> discards) (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
+<tr><td><code>N</code></td><td>Survey view — on a moment, exactly that moment</td></tr>
+<tr><td><code>M</code></td><td>Match Look — fit a series' tone to the current photo; <code>M</code> commits, <code>Esc</code> cancels (once anything's changed, <code>Esc</code> arms first and a second <code>Esc</code> discards) (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#match-look-m">Develop</a>)</td></tr>
 <tr><td><code>R</code> / <code>L</code> (match)</td><td>re-anchor the reference / unlink-link the focused photo</td></tr>
 <tr><td><code>C</code> (match)</td><td>align the focused photo over the reference's fixed frame — drag moves it, corners/scroll/<code>↑</code>/<code>↓</code> size it, <code>Cmd/Ctrl+arrows</code> nudge it, <code>\</code> previews the result (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
-<tr><td><code>Shift+C</code> (match)</td><td>landmark align — click the same numbered points on both photos (an ankle, the nose) and the crop solves itself; <code>Tab</code> skips an out-of-view point, <code>⌫</code> undoes the last, <code>Enter</code> accepts and moves to the next photo (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
+<tr><td><code>Shift+C</code> (match)</td><td>landmark align — place the reference's points once (on its own pass), then <code>Enter</code> walks the series: click the same numbered points on each photo and its crop solves itself; <code>Tab</code> skips an out-of-view point, <code>⌫</code> undoes the last, <code>Enter</code> accepts and moves on; points are saved with the photos, so a re-entry resumes where you left off (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Develop</a>)</td></tr>
 <tr><td><code>K</code> (match)</td><td>matched preview — the frozen set as a grid with its live tone and crop; click a photo to focus it, <code>K</code>/<code>Esc</code> closes</td></tr>
 <tr><td><code>E</code></td><td>develop panel — RAW-paired photos develop the RAW (see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">Develop</a>)</td></tr>
 <tr><td><code>Shift+A</code></td><td>Auto — apply the camera's look if recognized, else auto tone</td></tr>
@@ -135,9 +137,14 @@
 <tr><td><code>I</code></td><td>info panel (photo details; on Immich sources adds description, people and albums)</td></tr>
 <tr><td><code>Shift+I</code></td><td>album picker — toggle the photo in / out of albums (Immich; ↑↓ move, Space toggles, type filters, Esc closes)</td></tr>
 <tr><td><code>G</code></td><td>step into / out of a stack (Immich)</td></tr>
+<tr><td><code>Shift+G</code></td><td>pivot — show every photo sharing this one's moment (<code>M</code>), day (<code>D</code>), camera (<code>C</code>) or lens (<code>L</code>); pick in the card with the letter, <code>↑</code>/<code>↓</code> + <code>Enter</code> or a click (see <a href="https://mertenssander.github.io/culler-releases/manual/culling/#pivot-same-day-camera-lens-or-moment-shift-g">Culling</a>)</td></tr>
+<tr><td><code>Esc</code> / <code>Enter</code> (pivot)</td><td>back to the photo and filter you pivoted from (in the grid: the same scroll) / leave the pivot and stay on this photo</td></tr>
 <tr><td><code>A</code></td><td>apply panel</td></tr>
+<tr><td><code>Shift+D</code></td><td>sort mode — send photos into pinned folders; <code>Shift+D</code> or <code>Esc</code> leaves (folder sources; pin the folders under <strong>A → Copy or Move → Sort destinations</strong> — see <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#sorting-into-folders-shift-d">Batch</a>)</td></tr>
+<tr><td><code>1</code>–<code>9</code> (sort mode)</td><td>send the photo — or the whole selection, when the photo is in it — to destination 1–9; a Move asks once per folder per session (ratings and labels rest while sorting)</td></tr>
 <tr><td><code>J</code> / <code>Shift+J</code></td><td>export JPEG / overwrite the paired JPEG (press twice)</td></tr>
-<tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
+<tr><td><code>T</code></td><td>toggle auto-advance (remembered across launches — the same switch as in <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">Settings</a>)</td></tr>
+<tr><td><code>Cmd/Ctrl+,</code></td><td>Settings — the sheet of <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">settings</a> (also in the Grid; not in Compare, Survey, Match Look or crop)</td></tr>
 <tr><td><code>Shift+Space</code></td><td>fire the shutter remotely (tethered camera session only; ~2.5s of focus, then capture)</td></tr>
 <tr><td><code>[</code> / <code>]</code></td><td>nudge manual focus near / far (tethered, lens on MF; <code>Shift</code> = big step, <code>Cmd</code> = fine)</td></tr>
 <tr><td><code>L</code></td><td>hold focus (AF-L, tethered AF only): park the half-press so every fire is instant; <code>L</code> again releases</td></tr>
@@ -145,7 +152,7 @@
 <tr><td><code>O</code></td><td>open another folder (ad-hoc, not saved)</td></tr>
 <tr><td><code>D</code></td><td>debug HUD</td></tr>
 <tr><td><code>H</code></td><td>help overlay</td></tr>
-<tr><td><code>Esc</code></td><td>step out of a stack (or close the live view)</td></tr>
+<tr><td><code>Esc</code></td><td>step out of a stack, then out of a pivot (or close the live view, or leave sort mode)</td></tr>
 </tbody></table>
 <h2 id="keys-crop-mode-c">Keys — crop mode (<code>C</code>)</h2>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
@@ -160,17 +167,21 @@
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>arrows</td><td>move the cursor a cell / a row</td></tr>
 <tr><td><code>Home</code> / <code>End</code>, <code>PgUp</code> / <code>PgDn</code></td><td>first / last photo, page up / down</td></tr>
+<tr><td><code>,</code> / <code>.</code></td><td>previous / next moment (the cursor moves; also from a peek)</td></tr>
 <tr><td><code>P</code> <code>X</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the cursored photo — or every selected photo, when the cursored one is in the selection</td></tr>
 <tr><td><code>Y</code>, <code>Cmd+Click</code> / <code>Shift+Click</code> / <code>Shift+arrows</code>, <code>Cmd+A</code> / <code>Cmd+D</code></td><td>select the cursored cell / toggle · range · sweep / all · none (<code>Shift+Y</code> shows only selected)</td></tr>
 <tr><td><code>Space</code></td><td>peek the cursored photo full-size (real zoom; <code>Space</code>/<code>Esc</code> pops back, arrows flip neighbors)</td></tr>
 <tr><td><code>T</code></td><td>toggle auto-advance</td></tr>
 <tr><td><code>Shift+Space</code></td><td>fire the shutter remotely (tethered camera session only; ~2.5s of focus, then capture)</td></tr>
 <tr><td><code>Z</code></td><td>cycle cell size (while peeking: zoom, as in the loupe)</td></tr>
+<tr><td><code>G</code></td><td>group the grid by day → by moment → none; a header's box selects its group (again: deselects), its title jumps to the group, a moment's <strong>Survey</strong> button surveys it — see <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grouping-the-grid-g">Viewing</a></td></tr>
 <tr><td><code>A</code></td><td>batch panel, in place (the grid stays up)</td></tr>
-<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code></td><td>change the filter — the grid re-points live</td></tr>
+<tr><td><code>Shift+D</code>, then <code>1</code>–<code>9</code></td><td>sort mode, in place — the digits send the cursored photo (or its selection) to a pinned folder; <code>Esc</code> leaves sort mode first, the grid on the next press</td></tr>
+<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code> / <code>Shift+U</code></td><td>change the filter — the grid re-points live (<code>Shift+U</code>: unsaved server edits)</td></tr>
+<tr><td><code>Shift+G</code></td><td>pivot the grid to the cursored photo's moment / day / camera / lens (also from a peek)</td></tr>
 <tr><td><code>E</code> <code>C</code> <code>V</code> <code>N</code> <code>M</code> <code>S</code></td><td>exit, then act on the cursored photo (also from a peek)</td></tr>
 <tr><td><code>H</code></td><td>help overlay</td></tr>
-<tr><td><code>Esc</code> / <code>Enter</code> / <code>K</code></td><td>exit onto the cursored photo</td></tr>
+<tr><td><code>Esc</code> / <code>Enter</code> / <code>K</code></td><td>exit onto the cursored photo — inside a pivot, <code>Esc</code> leaves the pivot (back to the grid you pivoted from, same scroll)</td></tr>
 </tbody></table>
 <h2 id="keys-compare-view-v">Keys — Compare view (<code>V</code>)</h2>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
@@ -189,11 +200,13 @@
 <tr><td>arrows</td><td>move the focus through the grid</td></tr>
 <tr><td><code>X</code></td><td>reject + remove from the grid</td></tr>
 <tr><td><code>⌫</code> / <code>Delete</code></td><td>remove without judging</td></tr>
+<tr><td><code>Enter</code></td><td>keep this one — pick the focused photo, reject + remove every other photo with no flag and no stars (picks and rated photos stay); with auto-advance on, deals the next moment</td></tr>
+<tr><td><code>,</code> / <code>.</code></td><td>deal the previous / next moment</td></tr>
 <tr><td><code>Space</code></td><td>peek the focused photo full-size (real zoom with <code>Z</code>/scroll; <code>Space</code>/<code>Esc</code> pops back, arrows keep moving the focus, <code>X</code> keeps winnowing)</td></tr>
 <tr><td><code>A</code></td><td>exit onto the focused survivor, then open the batch panel</td></tr>
 <tr><td><code>K</code></td><td>hop to the Grid view</td></tr>
 <tr><td><code>E</code> <code>C</code> <code>V</code> <code>M</code> <code>S</code></td><td>exit onto the focused survivor, then act</td></tr>
-<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code></td><td>change the filter — the survey re-deals from the new set</td></tr>
+<tr><td><code>F</code> / <code>Cmd+1</code>–<code>5</code>, <code>0</code> / <code>Shift+U</code></td><td>change the filter — the survey re-deals from the new set (<code>Shift+U</code>: unsaved server edits)</td></tr>
 <tr><td><code>P</code> <code>U</code>, <code>0</code>–<code>5</code>, <code>6</code>–<code>9</code></td><td>mark the focused photo</td></tr>
 <tr><td><code>H</code></td><td>help overlay</td></tr>
 <tr><td><code>Esc</code> / <code>N</code></td><td>exit onto the focused survivor</td></tr>
@@ -209,13 +222,41 @@
 <tr><td><code>H</code></td><td>help overlay</td></tr>
 <tr><td><code>Esc</code> / <code>S</code></td><td>close the pane (Esc closes the add-row first)</td></tr>
 </tbody></table>
+<h2 id="keys-settings-cmd">Keys — Settings (<code>Cmd+,</code>)</h2>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>↑</code> / <code>↓</code></td><td>the previous / next row in the section</td></tr>
+<tr><td><code>←</code> / <code>→</code></td><td>change the row: a slider moves one step (<code>Shift</code>: four), a choice moves one along</td></tr>
+<tr><td><code>Space</code> / <code>Enter</code></td><td>flip a checkbox</td></tr>
+<tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>the next / previous section</td></tr>
+<tr><td><code>R</code></td><td>put the row back to its default</td></tr>
+<tr><td><code>Esc</code> / <code>Cmd/Ctrl+,</code></td><td>close (while typing a value: the first <code>Esc</code> cancels the typing)</td></tr>
+</tbody></table>
+<h2 id="settings">Settings</h2>
+<p>Everything in the Settings sheet (<code>Cmd+,</code> — see
+<a href="https://mertenssander.github.io/culler-releases/manual/getting-started/#settings-cmd">Getting started</a>), its default, and
+the file that keeps it. Each value lives in exactly one file, so an older
+culler still reads the ones it knows.</p>
+<table><thead><tr><th>Setting</th><th>Section</th><th>Default</th><th>Stored in</th></tr></thead><tbody>
+<tr><td>Max gap between photos — how close together photos must be to share a <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a> (0.5–10 s)</td><td>Culling</td><td>4 s</td><td><code>settings.conf</code> <code>moment_gap_ms</code> (milliseconds)</td></tr>
+<tr><td>Auto-advance after a pick, reject or rating — the same switch as <code>T</code></td><td>Culling</td><td>on</td><td><code>settings.conf</code> <code>auto_advance</code> (<code>1</code>/<code>0</code>)</td></tr>
+<tr><td>Slider drag speed — how far every slider moves for a drag: Fine (half of Standard), Standard, Direct (follows the pointer)</td><td>Develop &amp; export</td><td>Standard</td><td><code>settings.conf</code> <code>slider_drag</code> (<code>fine</code>/<code>standard</code>/<code>direct</code>)</td></tr>
+<tr><td>JPEG quality for <code>J</code> and exports (1–100) — the same value as the apply panel's JPEG Quality card</td><td>Develop &amp; export</td><td>95</td><td><code>export.conf</code> <code>quality</code></td></tr>
+<tr><td>Cache limit — how much disk the preview cache may use (1, 2, 4, 8 or 16 GB); the oldest previews go first once it's full</td><td>Storage</td><td>4 GB</td><td><code>settings.conf</code> <code>cache_cap_gb</code></td></tr>
+<tr><td>Show cache folder · Clear cache — buttons; clearing is safe, previews are fetched again</td><td>Storage</td><td>—</td><td>—</td></tr>
+<tr><td>Check for updates on launch — once a day, one small version file from GitHub; applies from the next launch</td><td>General</td><td>on</td><td><code>update.conf</code> (<code>disabled=1</code> when off)</td></tr>
+<tr><td>Show tips again — a button: every one-time status-line hint shows once more</td><td>General</td><td>—</td><td><code>hints.conf</code> (every hint back to unseen)</td></tr>
+<tr><td>Show log file — a button: shows <code>culler.log</code> in Finder</td><td>General</td><td>—</td><td>—</td></tr>
+</tbody></table>
 <h2 id="configuration-files">Configuration files</h2>
 <p>Everything lives in <code>~/.culler/</code>:</p>
 <table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody>
 <tr><td><code>sources.conf</code></td><td>the saved sources (tab-separated; Immich API keys are <strong>not</strong> here — they live in the OS keychain)</td></tr>
 <tr><td><code>export.conf</code></td><td>the JPEG export preset</td></tr>
+<tr><td><code>update.conf</code></td><td>the update check's last result, and <code>disabled=1</code> when you've turned it off (Settings → General — adding the line by hand does the same)</td></tr>
+<tr><td><code>destinations.conf</code></td><td>the pinned sort folders, in digit order, each with its Move/Copy choice (tab-separated)</td></tr>
+<tr><td><code>settings.conf</code></td><td>the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">Settings</a> that have no other home, one <code>key=value</code> per line — written by the Settings sheet, read at launch (a hand edit applies on the next launch; lines culler doesn't know are kept)</td></tr>
 <tr><td><code>state/</code></td><td>per-server culling state for Immich sources (the write-through queue's source of truth; develop + crop per asset)</td></tr>
-<tr><td><code>cache/</code></td><td>disk cache of remote previews and embedded RAW previews (4 GB, least-recently-used eviction)</td></tr>
+<tr><td><code>cache/</code></td><td>disk cache of remote previews and embedded RAW previews (4 GB by default — <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">Settings</a> → Storage sets the limit or clears it; least-recently-used eviction)</td></tr>
 <tr><td><code>logs/culler.log</code></td><td>the diagnostic log (below)</td></tr>
 </tbody></table>
 <p>Environment overrides: <code>CULLER_CONFIG_DIR</code> and <code>CULLER_CACHE_DIR</code> relocate
@@ -229,12 +270,34 @@ the photo you focused (its asset ids, crop, grade, whether it fronts a
 culler edit and what the server's saved copy of the grade says), every
 edit you committed, every step of a <code>J</code> (which file it rendered from,
 what crop and grade it applied, the upload id, what replaced what in
-the stack, whether the grade saved), and every server hiccup. Nothing
-in it identifies your photos beyond file names and server ids. It is
-small (rotated at 8 MB, one backup kept) and always on.</p>
+the stack, whether the grade saved), every batch you ran from the
+apply panel (the <code>[apply]</code> lines: what was dispatched on how many
+photos and where to, one line per photo saying whether it was copied,
+moved, trashed, exported, downloaded, archived or uploaded — or why it
+failed — a line when you cancel, and a closing count with the time it
+took), every sort-mode send (the <code>[sort]</code> lines: entering and leaving
+sort mode, pinning and unpinning folders, each press queued, each move
+or copy dispatched, and what happened to every photo — sent, already
+in the folder, or refused because the folder wasn't reachable), the
+background check of your unsaved server edits (the
+<code>[unsaved]</code> lines: when the check starts and how many photos it has to
+look at, each photo it proves saved or forgets because the server no
+longer has it, and a closing tally), the moment grouping (the <code>[burst]</code>
+lines: how many moments the library holds each time it's grouped and
+the gap it used, which moment <code>N</code> dealt, and every <code>Enter</code> keep-one
+with what it picked and rejected), the settings culler started with
+and every change you make to them (the <code>[settings]</code> lines — one per
+change, naming the values that moved, not one per step of a drag), every pivot (the <code>[pivot]</code> lines: what you pivoted to and
+from where, how many photos it showed, and how it ended — back, stay,
+or closed because the library changed), every change to the grid's
+grouping (the <code>[grid]</code> lines: by day, by moment or none, and how many
+groups it made), and every server hiccup. Nothing in it identifies your photos
+beyond file names and server ids. It is small (rotated at 8 MB, one
+backup kept) and always on.</p>
 <p>When something looks wrong — an upload that doesn't match what you
 saw, an edit that didn't come back — the log is the first thing to
-send along with the report:</p>
+send along with the report. <strong>Settings → General → Show log file</strong>
+(<code>Cmd+,</code>) shows it in Finder, ready to attach; from a terminal:</p>
 <pre class="giallo" style="color: #BFBDB6; background-color: #0D1017;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #59C2FF;">tail</span><span style="color: #95E6CB;"> -200</span><span style="color: #AAD94C;"> ~/.culler/logs/culler.log</span></span></code></pre>
 <p>Launch with <code>--verbose</code> (or <code>CULLER_LOG=1</code> in the environment) to
 mirror every line to the terminal as it happens.</p>
@@ -297,7 +360,7 @@ pass is on the roadmap.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -365,7 +365,7 @@ today; more looks are on the way, and you can add your own — drop a
 <code>&lt;name&gt;.conf</code> in <code>~/.culler/looks/</code> (a <code>name=</code> line sets its display name)
 and it joins the list.</p>
 <h2 id="match-look-m">Match Look: <code>M</code></h2>
-<p><strong>Match Look</strong> grades a whole burst as one. Stand on the photo whose
+<p><strong>Match Look</strong> grades a run of similar photos as one. Stand on the photo whose
 look you like and press <code>M</code>: up to 24 photos around it freeze into a
 set, and the one you were on becomes the <strong>reference</strong>. Nothing changes
 yet — entering the mode never touches your photos. Press <strong>Match</strong> in
@@ -394,13 +394,13 @@ filmstrip (the reference's ring is solid blue; linked members have
 none). A RAW-paired photo that already carries a develop grade starts
 unlinked, so a fit can never overwrite deliberate work; <code>L</code> opts it
 in.</li>
-<li><code>P</code>/<code>X</code>/ratings/labels still work on the focused photo — a bad burst
-frame gets rejected without leaving.</li>
+<li><code>P</code>/<code>X</code>/ratings/labels still work on the focused photo — a bad frame
+gets rejected without leaving.</li>
 </ul>
 <p>RAW-paired members' filmstrip thumbnails warm up once per session — a
 few seconds, one at a time (the pending pill counts them: <em>"Preparing
 thumbnails"</em>) — into live renders that track every slider move, so a
-matched burst visibly matches without leaving the panel. They revert
+matched set visibly matches without leaving the panel. They revert
 to their normal plain thumbnails the moment the session ends.</p>
 <p>The panel itself changes shape for the session: a quiet
 <code>reference: &lt;name&gt;</code> line under the heading always names the photo
@@ -423,7 +423,7 @@ discards. It's the same "starting point, not a
 pixel match" honesty as a camera look: the fit gets the set close, your
 eyes make the call.</p>
 <h3 id="matching-a-series">Matching a series</h3>
-<p>Match Look isn't only for bursts. A series shot weeks apart — a
+<p>Match Look isn't only for <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moments</a>. A series shot weeks apart — a
 pregnancy progression, a growing kid on the same bench — lives
 scattered across your library, and the frozen window follows whatever
 you're looking at. So build the view first: <strong>select</strong> the series
@@ -469,30 +469,40 @@ the session: <code>M</code> commits them all at once (and writes one history
 entry per changed photo), <code>Esc</code> throws them all away — pressed twice,
 since an aligned series arms the confirm first.</p>
 <p><strong>Landmark align (<code>Shift+C</code>).</strong> When the pose shifted too much to
-eyeball, align by <em>matching points</em> instead of dragging: in the align
-view, press <code>Shift+C</code> (or the crop pane's <strong>Landmarks</strong> chip) for a
-three-pane layout — the reference, your photo, and the live result.
-Click 2–8 distinctive points on the reference (an ankle, the nose, a
-hip ridge), then click the same numbered points on your photo; from
-the second point the third pane shows the solved placement — position,
-size and tilt all at once — as a faint overlay on the reference's
-frame. A point you can't see on this photo (an ankle out of frame) is
-no problem: <strong><code>Tab</code> skips it</strong>, and any two shared points are enough —
-the numbered chips above your photo show what's placed and aim the
-next click. A magnifier follows the cursor for precise placement; drag
-a dot to adjust, <code>⌫</code> undoes the last one, and a right-click on a dot
-(or its hover <code>×</code>) removes it.
+eyeball, align by <em>matching points</em> instead of dragging. Start on the
+<strong>reference</strong>: press <code>C</code> for its pass, then <code>Shift+C</code> (or the crop
+pane's <strong>Landmarks</strong> chip) and click 2–8 distinctive points on it (an
+ankle, the nose, a hip ridge). <code>Enter</code> then walks the series: each
+photo opens in a three-pane layout — the reference with its numbered
+dots already in place, your photo, and the live result. Click the same
+numbered points on your photo; from the second point the third pane
+shows the solved placement — position, size and tilt all at once — as
+a faint overlay on the reference's frame. A point you can't see on
+this photo (an ankle out of frame) is no problem: <strong><code>Tab</code> skips it</strong>,
+and any two shared points are enough — the numbered chips above your
+photo show what's placed and aim the next click. A magnifier follows
+the cursor for precise placement; drag a dot to adjust, <code>⌫</code> undoes the
+last one, and a right-click on a dot (or its hover <code>×</code>) removes it
+(on the reference that removes the number from every photo).
 <code>Enter</code> accepts and moves to the next photo (on the last it returns to
 Match Look); <code>Shift+C</code> instead drops back to the drag view with the
-solve applied, for hand fine-tuning. culler still only crops, never
-warps — if the pose truly changed, the dots can't all land exactly,
-and the preview shows that honest compromise rather than pretending.
-Landmarks live only in the session: <code>M</code> commits the crops they
-produced, <code>Esc</code> unwinds, and the points themselves are never written
-anywhere. Committed crops show at once in every view — on photos that
-already carry an uploaded edit too — so scrolling the series plays
-like a stop-motion film; press <code>J</code> on each photo when you want the
-server copies re-rendered with the new framing.</p>
+solve applied, for hand fine-tuning; <strong>Clear landmarks</strong> in the crop
+pane forgets the reference's whole set, or just this photo's points.
+culler still only crops, never warps — if the pose truly changed, the
+dots can't all land exactly, and the preview shows that honest
+compromise rather than pretending.</p>
+<p><strong>Landmarks are saved with the photos.</strong> <code>M</code> commits the crops <em>and</em>
+the points (the reference's set, and each accepted photo's points,
+paired to the reference's numbers), <code>Esc</code> unwinds both. Next time you
+enter Match Look on the same reference — say, a new photo joined the
+series — the dots are back the moment the pane opens, photos that were
+already aligned are skipped, and <code>Enter</code> lands straight on the photo
+that still needs its points. A photo's points belong to the reference
+they were placed against; re-anchoring with <code>R</code> loads whatever the new
+reference has stored. Committed crops show at once in every view — on
+photos that already carry an uploaded edit too — so scrolling the
+series plays like a stop-motion film; press <code>J</code> on each photo when you
+want the server copies re-rendered with the new framing.</p>
 <p><strong>Seeing the series whole.</strong> <code>K</code> inside Match Look lays the frozen set
 out as a grid — every photo with its live tone <em>and</em> crop, exactly
 what the committed series will look like side by side. It's
@@ -503,7 +513,7 @@ wrong.</p>
 <h2 id="copying-settings-across-photos-shift-c-shift-v">Copying settings across photos: <code>Shift+C</code> / <code>Shift+V</code></h2>
 <p><code>Shift+C</code> copies the current photo's develop settings <em>and</em> crop
 (including rotation); <code>Shift+V</code> pastes them onto the current photo. A
-burst shot in identical light becomes one keystroke per frame.</p>
+moment shot in identical light becomes one keystroke per photo.</p>
 <h2 id="edit-history-snapshots">Edit history &amp; snapshots</h2>
 <p>Every edit is remembered. <code>Cmd/Ctrl+Z</code> <strong>undoes</strong> the last change,
 <code>Shift+Cmd/Ctrl+Z</code> <strong>redoes</strong> it — and it's not just develop sliders:
@@ -555,10 +565,14 @@ exception — those save to Immich immediately, as always.</p>
 <li><strong>Press <code>J</code> to keep a grade.</strong> Then it's stored in Immich; reopen culler
 later — or open the same library on another computer — and your grade,
 crop, and full history come right back.</li>
-<li><strong>A grade you never <code>J</code>'d is temporary.</strong> Develop a photo, then close
-culler without pressing <code>J</code>, and that grade is gone next time (the
-<code>[unsaved]</code> tag was the warning). Switching to another photo and back
-during the same session keeps it, though — it's only lost on reload.</li>
+<li><strong>A grade you never <code>J</code>'d lives only on this computer.</strong> Develop a
+photo, then close culler without pressing <code>J</code>: the grade is still there
+next time (culler keeps it in its own state file), but it never reached
+Immich — open the same library elsewhere and it isn't there, and a
+later <code>J</code> from another machine would replace the render without it. The
+<code>[unsaved]</code> tag, the corner's "N unsaved" chip (with <code>Shift+U</code> to see
+every such photo), the sources pane's per-server count and the reminder
+on quit all point at the same thing: press <code>J</code> when the grade is done.</li>
 <li>Undo/redo and snapshots work on Immich photos too, the same as local ones.</li>
 <li>Just after you move to an Immich photo there's a brief moment (a fraction
 of a second) while culler reads its saved grade back; if you press <code>J</code>
@@ -589,7 +603,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

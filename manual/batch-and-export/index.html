@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -114,6 +114,14 @@ still points at it, the panel reads <strong>Selected (0)</strong> and the button
 waits — it never quietly falls back to a broader scope. After a copy,
 export or upload the selection stays put for the next action; trash
 and move clear it with the photos.</p>
+<p>While you're in a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#pivot-same-day-camera-lens-or-moment-shift-g">pivot</a>
+(<code>Shift+G</code> — same day, camera, lens or moment), the scope menu also
+offers <strong>This view (N)</strong>: exactly the photos on screen, with any filter
+you narrowed to inside the pivot. The other scopes don't shrink to the
+pivot — under Rejects, Picks and the rest the panel reminds you
+("Rejects covers the whole library, not this view"). The scope doesn't
+switch by itself in either direction: if you leave the pivot with This
+view selected, it reads <strong>This view (0)</strong> and the button waits.</p>
 <p><img src="../img/04-export-panel.png" alt="The apply panel set up for a JPEG export" /></p>
 <p>The actions adapt to the active source:</p>
 <ul>
@@ -121,8 +129,9 @@ and move clear it with the photos.</p>
 (arm/confirm — the button asks for a second click), Export as JPEG,
 and <strong>Upload to Immich</strong> when a server is configured.</li>
 <li><strong>Immich sources</strong>: Download to folder (each photo lands with a sidecar
-carrying your edits), Archive on server, and Delete to trash on the
-server (same two-click confirm).</li>
+carrying your edits), Archive on server, Delete to trash on the
+server (same two-click confirm), and <strong>Save edits to server</strong> — the
+multi-photo <code>J</code>, described <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#save-edits-to-server">below</a>.</li>
 </ul>
 <p><strong>Upload to Immich</strong> sends RAW+JPEG pairs (stacked on the server with
 the <strong>JPEG as the stack cover</strong>, sidecar included so ratings import) and
@@ -131,7 +140,9 @@ configured it's pre-selected and inert; with several, the upload waits
 until you pick one (there is deliberately no silent default, and the
 completion summary names the server it went to) — and an <strong>Album</strong>. The
 album default, <em>No album (timeline only)</em>, is plain upload; choosing an
-album adds every uploaded file to it, and the summary names it. Album
+album adds each photo to it once — the JPEG; the RAW stays behind it in
+the stack, so the album doesn't show every photo twice — and the summary
+names it. Album
 choices are per-server: switching the Server resets the Album. If the
 album list can't be fetched, the panel says so (with a <strong>Retry</strong> button)
 instead of loading forever, and uploading to the timeline keeps working
@@ -165,10 +176,18 @@ photos · 45 files · 1.18 GB"</strong>. While it runs the panel shows a live
 them fills by <strong>bytes</strong>, not photo count, so a batch of big RAWs can't
 paint itself half-done while most of the data is still queued. Under
 the bar, one line tracks what's left — <strong>"838 MB left · 3.1 MB/s"</strong> —
-and a small <strong>speed graph</strong> draws the transfer rate over the last two
-minutes in five-second bars. It has no warning colors on purpose: bars
-shrinking to the baseline IS what a stall looks like, and bars coming
-back is recovery. Cancel finishes the photo in flight, then stops — no
+and a small <strong>speed graph</strong> draws the transfer rate in five-second
+bars over the last two minutes. Each bar is a fixed five seconds of
+the batch: once a bar is complete it never changes, the row steps left
+one bar at a time, and the lighter rightmost bar is the five seconds in
+progress, drawn at its current speed. The caption at the right of the
+"left" line — <strong>"up to 20 MB/s"</strong> — is what a full-height bar means; it
+only ever steps up during a batch, so the same height always means the
+same speed. The speed beside "MB left" is the batch's own, averaged
+over the last ten seconds, so it stays put between files. The graph
+has no warning colors on purpose: bars shrinking to the baseline IS
+what a stall looks like, and bars coming back is recovery. Cancel
+finishes the photo in flight, then stops — no
 half-uploaded pair — and the summary says what happened ("Cancelled —
 12 of 37 uploaded"). A cancelled upload is safe to re-run; already-sent
 photos verify and skip. (Archive and server-trash are single server
@@ -225,6 +244,103 @@ seconds; already-stored photos are verified without storing anything
 twice). A photo whose file changed on disk between the upload and your
 click is skipped, never trashed. And if any upload failed, there is no
 offer at all — the Retry button is the path back to one.</p>
+<h2 id="sorting-into-folders-shift-d">Sorting into folders: <code>Shift+D</code></h2>
+<p>The apply panel moves whole scopes at once. For a sort pass — "this one
+to Family, that one to Portfolio, the next one to Family again" — pin up
+to nine folders and send photos with the number keys as you go.</p>
+<p><strong>Pinning.</strong> With <strong>Copy to folder</strong> or <strong>Move to folder</strong> chosen in the
+apply panel (<code>A</code>), a <strong>Sort destinations</strong> card sits under the
+Destination card. <strong>Add folder…</strong> pins a folder on the next free digit;
+<strong>Pin destination</strong> pins the folder you already picked with
+<strong>Destination…</strong>. Each row shows its digit, the folder's name and path,
+a <strong>Move | Copy</strong> switch (new folders start on Move), arrows to reorder
+and <strong>×</strong> to unpin — unpinning never touches the folder. The digit is
+the row's position: move a folder up and its number changes with it.
+The list is yours across every folder you open (it lives in
+<code>~/.culler/destinations.conf</code>).</p>
+<p><strong>Sorting.</strong> <code>Shift+D</code> turns on <strong>sort mode</strong> in the loupe or the Grid:
+a blue <strong>[sort]</strong> tag joins the photo's overlay (the Grid's header in the
+Grid), and the left rail swaps its buttons for your nine folders — the
+digit, the folder's name under it, its full path when you point at it,
+and a <strong>Done</strong> button. While it's on, <code>1</code>–<code>9</code> send the photo to that
+folder instead of rating or labelling it; <code>P</code>, <code>X</code>, <code>U</code>, the arrows and
+selection keep working. With a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>
+built and the cursor on one of its photos, the whole selection goes —
+the same rule marking follows. <code>Shift+D</code>, <code>Esc</code> or <strong>Done</strong> leaves sort
+mode; opening Compare, Survey, Match Look, crop or the sources pane
+leaves it too, since those use the digits themselves.</p>
+<ul>
+<li><strong>Copy</strong> happens at once; the photo stays where it is.</li>
+<li><strong>Move</strong> asks once per folder per session: the first press says
+"press 1 again to move this photo to Family", the second press moves
+it, and from then on that folder takes photos without asking. Any
+other key in between cancels the question. The moved photo leaves the
+view and the next one slides into its place.</li>
+</ul>
+<p>Every send takes the whole photo — RAW, JPEG and sidecar together — and
+the status line confirms it: <strong>"Moved DSC07296 → Family (3 files)"</strong>.
+Presses queue up and run one at a time (the corner pill reads "Moving
+2 of 5 · Family" while a run is going), so you can keep sorting while
+the previous photo is still moving; pressing a digit again on a photo
+that's already on its way does nothing.</p>
+<p>It refuses rather than guesses:</p>
+<ul>
+<li>A folder already holding a file of the same name keeps its file, and
+your photo stays where it was: "DSC07297 already in Family".</li>
+<li>A folder that can't be reached — an unmounted card or drive, whose
+parent folder is missing — is shown in amber on the card and on the
+rail, and sending to it changes nothing (culler never recreates a
+missing drive's folders on your boot disk).</li>
+<li>A photo that already lives in the folder isn't sent there again.</li>
+<li>A folder inside the one you're culling gets a caption: sorted photos
+would reappear when you rescan.</li>
+</ul>
+<p>Sort destinations are folders, so sort mode is for folder sources; on
+an Immich source <code>Shift+D</code> points you at the album picker (<code>Shift+I</code>)
+instead. It's also off inside a stack and during a live tether session.
+There is no undo for a move (<code>Cmd/Ctrl+Z</code> undoes edits, not files) —
+the files are in the destination folder, moved back by hand if needed.
+Sort mode never survives a restart; the pinned folders do.</p>
+<h2 id="save-edits-to-server">Save edits to server</h2>
+<p>On an Immich source, <strong>Save edits to server</strong> is the batch form of the
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#edit-uploads-on-a-server-source">single <code>J</code></a>: every photo in the scope
+whose develop, crop or landmark alignment hasn't been saved yet is
+rendered, uploaded as its stack cover and has its grade saved to the
+server, one photo at a time, exactly as pressing <code>J</code> on each would. It
+is the way to clear the <strong>"12 unsaved"</strong> count in the corner in one go.</p>
+<p>The scope menu gains one entry under this action only: <strong>Unsaved</strong> —
+just the photos that need saving — listed first but never picked for
+you; the usual scopes (Picks, All, a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>
+as <strong>Selected (N)</strong> — "save these") work too, and then only the unsaved
+photos among them are touched. Photos already saved are skipped without
+comment, so the button always says what will really happen: <strong>"Save 2
+edits"</strong>. There is no confirm click — nothing is destroyed, and a batch
+you re-run finds only what is still unsaved.</p>
+<p>One class of photo is skipped <strong>on purpose</strong> and named above the button:
+a photo already fronting a culler edit for which <strong>no grade and no crop
+are loaded</strong> — the state <code>J</code>'s own <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#edit-uploads-on-a-server-source">safety catch</a>
+arms on. A batch never re-renders such a photo plain over its edit; the
+caption says how many it is leaving alone ("1 of these has no grade or
+crop loaded — it'll be skipped (open it and press J twice to bake it
+plain on purpose)"), and the summary repeats it ("· 1 skipped (no grade
+loaded)"). On a <a href="https://mertenssander.github.io/culler-releases/manual/sources/#large-immich-libraries">large library that loads in windows</a>,
+a batch can only reach the photos that are loaded; the caption states
+the shortfall ("3 more unsaved photos are outside the loaded part of
+the library — load more to reach them") and the summary says so again
+afterwards.</p>
+<p>While it runs, the panel and the <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">pill</a> read
+<strong>"Saving · 4 of 12"</strong> with the current photo's phase beneath —
+"Downloading RAW · name", "Rendering · name", "Uploading · name" — and
+<strong>Cancel</strong> stops after the photo in flight (that one is saved; the rest
+stay unsaved for next time). The summary uses the upload grammar:
+"12 photos saved to prd", or "10 photos saved to prd — 2 failed:
+DSC07717, DSC07803 (couldn't download the RAW)" with the primary button
+turning into <strong>Retry 2 failed…</strong> — a re-run that only touches what is
+still unsaved. A photo whose render came out identical to the cover it
+already had is a note, not a failure ("unchanged render"); a photo whose
+grade couldn't be saved after its render uploaded counts as a warning
+and keeps its <code>[unsaved]</code> tag for a retry. A batch save and a single
+<code>J</code> never run at once — each tells you the other is still going.</p>
 <h2 id="single-export-j-and-overwrite-shift-j">Single export: <code>J</code> — and overwrite: <code>Shift+J</code></h2>
 <p><code>J</code> renders the current photo's edits (tone + crop) at full resolution
 through the same GPU pipeline that draws the screen — the file is
@@ -239,7 +355,9 @@ folder, filename suffix and overwrite policy in the apply panel under
 slider sits in its own <em>JPEG Quality</em> card near the top of the same
 panel — visible on every source and under every action, because it
 governs every JPEG culler encodes: folder exports, <code>Shift+J</code> overwrites
-and <code>J</code> uploads to a server alike (the card says so in place). The
+and <code>J</code> uploads to a server alike (the card says so in place). The same
+value is <strong>JPEG quality</strong> in <a href="https://mertenssander.github.io/culler-releases/manual/getting-started/#settings-cmd">Settings</a>
+(<code>Cmd+,</code> → Develop &amp; export) — change it in either place. The
 default of 95 with full-resolution
 color (no chroma subsampling) lands in the same size and fidelity class
 as the camera's own JPEGs; raise or lower it once and it's remembered.
@@ -280,8 +398,8 @@ uploaded render and the stack badge reflects the new grouping — no
 rescan needed. (Since the render already carries your grade, reopening
 develop shows it plainly while the RAW downloads, then switches to the
 live RAW rendition.) The upload renders at the <em>JPEG Quality</em> card's
-value — press <code>A</code> to see or change it, on a server source too, no
-batch action needed. The edit carries the original's metadata: camera,
+value — press <code>A</code> (or open Settings with <code>Cmd+,</code>) to see or change it,
+on a server source too, no batch action needed. The edit carries the original's metadata: camera,
 lens, exposure, GPS and the local capture time ride along even when the
 original is a format culler can't decode itself (an iPhone HEIC, say),
 so the server's Info panel reads the same on both. From an
@@ -293,7 +411,14 @@ downloaded or decoded, the <code>J</code> stops with the cause in the status lin
 and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
 previous version as if it were your new edit. Big originals get the
 same generous download time budget uploads have, so a slow connection
-means a longer wait, not a failure.</p>
+means a longer wait, not a failure — and the
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">pending-work pill</a> tells you which wait it is:
+<strong>"Downloading RAW · name"</strong> while the original comes down (hover for
+the file, the megabytes so far of the total and the speed — the same
+readout uploads have, amber after five seconds without movement),
+<strong>"Rendering · name"</strong> while it develops, then <strong>"Uploading · name"</strong>
+with the upload's own byte count. A RAW culler already fetched (for the
+develop panel, say) skips the download step entirely.</p>
 <p>One more safety catch on a photo that already fronts a culler edit:
 if <strong>no grade and no crop are loaded</strong> for it — the state a photo is
 in when culler couldn't read its saved edit back from the server —
@@ -315,10 +440,14 @@ next <code>J</code> after a restart still bakes what you see.</p>
 <p>Anything running in the background shows in a small pill at the
 top-right: a batch with its live count ("Uploading · 12 of 37") right
 in the collapsed label, syncing ratings, a scan with its running total,
-an export by name, a stack loading, previews downloading. Hover it for
-the full list — and while a cancellable batch runs, its row in that
-list carries a <strong>✕</strong> that stops the batch after the current photo (the
-same cancel as the batch panel's button, for when the panel is closed).
+an export by name, a stack loading, previews downloading. A <code>J</code> on a
+server photo names its phase — "Downloading RAW · name", "Rendering ·
+name", "Uploading · name" — so a long wait always says what it is
+waiting on. Hover it for the full list (a transfer's row adds the file,
+its bytes of the total and the speed) — and while a cancellable batch
+runs, its row in that list carries a <strong>✕</strong> that stops the batch after
+the current photo (the same cancel as the batch panel's button, for
+when the panel is closed).
 The pill exists to explain two things: why the app might feel slow
 right now (the wait is on the wire, not in the app), and why an action
 was just refused — a blocked keypress flashes the pill to point at the
@@ -340,7 +469,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

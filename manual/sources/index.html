@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.7.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
     </div>
   </details>
 </header>
@@ -102,20 +102,46 @@
     <p><code>S</code> opens the sources pane: the saved places you cull from. While it's
 open it owns the keyboard — <code>↑</code>/<code>↓</code> select, <code>Enter</code> opens, <code>Esc</code> closes.</p>
 <p><img src="../img/06-sources-pane.png" alt="The sources pane" /></p>
+<p>The pane lists a connected camera first (when there is one), then your
+<strong>Folders</strong> — folders, cards and shares — and your <strong>Servers</strong>, each
+row with a small icon for its kind, its name, and underneath where it
+lives (your home folder shows as <code>~</code>, and a long path is shortened from
+the front so the folder's own name stays visible). The source you have
+open is marked with a blue bar. A row shows a status mark only when
+something is wrong — an amber dot when a source is out of reach for now
+(a drive or card not plugged in, a server that didn't answer the last
+time), a red one when you need to act (a server that rejected its API
+key) — and the reason is always spelled out beside it. While a source is
+scanning, a spinner takes its icon's place with the progress underneath.
+The strip at the bottom of the pane shows the keys for the row you're on.</p>
+<p>The number on the right of a row is its photo count. For the source you
+have open it's the live count; for every other source it's the count
+from the last time you opened it — shown a shade dimmer until you've
+opened that source in this session — and a source culler has never
+counted shows no number at all rather than a guess. culler never looks
+inside a folder you don't have open just to count it (on macOS that
+would set off permission prompts for folders like Downloads and for
+cards and shares); when the pane opens it only checks, in the
+background, that each saved folder is still there. A large server that
+loads in windows shows its total with a <code>~</code> — it's the server's own
+estimate.</p>
 <h2 id="folders-cards-and-shares">Folders, cards and shares</h2>
 <ul>
-<li><strong>+ Add source</strong> (or <code>N</code>) adds a local folder, a network share, or an
-SD card — mounted volumes with a <code>DCIM</code> folder are auto-detected and
-named after the card.</li>
+<li><strong>+ Add</strong> beside the heading (or <code>N</code>) adds a local folder, a network
+share, or an SD card — mounted volumes with a <code>DCIM</code> folder are
+auto-detected and named after the card. With nothing saved yet the
+pane says so and offers one <strong>Add source</strong> button instead.</li>
 <li>Cards, shares and servers get a deeper prefetch window and more decode
 workers, since their latency, not your CPU, is the bottleneck.</li>
 <li>Folders opened from the command line or with <code>O</code> stay ad-hoc — they are
 never silently saved. Add them explicitly if you want them to stick.</li>
 <li><code>Backspace</code> removes the selected source: the first press arms (the row
-turns red), the second confirms. Only the registry entry is removed —
+turns red), the second confirms — or click the × that appears at the
+row's end under the pointer, twice. Only the registry entry is removed —
 your photos and sidecars are untouched.</li>
-<li><code>R</code> renames the selected source in place — type the new name, <code>Enter</code>
-keeps it, <code>Esc</code> reverts. Names matter most with several Immich
+<li><code>R</code> renames the selected source in place — the name becomes an edit
+field with the whole name selected; type the new name, <code>Enter</code> keeps
+it, <code>Esc</code> reverts. Names matter most with several Immich
 servers: the upload destination dropdown shows them, so "Home NAS"
 reads better there than an IP and port.</li>
 <li>Each source remembers your position and filter, so switching back
@@ -137,7 +163,11 @@ add</strong> checks the URL and key against the server before saving. The key
 goes into the OS keychain (macOS Keychain / Windows Credential Manager),
 not into a file on disk. To <strong>rotate a key</strong> later, add the same server
 again with the new key — the existing entry updates in place and keeps
-its name, albums and cursor memory.</p>
+its name, albums and cursor memory. That is also the fix when a server's
+row reads <strong>API key rejected</strong> (the key was revoked or lost permissions)
+or <strong>Key unreadable</strong> (this copy of culler can no longer read the key
+from the keychain — a reinstalled or rebuilt app can lose that access):
+add the server again with a working key.</p>
 <p><strong>Test &amp; add</strong> also reports the server's <strong>compatibility</strong>: culler is
 built and tested against Immich v2 and v3, and the confirmation line tells
 you whether your server is fully supported or falls outside that range. If
@@ -210,12 +240,34 @@ keys: picks become Immich favorites, stars become the server rating. A
 failed write retries on its own; while anything is queued or failing, the
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">pending-work pill</a> says
 so. Develop settings and crops stay local — they travel only when you
-export or upload (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#edit-uploads-on-a-server-source">edit round-trip</a>).</p>
+export or upload (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#edit-uploads-on-a-server-source">edit round-trip</a>).
+Quit with any of those still unsaved and culler reminds you once: the
+first Quit is held back, and the status line says how many server edits
+haven't been saved with <code>J</code>. Press Quit again to leave them for later —
+they stay in culler's own state file, nothing is lost — or save first.</p>
+<p>Because those edits wait for <code>J</code>, culler keeps count. A server source's
+row in the sources pane reads <strong>"12 unsaved"</strong> after its address — the
+photos whose develop, crop or landmark alignment hasn't been saved to the
+server yet — for every server you've added, not only the open one. The
+same number lives in the <strong>bottom-right corner</strong> on every screen, as a
+blue <strong>"12 unsaved"</strong> chip that totals all your servers: click it to see
+the open server's unsaved photos (<strong><code>Shift+U</code></strong> is the key; either again
+returns to All), or rest the pointer on it for the per-server breakdown
+and click a server to open it straight onto them. Ratings and picks never
+count (they sync on their own), folders never show the number (a folder
+saves as you go), and it disappears at zero. The count is exact within
+seconds of opening a server: culler checks every edited photo it hasn't
+proven saved against the server in the background (one at a time, never
+in your way) — photos whose saved grade matches drop out, photos deleted
+on the server are forgotten, and the rest stay counted. Until that check
+runs, the number can read high for a server you haven't opened since
+this version.</p>
 <h3 id="albums">Albums</h3>
 <p>Press <code>→</code> on an Immich row (or click its ▸ chevron) to expand the
 server's albums as indented sub-rows with their photo counts; <code>←</code>
 collapses (from an album row it also jumps back to the parent). Open an
-album with <code>Enter</code> to cull just that album.</p>
+album with <code>Enter</code> to cull just that album — the album's row then
+carries the blue bar, and its server's icon lights up.</p>
 <p>An album is a <em>view</em>, not a separate library: same photos, same state. A
 rating you set inside an album is simply there when you reopen the full
 timeline, previews already fetched don't re-download, and each album
@@ -249,9 +301,11 @@ still arrive quietly). The months in between stay unloaded, marked by a
 divider in the timeline ("⋯ 2,500 more in Jun 2026") that loads on click,
 or automatically as you browse toward it. The view stays in newest-first
 order throughout.</p>
-<p>The sources pane row shows how much is loaded ("1,412 of ~6,500
-loaded"); hovering it reveals <strong>Load all</strong>, which keeps loading window
-after window until the whole library is in (click again to stop). None
+<p>The sources pane row shows the library's total on the right ("~6,500")
+and how much of it is loaded underneath ("1,412 loaded"), with a thin
+progress line under it and a <strong>Load all</strong> link at its end, which keeps
+loading window after window until the whole library is in (click again
+to stop). None
 of this applies to albums or smaller libraries — they load whole, and
 <code>Shift+S</code> does nothing there.</p>
 <h2 id="the-info-panel-on-immich-sources">The info panel on Immich sources</h2>
@@ -260,13 +314,17 @@ section on Immich sources: description, recognized people, album
 membership, favorite state and the capture location. People and album
 membership are fetched per photo the moment you focus it (never during
 the scan), so a slow server delays only those two rows — everything
-else is already there. If that fetch fails the rows read "unavailable";
-focusing another photo and coming back retries.</p>
-<p><strong>Editing the description</strong>: click the description in the info panel to
-edit it in place — the whole text starts selected, so typing replaces
-it. Click anywhere else to save; <code>Esc</code> throws the edit away. <code>Enter</code>
-starts a new line (descriptions are prose), which is why clicking away
-is the save gesture. The edit is written to the photo's display asset
+else is already there. If that fetch fails the panel reads "Couldn't
+load people &amp; albums"; focusing another photo and coming back retries.
+A photo the server has already confirmed has no albums or no
+recognized people just shows nothing there — same as any other empty
+field in the panel, never a dash or an "unavailable".</p>
+<p><strong>Editing the description</strong>: click the description in the info panel —
+an empty one reads "Add a description" — to edit it in place, the
+whole text starting selected so typing replaces it. Click anywhere else
+to save; <code>Esc</code> throws the edit away. <code>Enter</code> starts a new line
+(descriptions are prose), which is why clicking away is the save
+gesture. The edit is written to the photo's display asset
 on the server; clearing the text clears it there too.</p>
 <p><strong>The locked folder</strong> (Immich v3 and newer): the info panel offers
 <strong>Move to locked folder</strong> for sensitive photos — the whole RAW+JPEG
@@ -287,7 +345,7 @@ several albums in one visit.</p>
 <p>Plug a supported camera in over USB (on Sony bodies: USB mode → <strong>Remote
 Shoot (PC Remote)</strong>, and for RAW+JPEG set <em>Still Img. Save Dest.</em> to
 PC+Camera with <em>RAW+J PC Save Img</em> on RAW &amp; JPEG) and it appears at the
-top of the sources pane as a <code>[CAM]</code> row with a green dot. Press
+top of the sources pane as a camera row (a small camera icon). Press
 <code>Enter</code> on it and a tethered session starts: culler creates a dated
 folder under <code>~/Pictures/Culler Tether/</code> (one per day — reopening the
 same day reuses it) and opens it as the active source. From that
@@ -448,7 +506,7 @@ in the list.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.7.0</span>
+  <span>© Sander Mertens · culler v0.8.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
