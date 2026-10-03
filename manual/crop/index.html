@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -151,9 +151,14 @@ quarter turns use a culler-specific field since the <code>crs:</code> schema has
 no field for 90° rotation. Cropped photos count as "edited" for the Edited
 filter, and exports render exactly what you framed
 (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">export</a>).</p>
-<p>Cropping a whole series to one matching frame — seeded from a
-reference, with a ghost guide for lining up the subject — lives inside
-Match Look: see <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series">Matching a series</a>.</p>
+<p>Cropping a whole series to one matching frame is its own tool, <strong>Match
+series</strong> (<code>M</code>): pick the photo that leads, then line every other one up
+with it — by clicking the same few landmark points on each photo
+(<code>Shift+C</code> walks the set), or by hand over the reference's frame with a
+ghost guide (<code>C</code>). Inside one of its passes this pane's button reads
+<strong>Back to series</strong> instead of Done, because nothing is applied until the
+series itself is done. See
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#aligning-the-frames">Aligning the frames</a>.</p>
 
     <nav class="pagenav">
       
@@ -168,7 +173,7 @@ Match Look: see <a href="https://mertenssander.github.io/culler-releases/manual/
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

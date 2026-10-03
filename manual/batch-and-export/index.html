@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -115,13 +115,17 @@ waits — it never quietly falls back to a broader scope. After a copy,
 export or upload the selection stays put for the next action; trash
 and move clear it with the photos.</p>
 <p>While you're in a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#pivot-same-day-camera-lens-or-moment-shift-g">pivot</a>
-(<code>Shift+G</code> — same day, camera, lens or moment), the scope menu also
-offers <strong>This view (N)</strong>: exactly the photos on screen, with any filter
-you narrowed to inside the pivot. The other scopes don't shrink to the
-pivot — under Rejects, Picks and the rest the panel reminds you
-("Rejects covers the whole library, not this view"). The scope doesn't
-switch by itself in either direction: if you leave the pivot with This
-view selected, it reads <strong>This view (0)</strong> and the button waits.</p>
+(<code>Shift+G</code> — same day, camera, lens or moment) or have a
+<a href="https://mertenssander.github.io/culler-releases/manual/culling/#saved-filters-cmd-f">saved filter</a> on (<code>Cmd+F</code>), the scope
+menu also offers <strong>This view (N)</strong>: exactly the photos on screen — a
+pivot with any filter you narrowed to inside it, or the saved filter's
+photos, named under the menu with what the filter means. That is how a
+saved filter is batched: look at the photos first, then act on what you
+see. The other scopes don't shrink to the view — under Rejects, Picks
+and the rest the panel reminds you ("Rejects covers the whole library,
+not this view"). The scope doesn't switch by itself in either direction:
+if you leave the pivot or the saved filter with This view selected, it
+reads <strong>This view (0)</strong> and the button waits.</p>
 <p><img src="../img/04-export-panel.png" alt="The apply panel set up for a JPEG export" /></p>
 <p>The actions adapt to the active source:</p>
 <ul>
@@ -130,8 +134,12 @@ view selected, it reads <strong>This view (0)</strong> and the button waits.</p>
 and <strong>Upload to Immich</strong> when a server is configured.</li>
 <li><strong>Immich sources</strong>: Download to folder (each photo lands with a sidecar
 carrying your edits), Archive on server, Delete to trash on the
-server (same two-click confirm), and <strong>Save edits to server</strong> — the
-multi-photo <code>J</code>, described <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#save-edits-to-server">below</a>.</li>
+server (same two-click confirm), <strong>Save edits to server</strong> — the
+multi-photo <code>J</code>, described <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#save-edits-to-server">below</a> — and
+<strong>Discard unsaved edits</strong>, its inverse (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#discard-edits">below</a>).
+Inside an <a href="https://mertenssander.github.io/culler-releases/manual/sources/#albums">album</a>, Delete to trash still deletes
+the photos from the server — not just from the album — and the panel
+says so under the action; taking photos out of an album is <code>Shift+I</code>.</li>
 </ul>
 <p><strong>Upload to Immich</strong> sends RAW+JPEG pairs (stacked on the server with
 the <strong>JPEG as the stack cover</strong>, sidecar included so ratings import) and
@@ -142,7 +150,10 @@ completion summary names the server it went to) — and an <strong>Album</strong
 album default, <em>No album (timeline only)</em>, is plain upload; choosing an
 album adds each photo to it once — the JPEG; the RAW stays behind it in
 the stack, so the album doesn't show every photo twice — and the summary
-names it. Album
+names it, counting what the server actually added: <strong>"· added to
+'Iceland'"</strong> when every photo went in, <strong>"· 2 added to 'Iceland', 1
+already in it"</strong> when some were there already, <strong>"· already in
+'Iceland'"</strong> on a re-run. Album
 choices are per-server: switching the Server resets the Album. If the
 album list can't be fetched, the panel says so (with a <strong>Retry</strong> button)
 instead of loading forever, and uploading to the timeline keeps working
@@ -169,13 +180,21 @@ add fails, that's reported as a <strong>warning</strong> on an uploaded photo, n
 as a failed upload. The common cause for the stack case is an API key
 minted before stacking shipped — add the <code>stack.create</code> permission to
 the key (or mint a fresh one) and re-run the upload: already-stored
-photos are verified and skipped, and only the stacks are created.</p>
+photos are verified and skipped, and only the stacks are created. For
+the album case the warning says why: a key without the permission is
+told which one ("the API key lacks the albumAsset.create permission"),
+an album deleted since you picked it reads "that album no longer
+exists, or you don't have access to it", and a photo the server won't
+accept into the album reads "no permission to add this photo" — in
+every case the photo itself is uploaded, just not in the album.</p>
 <p>Before you click, the scope line shows what the batch weighs — <strong>"22
 photos · 45 files · 1.18 GB"</strong>. While it runs the panel shows a live
 <strong>"Uploading · N of M"</strong> count and a <strong>Cancel</strong> button; the bar under
 them fills by <strong>bytes</strong>, not photo count, so a batch of big RAWs can't
-paint itself half-done while most of the data is still queued. Under
-the bar, one line tracks what's left — <strong>"838 MB left · 3.1 MB/s"</strong> —
+paint itself half-done while most of the data is still queued. Right
+under the bar a line gives the time — <strong>"1:50 elapsed"</strong> on the left,
+<strong>"about 5 min left"</strong> on the right (more on that estimate below).
+Under it, one line tracks what's left — <strong>"838 MB left · 3.1 MB/s"</strong> —
 and a small <strong>speed graph</strong> draws the transfer rate in five-second
 bars over the last two minutes. Each bar is a fixed five seconds of
 the batch: once a bar is complete it never changes, the row steps left
@@ -192,6 +211,37 @@ half-uploaded pair — and the summary says what happened ("Cancelled —
 12 of 37 uploaded"). A cancelled upload is safe to re-run; already-sent
 photos verify and skip. (Archive and server-trash are single server
 calls — nothing to count or cancel, they just show a spinner.)</p>
+<p>The time line has two halves that mean different things. <strong>Elapsed</strong>
+is a measurement: a clock that starts when you click and never pauses —
+not for the checksum check, a slow file or a pending Cancel — and a
+retry starts it again from zero. <strong>Time left</strong> is an <strong>estimate</strong>: the
+bytes still to send divided by the speed of the last minute. It is
+worded only as precisely as it can be trusted — "almost done", "less
+than a minute left", then whole minutes, five-minute steps past ten
+minutes, quarter hours past an hour ("about 1 h 15 min left"), whole
+hours past six, and finally "more than a day left". Between
+corrections it simply counts down; it corrects itself only once the
+speed has clearly changed for several seconds, which means it can step
+<strong>up</strong> after the connection slows. Text that sits still for a few
+minutes is what "about" looks like — the elapsed clock beside it shows
+the upload is alive. The speed on the "MB left" line covers the last
+ten seconds and the estimate the last minute, so the two won't always
+divide out exactly.</p>
+<p>The right half of that line is simply <strong>blank</strong> when there is nothing
+honest to say — no placeholder:</p>
+<ul>
+<li>for the first fifteen seconds of real uploading (and until 4 MB has
+been sent), so a batch of a few small photos finishes without ever
+showing one;</li>
+<li>while a file has stopped moving — the same moment its own line turns
+amber (see below); the estimate comes back, freshly worked out, when
+bytes move again;</li>
+<li>after you press Cancel, because the remaining photos won't be sent.</li>
+</ul>
+<p>Photos the server already has are skipped in an instant: they shrink
+what's left, but their time isn't counted as upload speed. A re-run of
+a mostly-uploaded batch therefore shows its estimate only after fifteen
+seconds of actual sending, and tends to err on the long side.</p>
 <p>Big files never look stalled: once a file has been on the wire for
 half a second, a second line appears under the batch readout with the
 file's name, its byte progress and the current speed — "DSC08551.ARW ·
@@ -204,7 +254,14 @@ that never recovers ends as that photo's error and the batch moves on.
 Cancelling mid-file adds "finishing, then stopping", because the
 current photo always completes. The same readout follows the batch
 into the corner pill's hover panel (which also carries the "MB left"
-line), and a single <code>J</code> upload to a server shows it too.</p>
+line, with the time left added while there is an estimate — "838 MB
+left · 3.1 MB/s · about 5 min left"), and a single <code>J</code> upload to a
+server shows the per-file line too (one photo has no elapsed clock or
+estimate).</p>
+<p>A batch that ran for ten seconds or more says how long it took, right
+after the destination — "22 photos uploaded to prd in 14 min", or "in
+42s", or "in 1 h 5 min". Quicker batches read as they always did, and
+a cancelled batch names no total.</p>
 <p>When a batch ends with failures, the summary <strong>names the photos</strong> —
 "20 photos uploaded to prd — 2 failed: DSC07717, DSC07803 (timed out
 waiting for a response)" — and hovering it shows the full technical
@@ -267,7 +324,7 @@ folder instead of rating or labelling it; <code>P</code>, <code>X</code>, <code>
 selection keep working. With a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>
 built and the cursor on one of its photos, the whole selection goes —
 the same rule marking follows. <code>Shift+D</code>, <code>Esc</code> or <strong>Done</strong> leaves sort
-mode; opening Compare, Survey, Match Look, crop or the sources pane
+mode; opening Compare, Survey, Match series, crop or the sources pane
 leaves it too, since those use the digits themselves.</p>
 <ul>
 <li><strong>Copy</strong> happens at once; the photo stays where it is.</li>
@@ -304,10 +361,12 @@ Sort mode never survives a restart; the pinned folders do.</p>
 <h2 id="save-edits-to-server">Save edits to server</h2>
 <p>On an Immich source, <strong>Save edits to server</strong> is the batch form of the
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#edit-uploads-on-a-server-source">single <code>J</code></a>: every photo in the scope
-whose develop, crop or landmark alignment hasn't been saved yet is
-rendered, uploaded as its stack cover and has its grade saved to the
-server, one photo at a time, exactly as pressing <code>J</code> on each would. It
-is the way to clear the <strong>"12 unsaved"</strong> count in the corner in one go.</p>
+whose develop or crop hasn't been saved yet is rendered, uploaded as its
+stack cover and has its grade saved to the server — landmark points
+riding along — one photo at a time, exactly as pressing <code>J</code> on each
+would. It is the way to clear the <strong>"12 unsaved"</strong> count in the corner
+in one go. A photo whose only change is its landmark points isn't
+unsaved, so it isn't rendered just to carry them (<a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">why</a>).</p>
 <p>The scope menu gains one entry under this action only: <strong>Unsaved</strong> —
 just the photos that need saving — listed first but never picked for
 you; the usual scopes (Picks, All, a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>
@@ -332,7 +391,13 @@ afterwards.</p>
 <strong>"Saving · 4 of 12"</strong> with the current photo's phase beneath —
 "Downloading RAW · name", "Rendering · name", "Uploading · name" — and
 <strong>Cancel</strong> stops after the photo in flight (that one is saved; the rest
-stay unsaved for next time). The summary uses the upload grammar:
+stay unsaved for next time). Under the bar the same <strong>elapsed</strong> clock
+runs as during an upload ("3:12 elapsed"), but with no time-left
+estimate: each photo is a download, a render and an upload whose size
+isn't known until it has been rendered, so there is nothing honest to
+divide. A save that took ten seconds or more names its total like an
+upload does ("12 photos saved to prd in 3 min"). The summary uses the
+upload grammar:
 "12 photos saved to prd", or "10 photos saved to prd — 2 failed:
 DSC07717, DSC07803 (couldn't download the RAW)" with the primary button
 turning into <strong>Retry 2 failed…</strong> — a re-run that only touches what is
@@ -341,15 +406,54 @@ already had is a note, not a failure ("unchanged render"); a photo whose
 grade couldn't be saved after its render uploaded counts as a warning
 and keeps its <code>[unsaved]</code> tag for a retry. A batch save and a single
 <code>J</code> never run at once — each tells you the other is still going.</p>
+<h2 id="discard-edits">Discard edits</h2>
+<p>The inverse of Save edits. On an Immich source, <strong>Discard unsaved edits</strong>
+reverts each photo in the scope to the last state you saved to the server
+— grade, crop, alignment and snapshots all at once — without uploading
+anything. Its button wears the same red as Trash (it throws away unsaved
+work), but there is no confirm click: each photo's discard is a single
+<code>Cmd+Z</code> on that photo from coming back, exactly like an edit (the grade
+and the crop come back; snapshots and alignment points made since the
+last save do not).</p>
+<p>The scope works like Save edits: <strong>Unsaved</strong> is offered first (the photos
+that have something to discard), and a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>,
+<strong>This view</strong> inside a pivot, or any filter works too. A photo whose
+edits culler hasn't yet checked against the server — or is reading back
+at that very moment — is skipped and named — "1 of these hasn't been
+checked against the server yet — it'll be skipped (open it and wait a
+moment, or run again after the check finishes)" — because reverting it
+would be guessing at what the server holds. Already-saved photos are skipped
+silently, so the button says exactly what will happen: <strong>"Discard 2
+edits"</strong>. The summary reads "2 photos discarded — 1 skipped (not yet
+checked)". Discard won't run while a save (<code>J</code> or a batch) is still going,
+so a completing upload can't quietly bring an edit back.</p>
+<p>To discard one photo, use the per-photo <strong>Discard edits</strong> entry (the
+develop pane, the <code>⋯</code> More menu, or the DEVELOP / CROP tab palettes)
+— <a href="https://mertenssander.github.io/culler-releases/manual/develop/#editing-photos-from-an-immich-source">see Develop</a>. It
+always acts on the photo you are looking at, selection or not; a set is
+the batch's job (Scope: <strong>Selected</strong>).</p>
 <h2 id="single-export-j-and-overwrite-shift-j">Single export: <code>J</code> — and overwrite: <code>Shift+J</code></h2>
 <p><code>J</code> renders the current photo's edits (tone + crop) at full resolution
-through the same GPU pipeline that draws the screen — the file is
-pixel-identical to what you see — and writes a JPEG using the export
-preset (folder, filename suffix, quality, overwrite policy). For a
-photo with a RAW file, the export comes from a fresh full-resolution
-<strong>demosaic of the RAW</strong> (color, lens correction and your white balance
-included), exactly like the <a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">develop panel</a>
-shows it; photos without a RAW export from the JPEG as before. Edit the
+through the same GPU pipeline that draws the screen and writes a JPEG
+using the export preset (folder, filename suffix, quality, overwrite
+policy). Which file it renders from follows one rule — <strong>your grade
+decides</strong>:</p>
+<ul>
+<li><strong>Not graded</strong> — no develop slider moved (a crop on its own is not a
+grade): the export is the <strong>camera JPEG</strong> with your crop, exactly the
+picture you looked at while culling.</li>
+<li><strong>Graded</strong>, and the photo has a RAW file: the export comes from a
+fresh full-resolution <strong>demosaic of the RAW</strong> (color, lens correction
+and your white balance included), exactly like the
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#raw-paired-photos-develop-the-raw">develop panel</a>
+shows it — the grade was made on the RAW, so that is what gets baked.</li>
+<li>A RAW with no camera JPEG beside it always exports from the RAW; a
+photo without a RAW always exports from its JPEG.</li>
+</ul>
+<p>Having the develop panel open doesn't change the rule: with the panel
+showing the flat RAW of a photo you haven't graded, <code>J</code> still exports
+the camera JPEG, and the status line says so. Move any slider and the
+next <code>J</code> renders from the RAW. Edit the
 folder, filename suffix and overwrite policy in the apply panel under
 <em>Export as JPEG</em>; everything persists between runs. The <strong>Quality</strong>
 slider sits in its own <em>JPEG Quality</em> card near the top of the same
@@ -370,20 +474,24 @@ second press and keeps the original as <code>&lt;name&gt;.JPG.orig</code>. If a
 from an interrupted run, or an unrelated file that happens to share the
 name — culler refuses the overwrite and tells you, rather than replacing
 your original with no good backup; remove that <code>.orig</code> and try again.
+It renders by the same rule as <code>J</code>: an ungraded RAW-paired photo
+bakes its own camera JPEG with the crop, a graded one bakes the RAW.
 What happens
 to your settings afterwards depends on what they were grading: a photo
 developed on its <strong>JPEG</strong> has its develop and crop reset — those edits
 are baked into the very pixels the sliders acted on, and left up they
-would apply twice. A <strong>RAW-paired</strong> photo keeps its develop sliders:
-they grade the RAW, which the overwrite never touches, so reopening the
-develop panel shows the exact grade that produced the new JPEG. The
-crop resets in both cases — the new JPEG is already cropped.</p>
+would apply twice. A <strong>graded RAW-paired</strong> photo keeps its develop
+sliders: they grade the RAW, which the overwrite never touches, so
+reopening the develop panel shows the exact grade that produced the new
+JPEG. The crop resets in every case — the new JPEG is already cropped.</p>
 <p><img src="../img/05-overwrite-armed.png" alt="Shift+J armed: the status line asks for the second press" /></p>
 <h2 id="edit-uploads-on-a-server-source">Edit uploads on a server source</h2>
 <p>On an Immich source, <code>J</code> downloads the original, renders your edit
-locally and <strong>uploads</strong> it — a RAW original, or the RAW behind a
-RAW+JPEG pair, gets the same full demosaic treatment as a local one:
-what the develop panel shows is what gets uploaded.
+locally and <strong>uploads</strong> it, choosing the original by the same rule as a
+local <code>J</code>: a photo you haven't graded uploads its <strong>camera JPEG</strong> with
+your crop — what you saw while culling — while a graded one gets the
+full demosaic of its RAW (a RAW original, or the RAW behind a RAW+JPEG
+pair), exactly what the develop panel shows.
 The edit is always <strong>stacked with its original</strong>: a photo that wasn't in
 a stack founds a new one (edit on top, original behind it), and inside
 an existing <a href="https://mertenssander.github.io/culler-releases/manual/sources/#stacks-g">stack</a> the edit becomes the new
@@ -406,16 +514,25 @@ so the server's Info panel reads the same on both. From an
 <a href="https://mertenssander.github.io/culler-releases/manual/sources/#albums">album view</a>, the edit also joins that album. Only
 one export/upload runs at a time — a second <code>J</code> tells you one is already
 running and points at the pill.</p>
-<p>A re-render bakes from the RAW, so it needs it: if the RAW can't be
+<p>A re-render — <code>J</code> on a photo whose front is already a culler edit —
+bakes from the RAW, so it needs it: if the RAW can't be
 downloaded or decoded, the <code>J</code> stops with the cause in the status line
 and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
-previous version as if it were your new edit. Big originals get the
+previous version as if it were your new edit. That holds even when the
+photo has no grade (say you only changed its crop): culler can't yet
+reach the camera JPEG inside the stack, so such a re-render comes from
+the RAW <strong>without the camera's look</strong>, and the status line — or, for
+<strong>Save edits</strong>, the batch summary's warnings — says so ("rendered from
+the RAW: no grade, and the camera JPEG isn't reachable from this
+stack"). If you want a look on it, grade the photo before the <code>J</code>.
+Big originals get the
 same generous download time budget uploads have, so a slow connection
 means a longer wait, not a failure — and the
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">pending-work pill</a> tells you which wait it is:
 <strong>"Downloading RAW · name"</strong> while the original comes down (hover for
 the file, the megabytes so far of the total and the speed — the same
-readout uploads have, amber after five seconds without movement),
+readout uploads have, amber after five seconds without movement; a
+camera JPEG reads <strong>"Downloading · name"</strong>),
 <strong>"Rendering · name"</strong> while it develops, then <strong>"Uploading · name"</strong>
 with the upload's own byte count. A RAW culler already fetched (for the
 develop panel, say) skips the download step entirely.</p>
@@ -469,7 +586,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

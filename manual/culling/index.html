@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -138,9 +138,10 @@ buttons — Pick, Reject, Clear, Rate, Select, Grid, Compare, Filter —
 each showing its key with the name under it; hovering flares the full
 teaching line — and the <strong>Filter</strong> and <strong>Rate</strong> buttons open real
 palettes: click a filter to jump straight to it (each one shows how
-many photos it holds), click a star chip (1–5, 0) to rate. Its <strong>⋯</strong>
+many photos it holds, your own <a href="https://mertenssander.github.io/culler-releases/manual/culling/#saved-filters-cmd-f">saved filters</a>
+included), click a star chip (1–5, 0) to rate. Its <strong>⋯</strong>
 button opens the menu with the rest: the live filter and its count,
-Survey, Match Look, Batch, Sources, Settings, Auto-advance and
+Survey, Match series, Batch, Sources, Settings, Auto-advance and
 Help (<a href="../img/16-more-popover.png">screenshot</a>). Buttons you've used
 about five times (key or click) politely dim — the rail retires
 itself as you learn. The <strong>‹‹</strong> at its foot collapses it to a thin
@@ -218,15 +219,98 @@ next filter · Shift+F shows all"). On a large Immich library that's
 only partly loaded, the counts cover the loaded photos and carry a <code>+</code>
 (<code>312+</code>); the palette notes how many are loaded. Inside a stack
 (<code>G</code>), filters are off, and the palette says so.</p>
-<p>On a server source, <strong><code>Shift+U</code></strong> shows only the photos whose develop,
-crop or landmark edits haven't been saved with <code>J</code> yet — the same photos
-the corner's <strong>"N unsaved"</strong> chip counts (clicking the chip is the same
+<p>On a server source, <strong><code>Shift+U</code></strong> shows only the photos whose develop or
+crop edits haven't been saved with <code>J</code> yet (landmark points on their own
+don't count — see <a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">Sources</a>) — the same
+photos the corner's <strong>"N unsaved"</strong> chip counts (clicking the chip is the same
 gesture). A photo drops out of that view the moment it's saved, and
 <code>Shift+U</code> again (or <code>F</code>) returns to All. Folder photos save as you edit
 them, so there the key just says so.</p>
 <p>A photo that stops matching the filter leaves the view as you judge it —
 rejecting a photo in the Picks view removes it and advances, which is
 exactly the winnowing motion you want.</p>
+<h2 id="saved-filters-cmd-f">Saved filters — <code>Cmd+F</code></h2>
+<p>Each filter key asks one question. A <strong>saved filter</strong> asks several at
+once and keeps them under a name: <em>four stars or better, not rejected,
+not developed yet</em>; <em>shot at 85 mm in the last week</em>; <em>everything still
+undecided from the last fortnight</em>. You set one up once, and from then
+on <code>Cmd/Ctrl+F</code> and a digit brings it back — on any folder or server.</p>
+<p><strong>Making one.</strong> Get the view roughly right with the keys you already
+know (<code>F</code>, <code>Cmd+4</code>, a <a href="https://mertenssander.github.io/culler-releases/manual/culling/#pivot-same-day-camera-lens-or-moment-shift-g">pivot</a>
+on a lens or a camera), press <code>Cmd/Ctrl+F</code>, then <code>N</code>. The editor opens
+already filled in from what you were looking at and says what it started
+from. Type a name, add what the keys couldn't say, and press <code>Enter</code>:
+the filter is saved and shown, and the status line reminds you how to
+get it back.</p>
+<p>The editor has eight rows. A row you leave alone is ignored, and a photo
+has to pass every row you set.</p>
+<table><thead><tr><th>Row</th><th>What it asks</th></tr></thead><tbody>
+<tr><td><strong>Flag</strong></td><td>any of Pick, Reject, Undecided. "Not rejected" is Pick and Undecided together.</td></tr>
+<tr><td><strong>Rating</strong></td><td>at least (<code>≥</code>), exactly (<code>=</code>) or at most (<code>≤</code>) a number of stars; <strong>none</strong> is no stars.</td></tr>
+<tr><td><strong>Label</strong></td><td>any of the colour labels, or <strong>None</strong>.</td></tr>
+<tr><td><strong>Edited</strong></td><td>edited (developed or cropped), or not edited.</td></tr>
+<tr><td><strong>Captured</strong></td><td>in the last N days, weeks or months, counted back from today. The editor prints the dates that works out to.</td></tr>
+<tr><td><strong>Focal length</strong></td><td>from – to, in whole millimetres. Leave one end empty for "and up" or "and down"; the same number twice means exactly that focal length.</td></tr>
+<tr><td><strong>Lens</strong></td><td>is, or is not, one lens.</td></tr>
+<tr><td><strong>Camera</strong></td><td>is, or is not, one camera.</td></tr>
+</tbody></table>
+<p>A photo with no capture date never passes a Captured row, and one with
+no focal length never passes a Focal length row. A photo with no lens
+recorded does pass "lens is not …".</p>
+<p><img src="../img/20-saved-filter-editor.png" alt="The filter editor: a name, then one row per condition" /></p>
+<p>The foot of the editor counts the photos that match as you go. From the
+keyboard: <code>Tab</code> moves between the name and the rows, <code>↑</code>/<code>↓</code> change the
+row, <code>←</code>/<code>→</code> move along it, and <code>Space</code> works the control under the
+ring — it lights a chip, picks an option, starts a number (a digit
+starts one too), or steps the lens or camera list. <code>⌫</code> clears the row,
+<code>Enter</code> saves and <code>Esc</code> cancels. While you type a number, <code>Enter</code> and
+<code>Esc</code> belong to the number.</p>
+<p><strong>Using one.</strong> <code>Cmd/Ctrl+F</code> opens the list, each filter with its count
+and a line saying what it means. <code>1</code>–<code>9</code> shows the filter at that
+position; <code>↑</code>/<code>↓</code> and <code>Enter</code>, or a click, do the same. While a filter
+is on, the list starts with <strong>All photos</strong> (<code>0</code>). The filter's name sits
+in the overlay where <code>[Picks]</code> would — click it to open the list — and
+the status line names it once, with its size and its meaning
+(<code>Filter: Keepers to develop · 41 — ≥4★ · not rejected · not edited</code>).</p>
+<p><img src="../img/19-saved-filters.png" alt="The saved filters list: the filter in use, the row under the keyboard, and one that matches nothing" /></p>
+<p>It behaves like every other filter. A photo that stops matching leaves
+the view as you judge it, so a "not edited" filter empties itself as you
+develop — the photo leaves when you step off it or close the develop
+pane, never from under the sliders. <code>F</code>, <code>Shift+F</code> and <code>Cmd/Ctrl+0</code>
+return to All; <code>Cmd/Ctrl+1</code>–<code>5</code>, <code>Shift+Y</code> and <code>Shift+U</code> replace it;
+<code>Shift+G</code> pivots on top of it and <code>Esc</code> brings you back to it. In the
+grid, photos stay put while you mark, as they do for any filter.</p>
+<p><strong>Looking after the list.</strong> In the list, <code>E</code> edits the row under the
+keyboard, <code>⌫</code> pressed twice deletes it, and <code>Shift+↑</code>/<code>Shift+↓</code> move it —
+the digits follow position, so the filter you use most can be <code>1</code>. There
+is room for nine. A name is at most 32 characters, can't repeat, and
+can't be the name of a built-in filter. With the mouse, the rail's
+<strong>Filter</strong> palette lists the first five with their counts under a
+<strong>Saved filters…</strong> row that opens the full list; the <code>⋯</code> menu has the
+same row.</p>
+<p>A few things worth knowing:</p>
+<ul>
+<li><strong>Dates count back from today.</strong> "The last 7 days" is today and the
+six days before it, on whichever source you open. On a folder older
+than that the filter shows nothing, and the empty view names the
+newest photo's date. Past midnight a date filter moves on a day and
+the status line says so.</li>
+<li><strong>Large server libraries.</strong> A count covers the photos that are loaded
+and carries a <code>+</code>, as the other filters' counts do. A filter with a
+Captured row that falls inside the loaded months is exact and has no
+<code>+</code>: the newest photos load first, so "the last 7 days" is always
+complete.</li>
+<li><strong>Batches.</strong> With a saved filter on, the
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-apply-panel-a">batch panel</a>'s Scope menu
+offers <strong>This view (N)</strong>: exactly the photos you are looking at.</li>
+<li><strong>A filter written by a newer version</strong> that this one can't fully read
+is listed greyed out ("needs a newer culler") and shows nothing,
+rather than quietly ignoring the part it can't read. It can be
+deleted.</li>
+<li>Saved filters aren't available in Compare, Match series, crop or the
+sources pane, and inside a stack every filter is off — the status line
+says so.</li>
+</ul>
 <h2 id="pivot-same-day-camera-lens-or-moment-shift-g">Pivot: same day, camera, lens or moment — <code>Shift+G</code></h2>
 <p>Sometimes the photo in front of you raises a question about its
 neighbours: <em>what else did I shoot that day? everything from this lens?
@@ -270,7 +354,7 @@ did inside stays done — marks, ratings, and the selection, which is one
 set across every view (pivot, gather with <code>Y</code>, pivot again, then batch
 the set). In the <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-apply-panel-a">batch panel</a>
 the Scope menu gains <strong>This view (N)</strong> while you're pivoted.</p>
-<p>Pivots don't start from Compare, Survey, Match Look, crop or inside a
+<p>Pivots don't start from Compare, Survey, Match series, crop or inside a
 stack — the status line says why — and a stack can't be opened from
 inside a pivot (<code>Esc</code> first). On a large Immich library that's only
 partly loaded, a pivot covers the loaded photos (the strip says
@@ -308,7 +392,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

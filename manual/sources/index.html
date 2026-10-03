@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -100,7 +100,9 @@
   <article class="prose">
     <h1>Sources</h1>
     <p><code>S</code> opens the sources pane: the saved places you cull from. While it's
-open it owns the keyboard — <code>↑</code>/<code>↓</code> select, <code>Enter</code> opens, <code>Esc</code> closes.</p>
+open it owns the keyboard — <code>↑</code>/<code>↓</code> select, <code>Enter</code> opens, <code>Esc</code> closes.
+If you switch folders a lot, you can
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#keeping-the-panel-open">keep the pane open</a> beside the photos instead.</p>
 <p><img src="../img/06-sources-pane.png" alt="The sources pane" /></p>
 <p>The pane lists a connected camera first (when there is one), then your
 <strong>Folders</strong> — folders, cards and shares — and your <strong>Servers</strong>, each
@@ -125,6 +127,58 @@ cards and shares); when the pane opens it only checks, in the
 background, that each saved folder is still there. A large server that
 loads in windows shows its total with a <code>~</code> — it's the server's own
 estimate.</p>
+<h2 id="keeping-the-panel-open">Keeping the panel open</h2>
+<p>If you move between folders all the time, pin the pane: click the <strong>pin</strong>
+at its top right, beside <strong>+ Add</strong> — or turn on <strong>Settings → Sources →
+Keep the sources panel open</strong> (<code>Cmd+,</code>). Pinned, the pane stays docked
+beside the photos, between the key rail and the picture, and no longer
+closes when you open a source. Switching folders stops moving the photo
+sideways, a switch with the mouse is one click on a row, and a switch
+from the Grid keeps the Grid.</p>
+<p><img src="../img/06-sources-pinned.png" alt="The pinned sources pane beside a photo" /></p>
+<p>A pinned pane is passive until you ask for it. The keyboard is in one of
+two places:</p>
+<ul>
+<li><strong>With the photos</strong> — the default. Every key does what it always does;
+the pane just shows which source is open (the blue bar), and its foot
+reads <code>S</code> browse.</li>
+<li><strong>In the pane</strong> — press <code>S</code> (or choose <strong>File → Sources…</strong> in the Mac
+menu bar; pinned, it works from the Grid too, and the Grid stays). A
+row cursor appears on the open source,
+the pane's inner edge turns into a light-blue strip, and the foot shows
+the keys for the row you're on. <code>↑</code>/<code>↓</code> move, <code>→</code>/<code>←</code> expand and
+collapse, and <code>N</code>, <code>R</code> and <code>⌫</code> work as they do in the unpinned pane.
+<code>Enter</code> opens the row <strong>and hands the keys back to the photos</strong>; <code>Esc</code>
+or <code>S</code> hand them back without opening anything. Any other key does
+nothing here — the status line reminds you where the keys are.</li>
+</ul>
+<p>The mouse never takes the keys away from the photos: clicking a row opens
+it and you carry on culling; clicking a chevron, <strong>+ Add</strong> or the pin does
+just that. Clicking the row that is already open does nothing (<code>S</code>, then
+<code>Enter</code> on it re-scans the source). Clicking anywhere outside the pane
+brings the keys back to the photos. Only a text field — the add form, a
+rename — has the keyboard while you type in it. <code>Cmd</code>-shortcuts and
+<code>Shift+S</code> (jump to date) work the same wherever the keys are.</p>
+<p>The pane steps aside by itself, and comes back by itself:</p>
+<ul>
+<li><strong>When the photo would get too narrow</strong> — under 560 px wide: a narrow
+window, or a smaller one with Develop, Info or Batch open. The status
+line says so the first time. Widen the window, close the pane on the
+right, or collapse the key rail, and it docks again.</li>
+<li><strong>In Compare, Survey, Match series and crop, in sort mode, and during a
+tethered session.</strong> It returns when you leave them.</li>
+</ul>
+<p>While it's aside for lack of room, or during a tethered session, <code>S</code>
+opens the pane the ordinary way — it owns the keys and closes when you
+open something — and its pin stays lit to say it's still pinned.</p>
+<p>A pane that never closes checks that your saved folders are still there
+at three moments instead of on opening: when it comes back into view, when
+you press <code>S</code>, and when you come back to culler from another app (after
+plugging in a drive, say).</p>
+<p>With nothing open yet — a fresh launch — the pinned pane has the keys,
+like the unpinned one. To unpin, click the pin again (or untick the
+setting): the pane closes, and <code>S</code> opens it as before. Pinning is off by
+default.</p>
 <h2 id="folders-cards-and-shares">Folders, cards and shares</h2>
 <ul>
 <li><strong>+ Add</strong> beside the heading (or <code>N</code>) adds a local folder, a network
@@ -147,6 +201,70 @@ reads better there than an IP and port.</li>
 <li>Each source remembers your position and filter, so switching back
 resumes where you left off.</li>
 </ul>
+<h3 id="folders-inside-a-folder">Folders inside a folder</h3>
+<p>The folder you have open can show the folders inside it. Its row gets a
+chevron: <code>→</code> (or a click on the chevron) lists its subfolders as
+indented rows beneath it, each with its photo count, three levels deep
+(<code>→</code> and <code>←</code> open and close each level; from a folder inside, <code>←</code> closes
+the one it sits in). The list and its counts come from the photos culler
+already scanned when you opened the source, so drawing it reads nothing
+on disk — and a folder you haven't opened never expands, so macOS never
+asks about folders you only keep in the list. The flip side: a folder
+with no photos in it doesn't show — unless you made it, or sorted it
+empty, during this session.</p>
+<p><img src="../img/06-sources-folders.png" alt="The folders of the open source in the pane" /></p>
+<p><code>Enter</code> on a subfolder (or a click on it) opens it — with the folders
+below it — as the view: a strip above the photo says which folder
+("Folder · 2026 / Inbox"), its row carries the blue bar while its
+source's icon lights, and <code>Esc</code> (or a click on the strip) brings the
+whole source back with the cursor where you left it. The batch panel
+offers the folder as <strong>This view (N)</strong>. Opening another subfolder from
+the pane switches straight to it — <code>Esc</code> still goes all the way back —
+and <code>Enter</code> on the source's own row, or a click on it, goes back to the
+whole folder too (a second <code>Enter</code> re-scans it as before). The counts
+are live: sort photos out of an Inbox and its number drops; a folder you
+sort empty stays in the list, without a number.</p>
+<p>On the open folder's own row <code>R</code> still renames the source's <strong>label</strong>,
+never the folder on disk — the foot of the pane says <code>R rename label</code>
+there.</p>
+<p><strong>Making a folder.</strong> The first row under the open folder is <strong>+ New
+folder</strong>, and every folder you expand inside it starts its own list with
+one too (a folder with no subfolders yet expands onto just that row).
+<code>Enter</code> on it (or a click) turns it into a name field: type the name,
+<code>Enter</code> makes the folder right there — inside the folder the row heads
+— and the cursor lands on it; <code>Esc</code> cancels. culler refuses, under the
+field, a name that's empty, one starting with a dot (culler skips hidden
+folders, so it would hide its own photos) or one containing a slash, and
+a name something in that folder already has — on a disk that ignores
+upper and lower case, <code>iceland</code> is taken when <code>Iceland</code> exists. A folder
+you make shows in the list straight away, without a number until photos
+are in it; sort into it with a <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#sorting-into-folders-shift-d">sort destination</a> or the
+batch panel's Copy / Move.</p>
+<p><strong>Renaming a folder.</strong> <code>R</code> on a folder row renames the folder <strong>on
+disk</strong> (<code>Enter</code> keeps the new name, <code>Esc</code> reverts). The photos inside it
+are the same files under a new path, so culler then re-scans the source
+— the status line says "Renamed 'Inbox' to 'Triage' — rescanned." If you
+were culling inside that folder you stay in it, on the same photo. Some
+renames are refused, with the reason on the status line, because
+something culler keeps would be left pointing at the old name: the
+folder is a sort destination or a saved source, or it holds one, the
+export folder, the tether sessions or mirror folder; and while a batch,
+a sort or a <code>J</code> is still running, it asks you to wait. A taken name is
+refused like a new folder's. Renaming back undoes it.</p>
+<p><strong>Deleting an empty folder.</strong> <code>⌫</code> on a folder row arms it — the row
+turns faintly red and reads "press ⌫ again to delete this empty
+folder" — and a second <code>⌫</code> deletes it. culler only ever deletes a folder
+with <strong>nothing</strong> in it, and checks the disk at the moment of the second
+press: a folder with photos in it is refused straight away ("'Inbox'
+isn't empty — 212 photos. Move or trash them first."), and one that only
+looks empty is refused naming what is really there — another file, a
+subfolder, or a hidden file such as the <code>.DS_Store</code> macOS leaves in a
+folder you have browsed ("'Notes' isn't empty — 1 other file and 1
+hidden file."). Photos leave a
+folder through Sort mode or the batch panel's Move and Trash, where you
+see the count first; then the empty folder can go. <code>Esc</code> (or any other
+key) stands the arm down. The same things that refuse a rename refuse a
+delete. A folder you delete can be made again with <strong>+ New folder</strong>.</p>
 <h3 id="macos-folder-permissions">macOS folder permissions</h3>
 <p>The first time you add a source, macOS's folder picker grants access
 automatically. If that folder lives on your Desktop, in
@@ -187,11 +305,16 @@ all-powerful keys):</p>
 <tr><td>sync picks, stars and archive</td><td><code>asset.update</code></td></tr>
 <tr><td>move rejects to the server trash</td><td><code>asset.delete</code></td></tr>
 <tr><td>upload (including edited JPEGs, with stacking)</td><td><code>asset.upload</code>, <code>albumAsset.create</code>, <code>stack.create</code>, <code>stack.delete</code></td></tr>
+<tr><td>put photos into albums and take them out (<code>Shift+I</code>)</td><td><code>albumAsset.create</code>, <code>albumAsset.delete</code></td></tr>
+<tr><td>create, rename or delete albums — <em>only for managing albums; nothing above needs these</em></td><td><code>album.create</code>, <code>album.update</code>, <code>album.delete</code></td></tr>
 </tbody></table>
 <p>A key missing a write permission surfaces the server's error where the
 operation lives: batch failures in the status line, sync failures in
 the pending-work pill (where the sync queue keeps retrying until the
-key is fixed).</p>
+key is fixed). For anything that changes an album the message <strong>names
+the permission</strong> — "the API key lacks the albumAsset.delete permission"
+— so you know which box to tick, instead of a generic "check the API
+key".</p>
 <p>One case deserves its own warning, because Immich adds permissions over
 time: <strong>a key created before your server knew about stacks doesn't gain
 <code>stack.create</code> when the server upgrades</strong> — even if you ticked every box
@@ -247,8 +370,13 @@ haven't been saved with <code>J</code>. Press Quit again to leave them for later
 they stay in culler's own state file, nothing is lost — or save first.</p>
 <p>Because those edits wait for <code>J</code>, culler keeps count. A server source's
 row in the sources pane reads <strong>"12 unsaved"</strong> after its address — the
-photos whose develop, crop or landmark alignment hasn't been saved to the
-server yet — for every server you've added, not only the open one. The
+photos whose develop or crop hasn't been saved to the server yet — for
+every server you've added, not only the open one. Landmark points on
+their own don't count: the reference of a <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series-m">series</a>
+you placed points on but never cropped or graded would otherwise have to
+upload a fresh copy of an untouched photo just to carry them. Its points
+stay in culler's state file on this computer, and travel to the server
+the next time that photo is saved with <code>J</code> for a crop or a grade. The
 same number lives in the <strong>bottom-right corner</strong> on every screen, as a
 blue <strong>"12 unsaved"</strong> chip that totals all your servers: click it to see
 the open server's unsaved photos (<strong><code>Shift+U</code></strong> is the key; either again
@@ -273,8 +401,47 @@ rating you set inside an album is simply there when you reopen the full
 timeline, previews already fetched don't re-download, and each album
 remembers its own position and filter. Album lists are fetched fresh per
 session (albums change on the server); if the fetch fails, the row says
-so and <code>→</code> retries. <code>Backspace</code> does nothing on an album row — albums are
-server objects, and culler won't delete those from a list pane.</p>
+so and <code>→</code> retries. There is one list per server, shared by this pane,
+the album picker and the Upload card, and it refreshes by itself
+whenever culler changes an album — put a photo into an album with the
+picker and that album's count follows in all three, without closing or
+reopening anything. Changes made elsewhere (the server's own web app,
+another device) show up the next time the list loads — and with the
+panel <a href="https://mertenssander.github.io/culler-releases/manual/sources/#keeping-the-panel-open">kept open</a>, every time the keys come back
+into it or the window comes back to the front.</p>
+<p><strong>Managing albums.</strong> An expanded server's first row is <strong>+ New album</strong>:
+press <code>Enter</code> (or click it), type a name, <code>Enter</code> again — the album is
+made on the server and the cursor lands on it. <code>Esc</code> cancels. culler
+refuses an empty name and a name another album already has (any
+capitalization), saying so right under the field; the server itself
+would take both. <code>R</code> on an album row renames the album on the server,
+in the same inline field.</p>
+<p><code>⌫</code> on an album row deletes it — the one thing here you can't undo, so
+it takes two presses and the row says what happens before the second:
+it turns solid red and reads "⌫ again deletes this album — 96 photos
+stay on the server · Albums can't be restored from culler." The photos
+are untouched (they stay on the server and in every other album); the
+album, its order and its sharing are gone for good. <code>Esc</code>, or any other
+key, stands it down. culler only deletes an album you own that isn't
+shared: on a shared one <code>⌫</code> says "'Family' is shared with 2 people —
+culler won't delete a shared album", and the album you have open says
+to open something else first.</p>
+<p>Albums shared with you by someone else show their owner after the name
+("Trip to Lisbon · Anna"). If you can only view one, <code>R</code> and <code>⌫</code> say whose
+it is instead of trying ("'Trip to Lisbon' belongs to Anna — only Anna
+can rename or delete it"); if you can edit it, you can rename it and file
+photos into it, but only its owner can delete it. The hint strip at the
+pane's foot only offers what the selected album allows.</p>
+<p>When the server refuses — a key without the permission, an album deleted
+from another device a moment ago — culler says which and why: "This key
+can't create albums — it needs the album.create permission. Add it to the
+key in the server's Account Settings → API Keys." (under the name field,
+which keeps what you typed), or "'Iceland 2026' was deleted on the server
+— list refreshed."</p>
+<p>An album that was deleted on the server after its row loaded can't be
+opened: the status line says "that album no longer exists, or you don't
+have access to it", the row drops out of the list, and the server's own
+row stays as it was — one dead album doesn't mark the server as failing.</p>
 <h3 id="stacks-g">Stacks: <code>G</code></h3>
 <p>Stacked assets (RAW+JPEG groups, edit versions) show their cover with a
 member-count badge. <code>G</code> steps into the stack — the members become the
@@ -334,13 +501,45 @@ locked photo afterwards: bringing it back is done in Immich's own web
 app. On servers without a locked folder (v2) the action simply isn't
 there.</p>
 <p><strong>Sorting into albums mid-cull</strong>: <code>Shift+I</code> opens the <strong>album picker</strong>
-— the panel's album list becomes togglable. <code>↑</code>/<code>↓</code> move, <code>Space</code> (or
-<code>Enter</code>) toggles the focused photo in or out of the selected album,
-typing filters the list, <code>Esc</code> closes. A check marks the albums the
-photo is in. Toggles apply immediately — the whole RAW+JPEG pair moves
-as one — and a toggle the server refuses flips back with the reason in
-the status line. The picker never auto-closes: sort a photo into
-several albums in one visit.</p>
+— the panel's album list becomes togglable (with the mouse: the
+<strong>Add to album… ⇧I</strong> button in the panel's Albums section). <code>↑</code>/<code>↓</code>
+move, <code>Space</code> (or <code>Enter</code>) acts on the selected row, typing filters the
+list, <code>Esc</code> closes. The line above the list says what the picker acts
+on.</p>
+<p><em>One photo</em>: a check marks the albums it is in, and <code>Space</code> toggles it
+in or out. Toggles apply immediately — the whole RAW+JPEG pair moves as
+one — and a toggle the server refuses flips back with the reason in the
+status line. The picker reports what the server actually did, not just
+that it answered: a photo the server won't let you add or remove
+(someone else's photo in a shared album, say) flips back and says "no
+permission"; a photo that turns out to be in the album already keeps
+its check and reads "already in … — nothing added"; an album that was
+deleted in the meantime reads "that album no longer exists, or you
+don't have access to it". The picker never auto-closes: sort a photo
+into several albums in one visit.</p>
+<p><em>A selection</em>: when the photo you're on is part of a
+<a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>, the picker files <strong>every selected photo</strong>
+("12 selected · adds them to an album"). <code>Space</code> on an album adds them
+all in one go and reports what happened — "Filed 12 into 'Iceland 2026'
+· 3 were already in it", or which ones the server refused — and the
+album keeps a check for the rest of the visit.</p>
+<p><em>A new album</em>: type a name no album has and the last row offers
+<strong>+ New album 'Westfjords'</strong>; <code>Enter</code> on it makes the album with the
+photo or selection already in it. It is always the last row, so typing
+part of a name ("ice") and pressing <code>Enter</code> files into the first match,
+never into a stray new album. On that row <code>Space</code> types a space, for
+names of more than one word.</p>
+<p><em>Inside an album</em>: the first row is <strong>Remove from this album</strong> (with a
+selection, "Remove 12 from this album"). One photo goes at once; a
+selection asks once — the row turns red, "Space again removes 12 from
+Iceland 2026", and <code>Esc</code> stands it down. The photos leave the album and
+the view right away; they stay on the server and in every other album.
+If you can't remove some of them — photos someone else added to an
+album shared with you — they stay, and the status line says so
+("Removed 2 of 3 from 'Family' — 1 was added by someone else"). Trash in
+the batch panel is a different thing: it deletes photos from the
+server, not just from the album, and the panel says so when an album is
+open.</p>
 <h2 id="tethered-shooting-usb-camera">Tethered shooting (USB camera)</h2>
 <p>Plug a supported camera in over USB (on Sony bodies: USB mode → <strong>Remote
 Shoot (PC Remote)</strong>, and for RAW+JPEG set <em>Still Img. Save Dest.</em> to
@@ -506,7 +705,7 @@ in the list.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

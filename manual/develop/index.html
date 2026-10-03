@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -119,8 +119,10 @@ a moment later; close the panel and the <strong>plain</strong> JPEG is back — 
 adjustments were graded against the flat RAW rendition, so they are
 deliberately <em>not</em> re-applied to the already-cooked camera JPEG (they
 would read overbaked there). The edits aren't lost: they live in the
-develop panel and in <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">exports</a>, which bake from
-the RAW — and a quiet <code>[edited]</code> tag in the top-left overlay row marks
+develop panel and in <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j">exports</a>,
+which bake a graded photo from the RAW (a photo you haven't graded
+exports its camera JPEG instead — the picture you culled — even while
+this panel shows its RAW) — and a quiet <code>[edited]</code> tag in the top-left overlay row marks
 any photo carrying RAW edits you can't currently see. Only the crop
 follows you out of the panel: geometry means the same thing on both
 files. The tag next to
@@ -364,156 +366,238 @@ scenes (blown light sources, very high ISO) diverge more. <strong>Vivid</strong>
 today; more looks are on the way, and you can add your own — drop a
 <code>&lt;name&gt;.conf</code> in <code>~/.culler/looks/</code> (a <code>name=</code> line sets its display name)
 and it joins the list.</p>
-<h2 id="match-look-m">Match Look: <code>M</code></h2>
-<p><strong>Match Look</strong> grades a run of similar photos as one. Stand on the photo whose
-look you like and press <code>M</code>: up to 24 photos around it freeze into a
-set, and the one you were on becomes the <strong>reference</strong>. Nothing changes
-yet — entering the mode never touches your photos. Press <strong>Match</strong> in
-the develop panel when you want the fit: every linked photo's tone is
+<h2 id="matching-a-series-m">Matching a series: <code>M</code></h2>
+<p><strong>Match series</strong> makes a set of photos belong together: the same frame
+— every subject in the same place, so the set scrolls like a stop-motion
+film — and, when you want it, the same look. Stand on the photo that
+should lead and press <code>M</code>: up to 24 photos around it freeze into a set,
+and the one you were on becomes the <strong>reference</strong>. Nothing changes yet.
+Entering never touches your photos, and nothing is written until you
+press <strong>Done</strong>.</p>
+<p>For the length of the session the right-hand panel is the <strong>series
+panel</strong> (<a href="../img/17-match-series.png">screenshot</a>). Its head names the
+reference and counts the photos; under it sit two tabs — <strong>Align</strong> for
+the frames, <strong>Look</strong> for the tone — and <code>E</code> flips between them (so does
+a click). At the foot, always in the same place under both tabs: one
+line saying exactly what Done will apply, <strong>Discard</strong> (only once there
+is something to lose) and <strong>Done</strong>. Every session opens on Align — or on
+Look, if that's where you'd rather start:
+<a href="https://mertenssander.github.io/culler-releases/manual/getting-started/#settings-cmd">Settings</a> → Match series → <strong>Match
+series opens on</strong> decides it for every session. <code>E</code> switches within a
+session; the next one opens on the setting's tab again.</p>
+<p>A series is rarely a neat run. A set shot weeks apart — a pregnancy
+progression, a growing kid on the same bench — lives scattered across
+your library, and the frozen set follows whatever you're looking at
+(it's just as happy with a <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a>). So build
+the view first: <strong>select</strong> the series (<code>Y</code> on each photo, or
+<code>Cmd</code>/<code>Shift</code>+click), press <strong><code>Shift+Y</code></strong> to show just the selection,
+then <code>M</code> — the set is now exactly your series, in date order, and the
+photo you were standing on is the reference. A selection larger than 24
+photos is cut at the cap; the entry line says so (<code>24 of 31 selected photos</code>) — narrow the selection to match exactly the set you mean.</p>
+<p>Walk the set with <code>←</code>/<code>→</code> (the filmstrip marks the reference with a
+solid accent ring). <code>P</code>/<code>X</code>/ratings/labels still work on the focused
+photo — a bad frame gets rejected without leaving.</p>
+<h3 id="aligning-the-frames">Aligning the frames</h3>
+<p>The <strong>Align</strong> tab is where a session starts (unless Settings says
+Look). Its <strong>Landmarks</strong> card
+says where the series stands and offers the next step as one button —
+the same thing <code>Shift+C</code> does from anywhere in the session:</p>
+<ul>
+<li><strong>Place landmarks</strong> — nothing has points yet. It opens the reference.</li>
+<li><strong>Continue at …</strong> (it names the photo) — <em>"6 points · 3 of 5 photos
+have them"</em>: the reference's points are there and some photos still
+need theirs. It opens the first one that does.</li>
+<li><strong>Edit landmarks</strong> — every photo has its points. It opens the
+reference's points again, to move, add or remove them (see <em>Editing
+the reference's points</em> below); <code>C</code> still re-aligns the focused photo
+by hand.</li>
+</ul>
+<p><strong>Landmark align (<code>Shift+C</code>).</strong> Align by <em>matching points</em>. On the
+<strong>reference</strong>, click 2–8 distinctive points (an ankle, the nose, a hip
+ridge). <code>Enter</code> then walks the series: each photo opens in a three-pane
+layout — the reference with its numbered dots already in place, your
+photo, and the live result. Click the same numbered points on your
+photo; from the second point the third pane shows the solved placement
+— position, size and tilt all at once — as a faint overlay on the
+reference's frame. A point you can't see on this photo (an ankle out of
+frame) is no problem: <strong><code>Tab</code> skips it</strong>, and any two shared points are
+enough — the numbered chips above your photo show what's placed and aim
+the next click. A magnifier follows the cursor for precise placement;
+drag a dot to adjust, <code>⌫</code> undoes the last one, and a right-click on a
+dot (or its hover <code>×</code>) removes it (on the reference that removes the
+number from every photo). <code>Enter</code> accepts and moves to the next photo
+that needs points (after the last it returns to the series panel);
+<strong>Back to series</strong> (<code>C</code>) keeps the placement too and stops there; <code>Esc</code>
+backs out without it. <code>Shift+C</code> instead drops to the drag view with the
+solve applied, for hand fine-tuning; <strong>Clear landmarks</strong> in the crop
+pane forgets the reference's whole set, or just this photo's points.
+culler still only crops, never warps — if the pose truly changed, the
+dots can't all land exactly, and the preview shows that honest
+compromise rather than pretending.</p>
+<p><strong>Editing the reference's points.</strong> Once every photo is aligned, <strong>Edit
+landmarks</strong> (or <code>Shift+C</code>) opens the reference's landmark view with its
+points in place: drag one to move it, click to add one, right-click (or
+its hover <code>×</code>) to remove one. Each photo's points are paired to the
+reference's <em>numbers</em>, so the rest of the series keeps its work: a moved
+or an added point takes no photo's points away, and a removed point only
+takes away that one pair. <code>Enter</code> then visits just the photos an edit
+left with fewer than two pairs — usually none — and the Landmarks card
+says the same (<em>"1 of 5 photos have them"</em>).</p>
+<p>The photos that keep two pairs <strong>follow the edit</strong>: as soon as you're
+back at the series, every photo whose crop is still exactly the one its
+landmarks gave it is re-aligned to the new points — <em>"3 photos re-aligned
+to the edited landmarks"</em> — so <code>K</code> previews it, Done applies it (<em>"2
+landmarks and 3 photos re-aligned"</em>) and Discard takes it back with
+everything else. A photo whose crop you've adjusted by hand since its
+landmarks placed it keeps your crop (<em>"1 kept its hand-tuned crop"</em>).
+So does a photo aligned with a culler older than this behavior: nothing
+recorded the crop its landmarks gave it, so nothing can prove it
+untouched, and it is treated as hand-tuned (<em>"1 aligned by an earlier
+version kept its crop"</em>). To re-solve such a photo against the new
+points — once; from then on it follows — focus it, press <code>C</code> then
+<code>Shift+C</code> for its landmark view, and <code>Enter</code>.</p>
+<p><strong>Landmarks are saved with the photos.</strong> Done applies the crops <em>and</em>
+the points (the reference's set, and each accepted photo's points,
+paired to the reference's numbers); Discard drops both. Next time you
+open a series on the same reference — say, two new photos joined it —
+the Align tab reads <em>"3 of 5 photos have them"</em>, the dots are back the
+moment a pane opens, and <code>Shift+C</code> lands straight on the first photo
+that still needs its points. A photo's points belong to the reference
+they were placed against; re-anchoring with <code>R</code> loads whatever the new
+reference has stored — which is why <code>R</code> is refused while the session
+still holds landmark points you haven't applied (<em>"can't re-anchor — it
+would drop the landmark work on 2 photos · M commits it first"</em>). On an
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#editing-photos-from-an-immich-source">Immich source</a> the points are
+kept in culler's state on this computer and reach the server with the
+photo's next <code>J</code>. Points on their own never make a photo <em>unsaved</em>: a
+reference you placed points on but didn't crop or grade stays out of the
+"N unsaved" count, <code>Shift+U</code>, Save edits and the reminder on quit —
+saving it would only upload a new copy of an untouched photo. Its points
+travel the next time you save it for a crop or a grade.</p>
+<p><strong>By hand (<code>C</code>).</strong> The <strong>Frame</strong> card's <strong>By hand</strong> — <code>C</code> — works
+without any points. On the <strong>reference</strong> it's the ordinary crop tool:
+set the frame that leads the series. On any other photo it opens the
+<strong>align view</strong>: the reference's finished frame fills the screen, solid,
+and <em>never moves</em> — your photo rides on top as a faint overlay,
+pre-placed from the reference's frame (never over a crop the photo
+already carries). Now manipulate <em>your photo</em>, not a window: <strong>drag</strong> it
+until the subject sits where the reference's does, <strong>scroll, pinch or
+<code>↑</code>/<code>↓</code></strong> to size it in the frame, <strong><code>Cmd/Ctrl+arrows</code></strong> to nudge it
+precisely (<code>Shift</code> makes every step coarser), <code>←</code>/<code>→</code> to straighten, <code>R</code>
+for quarter turns. A quiet outline shows where your photo's actual edges
+are — <strong>its corners carry drag handles that size the photo</strong> too, so the
+reference's frame itself stays free of controls. The overlay is exactly
+what will be applied — <code>\</code> flips to a solid preview of the result and
+back. A caption names which is which (<code>solid: &lt;reference&gt; · faint: &lt;this photo&gt;</code>). The aspect stays locked to <code>Matched</code> in the crop pane (pick
+another ratio to deliberately break ranks; a <code>[custom]</code> tag says you
+have), and when a tighter-framed photo needs its subject placed beyond
+its own edge, just keep dragging — the uncovered part exports as white
+padding. <strong>Reset</strong> in the pass means <em>back to the reference's
+placement</em>, not back to full. The subject moved between sessions, so
+placement stays yours per photo; the shape is what stays identical.</p>
+<p>Inside a pass the crop pane's button reads <strong>Back to series</strong>, not Done,
+and says why right above it: <em>nothing is applied until Done in the
+series panel</em>. It closes the pass and keeps what you did, in memory with
+the rest of the session.</p>
+<h3 id="matching-the-look">Matching the look</h3>
+<p>Press <code>E</code> for the <strong>Look</strong> tab (or set Settings to open there): the
+develop panel, shaped for a set
+(<a href="../img/17-match-look.png">screenshot</a>). It edits the <strong>reference</strong>, and
+every slider move carries the whole linked set with it — each photo
+keeping its own hidden offset, so the group shifts together instead of
+snapping to identical numbers.</p>
+<p>Press <strong>Match</strong> when you want the fit: every linked photo's tone is
 fitted toward the reference — exposure, contrast and the two tail
 rescues, each from its own starting point. The fit reads each frame's
 histogram <em>and</em> its EXIF exposure settings, so a frame shot a stop
 darker (faster shutter, smaller aperture) gets the physical correction,
-while a frame where the scene genuinely changed (a shadow crossing,
-more sky) is only nudged, never forced — a sudden shadow is real, not a
-mistake. Don't like the result? <strong>Reset all</strong> backs the whole set out,
-without leaving the mode.</p>
-<p>While the mode is on, the develop panel edits the <strong>reference</strong>, and
-every slider move carries the whole linked set with it — each photo
-keeping its own hidden offset, so the group shifts together instead of
-snapping to identical numbers. Walk the set with <code>←</code>/<code>→</code> (the filmstrip
-marks the reference with a solid accent ring), check any photo against
-its original with <code>\</code> (<a href="../img/17-match-look.png">screenshot</a>), and:</p>
+while a frame where the scene genuinely changed (a shadow crossing, more
+sky) is only nudged, never forced — a sudden shadow is real, not a
+mistake. Don't like the result? <strong>Reset all</strong> puts every photo's tone
+back to how it was when you entered, without leaving and without
+touching the alignment. It's the same "starting point, not a pixel
+match" honesty as a camera look: the fit gets the set close, your eyes
+make the call. Check any photo against its original with <code>\</code>.</p>
 <ul>
 <li><code>R</code> makes the focused photo the new reference (a fit you've run
 re-fits against it; before the first Match, re-anchoring changes
 nothing).</li>
 <li><code>L</code> unlinks the focused photo — its sliders are its own from there —
 or links it back. Unlinked members wear a thin <strong>amber ring</strong> in the
-filmstrip (the reference's ring is solid blue; linked members have
-none). A RAW-paired photo that already carries a develop grade starts
-unlinked, so a fit can never overwrite deliberate work; <code>L</code> opts it
-in.</li>
-<li><code>P</code>/<code>X</code>/ratings/labels still work on the focused photo — a bad frame
-gets rejected without leaving.</li>
+filmstrip and an <code>[unlinked]</code> tag (the reference's ring is solid blue;
+linked members have none). A RAW-paired photo that already carries a
+develop grade starts unlinked, so a fit can never overwrite deliberate
+work; <code>L</code> opts it in.</li>
+<li><code>Q</code> neutralizes the focused photo's white balance: click something
+gray. Photos from different sessions rarely share a color cast, and
+the tone fit deliberately leaves white balance alone (it can't tell a
+cast from a real scene change) — so for a series, sample each photo
+first, walk to the next, repeat, then press Match: the eyedropper does
+the color, the fit does the tone.</li>
 </ul>
-<p>RAW-paired members' filmstrip thumbnails warm up once per session — a
-few seconds, one at a time (the pending pill counts them: <em>"Preparing
-thumbnails"</em>) — into live renders that track every slider move, so a
-matched set visibly matches without leaving the panel. They revert
-to their normal plain thumbnails the moment the session ends.</p>
-<p>The panel itself changes shape for the session: a quiet
-<code>reference: &lt;name&gt;</code> line under the heading always names the photo
-driving the set, <strong>Auto</strong> and the <strong>look</strong> picker step aside (they'd
-drag the whole group through an unrelated fit), and the buttons become
-<strong>Match</strong> — the fit itself, run when you ask, re-run after a re-anchor
-— and <strong>Reset all</strong>, every photo back to how it was when you entered.
-Until you've pressed Match, slider moves still carry the linked set —
-each photo shifting by the same amount from its own values, no fit
-implied. If a photo's fitted tone hits a slider's end of travel, it
-stops tracking the group on that axis: a small amber dot appears in
-its thumbnail corner and a <code>[clamped]</code> tag joins the panel header
-while it's focused — drag back toward center and it reconnects.</p>
-<p><strong>Nothing is written until you decide</strong>: <code>M</code> again commits — every
-changed photo's sidecar is written once — and <code>Esc</code> cancels, restoring
-every photo exactly as it was. <code>Esc</code> is instant on an untouched
-session; once anything is matched or aligned it arms instead — the
-sidebar's <code>Esc</code> hint names the count, and a second <code>Esc</code> actually
-discards. It's the same "starting point, not a
-pixel match" honesty as a camera look: the fit gets the set close, your
-eyes make the call.</p>
-<h3 id="matching-a-series">Matching a series</h3>
-<p>Match Look isn't only for <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moments</a>. A series shot weeks apart — a
-pregnancy progression, a growing kid on the same bench — lives
-scattered across your library, and the frozen window follows whatever
-you're looking at. So build the view first: <strong>select</strong> the series
-(<code>Y</code> on each photo, or <code>Cmd</code>/<code>Shift</code>+click), press <strong><code>Shift+Y</code></strong> to
-show just the selection, then <code>M</code> — the set is now exactly your series,
-in date order, and the photo you were standing on is the reference.</p>
-<p>Photos from different sessions rarely share a color cast, and the tone
-fit deliberately leaves white balance alone (it can't tell a cast from
-a real scene change). Neutralize each photo first — <code>Q</code> works right
-inside the session, on the focused photo: click something gray, walk
-to the next, repeat — then press Match: the fit does the tone, the
-eyedropper has already done the color. Samples made inside the session
-commit with <code>M</code> and unwind with <code>Esc</code>, like everything else. A
-selection larger than 24 photos gets
-truncated to the window cap; the entry line says so
-(<code>24 of 31 selected photos</code>) — narrow the selection to match exactly
-the set you mean.</p>
-<p><strong>Matching the crop.</strong> A consistent series wants consistent framing,
-and <code>C</code> works inside Match Look: on the <strong>reference</strong> it's the
-ordinary crop tool — set the frame that leads the series. On any other
-member, <code>C</code> opens the <strong>align view</strong>: the reference's finished frame
-fills the screen, solid, and <em>never moves</em> — your photo rides on top
-as a faint overlay, pre-placed from the reference's frame (never over
-a crop the photo already carries). Now manipulate <em>your photo</em>, not a
-window: <strong>drag</strong> it until the subject sits where the reference's does,
-<strong>scroll, pinch or <code>↑</code>/<code>↓</code></strong> to size it in
-the frame, <strong><code>Cmd/Ctrl+arrows</code></strong> to nudge it precisely (<code>Shift</code> makes
-every step coarser), <code>←</code>/<code>→</code> to straighten, <code>R</code> for quarter turns. A
-quiet outline shows where your photo's actual edges are — <strong>its
-corners carry drag handles that size the photo</strong> too, so the
-reference's frame itself stays free of controls. The overlay is exactly what will commit —
-<code>\</code> flips to a solid preview of the result and back. A caption names
-which is which (<code>solid: &lt;reference&gt; · faint: &lt;this photo&gt;</code>). The
-aspect stays locked to <code>Matched</code> in the crop pane (pick another ratio to
-deliberately break ranks; a <code>[custom]</code> tag says you have), and when a
-tighter-framed photo needs its subject placed beyond its own edge,
-just keep dragging — the uncovered part exports as white padding.
-<strong>Reset</strong> in the pass means <em>back to the reference's placement</em>, not
-back to full. The subject
-moved between sessions, so placement stays yours per photo; the shape
-is what stays identical. Every crop lives in memory with the rest of
-the session: <code>M</code> commits them all at once (and writes one history
-entry per changed photo), <code>Esc</code> throws them all away — pressed twice,
-since an aligned series arms the confirm first.</p>
-<p><strong>Landmark align (<code>Shift+C</code>).</strong> When the pose shifted too much to
-eyeball, align by <em>matching points</em> instead of dragging. Start on the
-<strong>reference</strong>: press <code>C</code> for its pass, then <code>Shift+C</code> (or the crop
-pane's <strong>Landmarks</strong> chip) and click 2–8 distinctive points on it (an
-ankle, the nose, a hip ridge). <code>Enter</code> then walks the series: each
-photo opens in a three-pane layout — the reference with its numbered
-dots already in place, your photo, and the live result. Click the same
-numbered points on your photo; from the second point the third pane
-shows the solved placement — position, size and tilt all at once — as
-a faint overlay on the reference's frame. A point you can't see on
-this photo (an ankle out of frame) is no problem: <strong><code>Tab</code> skips it</strong>,
-and any two shared points are enough — the numbered chips above your
-photo show what's placed and aim the next click. A magnifier follows
-the cursor for precise placement; drag a dot to adjust, <code>⌫</code> undoes the
-last one, and a right-click on a dot (or its hover <code>×</code>) removes it
-(on the reference that removes the number from every photo).
-<code>Enter</code> accepts and moves to the next photo (on the last it returns to
-Match Look); <code>Shift+C</code> instead drops back to the drag view with the
-solve applied, for hand fine-tuning; <strong>Clear landmarks</strong> in the crop
-pane forgets the reference's whole set, or just this photo's points.
-culler still only crops, never warps — if the pose truly changed, the
-dots can't all land exactly, and the preview shows that honest
-compromise rather than pretending.</p>
-<p><strong>Landmarks are saved with the photos.</strong> <code>M</code> commits the crops <em>and</em>
-the points (the reference's set, and each accepted photo's points,
-paired to the reference's numbers), <code>Esc</code> unwinds both. Next time you
-enter Match Look on the same reference — say, a new photo joined the
-series — the dots are back the moment the pane opens, photos that were
-already aligned are skipped, and <code>Enter</code> lands straight on the photo
-that still needs its points. A photo's points belong to the reference
-they were placed against; re-anchoring with <code>R</code> loads whatever the new
-reference has stored. Committed crops show at once in every view — on
-photos that already carry an uploaded edit too — so scrolling the
-series plays like a stop-motion film; press <code>J</code> on each photo when you
-want the server copies re-rendered with the new framing.</p>
-<p><strong>Seeing the series whole.</strong> <code>K</code> inside Match Look lays the frozen set
-out as a grid — every photo with its live tone <em>and</em> crop, exactly
-what the committed series will look like side by side. It's
-read-only: click a photo to jump focus to it (the grid closes), <code>K</code>
-or <code>Esc</code> just closes. Slider moves in the panel track live in the
-grid, so it doubles as the place to spot the one frame the fit got
-wrong.</p>
+<p>These are the Look tab's own: the ring, the tag and the live thumbnails
+only show there (or once you've changed the tone), and on the Align tab
+<code>L</code> and <code>Q</code> just point you to <code>E</code>. Someone who came to align sees none
+of it.</p>
+<p>RAW-paired members' filmstrip thumbnails warm up when the Look tab
+first opens — a few seconds, one at a time (the pending pill counts
+them: <em>"Preparing thumbnails"</em>) — into live renders that track every
+slider move, so a matched set visibly matches without leaving the panel.
+They revert to their normal plain thumbnails the moment the session
+ends.</p>
+<p>The panel changes shape for the session: <strong>Auto</strong> and the <strong>look</strong>
+picker step aside (they'd drag the whole group through an unrelated
+fit), <strong>Copy</strong> and <strong>Paste</strong> leave its foot (a paste would write the
+photo at once, and a series writes nothing until Done — <code>Shift+V</code> in a
+session says so), and the buttons become <strong>Match</strong> — the fit itself,
+run when you ask, re-run after a re-anchor — and <strong>Reset all</strong>. Until
+you've pressed Match, slider moves still carry the linked set — each
+photo shifting by the same amount from its own values, no fit implied.
+If a photo's fitted
+tone hits a slider's end of travel, it stops tracking the group on that
+axis: a small amber dot appears in its thumbnail corner and a
+<code>[clamped]</code> tag joins the panel header while it's focused — drag back
+toward center and it reconnects.</p>
+<h3 id="previewing-and-finishing">Previewing and finishing</h3>
+<p><strong>Seeing the series whole.</strong> <code>K</code> — or <strong>Preview</strong> on the Align tab —
+lays the frozen set out as a grid: every photo with its live crop <em>and</em>
+tone, exactly what the finished series will look like side by side. It's
+read-only: click a photo to jump focus to it (the grid closes), <code>K</code> or
+<code>Esc</code> just closes. It's the registration check before anything is
+applied, and the place to spot the one frame a fit got wrong.</p>
+<p><strong>Nothing is written until Done.</strong> Everything in a session — aligned
+frames, landmark points, matched tone, gray-point samples — lives in
+memory. The line at the panel's foot always says what <strong>Done</strong> (<code>M</code>)
+would apply: <em>"nothing changed yet"</em>, <em>"2 photos aligned — applied when
+you press Done"</em>, <em>"3 photos matched + aligned — …"</em>. Done writes each
+changed photo once, with one history entry apiece — <em>Aligned to</em> and
+the reference's name for a photo whose frame changed, <em>Match look</em> when
+its tone did — and the status line confirms it (<em>"series done — 2 photos
+aligned"</em>). With nothing changed it simply leaves.</p>
+<p><strong>Discard</strong> (<code>Esc</code>) puts every photo back exactly as it was. On an
+untouched session it leaves at once; once anything has changed, the
+first <code>Esc</code> — or a click on <strong>Discard 2</strong> — only <strong>arms</strong> it: the button
+turns red and reads <strong>Discard 2?</strong>, and the status line names what would
+go and the other way out (<em>"discard 2 aligned photos? Esc again confirms
+— or M to apply them"</em>). A second <code>Esc</code> or click discards; any other key
+or a click anywhere else stands it down. A second <em>press</em>, that is:
+holding a key down never counts twice in here, so one long <code>Esc</code> backs
+out of exactly one thing (the landmark view, the crop pass, a value you
+were typing, or — from the panel — it arms), and a held <code>M</code> or <code>Enter</code>
+acts once. Quitting culler mid-session applies, like Done.</p>
+<p>Applied crops show at once in every view — on photos that already carry
+an uploaded edit too — so scrolling the series plays like a stop-motion
+film. On an <a href="https://mertenssander.github.io/culler-releases/manual/develop/#editing-photos-from-an-immich-source">Immich source</a> Done
+is not <code>J</code>: the photos then read <em>unsaved</em> until you press <code>J</code> on each
+(or save them together from the Batch panel), which is what re-renders
+the server copies with the new framing.</p>
 <h2 id="copying-settings-across-photos-shift-c-shift-v">Copying settings across photos: <code>Shift+C</code> / <code>Shift+V</code></h2>
 <p><code>Shift+C</code> copies the current photo's develop settings <em>and</em> crop
 (including rotation); <code>Shift+V</code> pastes them onto the current photo. A
-moment shot in identical light becomes one keystroke per photo.</p>
+moment shot in identical light becomes one keystroke per photo. Inside
+a <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series-m">series session</a> neither applies: <code>Shift+C</code> is
+the landmark walk there, and a paste — which writes the photo at once —
+is refused until you press Done or Discard.</p>
 <h2 id="edit-history-snapshots">Edit history &amp; snapshots</h2>
 <p>Every edit is remembered. <code>Cmd/Ctrl+Z</code> <strong>undoes</strong> the last change,
 <code>Shift+Cmd/Ctrl+Z</code> <strong>redoes</strong> it — and it's not just develop sliders:
@@ -548,7 +632,7 @@ never pruned — they're the states you deliberately kept.</li>
 photo back up next week and its history and snapshots are right where you
 left them. History is capped generously (about two thousand steps, always
 keeping the oldest <strong>Opened</strong> anchor); in practice it's effectively
-complete. Undo isn't available while a crop or Match Look session is open
+complete. Undo isn't available while a crop or a series session is open
 — finish or cancel it first (those have their own <code>Esc</code>).</p>
 <h2 id="editing-photos-from-an-immich-source">Editing photos from an Immich source</h2>
 <p>Photos from a folder save every edit the instant you make it (to the
@@ -573,10 +657,27 @@ later <code>J</code> from another machine would replace the render without it. T
 <code>[unsaved]</code> tag, the corner's "N unsaved" chip (with <code>Shift+U</code> to see
 every such photo), the sources pane's per-server count and the reminder
 on quit all point at the same thing: press <code>J</code> when the grade is done.</li>
+<li><strong>Change your mind? Discard edits.</strong> When a photo has unsaved edits, a
+<strong>Discard edits</strong> entry appears — in the develop pane as a <strong>Discard</strong>
+button at the right end of the title row, beside <code>[unsaved]</code> (nothing
+in the pane moves when it comes and goes), in the <code>⋯</code> More menu, and
+in the DEVELOP / CROP tab palettes. It reverts the whole photo
+(grade, crop, alignment, snapshots) to the last state you saved to the
+server, in one click. Alignment points on their own never count as
+unsaved, so they never bring Discard up — but when you do discard a
+grade or a crop, the points go back to the last save with the rest. <code>Cmd+Z</code> brings the grade and the crop back, like
+any edit; a snapshot or alignment points made since the last save are
+not part of undo and stay gone. (A photo you never saved reverts to
+the original.) It's distinct from <strong>Reset</strong>, which always clears back
+to zero; Discard goes back to your last save. Inside an open crop,
+<code>Esc</code> after a discard returns to the discarded-to crop, not to the one
+you threw away.</li>
 <li>Undo/redo and snapshots work on Immich photos too, the same as local ones.</li>
 <li>Just after you move to an Immich photo there's a brief moment (a fraction
 of a second) while culler reads its saved grade back; if you press <code>J</code>
-that instant it'll say "still loading" — wait a beat and press it again.</li>
+that instant it'll say "still loading" — wait a beat and press it again.
+Discard waits for the same read, on any photo (guessing before culler
+knows what the server holds would be wrong), and says the same thing.</li>
 </ul>
 <h2 id="where-it-all-lives">Where it all lives</h2>
 <p>Edits are stored per photo in its sidecar as <code>crs:</code> fields (the full list
@@ -603,7 +704,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

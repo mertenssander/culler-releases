@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -179,8 +179,8 @@ on one to fire its quick actions without switching.</li>
 <li><strong>The system menu bar</strong> (Mac app): everything above is also in the
 regular macOS menus — File, View, Photo, Window, Help — with each
 item naming its culler key, so the menu bar doubles as a shortcut
-reference. Quitting mid-session is always safe: an open Match Look or
-crop session is committed, never discarded.</li>
+reference. Quitting mid-session is always safe: an open Match series
+or crop session is applied, never discarded.</li>
 <li><strong>The pending-work pill</strong> (top-right) appears only while something is
 running against a server — syncing ratings, uploading, fetching
 previews. See <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">batch operations</a>.</li>
@@ -199,11 +199,19 @@ the moment you change it and is remembered across launches.</p>
 the filmstrip regroup behind the sheet; the two lines under it say how
 many moments your library holds and which one you're on), and
 <strong>Auto-advance</strong> — the same switch as <code>T</code>.</li>
+<li><strong>Sources</strong> — <strong>Keep the sources panel open</strong>: docks the
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#keeping-the-panel-open">sources pane</a> beside the photos
+so switching folders is one click (the same switch as the pin in the
+pane; off by default).</li>
 <li><strong>Develop &amp; export</strong> — <strong>Slider drag speed</strong> for every slider in the
 app: <em>Fine</em> (half of Standard, for precise work), <em>Standard</em>, or
 <em>Direct</em> (the value follows the pointer); and the <strong>JPEG quality</strong> <code>J</code>
 and exports render at — the same value as the apply panel's
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j">JPEG Quality card</a>.</li>
+<li><strong>Match series</strong> — <strong>Match series opens on</strong>: the tab every
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series-m">series session</a> starts on — <em>Align</em>
+(the default) or <em>Look</em>. <code>E</code> still switches tabs inside a session; the
+next one opens here again.</li>
 <li><strong>Storage</strong> — the <strong>Cache limit</strong> (1, 2, 4, 8 or 16 GB; 4 GB by
 default) for the previews culler keeps from servers and RAW files so
 they open instantly, with how much it holds right now; <strong>Show cache
@@ -222,7 +230,7 @@ change it (hold <code>Shift</code> for bigger steps), <code>Space</code> flips a
 moves to the next section, <code>R</code> puts the row back to its default, and
 <code>Esc</code> (or <code>Cmd+,</code> again, or a click outside) closes it. A section with
 something changed shows a dot in the list and a <strong>Reset</strong> beside its
-heading. Settings is unavailable in Compare, Survey, Match Look and crop —
+heading. Settings is unavailable in Compare, Survey, Match series and crop —
 the status line says how to leave first. Every setting, its default and
 where it is stored is listed in the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#settings">reference</a>.</p>
 <p>Now go cull something: <a href="https://mertenssander.github.io/culler-releases/manual/culling/">Culling</a>.</p>
@@ -238,7 +246,7 @@ where it is stored is listed in the <a href="https://mertenssander.github.io/cul
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

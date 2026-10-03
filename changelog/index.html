@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.8.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
     </div>
   </details>
 </header>
@@ -38,7 +38,289 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-8-0-2026-10-01">0.8.0 — 2026-10-01</h2>
+    <h2 id="0-9-0-2026-10-03">0.9.0 — 2026-10-03</h2>
+<h3 id="new">New</h3>
+<ul>
+<li><strong>The sources panel can stay open.</strong> Click the new pin at the top of
+the sources pane — or turn on <strong>Settings → Sources → Keep the sources
+panel open</strong> — and the pane stays docked beside the photos instead of
+closing every time you open a source. Switching folders no longer moves
+the photo sideways, a switch with the mouse is one click on a row, and
+switching from the Grid keeps the Grid. The keys stay with the photos
+until you press <code>S</code> (the row cursor and a light-blue edge show when
+they're in the pane); <code>Enter</code> opens a row and hands them back, <code>Esc</code>
+or <code>S</code> hand them back without opening anything. The pane steps aside
+by itself when the photo would get narrower than 560 px and in
+Compare, Survey, Match series, crop, sort mode and tethered sessions,
+and returns by itself. Off by default — nothing changes unless you
+pin. With the panel pinned, <strong>File → Sources…</strong> works in the Grid too
+and does what <code>S</code> does there: the keys move into the panel and the
+Grid stays (unpinned, the row stays greyed in the Grid). See the
+manual's Sources chapter.</li>
+<li><strong>Saved filters (<code>Cmd+F</code>).</strong> Filters you set up once and get back with
+two keys. A saved filter combines what the filter keys can't say on
+their own — "four stars or better, not rejected, not developed yet",
+"85 mm from the last week", "everything undecided from the last
+fortnight". Get the view roughly right, press <code>Cmd+F</code> then <code>N</code>: the
+editor opens filled in from what you're looking at; add a condition,
+name it, press <code>Enter</code>. From then on <code>Cmd+F</code> and a digit shows it, on
+any folder or server. Eight things to filter on: flag, rating, colour
+label, edited or not, captured in the last N days / weeks / months,
+focal length, lens, camera. It behaves like every other filter — a
+photo that stops matching leaves the view, so a "not edited" filter
+empties as you develop — and <code>F</code> returns to all photos. The list shows
+each filter's live count; the rail's Filter palette and the <code>⋯</code> menu
+reach it with the mouse. In the batch panel, <strong>This view (N)</strong> is now
+offered whenever a saved filter (or a pivot) is on, so a batch acts on
+exactly the photos you see. Filters are kept in
+<code>~/.culler/filters.json</code>.</li>
+<li><strong>Manage a server's albums from culler.</strong> Expand a server in the
+sources pane and a <strong>+ New album</strong> row leads its albums: <code>Enter</code>, type a
+name, <code>Enter</code> — the album is made on the server (a name that's empty or
+already taken is refused under the field). <code>R</code> on an album renames it,
+and <code>⌫</code> deletes an album you own that isn't shared: the row turns red
+and says what happens — the photos stay on the server, the album can't
+be brought back — and a second <code>⌫</code> deletes it (<code>Esc</code> stands it down).
+An album someone else owns shows their name after its own; <code>R</code> and <code>⌫</code>
+on it say whose it is instead of trying.</li>
+<li><strong><code>Shift+I</code> files a whole selection.</strong> With the photo you're on inside
+a selection, the album picker adds every selected photo in one go and
+says what the server did — "Filed 12 into 'Iceland' · 3 were already in
+it". Typing a name no album has offers <strong>+ New album '…'</strong> as the last
+row, so <code>Enter</code> on a partial match always files into the match; <code>Enter</code>
+on the new row makes the album with the photos in it. Inside an album,
+the picker's first row takes the photos back <strong>out</strong> of it (a
+selection asks once: "Space again removes 12 from …"), and they leave
+the view at once; a photo you can't remove — added to a shared album by
+someone else — stays, and the status line says so. The info panel's
+Albums section has an <strong>Add to album… ⇧I</strong> button.</li>
+<li><strong>Browse the open folder's subfolders from the sources pane.</strong> With a
+folder source open, <code>→</code> on its row (or its chevron) lists the folders
+inside it — three levels deep, each with its photo count. <code>Enter</code> on
+one culls just that folder and the folders below it, with a strip
+above the photo saying which; <code>Esc</code> brings the whole source back with
+the cursor where you left it, and the batch panel offers the folder as
+<strong>This view</strong>. The counts are live: sort photos out of an Inbox and its
+number drops. The list comes from the photos culler already scanned,
+so drawing it reads nothing on disk — a folder you haven't opened
+never expands, and a folder with no photos in it doesn't show.</li>
+<li><strong>Make and rename folders from the sources pane.</strong> Under the open
+folder — and under each folder you expand inside it — a <strong>+ New
+folder</strong> row makes a folder right there: <code>Enter</code>, type a name,
+<code>Enter</code>. <code>R</code> on a folder renames it on disk, then re-scans the source;
+if you were culling inside that folder you stay in it, on the same
+photo. A name that's empty, starts with a dot, or is already taken
+(in any mix of upper and lower case, where the disk ignores case) is
+refused under the field. A rename is also refused — saying why — for
+a folder that is a sort destination, a saved source, the export or
+tether folder, or holds one, and while a batch, a sort or a <code>J</code> is
+still running. <code>R</code> on the source's own row still renames its label in
+the list, never the folder.</li>
+<li><strong>Delete an empty folder from the sources pane.</strong> <code>⌫</code> on a folder under
+the open folder arms it ("press ⌫ again to delete this empty folder"),
+a second <code>⌫</code> deletes it — only when there is nothing at all inside,
+checked on disk at that moment. A folder with photos in it, or anything
+else (another file, a subfolder, a hidden file), is never deleted: the
+status line says what is inside ("'Inbox' isn't empty — 212 photos.
+Move or trash them first."). <code>Esc</code> or any other key stands the arm
+down. A folder you sort empty stays in the list, so you can delete it.</li>
+<li><strong>Match Look is now Match series, and it opens on aligning your
+photos.</strong> <code>M</code> still opens the session on the frozen set, but the panel
+beside the photos has two tabs. <strong>Align</strong> comes first: it says where
+the series stands ("6 points · 3 of 5 photos have them") and offers
+the next step as one button — and <code>Shift+C</code> now starts or continues
+the landmark walk straight from there, instead of needing <code>C</code> first.
+<strong>Look</strong> — one key away, <code>E</code> — is the tone-matching panel exactly as
+it was (Match, Reset all, the sliders). Under both tabs a line says
+what will be applied, next to <strong>Done</strong> (<code>M</code>) and <strong>Discard</strong> (<code>Esc</code>),
+so the whole job can be done with the mouse; the first <code>Esc</code> (or
+click) on a changed session turns Discard red and asks once before
+anything is thrown away. Aligning a series never touches its tone
+unless you open the Look tab and ask. Things that moved or changed
+name: <code>M</code>'s first screen is the Align tab (press <code>E</code> for the panel you
+knew); <code>E</code> and <code>L</code>/<code>Q</code> behave differently inside a session (<code>E</code>
+switches tabs, <code>L</code> and <code>Q</code> work on the Look tab); the photo's tag
+reads <code>[series]</code>; in a session's crop pass the button reads <strong>Back to
+series</strong> — and from the landmark view it now keeps the placement you
+just clicked instead of dropping it; an aligned photo's history entry
+reads "Aligned to" and the name of the photo it was aligned to.</li>
+<li><strong>"Edit landmarks" now edits them.</strong> Once every photo in a series is
+aligned, the Align tab's <strong>Edit landmarks</strong> button (and <code>Shift+C</code>)
+opens the reference's points again — drag one to move it, click to add
+one, right-click to remove one — where it used to only say that
+everything was aligned. The other photos keep their points (they're
+paired by number), so <code>Enter</code> afterwards visits only a photo that an
+edit left with fewer than two, and Done saves just what changed.</li>
+<li><strong>Moving a reference point re-aligns the series.</strong> After you edit the
+reference's landmark points, every photo whose crop is still exactly
+the one its landmarks gave it is re-aligned to the new points as soon
+as you're back at the series ("3 photos re-aligned to the edited
+landmarks") — <code>K</code> previews it, Done applies it, Discard takes it back.
+A photo whose crop you've adjusted by hand since keeps your crop ("1
+kept its hand-tuned crop"). Photos aligned before this version count
+as hand-tuned until you re-solve them once (<code>C</code>, <code>Shift+C</code>, <code>Enter</code>),
+because nothing recorded the crop their landmarks gave them.</li>
+<li><strong>Choose which tab Match series opens on.</strong> Settings → <strong>Match
+series</strong> → <strong>Match series opens on</strong>: <em>Align</em> (the default) or <em>Look</em>.
+Every session starts on that tab; <code>E</code> still switches inside a session,
+and the next one starts on your choice again.</li>
+<li><strong>Uploads show how long they have run and about how long is left.</strong>
+While a batch uploads to an Immich server, a line under the progress
+bar reads the elapsed time on the left ("1:50 elapsed") and an
+estimate on the right ("about 5 min left"). The estimate is worded
+coarsely on purpose, counts down, and corrects itself when the speed
+really changes — so it can go up. It stays blank for the first
+fifteen seconds, while a file has stopped moving and after Cancel,
+rather than show a number it can't stand behind. The corner pill's
+hover panel carries the same estimate; <strong>Save edits to server</strong> shows
+the elapsed time only. A batch that ran for ten seconds or more also
+says how long it took in its summary ("22 photos uploaded to prd in
+14 min").</li>
+<li><strong>Discard unsaved edits.</strong> Changed your mind about a server photo's
+edits? A <strong>Discard edits</strong> entry now appears whenever a photo has
+unsaved edits — a <strong>Discard</strong> button in the develop pane's title row,
+the <code>⋯</code> menu, and the DEVELOP / CROP tab palettes — and reverts the
+whole photo (grade, crop, alignment, snapshots) to the last state you
+saved to the server in one click, with <code>Cmd+Z</code> bringing the grade and
+crop back if you change your mind again. The apply panel adds
+a matching <strong>Discard unsaved edits</strong> batch action to revert a whole
+scope at once (skipping, and naming, any photo it hasn't yet checked
+against the server). A photo you never saved reverts to the original.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong><code>J</code> on a photo you've only cropped now keeps the camera's look.</strong> A
+photo with no grade — no develop slider moved; a crop on its own isn't
+a grade — exports (<code>J</code>, <code>Shift+J</code>, Export JPEG) and uploads to a server
+as its camera JPEG with your crop: the picture you saw while culling,
+instead of a flat render of the RAW. A photo you have graded still
+renders from the RAW, exactly as the develop panel shows it. When the
+bake isn't what's on screen — <code>J</code> with the develop panel showing the RAW
+of an ungraded photo, or re-rendering a server photo whose front is
+already a culler edit (which still comes from the RAW) — the status
+line says which file it used and why.</li>
+<li><strong>Landmark points alone no longer count as an unsaved server edit.</strong> On
+an Immich source, the reference of a series you placed points on but
+never cropped or graded no longer shows in the "N unsaved" count,
+<code>Shift+U</code>, Save edits or the reminder on quit — saving it would only
+upload a new copy of an untouched photo. Its points stay in culler's
+state on this computer and travel to the server the next time that
+photo is saved with <code>J</code> for a crop or a grade.</li>
+<li><strong>Album changes on a server now report what the server actually
+did.</strong> Putting a photo into an album or taking it out (<code>Shift+I</code>),
+uploading into an album, and <code>J</code> on a photo that lives in albums all
+used to treat any answer from the server as success. They now read the
+server's verdict per photo: a photo it refuses (someone else's photo
+in a shared album, for example) flips back in the album picker with
+"no permission", a photo that was in the album already reads "already
+in … — nothing added", and the upload summary counts the real adds —
+"· 2 added to 'Iceland', 1 already in it", or "· already in 'Iceland'"
+on a re-run — instead of always saying "added to".</li>
+<li><strong>A server key that lacks an album permission is told which one.</strong>
+The message now reads "the API key lacks the albumAsset.delete
+permission — add it to the key in Immich" instead of "check the API
+key", and an album that was deleted in the meantime reads "that album
+no longer exists, or you don't have access to it" instead of "server
+returned 400". The manual's key-permission table now lists the album
+permissions, including the one for taking a photo out of an album that
+it was missing.</li>
+<li><strong>Album lists stay in step.</strong> The sources pane, the Upload card and
+the album picker (<code>Shift+I</code>) each kept their own copy of a server's
+album list, and the picker's was fetched once per session. They now
+share one list that refreshes whenever culler changes an album: put a
+photo into an album and its count follows everywhere, with nothing to
+close or reopen.</li>
+<li><strong>A kept-open sources panel shows album changes made elsewhere.</strong>
+When the keys come back to a pinned pane, or the window regains focus,
+the expanded servers' album lists refresh — an album made, renamed or
+deleted in the server's web app shows without a restart, and an open
+album renamed there takes its new name.</li>
+<li><strong>Trash inside an album says it acts on the server.</strong> In an album
+view, choosing Delete to trash in the batch panel now reads "Trash
+deletes from the server, not just this album — ⇧I takes photos out of
+an album."</li>
+<li><strong>A source that finishes loading while the Grid is open now lands in
+the Grid</strong> instead of waiting until you leave it. Before, pressing
+<code>K</code> while a server was still loading kept its final sort order and a
+large library's month list back until you left the Grid, and the scan
+warning's Retry sat on "Scanning…" there.</li>
+<li><strong>A source keeps its place when you only pass through it.</strong> Opening a
+source and moving on to another before it had finished loading made it
+forget the photo and filter you had left it on. It now remembers them
+until you have actually been there again.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>Switching source while a <code>J</code> is still uploading no longer puts the
+result in the wrong place.</strong> A <code>J</code> (or "Save edits to server") that
+finished after you had opened another source could mark a photo of the
+source now on screen as the uploaded edit, and left the server you
+saved to still counting that photo as unsaved. The save now lands on
+the source it was started from, whatever is open when it finishes —
+including when you refresh that same source while it uploads.</li>
+<li><strong>Fixed:</strong> opening Match series with the cursor on a photo that was already
+aligned to another photo, and leaving again, erased that photo's stored
+landmark points. A session that never touched a photo's landmarks now
+writes nothing for it.</li>
+<li><strong>Fixed:</strong> holding <code>Esc</code> a moment too long inside a series session could back
+out of the landmark view, out of the crop pass, arm the discard and
+confirm it — throwing away the whole session from one press. Every
+<code>Esc</code> there now acts once per press, however long the key is held; the
+same goes for <code>M</code> (a held <code>M</code> no longer enters and immediately commits,
+or commits and re-enters) and for <code>Enter</code> in the landmark walk (a held
+<code>Enter</code> no longer accepts photo after photo). <code>Esc</code> on a value you are
+typing now only reverts that value; before, the same press also left
+the session or closed the crop pass.</li>
+<li><strong>Fixed:</strong> in the landmark walk, <code>Tab</code> (skip a point) could leave the
+keyboard stuck until the next mouse click: a second <code>Tab</code> did nothing,
+and <code>Enter</code> jumped to another photo instead of accepting the one you
+were on. Skipping the last point and pressing <code>Enter</code> now accepts, as
+the walk always said it would.</li>
+<li><strong>Fixed:</strong> pressing <code>R</code> (re-anchor) in a series session silently
+dropped the landmark points placed in that session — the reference's
+and every accepted photo's — so the following <code>M</code> saved the aligned
+crops with no points behind them. <code>R</code> is now refused while the session
+holds landmark work it would drop, and says how to keep it ("can't
+re-anchor — it would drop the landmark work on 2 photos · M commits it
+first"). Hand-aligned crops are unaffected and never block it.</li>
+<li><strong>Fixed:</strong> <code>Esc</code> left a series session at once, with no "press Esc
+again", when the only thing you had changed was one photo's accepted
+landmark points (its crop came out the same). Those points are work
+<code>M</code> would have kept, so <code>Esc</code> now arms over them like any other
+aligned photo.</li>
+<li><strong>Fixed:</strong> leaving a series with <code>M</code> said "committed — 0 photos
+updated" both when there was nothing to write and when it had written
+landmark points only. <strong>Done</strong> now says what it saved ("series done —
+6 landmarks and 2 photos aligned"), says "series closed — nothing
+changed" when there was nothing, and a discard names what it threw
+away.</li>
+<li><strong>Fixed:</strong> the diagnostic log said <code>cancel: 0 develop + 0 crop writes</code>
+for every cancelled series session, whatever it threw away. A
+cancel now logs what it reverted — how many photos' tone and crop, how
+many photos' landmark points — and names each photo.</li>
+<li><strong>Paste no longer slips past a series' Done.</strong> In a Match series
+session the Look tab's footer used to offer Copy and Paste, and a
+click on Paste wrote the photo's develop and crop to disk at once —
+even though nothing in a series is meant to be written until Done.
+Copy and Paste are gone from that footer, and <code>Shift+V</code> in a session
+now says why it does nothing; outside a session they work as before.</li>
+<li><strong>An album that can't be opened no longer marks its server as
+failing.</strong> Opening an album that was deleted on the server used to
+turn the whole server's row to "Server error" until the next
+successful scan. The status line now says the album is gone, the row
+drops out of the list, and the server's row is left alone.</li>
+<li><strong>"MB left" during an upload no longer jumps back up</strong> when a photo's
+RAW starts after its JPEG, and a photo that failed no longer leaves
+its unsent bytes in the count for the rest of the batch.</li>
+<li><strong>The upload speed graph's "up to N MB/s" caption no longer flickers</strong>
+up and back down for a moment when a five-second bar completes.</li>
+<li><strong>Fixed:</strong> in the sources pane, a stray <code>Shift+Tab</code> could move keyboard
+focus onto a row, after which the arrow keys did nothing and <code>Enter</code>
+opened the wrong source.</li>
+<li><strong>Fixed:</strong> in the develop pane, the Auto button's label no longer
+collides with its <code>Shift+A</code> keycap when the look picker is on the row.</li>
+</ul>
+<h2 id="0-8-0-2026-10-01">0.8.0 — 2026-10-01</h2>
 <ul>
 <li>
 <p><strong>Albums no longer show every photo twice.</strong> Uploading to an Immich
@@ -828,7 +1110,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.8.0</span>
+  <span>© Sander Mertens · culler v0.9.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
