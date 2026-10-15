@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -121,9 +121,20 @@ exists — so one glance answers "where are we?". Every cell wears the
 filmstrip's badges (flag dot, stars, color bar, and the blue check chip
 on <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selected</a> photos), rejected photos
 dim so the undecided work pops forward, and develop edits show in the
-cells. <code>Cmd/Ctrl</code>+click and <code>Shift</code>+click build a selection here
-exactly as in the filmstrip.</p>
-<p><img src="../img/18-grid.png" alt="Grid view: the live tally on top, dimmed rejects, the cursor ring" /></p>
+cells. The corner box on a hovered cell, <code>Cmd/Ctrl</code>+click and
+<code>Shift</code>+click build a selection here exactly as in the filmstrip (a
+double-click on the box never opens the peek).</p>
+<p><img src="../img/18-grid.png" alt="Grid view: the live tally and the grid&#39;s buttons on top, dimmed rejects, the cursor ring" /></p>
+<p>The top bar carries the grid's own buttons, each showing its key:
+<strong>Peek</strong> <code>␣</code>, <strong>Size</strong> <code>Z</code> (it names the current cell size), <strong>Group</strong>
+<code>G</code> (it names the current grouping), <strong>Batch</strong> <code>A</code> and <strong>Done</strong> <code>K</code> —
+plus <strong>Back</strong> <code>Esc</code> inside a
+<a href="https://mertenssander.github.io/culler-releases/manual/culling/#pivot-same-day-camera-lens-or-moment-shift-g">pivot</a>.
+Clicking one does exactly what its key does. In a narrow window (or
+beside a docked <a href="https://mertenssander.github.io/culler-releases/manual/sources/#keeping-the-panel-open">sources panel</a>) the buttons shrink to
+their keys; hover one to see its name. At the bar's left edge a <strong>select
+box</strong> selects every photo in the grid (a dash: some are selected; a
+check: all are — click it then to deselect).</p>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>arrows</td><td>move the cursor a cell / a row</td></tr>
 <tr><td><code>Home</code> / <code>End</code>, <code>PgUp</code> / <code>PgDn</code></td><td>jump to the ends / scroll a page</td></tr>
@@ -138,11 +149,13 @@ exactly as in the filmstrip.</p>
 <tr><td><code>E</code> <code>C</code> <code>V</code> <code>N</code> <code>M</code> <code>S</code></td><td>leave the grid, then act on the cursored photo</td></tr>
 <tr><td><code>Esc</code> / <code>Enter</code> / <code>K</code></td><td>exit onto the cursored photo (inside a pivot, <code>Esc</code> leaves the pivot instead)</td></tr>
 </tbody></table>
-<p><code>Space</code> on the cursored cell <strong>peeks</strong> it full-size — a real loupe
-render, not a bigger thumbnail, so <code>Z</code>/scroll/pinch zoom and drag pans
-(the overlay says <code>[peek]</code>). <code>Space</code>, <code>Esc</code>, <code>Enter</code>, or <code>K</code> pops back
-to the grid exactly where you left it; arrow keys keep flipping through
-neighbors without leaving the peek, and marking keys work throughout.</p>
+<p><code>Space</code> (or a double-click) on the cursored cell <strong>peeks</strong> it
+full-size — a real loupe render, not a bigger thumbnail, so
+<code>Z</code>/scroll/pinch zoom and drag pans (the overlay says <code>[peek]</code>).
+<code>Space</code>, <code>Esc</code>, <code>Enter</code>, or <code>K</code> pops back to the grid exactly where you
+left it — so does the <strong>Back</strong> button the rail shows while you peek;
+arrow keys keep flipping through neighbors without leaving the peek,
+and marking keys work throughout.</p>
 <p>The grid is <strong>live but steady</strong>: badges and edits update the instant you
 mark, but a photo whose new flag would drop it from the active filter
 stays on screen until you exit — nothing is ever yanked out from under
@@ -182,7 +195,11 @@ screenful of rows.</p>
 <p>Pick the best of two head to head. <code>V</code> pins the current photo as the
 <strong>Select</strong> (left — your benchmark) and puts the next photo beside it as
 the <strong>Candidate</strong>.</p>
-<p><img src="../img/09-compare.png" alt="Compare view: Select left, Candidate right, the focused pane ringed" /></p>
+<p><img src="../img/09-compare.png" alt="Compare view: Select left, Candidate right, the focused pane ringed, the buttons on top" /></p>
+<p>A bar above the two photos carries Compare's buttons: <strong>Pick</strong> <code>P</code> and
+<strong>Reject</strong> <code>X</code> (they mark the ringed pane), <strong>Pane</strong> <code>Tab</code>, <strong>Promote</strong>
+<code>↑</code>, <strong>Swap</strong> <code>↓</code> and <strong>Exit</strong> <code>V</code> — each does exactly what its key
+does, so a comparison can be run start to finish with the mouse.</p>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td><code>←</code> <code>→</code></td><td>walk the Candidate through the current filtered view</td></tr>
 <tr><td><code>↑</code></td><td>promote: the Candidate becomes the new benchmark, the next photo challenges</td></tr>
@@ -241,7 +258,11 @@ more than 24 photos, the 24 around your position ("24 of 61 in this
 moment").
 Anywhere else it lays up to 24 photos around your position out in a
 grid. Survivors grow as losers leave.</p>
-<p><img src="../img/10-survey.png" alt="Survey view: the focus ring, badges per cell, and the survivors counter" /></p>
+<p><img src="../img/10-survey.png" alt="Survey view: the focus ring, badges per cell, the survivors counter and Survey&#39;s buttons" /></p>
+<p>The top bar carries Survey's buttons: <strong>Peek</strong> <code>␣</code>, <strong>Winnow</strong> <code>X</code>,
+<strong>Keep one</strong> <code>⏎</code>, <strong>Dismiss</strong> <code>⌫</code>, <strong>Next moment</strong> <code>.</code> (while you're
+surveying a <a href="https://mertenssander.github.io/culler-releases/manual/viewing/#moments">moment</a>) and <strong>Done</strong> <code>N</code> — each does exactly
+what its key does, on the focused photo.</p>
 <table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>arrows</td><td>move the focus ring through the grid</td></tr>
 <tr><td><code>X</code></td><td><strong>reject and remove</strong> — the flag is written, the grid reflows, and the next photo slides into the same cell so you can keep hammering</td></tr>
@@ -259,8 +280,9 @@ there's no confirmation, because every flag is one key to undo. With
 auto-advance on (<code>T</code>), the next moment is dealt straight away.</p>
 <p><code>Space</code> <strong>peeks</strong> the focused photo full-size through the real loupe —
 zoom with <code>Z</code> or scroll, flip through survivors with the arrows, keep
-winnowing with <code>X</code> — and <code>Space</code>/<code>Esc</code> pops back to the grid exactly as
-you left it (same gesture as the Grid view's peek).</p>
+winnowing with <code>X</code> — and <code>Space</code>/<code>Esc</code> (or the rail's <strong>Back</strong> button)
+pops back to the grid exactly as you left it (same gesture as the Grid
+view's peek).</p>
 <p>Winnowing all the way to zero exits by itself — rejecting an entire bad
 moment is a legal outcome. Develop edits show in every cell. The rail
 keeps the marking verbs at the left edge in both Survey and Grid —
@@ -311,7 +333,7 @@ elsewhere arrives here already Picked. One axis, two names.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

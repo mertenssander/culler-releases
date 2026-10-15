@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -141,6 +141,8 @@ palettes: click a filter to jump straight to it (each one shows how
 many photos it holds, your own <a href="https://mertenssander.github.io/culler-releases/manual/culling/#saved-filters-cmd-f">saved filters</a>
 included), click a star chip (1–5, 0) to rate. Its <strong>⋯</strong>
 button opens the menu with the rest: the live filter and its count,
+<strong>Undo</strong> and <strong>Redo</strong> (named after the edit they step over —
+<em>Undo Exposure</em> — and only there when there is something to step),
 Survey, Match series, Batch, Sources, Settings, Auto-advance and
 Help (<a href="../img/16-more-popover.png">screenshot</a>). Buttons you've used
 about five times (key or click) politely dim — the rail retires
@@ -150,11 +152,24 @@ line; click the line (or rest the pointer on it) to bring it back.</li>
 CROP. Click one to switch; rest the pointer on an inactive tab and a
 small palette appears to fire that mode's one-shot actions (auto
 tone, reset…) without switching at all.</li>
+<li><strong>The Grid, Survey and Compare</strong> carry their own buttons in a bar
+along the top — Done, Peek, Keep one, Promote and the rest, each
+showing its key (<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grid-view-k">Viewing</a>) — and while
+you peek at a photo from the Grid or Survey the rail adds a <strong>Back</strong>
+button.</li>
 <li><strong>The stars in the top-left overlay</strong> become five click targets while
 the pointer is moving — hover previews, clicking sets the rating, and
 clicking the same star again clears it, exactly like the number keys.</li>
 <li><strong>Hover a side edge of the photo</strong> for previous/next arrows (at fit
 zoom; when zoomed in, the mouse pans instead).</li>
+<li><strong>Drag a thumbnail</strong> from the filmstrip or the Grid — or the photo
+itself, at fit zoom — onto a folder or an album in the
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#dragging-photos-onto-folders-and-albums">pinned sources pane</a>
+to move, copy or file it (onto <strong>+ New folder</strong> or <strong>+ New album</strong> to
+name a new one first) — or onto a numbered cell in sort mode. Hold
+<code>⌥</code> as you let go to copy instead of move; <code>Esc</code> cancels. Dropped on
+a server, a folder's photos fill in an upload in the batch panel for
+you to start; a folder dragged in from Finder opens like <code>O</code>.</li>
 </ul>
 <p>The photo itself stays untouched: the rail is a slim gutter, never an
 overlay, and collapsing it gets you within three pixels of a bare
@@ -165,6 +180,13 @@ and never again.</p>
 twelve, exactly</em>. Build a <strong>selection</strong> in the filmstrip or the Grid
 with the standard gestures:</p>
 <ul>
+<li><strong>With the mouse alone:</strong> hover a thumbnail and an empty box appears
+in its bottom-right corner — click it to select the photo (the
+cursor moves there too, so the marking keys act on the set you're
+building); click a selected photo's check to deselect it.
+<code>Shift</code>+click the box selects the run from the photo you're on. The
+box is a pointing aid: it fades when the mouse rests, so it never
+follows you while you work from the keyboard.</li>
 <li><strong><code>Cmd/Ctrl</code>+click</strong> a thumbnail to select or deselect it;
 <strong><code>Shift</code>+click</strong> selects the whole run from the photo you're on to
 the one you clicked. From the keyboard, <strong><code>Y</code></strong> toggles the current
@@ -182,8 +204,11 @@ on the spot, and clearing the selection falls back to the All
 filter with a status note.</li>
 <li>Every selected photo wears a small blue <strong>check chip</strong> in its
 thumbnail corner, the corner readout counts the set (<code>12 selected</code> —
-the Grid header counts it too), and a plain click never touches it:
-clicking around to compare photos won't cost you the set.</li>
+the Grid header counts it too), and a plain click anywhere else on a
+thumbnail never touches it: clicking around to compare photos won't
+cost you the set. The boxes take clicks in the filmstrip and the Grid;
+in Compare, Survey, a Match series and crop the selection stays as it
+is and the corner isn't clickable.</li>
 </ul>
 <p>The selection multiplies the <strong>marking verbs</strong>: when the photo you're
 on is part of the selection, <code>P</code> / <code>X</code> / <code>U</code>, the star ratings and the
@@ -193,7 +218,11 @@ the value, the same key clears it from all of them — the familiar
 toggle, set-wide. And in the batch panel (<code>A</code>), the Scope menu gains
 <strong>Selected (N)</strong> so copy, move, export, upload — any batch action —
 can run on exactly the set you built (see
-<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">Batch operations</a>).</p>
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">Batch operations</a>). Dragging one of the
+selected thumbnails carries the whole set onto a folder or an album
+(<a href="https://mertenssander.github.io/culler-releases/manual/sources/#dragging-photos-onto-folders-and-albums">Sources</a>);
+dragging a thumbnail outside the selection carries just that photo and
+leaves the set alone.</p>
 <p>The selection follows the photos, not the view: changing the filter
 keeps it (the batch panel notes how many are filtered out of sight),
 and it survives non-destructive batch actions. It clears when you load
@@ -283,7 +312,19 @@ grid, photos stay put while you mark, as they do for any filter.</p>
 <p><strong>Looking after the list.</strong> In the list, <code>E</code> edits the row under the
 keyboard, <code>⌫</code> pressed twice deletes it, and <code>Shift+↑</code>/<code>Shift+↓</code> move it —
 the digits follow position, so the filter you use most can be <code>1</code>. There
-is room for nine. A name is at most 32 characters, can't repeat, and
+is room for nine.</p>
+<p>With the mouse, drag a filter by its <strong>grip</strong> — the six dots right of
+its number (only the grip drags: a click anywhere else on the row still
+shows the filter). The row lifts and follows the pointer up and down, the
+others slide apart to make room, and the numbers renumber as you go —
+the ones that change are tinted — so you can read off which digit will
+do what before you let go. Letting go saves the new order once and the
+status line names the new number ("Sony 7 IV, no stars is now on 2").
+A row can't go above <strong>All photos</strong>, which isn't part of the list.
+<code>Esc</code> while dragging puts everything back (a second <code>Esc</code> closes the
+list), and so does letting go away from the list — a "Let go to
+cancel" label says so first. With a single filter, or a list written by
+a newer version of culler (which opens read-only), there are no grips. A name is at most 32 characters, can't repeat, and
 can't be the name of a built-in filter. With the mouse, the rail's
 <strong>Filter</strong> palette lists the first five with their counts under a
 <strong>Saved filters…</strong> row that opens the full list; the <code>⋯</code> menu has the
@@ -392,7 +433,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

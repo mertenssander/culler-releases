@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -114,9 +114,11 @@ your edits on import.</p>
 <p>Culling always shows the camera JPEG — but when a photo has a RAW file
 beside it, opening the develop panel switches the image to a <strong>fresh
 demosaic of the RAW</strong>, developed with the file's own white balance and
-color matrix. A soft render appears near-instantly and sharpens in place
-a moment later; close the panel and the <strong>plain</strong> JPEG is back — your
-adjustments were graded against the flat RAW rendition, so they are
+color matrix — and, when culler has a profile for the look the camera
+shot in, already in <strong>that camera look</strong> (see <em>The camera look</em> below).
+A soft render appears near-instantly and sharpens in place a moment
+later; close the panel and the <strong>plain</strong> JPEG is back — your
+adjustments were graded against the RAW rendition, so they are
 deliberately <em>not</em> re-applied to the already-cooked camera JPEG (they
 would read overbaked there). The edits aren't lost: they live in the
 develop panel and in <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j">exports</a>,
@@ -134,12 +136,25 @@ tag appears over the photo itself, in the top-left row next to
 <code>[stack]</code> and <code>[before]</code> — inside a stack of mixed RAW and JPEG
 members it appears and disappears per member as you step through, so
 there's never a doubt about which file you're grading.</p>
-<p>Expect the RAW to look different from the JPEG: flatter and often
-darker. The camera's JPEG has its own cooked tone curve, sharpening and
-lens corrections baked in; the RAW render is the neutral starting point
-your adjustments build on (lens correction is applied from the file's
-own parameters — see the slider list below). The histogram follows the same rule as the
-tag — it describes whichever image is displayed.</p>
+<h3 id="the-camera-look">The camera look</h3>
+<p>A RAW opens in the camera's own look, matched to its JPEG: the picture
+style recorded in the file (<strong>Vivid</strong> today) and an exposure fitted to
+that shot, so switching from the camera JPEG to the RAW changes the
+picture as little as possible. The camera JPEG stays up until that look
+is ready, then the RAW takes over.</p>
+<p>This is a <strong>starting point, not an edit</strong>: every slider sits at 0, the
+photo isn't marked as edited, and nothing is written until you change
+something. Your sliders work <em>on top of</em> the look, and <strong>Reset</strong> returns
+to it. To start from the flat RAW instead, choose <strong>Neutral</strong> in the
+look picker. Photos you developed before this release keep the picture
+they had; Reset puts them on the camera look too.</p>
+<p>The look approximates the camera's rendering, so some difference
+remains: in-camera dynamic range optimisation, local adjustments,
+noise reduction and sharpening aren't reproduced. A RAW from a camera
+culler has no look for opens flat — darker and flatter than its JPEG,
+the neutral rendition your adjustments build on. Lens correction is
+applied from the file's own parameters (see the slider list below). The
+histogram and its tone curve describe what's on screen, look included.</p>
 <p>Photos with no RAW (plain JPEG, HEIC) keep developing the JPEG exactly
 as before, and a RAW that can't be decoded falls back the same way — the
 tag tells the truth either way. On a server source the RAW original
@@ -268,14 +283,13 @@ crop, so the falloff is always centered on your final frame.</p>
 </li>
 <li>
 <p><strong>Denoise</strong> (RAW mode only) — grain reduction, baked into the RAW
-render before tone. It starts on an <strong>automatic strength scaled to the
-photo's ISO</strong> — a base-ISO frame gets none, a dim high-ISO frame gets a
-real dose — so most photos are already dialed in; the value reads dim
-while automatic and brightens once you set your own. Hover the row to
-see what Auto chose for this ISO; <strong>double-click returns to Auto</strong> (not
-to zero — drag to 0 if you want the grain). Because the smoothing is
-part of the demosaic, the photo refines a beat after you release the
-slider, behind the same "Refining detail" notice as opening the pane.
+render before tone. It starts <strong>off</strong> (0): smoothing costs fine detail,
+so you turn it up only on the photos that need it. Hover the row to
+see a suggested strength for the photo's ISO — a base-ISO frame needs
+none, a dim high-ISO frame a real dose; <strong>double-click returns to 0</strong>.
+Because the smoothing is part of the demosaic, the photo refines a
+beat after you release the slider, behind the same "Refining detail"
+notice as opening the pane.
 Judge the result at 100% (<code>Z</code>).</p>
 </li>
 <li>
@@ -322,9 +336,8 @@ not a bug.</p>
 <h2 id="auto-shift-a">Auto: <code>Shift+A</code></h2>
 <p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) does the smart thing for the
 photo in front of you. On a RAW the camera shot in a look culler has a
-profile for, it <strong>applies that camera look</strong> in one press — the same
-result as picking it from the dropdown, so you can run a whole set without
-touching the picker (Auto's tooltip names the look it will apply). On
+profile for, it <strong>returns the photo to that camera look</strong> — the same
+result as picking it from the dropdown. On
 everything else — a JPEG, or a RAW with no recognized look — it falls back
 to <strong>auto tone</strong>: a starting point computed from the histogram (exposure
 toward a balanced midtone, highlight/shadow rescues where mass piles up at
@@ -334,9 +347,11 @@ vignette alone. Either way it's an explicit press, so it applies over
 whatever's there; <strong>Reset</strong> clears everything.</p>
 <h2 id="camera-looks">Camera looks</h2>
 <p>The <strong>look</strong> picker (RAW mode only, the dropdown next to Auto and Reset)
-applies a camera look profile to the RAW in one click — a fixed,
-consistent grade rather than a per-photo guess. Pick a look and it's
-applied immediately: the develop sliders are set to that profile
+shows the look under the sliders and switches it in one click — a fixed,
+consistent grade rather than a per-photo guess. The camera's own look
+(marked <em>(from camera)</em>) is where a RAW starts; picking it puts the
+photo back on it. <strong>Neutral</strong> starts flat. Pick a different look and
+it's applied immediately: the develop sliders are set to that profile
 (contrast, a saturation push that ramps in with a color's own vividness —
 real color gets the boost, mist and gray cloud stay quiet — a gentle
 highlight rolloff and deepened shadows, and the per-hue Color Mix that
@@ -348,18 +363,11 @@ surprises — and you can refine from there with the ordinary sliders; Reset
 undoes it. The picker appears the moment real RAW pixels are on screen
 (the same moment the <code>[RAW]</code> tag lights up).</p>
 <p><strong>It knows what the camera shot.</strong> If the RAW records an in-body creative
-look (Sony bodies do), the picker reads it and pre-highlights the matching
-profile with a <em>(from camera)</em> tag — so on a Sony shot in Vivid, opening
-the picker lands on <strong>Vivid</strong> already. That's a suggestion, not an action:
-nothing is applied until you actually pick it, so navigating your photos
-never rewrites a grade you've already dialed in. If the camera used a look
-there's no profile for yet, the picker names it with a "no profile yet"
-line rather than guessing.</p>
-<p><strong>The fast way — just press <code>Shift+A</code>.</strong> When the camera's look is one you
-have a profile for, <code>Shift+A</code> (or the <strong>Auto</strong> button) applies it directly,
-no dropdown needed — so a whole set is one keypress each. The picker is
-then for the exceptions: overriding to a different look, or seeing what's
-applied. (See <em>Auto</em> above.)</p>
+look (Sony bodies do), culler reads it and opens the RAW in the matching
+profile, tagged <em>(from camera)</em> in the picker — so a Sony shot in Vivid
+opens in <strong>Vivid</strong>. A photo you've already graded keeps its grade. If the
+camera used a look there's no profile for yet, the picker names it with a
+"no profile yet" line rather than guessing, and the RAW opens flat.</p>
 <p>A look is a starting point, not a pixel-for-pixel copy of the camera JPEG:
 in-camera noise reduction and sharpening aren't reproduced, and a few
 scenes (blown light sources, very high ISO) diverge more. <strong>Vivid</strong> ships
@@ -474,6 +482,24 @@ reference you placed points on but didn't crop or grade stays out of the
 "N unsaved" count, <code>Shift+U</code>, Save edits and the reminder on quit —
 saving it would only upload a new copy of an untouched photo. Its points
 travel the next time you save it for a crop or a grade.</p>
+<p><strong>Points stay on the photo, not on the picture in the pane.</strong> A server
+photo you've saved with <code>J</code> shows culler's own render — already cropped
+— until its RAW has downloaded, and the RAW after that. Landmark points
+belong to the photo itself: a point you click on the render sits on the
+same feature once the RAW appears, still does after the next <code>J</code> crops
+the photo differently, and a point the render crops away is simply not
+drawn (it still counts for the alignment). The RAW never swaps in while
+you're holding the mouse button down; it appears as soon as you let go.
+Until culler has read back what that photo's last <code>J</code> saved, its pane
+doesn't take clicks — the status line says <em>"still reading this photo's
+saved edit — try again in a moment"</em>. Points an earlier version of
+culler placed on a render are moved onto the photo by themselves when
+culler can prove where they belong. When it can't, the walk stops at
+that photo with <em>"its saved points are from an earlier version — check
+they sit on the same features · its crop is kept"</em>: drag any dot that's
+off and press <code>Enter</code>, or move on — the photo keeps the crop it had
+until you press <code>Enter</code> there. A series saved by this version and opened
+in an older one may show the points on such photos in the wrong place.</p>
 <p><strong>By hand (<code>C</code>).</strong> The <strong>Frame</strong> card's <strong>By hand</strong> — <code>C</code> — works
 without any points. On the <strong>reference</strong> it's the ordinary crop tool:
 set the frame that leads the series. On any other photo it opens the
@@ -571,9 +597,17 @@ memory. The line at the panel's foot always says what <strong>Done</strong> (<co
 would apply: <em>"nothing changed yet"</em>, <em>"2 photos aligned — applied when
 you press Done"</em>, <em>"3 photos matched + aligned — …"</em>. Done writes each
 changed photo once, with one history entry apiece — <em>Aligned to</em> and
-the reference's name for a photo whose frame changed, <em>Match look</em> when
-its tone did — and the status line confirms it (<em>"series done — 2 photos
-aligned"</em>). With nothing changed it simply leaves.</p>
+the reference's name for a photo whose frame or points changed, <em>Match
+look</em> when its tone did, <em>Landmarks · 3 points</em> for a reference whose
+points changed — and the status line confirms it (<em>"series done — 2
+photos aligned"</em>). With nothing changed it simply leaves.</p>
+<p><strong>Undoing a series.</strong> Each entry holds the photo's whole state — its
+frame <em>and</em> its landmark points — so one <code>Cmd/Ctrl+Z</code> on an aligned
+photo takes both back, and the next walk stops on it again. A second
+Done on the same photo is a second step: the first alignment stays a
+point you can return to. Undo is per photo, as everywhere: undoing the
+reference's points never moves the photos aligned to them, and the
+status line says so (<em>"… — 4 aligned photos keep their crops"</em>).</p>
 <p><strong>Discard</strong> (<code>Esc</code>) puts every photo back exactly as it was. On an
 untouched session it leaves at once; once anything has changed, the
 first <code>Esc</code> — or a click on <strong>Discard 2</strong> — only <strong>arms</strong> it: the button
@@ -600,11 +634,16 @@ the landmark walk there, and a paste — which writes the photo at once —
 is refused until you press Done or Discard.</p>
 <h2 id="edit-history-snapshots">Edit history &amp; snapshots</h2>
 <p>Every edit is remembered. <code>Cmd/Ctrl+Z</code> <strong>undoes</strong> the last change,
-<code>Shift+Cmd/Ctrl+Z</code> <strong>redoes</strong> it — and it's not just develop sliders:
-ratings, flags, color labels, crop, straighten, a pasted look, a Reset,
-they all step back and forth the same way. Each step restores the whole
-photo to exactly how it stood, and writes that state back to the sidecar,
-so undo is as durable as any other edit.</p>
+<code>Shift+Cmd/Ctrl+Z</code> <strong>redoes</strong> it (the rail's <code>⋯</code> menu has <strong>Undo</strong> and
+<strong>Redo</strong> rows too, named after the step) — and it's not just develop sliders:
+ratings, flags, color labels, crop, straighten, a quarter turn (<code>R</code>), the
+landmark points of a <a href="https://mertenssander.github.io/culler-releases/manual/develop/#matching-a-series-m">series</a>, a pasted look, a
+Reset, they all step back and forth the same way. Each step restores the
+whole photo to exactly how it stood — its frame and its points together —
+and writes that state back to the sidecar, so undo is as durable as any
+other edit. (Steps recorded by a version of culler from before landmark
+points joined the history don't know the points: stepping onto one
+leaves them as they are.)</p>
 <p>The develop panel shows the full trail. Two cards at the bottom of the
 panel — collapsed by default, click the header to open — make it visible:</p>
 <ul>
@@ -625,7 +664,8 @@ auto-numbered one) and press <strong>Save</strong> — that exact state is pinne
 Later, however far you've wandered, <strong>Restore</strong> brings it back in one
 click (and the restore is itself an undoable step). Click a snapshot's
 name to rename it, or <code>×</code> to remove it. Unlike history, snapshots are
-never pruned — they're the states you deliberately kept.</li>
+never pruned — they're the states you deliberately kept. A snapshot
+keeps the photo's landmark points too.</li>
 </ul>
 <p>The whole trail lives in the photo's sidecar (<code>culler:History</code> /
 <code>culler:Snapshots</code>), so it survives closing and reopening culler — pick a
@@ -634,6 +674,14 @@ left them. History is capped generously (about two thousand steps, always
 keeping the oldest <strong>Opened</strong> anchor); in practice it's effectively
 complete. Undo isn't available while a crop or a series session is open
 — finish or cancel it first (those have their own <code>Esc</code>).</p>
+<p><strong>Overwriting the JPEG ends the trail.</strong> <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#single-export-j-and-overwrite-shift-j"><code>Shift+J</code></a>
+bakes your edits into the camera JPEG, so every earlier step describes
+pixels that now live in the <code>.orig</code> backup. The overwrite adds an
+<strong>Overwrote JPEG</strong> step, and undo stops there with <em>"the JPEG was
+overwritten here — the earlier states belong to P0001.JPG.orig"</em>; a
+click on an older row, or a snapshot saved before the overwrite, is
+refused the same way. Everything you do afterwards undoes and redoes as
+usual, back down to that step.</p>
 <h2 id="editing-photos-from-an-immich-source">Editing photos from an Immich source</h2>
 <p>Photos from a folder save every edit the instant you make it (to the
 sidecar next to the file). Photos from an <strong>Immich</strong> source work a little
@@ -665,9 +713,10 @@ in the DEVELOP / CROP tab palettes. It reverts the whole photo
 (grade, crop, alignment, snapshots) to the last state you saved to the
 server, in one click. Alignment points on their own never count as
 unsaved, so they never bring Discard up — but when you do discard a
-grade or a crop, the points go back to the last save with the rest. <code>Cmd+Z</code> brings the grade and the crop back, like
-any edit; a snapshot or alignment points made since the last save are
-not part of undo and stay gone. (A photo you never saved reverts to
+grade or a crop, the points go back to the last save with the rest.
+<code>Cmd+Z</code> brings the grade, the crop and the alignment points back, like
+any edit; a snapshot made since the last save is not part of undo and
+stays gone. (A photo you never saved reverts to
 the original.) It's distinct from <strong>Reset</strong>, which always clears back
 to zero; Discard goes back to your last save. Inside an open crop,
 <code>Esc</code> after a discard returns to the discarded-to crop, not to the one
@@ -704,7 +753,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

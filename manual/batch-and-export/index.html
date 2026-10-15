@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -126,6 +126,13 @@ and the rest the panel reminds you ("Rejects covers the whole library,
 not this view"). The scope doesn't switch by itself in either direction:
 if you leave the pivot or the saved filter with This view selected, it
 reads <strong>This view (0)</strong> and the button waits.</p>
+<p>When you <a href="https://mertenssander.github.io/culler-releases/manual/sources/#filling-in-an-upload-or-a-download">drop photos on a server, one of its albums, or a folder</a>,
+the panel opens already set up — Upload or Download, where to, which
+album — with <strong>These photos (N)</strong> as the scope: exactly the photos you
+dragged, a single unselected one included. Nothing runs until you press
+the button. The scope lasts until you close the panel, which puts your
+previous scope back; if the library changes underneath it (a re-scan),
+it reads <strong>These photos (0)</strong> and the button waits.</p>
 <p><img src="../img/04-export-panel.png" alt="The apply panel set up for a JPEG export" /></p>
 <p>The actions adapt to the active source:</p>
 <ul>
@@ -313,6 +320,14 @@ Destination card. <strong>Add folder…</strong> pins a folder on the next free 
 a <strong>Move | Copy</strong> switch (new folders start on Move), arrows to reorder
 and <strong>×</strong> to unpin — unpinning never touches the folder. The digit is
 the row's position: move a folder up and its number changes with it.
+With two folders or more, each row also has a <strong>grip</strong> left of its
+digit: drag it up or down and the other rows slide apart, the digits
+renumbering as you go (the changed ones tinted), the row's Move | Copy
+and any "not reachable" warning travelling with it. Letting go saves the
+new order once — "Prints is now on 1", exactly as the arrows say it —
+and a pending "press 3 again to move" question is dropped, as the
+arrows drop it. The rail's numbered cells keep the old order until you
+let go; <code>Esc</code>, or letting go away from the card, puts everything back.
 The list is yours across every folder you open (it lives in
 <code>~/.culler/destinations.conf</code>).</p>
 <p><strong>Sorting.</strong> <code>Shift+D</code> turns on <strong>sort mode</strong> in the loupe or the Grid:
@@ -331,9 +346,21 @@ leaves it too, since those use the digits themselves.</p>
 <li><strong>Move</strong> asks once per folder per session: the first press says
 "press 1 again to move this photo to Family", the second press moves
 it, and from then on that folder takes photos without asking. Any
-other key in between cancels the question. The moved photo leaves the
-view and the next one slides into its place.</li>
+other key in between cancels the question. A photo moved out of the
+folder you have open leaves the view and the next one slides into its
+place; one moved into a folder <em>inside</em> it stays (see below).</li>
 </ul>
+<p><strong>Dragging onto a cell.</strong> In sort mode the rail's numbered cells also
+take a dragged thumbnail (from the filmstrip or the Grid — the whole
+selection when the photo is in it): the cell lights up, a label says
+what letting go does — "Move 12 photos to Family · Sort 4 · pinned as
+Move" — and letting go sends them exactly as the digit would, the cell
+keeping the Move or Copy you pinned it with. Unlike the digit, a drop
+never asks "press 4 again" first: dragging is already the deliberate
+act, and <code>Esc</code> before you let go cancels it. An empty cell refuses
+("Nothing pinned on 4"). Outside sort mode, a dragged photo goes onto a
+folder or album in the <a href="https://mertenssander.github.io/culler-releases/manual/sources/#dragging-photos-onto-folders-and-albums">pinned sources pane</a>
+instead.</p>
 <p>Every send takes the whole photo — RAW, JPEG and sidecar together — and
 the status line confirms it: <strong>"Moved DSC07296 → Family (3 files)"</strong>.
 Presses queue up and run one at a time (the corner pill reads "Moving
@@ -349,9 +376,16 @@ parent folder is missing — is shown in amber on the card and on the
 rail, and sending to it changes nothing (culler never recreates a
 missing drive's folders on your boot disk).</li>
 <li>A photo that already lives in the folder isn't sent there again.</li>
-<li>A folder inside the one you're culling gets a caption: sorted photos
-would reappear when you rescan.</li>
 </ul>
+<p><strong>Folders inside the one you're culling.</strong> A Move into a folder inside
+the folder you have open — one of its subfolders, or its top level —
+keeps the photos: they stay in view, now living in that folder, and the
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#folders-inside-a-folder">folder counts in the sources pane</a>
+move at once, with no rescan. A folder view they left drops them (and
+your selection lets go of them, so the next mark can't touch a photo you
+can't see); the folder they went to shows them. A <strong>Copy</strong> there leaves
+your photos as they are and the copies only show after a rescan — the
+receipt says so, and a Copy row pinned there carries that caption.</p>
 <p>Sort destinations are folders, so sort mode is for folder sources; on
 an Immich source <code>Shift+D</code> points you at the album picker (<code>Shift+I</code>)
 instead. It's also off inside a stack and during a live tether session.
@@ -452,7 +486,7 @@ photo without a RAW always exports from its JPEG.</li>
 </ul>
 <p>Having the develop panel open doesn't change the rule: with the panel
 showing the flat RAW of a photo you haven't graded, <code>J</code> still exports
-the camera JPEG, and the status line says so. Move any slider and the
+the camera JPEG, and its notification says so. Move any slider and the
 next <code>J</code> renders from the RAW. Edit the
 folder, filename suffix and overwrite policy in the apply panel under
 <em>Export as JPEG</em>; everything persists between runs. The <strong>Quality</strong>
@@ -483,7 +517,10 @@ are baked into the very pixels the sliders acted on, and left up they
 would apply twice. A <strong>graded RAW-paired</strong> photo keeps its develop
 sliders: they grade the RAW, which the overwrite never touches, so
 reopening the develop panel shows the exact grade that produced the new
-JPEG. The crop resets in every case — the new JPEG is already cropped.</p>
+JPEG. The crop resets in every case — the new JPEG is already cropped.
+The overwrite is also where the photo's undo trail stops: earlier steps
+belong to the <code>.orig</code> (see
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#edit-history-snapshots">Edit history</a>).</p>
 <p><img src="../img/05-overwrite-armed.png" alt="Shift+J armed: the status line asks for the second press" /></p>
 <h2 id="edit-uploads-on-a-server-source">Edit uploads on a server source</h2>
 <p>On an Immich source, <code>J</code> downloads the original, renders your edit
@@ -516,13 +553,13 @@ one export/upload runs at a time — a second <code>J</code> tells you one is al
 running and points at the pill.</p>
 <p>A re-render — <code>J</code> on a photo whose front is already a culler edit —
 bakes from the RAW, so it needs it: if the RAW can't be
-downloaded or decoded, the <code>J</code> stops with the cause in the status line
-and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
+downloaded or decoded, the <code>J</code> stops with the cause on the status line
+(and in its notification) and <strong>nothing is uploaded</strong> — culler never quietly re-uploads the
 previous version as if it were your new edit. That holds even when the
 photo has no grade (say you only changed its crop): culler can't yet
 reach the camera JPEG inside the stack, so such a re-render comes from
-the RAW <strong>without the camera's look</strong>, and the status line — or, for
-<strong>Save edits</strong>, the batch summary's warnings — says so ("rendered from
+the RAW <strong>without the camera's look</strong>, and the <code>J</code>'s notification — or,
+for <strong>Save edits</strong>, the batch's warnings — says so ("rendered from
 the RAW: no grade, and the camera JPEG isn't reachable from this
 stack"). If you want a look on it, grade the photo before the <code>J</code>.
 Big originals get the
@@ -549,8 +586,8 @@ edits and the arm appears instead, don't confirm — the grade didn't
 load; step away and back to the photo to re-read it, and check the
 <a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>.</p>
 <p>The grade itself (sliders, crop, history) is saved to the server with
-the render. When that save fails the status line says so on <strong>every</strong>
-upload until you restart culler — the photo keeps its <code>[unsaved]</code> tag,
+the render. When that save fails the <code>J</code>'s notification says so (a
+warning) on <strong>every</strong> upload until you restart culler — the photo keeps its <code>[unsaved]</code> tag,
 and the grade stays safe in culler's own state file meanwhile, so the
 next <code>J</code> after a restart still bakes what you see.</p>
 <h2 id="the-pending-work-pill">The pending-work pill</h2>
@@ -572,6 +609,81 @@ operation in its way. A failing sync shows here too, in amber, with the
 server's error; it keeps retrying on its own. When nothing is pending,
 the pill doesn't exist.</p>
 <p><img src="../img/14-pending-ops.png" alt="The pill during a slow remote load" /></p>
+<h2 id="notifications">Notifications</h2>
+<p>When a job finishes — an upload, any batch from the apply panel, the
+<strong>Trash originals</strong> pass, <strong>Save edits</strong>, a <code>J</code> or <code>Shift+J</code> — its
+result appears where the pill just was, at the top-right of the photo:
+a <strong>notice</strong> that says what happened, to how many photos, and where:</p>
+<blockquote>
+<p>✓ <strong>Uploaded 303 photos to Immich prd</strong>
+37 min · added to 'Mallorca 2026' · 15 already stored
+Open album</p>
+</blockquote>
+<p>A job that partly failed says so in amber under the facts — the first
+photos it couldn't do and why (<em>3 failed: DSC08551, DSC08552, DSC08553 ·
+timed out waiting for a response</em>) — with a triangle instead of the
+check; one that did nothing at all gets a crossed circle. The status
+line at the bottom-left stays yours: it keeps what <em>you</em> just did (a
+pick, a rating, a Sort receipt, a refusal, a tip). An error appears in
+both places, so it can't slip by.</p>
+<p>A notice stays <strong>6 seconds</strong> (8 after a job that took over a minute),
+<strong>15</strong> for a warning and <strong>20</strong> for an error. Resting the pointer on it
+holds it, and so does switching to another app — a job that finished
+while you were away shows its notice when you come back. It takes no
+keys: <code>Esc</code> still does whatever it would have done. Its one button runs
+the same thing as the key or menu it stands for, and its <strong>×</strong> puts it
+away. Never more than two at once.</p>
+<p>A notice that leaves without being clicked becomes a count on the
+<strong>bell</strong> in the same corner — amber while one of them is a warning or
+an error. With nothing unread there is no bell.</p>
+<p>Three ongoing problems with a server also leave a notice, once, when
+they <strong>start</strong>:</p>
+<ul>
+<li>a scan that lost pages — <em>Some photos didn't load from Immich prd ·
+2 of 76 pages failed after 4 tries · first: server error (500)</em>, with
+<strong>Rescan</strong>;</li>
+<li>ratings and flags that stop reaching the server — <em>Ratings and flags
+aren't syncing to Immich prd · 12 changes waiting · retrying</em>;</li>
+<li>edit history the server stops accepting — <em>Edit history isn't
+reaching Immich prd</em>: <code>J</code> still uploads your edits as renders, but
+grades won't restore from the server this session.</li>
+</ul>
+<p>Each keeps its usual place too (the pill's row with its <strong>Retry</strong>, each
+<code>J</code>'s own message), and none posts again while it lasts — not per
+retry, not per <code>J</code>. When the problem clears nothing is posted; if it
+comes back later, so does its notice.</p>
+<h3 id="the-list-shift-n">The list: <code>Shift+N</code></h3>
+<p><code>Shift+N</code>, a click on the bell, <strong>⋯ → Notifications</strong> or <strong>View →
+Notifications</strong> opens the list of everything that finished: the last 50,
+up to 14 days back, grouped by day, newest first, each with its time and
+every button it offers. While it's open the keys belong to it — <code>↑</code>/<code>↓</code>
+move, <code>Enter</code> runs the first button, <code>⌫</code> removes one, <code>C</code> clears all,
+<code>Esc</code> (or <code>Shift+N</code>) closes it — and closing it counts everything in it
+as read. The photo isn't dimmed. The list isn't available in Compare,
+Survey, a Match series or while cropping (the status line says so; their
+notices still show), and inside the pinned sources pane <code>Shift+N</code> works
+as everywhere else.</p>
+<p>The buttons are things culler can already do:</p>
+<table><thead><tr><th>Button</th><th>Does</th></tr></thead><tbody>
+<tr><td><strong>Open album</strong></td><td>opens the album the photos went into</td></tr>
+<tr><td><strong>Open Batch</strong></td><td>opens the apply panel, still showing that batch's summary</td></tr>
+<tr><td><strong>Retry in Batch…</strong></td><td>after failures: opens the apply panel on its <strong>Retry N failed…</strong></td></tr>
+<tr><td><strong>Show unsaved (N)</strong></td><td>the photos whose edits haven't reached the server (<code>Shift+U</code>)</td></tr>
+<tr><td><strong>Show in Finder</strong></td><td>the folder (or file) a copy, move, download or export went to</td></tr>
+<tr><td><strong>Rescan</strong></td><td>after a copy into the open folder: shows the copies; after a scan that lost pages: scans again (the pill's <strong>Retry</strong>)</td></tr>
+<tr><td><strong>Show log file</strong></td><td>the <a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>, in Finder</td></tr>
+<tr><td><strong>Copy details</strong></td><td>the notice's text and every photo's cause, to the clipboard</td></tr>
+</tbody></table>
+<p>A button that no longer applies — the batch panel moved on, the source
+changed, the library was rescanned — is simply gone. Several <code>J</code>s to
+the same place within a minute count up in one notice (<em>Uploaded 7
+edits to Immich prd · last: DSC01011</em>); a failed <code>J</code> is always its own.
+<strong>Save edits</strong> reports once for the whole batch.</p>
+<p>The list is kept across restarts in <code>notifications.json</code> (see
+<a href="https://mertenssander.github.io/culler-releases/manual/reference/#configuration-files">Configuration files</a>); what came
+from an earlier session opens as read, without the buttons that only
+made sense then.</p>
+<p><img src="../img/21-notifications.png" alt="The notification list open over the photo" /></p>
 
     <nav class="pagenav">
       
@@ -586,7 +698,7 @@ the pill doesn't exist.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

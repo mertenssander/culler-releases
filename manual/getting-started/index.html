@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -165,8 +165,8 @@ across every server you've added, on every screen. Click it to see
 just those photos (<code>Shift+U</code> does the same); rest the pointer on it for
 the per-server breakdown, and click a server there to open it straight
 onto its unsaved photos. See <a href="https://mertenssander.github.io/culler-releases/manual/sources/#write-through-sync">Sources</a>.</li>
-<li><strong>The status line</strong> (bottom-left) narrates what just happened: the
-rating you set, an export finishing, a confirmation prompt.</li>
+<li><strong>The status line</strong> (bottom-left) narrates what you just did: the
+rating you set, a confirmation prompt, a tip.</li>
 <li><strong>The rail</strong> (left edge) is a slim column of keycap buttons for the
 current mode's verbs — Pick, Reject, Rate and friends while culling —
 each teaching its keyboard key. It collapses to a thin line when you
@@ -183,10 +183,16 @@ reference. Quitting mid-session is always safe: an open Match series
 or crop session is applied, never discarded.</li>
 <li><strong>The pending-work pill</strong> (top-right) appears only while something is
 running against a server — syncing ratings, uploading, fetching
-previews. See <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">batch operations</a>.</li>
+previews. See <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#the-pending-work-pill">batch operations</a>.
+When a job finishes, its result takes the pill's place as a notice;
+the ones you didn't look at wait behind the bell there, and
+<code>Shift+N</code> lists them all. See
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#notifications">notifications</a>.</li>
 </ul>
 <p><img src="../img/14-pending-ops.png" alt="The pending-work pill naming an in-flight operation" /></p>
-<p>Press <code>H</code> at any time for the built-in key overlay:</p>
+<p>Press <code>H</code> at any time for the built-in key overlay; <code>H</code> again or <code>Esc</code>
+closes it (that <code>Esc</code> closes only the overlay — whatever view you're in
+stays):</p>
 <p><img src="../img/11-help.png" alt="The help overlay" /></p>
 <h2 id="settings-cmd">Settings (<code>Cmd+,</code>)</h2>
 <p><code>Cmd+,</code> (<code>Ctrl+,</code> off the Mac) — or <strong>culler → Settings…</strong> in the menu
@@ -246,7 +252,7 @@ where it is stored is listed in the <a href="https://mertenssander.github.io/cul
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

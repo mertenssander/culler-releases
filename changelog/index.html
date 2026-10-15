@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -38,8 +38,160 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-9-0-2026-10-03">0.9.0 — 2026-10-03</h2>
+    <h2 id="0-10-0-2026-10-15">0.10.0 — 2026-10-15</h2>
+<p><strong>Heads-up before you update:</strong> RAW photos now open with <strong>Denoise at 0</strong>.
+RAWs you developed earlier that relied on the automatic noise reduction
+render without it until you turn Denoise up (see Changed). And a series
+aligned with this version keeps its landmark points in a new form: an
+older culler reading it may place points on server photos you saved with
+<code>J</code> in the wrong spot (see Fixed).</p>
 <h3 id="new">New</h3>
+<ul>
+<li><strong>RAW photos open in the camera's look.</strong> Opening the develop panel
+on a RAW the camera shot in Vivid now shows it in that look, matched
+to its JPEG's exposure, instead of a dark, flat render — and the
+camera JPEG stays up until the look is ready, so the switch barely
+shows. It's a starting point, not an edit: the sliders sit at 0, the
+photo isn't marked edited, nothing is saved until you change
+something, and Reset returns to the look. Choose <strong>Neutral</strong> in the
+look picker to start flat. Photos you've already developed keep their
+picture. Cameras culler has no look for open flat, as before.</li>
+<li><strong>Finished jobs report in the top-right corner.</strong> When an upload, a
+batch, <strong>Save edits</strong> or a <code>J</code> finishes, its result appears as a
+notice where the progress pill just was — what happened, to how many
+photos and where, the photos that failed and why, and a button such as
+<strong>Open album</strong> or <strong>Retry in Batch…</strong>. A notice you didn't look at
+waits behind a bell, and <code>Shift+N</code> (or a click on the bell) lists
+everything from the last two weeks. The status line at the bottom
+keeps what you did yourself; errors show in both places. Three
+ongoing server problems also leave one notice when they start — a
+scan that lost pages (with <strong>Rescan</strong>), ratings and flags that stop
+syncing, and edit history the server stops accepting — and none
+repeats while the problem lasts.</li>
+<li><strong>Select photos with the mouse alone.</strong> Hover a thumbnail in the
+filmstrip or the Grid and an empty box appears in its corner — click
+it to select the photo, click a selected photo's check to deselect it,
+<code>Shift</code>+click the box to select a run. The cursor follows the click,
+so <code>P</code>, <code>X</code> or a rating then marks the whole set you just ticked. A
+click anywhere else on the thumbnail still only moves the cursor, and
+the box fades when the mouse rests, so it never gets in the way of the
+keyboard.</li>
+<li><strong>Grid, Survey and Compare have buttons.</strong> Each view now has a bar
+along the top with its actions as buttons that show their keys —
+Peek, Size, Group, Batch and Done in the Grid; Winnow, Keep one,
+Dismiss, Next moment and Done in Survey; Pick, Reject, Pane, Promote,
+Swap and Exit in Compare — so you can work every view start to finish
+with the mouse. The ungrouped Grid gets a box that selects all its
+photos, a peek gets a <strong>Back</strong> button on the rail, the <code>⋯</code> menu gets
+<strong>Undo</strong> and <strong>Redo</strong>, and crop gets a <strong>Cancel</strong> button.</li>
+<li><strong>Drag photos onto folders and albums.</strong> With the Sources panel kept
+open, drag a thumbnail from the filmstrip or the Grid — or the whole
+selection, by dragging one of its photos — onto a folder of the open
+folder to move it there, onto another folder source to copy it, or onto
+an album of the open server to add it; in sort mode, onto a numbered
+cell. A label beside the pointer says what letting go will do (or why
+it won't), <code>⌥</code> flips move and copy, <code>Esc</code> cancels, and holding over a
+closed folder opens it. Moved photos stay in view at their new place.</li>
+<li><strong>More places to drag to and from.</strong> The photo in the main view drags
+too (at fit zoom). Drop on <strong>+ New folder</strong> or <strong>+ New album</strong>, type a
+name, and the photos go straight into it. Drop a folder's photos on a
+server or one of its albums — or a server's photos on a folder — and
+the batch panel opens with the upload or download filled in for just
+those photos, waiting for you to press the button. And a folder
+dragged in from Finder opens, like <code>O</code>.</li>
+<li><strong>Reorder saved filters and sort folders by dragging.</strong> Every row in
+the <code>Cmd/Ctrl+F</code> list and in the Sort destinations card now has a grip;
+drag it up or down and the other rows make room, the number keys
+renumbering as you go so you can see what each digit will do before
+you let go. Letting go saves the new order and the status line names
+the new number ("Portraits is now on 2"); <code>Esc</code>, or letting go away
+from the card, puts everything back.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>Landmark points are part of a photo's undo history.</strong> Each step now
+holds a photo's frame <em>and</em> its alignment points, so <code>Cmd/Ctrl+Z</code> on an
+aligned photo takes both back in one step, <code>Shift+Cmd/Ctrl+Z</code> puts them
+back, and a history-row click or a snapshot restores them too. A
+series reference whose points changed gets its own <em>Landmarks · N
+points</em> step, and undoing it says how many aligned photos keep their
+crops (undo stays per photo). Steps saved by earlier versions leave the
+points as they are.</li>
+<li><strong>Applying a series twice keeps both steps.</strong> A second Done on the
+same photo is its own history step, so the first alignment stays a
+point you can go back to.</li>
+<li>After <strong>Discard edits</strong> on a server photo, <code>Cmd+Z</code> now brings the
+alignment points back along with the grade and the crop.</li>
+<li><strong>Sorting into a folder inside the one you have open keeps the photos
+in view.</strong> A sort-mode Move into one of its subfolders (or its top
+level) no longer makes the photos vanish until a rescan: they stay
+where you were looking, now living in their new folder, and the folder
+counts in the sources pane move at once. A folder view they left drops
+them; the folder they went to shows them.</li>
+<li><strong>RAW denoise now starts off.</strong> The automatic, ISO-scaled noise
+reduction softened fine detail, so a RAW now opens with Denoise at 0;
+turn it up on the photos that need it (the row's hover suggests a
+strength for the photo's ISO). RAWs you developed before this release
+that relied on the automatic strength now render without it. Opening
+a RAW in the develop pane is also quicker, since the smoothing pass no
+longer runs by default.
+=======</li>
+<li><strong><code>Esc</code> closes the help overlay first</strong>, like every other floating
+panel: with help open, <code>Esc</code> closes it and does nothing else — it no
+longer also leaves crop, a series, the Grid or the sources pane, and
+inside a stack or a pivot it now closes help instead of doing nothing.
+The next <code>Esc</code> does what it always did.</li>
+<li><strong>Editing never changes the camera.</strong> In a tethered session, <code>[</code> / <code>]</code>
+(manual focus) and the info panel's exposure − / + buttons now switch
+off with the develop pane open, in crop, and in Compare, Survey and
+Match series — as the remote shutter already did. The camera's
+settings still show; the controls come back when you return to the
+photos.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>
+<p><strong>Blown highlights in a RAW no longer turn black.</strong> A burnt-out window
+or sky could render as a solid black patch with a bright fringe while
+developing a RAW (and in a JPEG made from it at reduced size); it now
+stays white, as in the camera's JPEG.</p>
+</li>
+<li>
+<p><code>Esc</code> with the <code>⋯</code> menu open inside a stack, the Grid or Survey now
+closes just the menu instead of also leaving where you are, and
+choosing Compare, Survey or Match series from the <code>⋯</code> menu while in
+the Grid now leaves the Grid first, the way their keys do.</p>
+</li>
+<li>
+<p><strong>The quarter turn is undoable.</strong> <code>R</code> / <code>Shift+R</code> outside crop mode
+now records a <em>Rotate right</em> / <em>Rotate left</em> step — it used to leave
+no step at all.</p>
+</li>
+<li>
+<p><strong>Undo after <code>Shift+J</code> no longer crops twice.</strong> Overwriting the JPEG
+records an <em>Overwrote JPEG</em> step and undo stops there, saying the
+earlier states belong to the <code>.orig</code> backup — before, stepping past it
+re-applied an old crop to the already-cropped JPEG.</p>
+</li>
+<li>
+<p><strong>Landmark points stay on the features you clicked</strong> on server photos
+culler has saved with <code>J</code> before. A point placed while the pane showed
+culler's cropped render used to land in the wrong spot once the RAW
+appeared or after the next <code>J</code>; now it stays put on both, a series
+re-aligns after a re-render instead of refusing, and the Match series
+crop frame on such a reference is right too. Points an earlier version
+placed on a render are moved over by themselves when culler can prove
+where they belong, and the walk asks you to check them when it can't.
+Note: an older version of culler reading a series saved by this one
+may place points on these photos in the wrong spot.</p>
+</li>
+<li>
+<p>Counts of one read "1 photo", not "1 photos", on buttons, receipts,
+status lines and the batch panel.</p>
+</li>
+</ul>
+<h2 id="0-9-0-2026-10-03">0.9.0 — 2026-10-03</h2>
+<h3 id="new-1">New</h3>
 <ul>
 <li><strong>The sources panel can stay open.</strong> Click the new pin at the top of
 the sources pane — or turn on <strong>Settings → Sources → Keep the sources
@@ -187,7 +339,7 @@ a matching <strong>Discard unsaved edits</strong> batch action to revert a whole
 scope at once (skipping, and naming, any photo it hasn't yet checked
 against the server). A photo you never saved reverts to the original.</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li><strong><code>J</code> on a photo you've only cropped now keeps the camera's look.</strong> A
 photo with no grade — no develop slider moved; a crop on its own isn't
@@ -249,7 +401,7 @@ source and moving on to another before it had finished loading made it
 forget the photo and filter you had left it on. It now remembers them
 until you have actually been there again.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li><strong>Switching source while a <code>J</code> is still uploading no longer puts the
 result in the wrong place.</strong> A <code>J</code> (or "Save edits to server") that
@@ -312,6 +464,8 @@ drops out of the list, and the server's row is left alone.</li>
 <li><strong>"MB left" during an upload no longer jumps back up</strong> when a photo's
 RAW starts after its JPEG, and a photo that failed no longer leaves
 its unsent bytes in the count for the rest of the batch.</li>
+<li><strong>The upload progress bar no longer slips back</strong> for a moment when a
+photo's RAW starts uploading after its JPEG.</li>
 <li><strong>The upload speed graph's "up to N MB/s" caption no longer flickers</strong>
 up and back down for a moment when a five-second bar completes.</li>
 <li><strong>Fixed:</strong> in the sources pane, a stray <code>Shift+Tab</code> could move keyboard
@@ -1110,7 +1264,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

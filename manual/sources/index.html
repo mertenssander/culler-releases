@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -179,6 +179,86 @@ plugging in a drive, say).</p>
 like the unpinned one. To unpin, click the pin again (or untick the
 setting): the pane closes, and <code>S</code> opens it as before. Pinning is off by
 default.</p>
+<h2 id="dragging-photos-onto-folders-and-albums">Dragging photos onto folders and albums</h2>
+<p>With the pane pinned and docked, its rows take photos. Press on a
+thumbnail in the filmstrip or the Grid — or on the photo itself, while
+it's shown whole (at fit; zoomed in, dragging pans) — and drag it onto a
+row:</p>
+<ul>
+<li><strong>A folder of the folder you have open</strong> — one of its rows in the
+<a href="https://mertenssander.github.io/culler-releases/manual/sources/#folders-inside-a-folder">folder tree</a>, or its own row for the top
+level: the photo <strong>moves</strong> there. It stays in view at its new place —
+the counts beside the folders change, nothing re-scans.</li>
+<li><strong>Another saved folder source</strong> — a card, a drive, a share: the photo
+is <strong>copied</strong> there, so a drop onto a card or a backup can never
+remove your originals by accident.</li>
+<li><strong>An album of the server you have open</strong>: the photo is <strong>added</strong> to
+it (nothing is copied or moved — it stays on the server).</li>
+<li><strong><code>+ New folder</code></strong> or <strong><code>+ New album</code></strong>: the row turns into its name
+field, the photo waits, and once you type a name and press <code>Enter</code>
+the folder or album is made and the photo goes in — moved (or, with
+<code>⌥</code>, copied) into the new folder, added to the new album. <code>Esc</code> in the
+name field makes nothing and files nothing.</li>
+</ul>
+<p>If the photo you press on is part of your <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a>,
+the whole selection comes along; if it isn't, only that photo does.
+Either way the drag leaves the selection and the cursor alone, and the
+drop doesn't open the folder or album, or take the keys away from the
+photos.</p>
+<p>While you drag, a small stack of thumbnails (with the count) follows the
+pointer, and a label beside it says what letting go would do —
+<code>Move 12 photos to 2026 / Inbox</code>. The row that would take them gets a
+blue wash and ring. A row that won't take them gets a faint ring, and the
+label says why instead. Hold <code>⌥</code> (Option) as you let go to flip a folder
+drop between <strong>move</strong> and <strong>copy</strong> (the label shows it live; copies into
+the open folder show in its list after a re-scan, <code>S</code> then <code>Enter</code>).
+<code>Esc</code> before you let go cancels; letting go over anything else does
+nothing.</p>
+<p>Holding over a closed folder for half a second opens it (a thin line
+along its foot fills meanwhile), and so does holding over the open
+server's row, which opens its albums. They stay open afterwards, as if
+you'd pressed <code>→</code>. Near the pane's top or bottom edge the list scrolls.</p>
+<p>What won't drop, and says so in the label (and on the status line, if
+you let go anyway):</p>
+<ul>
+<li>photos already in that folder (some already there is fine — the rest
+move, and the receipt names the others), or an album you're viewing;</li>
+<li>a folder that isn't reachable (an unplugged drive);</li>
+<li>photos onto another server's album, or an album shared with you as
+view-only;</li>
+<li>anything while a batch is running, or when the library changed under
+the drag (a re-scan finished) — drag again.</li>
+</ul>
+<p>The receipt is the same one the keyboard prints: <code>Moved 12 photos → 2026 / Inbox (24 files)</code>, <code>Filed 12 into 'Family' · 3 were already in it</code>. There is no confirmation — the drag itself is the deliberate act,
+and <code>Esc</code> is the way back before you let go.</p>
+<p>Without a pinned pane there is nothing to drop on, and the label says how
+to get one: pin the panel (the pin, or <code>S</code> then the pin), or widen the
+window when a pinned pane has stepped aside for room. In
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#sorting-into-folders-shift-d">sort mode</a> the pane
+steps aside and the rail's numbered cells take the drop instead. During
+a tethered session, drops are off.</p>
+<p>Every drop has a keyboard twin that runs the same thing: a folder you've
+pinned as a sort destination is <code>Shift+D</code> and its digit (otherwise <strong>A →
+Move or Copy → Destination…</strong>), an album is <code>Shift+I</code>, a new folder or
+album is <code>Enter</code> on its <code>+ New</code> row.</p>
+<h3 id="filling-in-an-upload-or-a-download">Filling in an upload or a download</h3>
+<p>Photos from a folder dropped on a <strong>server's row</strong> or on one of <strong>its
+albums</strong> — or a server's photos dropped on a <strong>folder source</strong> — open
+the <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">batch panel</a> already filled in: <strong>Upload</strong>
+to that server (into that album, or its timeline for the server's own
+row), or <strong>Download</strong> into that folder, with <strong>These photos (N)</strong> as the
+scope — exactly the photos you dragged, even a single one you never
+selected. Nothing is sent yet: check the panel and press its button when
+you're ready. The scope stays until you close the panel; closing it puts
+your previous scope back. Dropping a folder's photos on <strong><code>+ New album</code></strong>
+does the same once you've named it: the album is made, then the upload
+into it is filled in.</p>
+<h3 id="opening-a-folder-from-finder">Opening a folder from Finder</h3>
+<p>Drag a folder from Finder anywhere onto culler's window and let go: it
+opens as a source, exactly like <code>O</code> (ad-hoc, not saved). While it hovers,
+the window gets a blue ring and a label in the middle says <code>Open 'Wedding 2025'</code>. Files, or more than one item, aren't opened — the label
+says <code>Drop one folder to open it</code>. While you're cropping, comparing,
+surveying or matching a series, the label says what to finish first.</p>
 <h2 id="folders-cards-and-shares">Folders, cards and shares</h2>
 <ul>
 <li><strong>+ Add</strong> beside the heading (or <code>N</code>) adds a local folder, a network
@@ -223,7 +303,10 @@ the pane switches straight to it — <code>Esc</code> still goes all the way bac
 and <code>Enter</code> on the source's own row, or a click on it, goes back to the
 whole folder too (a second <code>Enter</code> re-scans it as before). The counts
 are live: sort photos out of an Inbox and its number drops; a folder you
-sort empty stays in the list, without a number.</p>
+sort empty stays in the list, without a number. Sort them into another
+folder of the same source with a sort-mode Move and that folder's
+number rises the moment they land — the photos stay in view at their
+new place, nothing re-scans (<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#sorting-into-folders-shift-d">sorting into folders</a>).</p>
 <p>On the open folder's own row <code>R</code> still renames the source's <strong>label</strong>,
 never the folder on disk — the foot of the pane says <code>R rename label</code>
 there.</p>
@@ -309,9 +392,10 @@ all-powerful keys):</p>
 <tr><td>create, rename or delete albums — <em>only for managing albums; nothing above needs these</em></td><td><code>album.create</code>, <code>album.update</code>, <code>album.delete</code></td></tr>
 </tbody></table>
 <p>A key missing a write permission surfaces the server's error where the
-operation lives: batch failures in the status line, sync failures in
+operation lives: batch failures in the batch's
+<a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#notifications">notification</a>, sync failures in
 the pending-work pill (where the sync queue keeps retrying until the
-key is fixed). For anything that changes an album the message <strong>names
+key is fixed) and in one notification when they start. For anything that changes an album the message <strong>names
 the permission</strong> — "the API key lacks the albumAsset.delete permission"
 — so you know which box to tick, instead of a generic "check the API
 key".</p>
@@ -336,7 +420,9 @@ has arrived, without moving the photo you're on). If some pages fail to
 load — a straining server, a network blip — culler keeps everything
 that arrived and the pill tells you how much is missing, <strong>which pages
 failed and why</strong> (the server's actual error), and how to retry; you
-never lose a loaded timeline to one bad request. When it keeps
+never lose a loaded timeline to one bad request. The first time it
+happens a <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/#notifications">notification</a> records
+it too, with a <strong>Rescan</strong> button. When it keeps
 happening, the same per-page causes land in culler's
 <a href="https://mertenssander.github.io/culler-releases/manual/reference/#the-diagnostic-log">diagnostic log</a>
 (<code>~/.culler/logs/culler.log</code>) and on the console — look for lines
@@ -633,7 +719,11 @@ freshly stepped value shows in the accent color for the beat it takes
 the camera to confirm; if the body refuses (wrong mode dial,
 typically), the corner pill tells you why and the row falls back to
 what the camera actually did. The camera's own dials always win —
-turn one and the rows follow.</p>
+turn one and the rows follow. While you're editing — the develop pane
+open, or in crop — and in Compare, Survey and Match series, the rows
+keep showing the camera's settings but the steppers step aside, and
+<code>[</code> / <code>]</code> below do nothing: an editing mode never changes the camera,
+just as the remote shutter waits until you're back.</p>
 <p>With the camera on <strong>manual focus</strong>, <code>[</code> and <code>]</code> nudge focus nearer
 and farther in small steps — <code>Shift+[</code> / <code>Shift+]</code> take big steps for
 coarse travel, <code>Cmd+[</code> / <code>Cmd+]</code> fine ones for the last breath of
@@ -705,7 +795,7 @@ in the list.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

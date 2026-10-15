@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.9.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
     </div>
   </details>
 </header>
@@ -119,13 +119,18 @@ portrait crop from a landscape photo or vice versa. Switching aspect
 re-fits your existing crop around its center instead of resetting it.</li>
 <li><strong>Enter</strong> or <code>C</code> applies; <strong>Esc</strong> cancels and restores what you had
 when you entered. (Adjustments write live while you work, so leaving
-the app mid-crop loses nothing.)</li>
+the app mid-crop loses nothing.) The pane's <strong>Done</strong> and <strong>Cancel</strong>
+buttons do the same — Cancel backs out one step at a time exactly as
+<code>Esc</code> does (the Level tool first, then the crop).</li>
 </ul>
 <h2 id="rotation">Rotation</h2>
 <ul>
 <li><code>R</code> / <code>Shift+R</code> rotate 90° clockwise / counter-clockwise — these also
 work <em>outside</em> crop mode, so a sideways photo is a one-key fix while
-culling. The crop pane has matching <code>-90°</code>/<code>+90°</code> buttons.</li>
+culling (each turn is its own step in the
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#edit-history-snapshots">edit history</a> — <em>Rotate right</em>,
+<em>Rotate left</em> — so <code>Cmd/Ctrl+Z</code> turns it back). The crop pane has
+matching <code>-90°</code>/<code>+90°</code> buttons.</li>
 <li>The <strong>Straighten</strong> slider covers fine angles up to ±45°. In crop mode
 the arrow keys nudge it by 0.1°, <code>Shift+arrows</code> by 1°.</li>
 <li>Straightening auto-fits the crop so blank corners can never appear, and
@@ -173,7 +178,7 @@ series itself is done. See
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.9.0</span>
+  <span>© Sander Mertens · culler v0.10.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
