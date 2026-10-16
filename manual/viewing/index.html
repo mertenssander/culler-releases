@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
     </div>
   </details>
 </header>
@@ -113,6 +113,11 @@ decode lands.</li>
 <h2 id="before-after">Before / after: <code>\</code></h2>
 <p><code>\</code> toggles the untouched original — no tone, no crop, no rotation — and
 tags the overlay <code>[before]</code>. Press again for your edit.</p>
+<p><strong>Tap to latch, hold to peek.</strong> A quick tap switches and stays switched.
+Hold the key instead and the original shows only while you hold it —
+let go and your edit is back. If before was already on, holding <code>\</code>
+shows your edit for as long as you hold it. <code>W</code>, the clipping warnings,
+works the same way.</p>
 <h2 id="grid-view-k">Grid view: <code>K</code></h2>
 <p>Zooming all the way out: <code>K</code> spreads the <strong>whole working set</strong> (the
 current filter) across a scrolling grid, with a live tally at the top —
@@ -123,7 +128,15 @@ on <a href="https://mertenssander.github.io/culler-releases/manual/culling/#sele
 dim so the undecided work pops forward, and develop edits show in the
 cells. The corner box on a hovered cell, <code>Cmd/Ctrl</code>+click and
 <code>Shift</code>+click build a selection here exactly as in the filmstrip (a
-double-click on the box never opens the peek).</p>
+double-click on the box never opens the peek) — and a <strong>rubber band</strong>
+does it in one stroke: press on empty space between or around the
+thumbnails and drag across the photos you want (<code>Shift</code> or <code>Cmd/Ctrl</code>
+at the release adds them to the selection; see
+<a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">Selecting a set</a>). Right-click a cell
+for its <a href="https://mertenssander.github.io/culler-releases/manual/culling/#right-click-menus">menu</a> — the marking, rating,
+label, selection, album and batch rows; the loupe's editing rows (copy
+and paste settings, rotate, undo, export) wait until you're out of the
+Grid.</p>
 <p><img src="../img/18-grid.png" alt="Grid view: the live tally and the grid&#39;s buttons on top, dimmed rejects, the cursor ring" /></p>
 <p>The top bar carries the grid's own buttons, each showing its key:
 <strong>Peek</strong> <code>␣</code>, <strong>Size</strong> <code>Z</code> (it names the current cell size), <strong>Group</strong>
@@ -239,7 +252,8 @@ moment in the view, the status line says the gap in effect and that
 thumbnails. The bright one is the moment you're on — exactly what <code>N</code>
 will open.</li>
 <li><strong>The overlay</strong> tags the photo with its place in the moment:
-<code>[moment 3/8]</code>.</li>
+<code>[moment 3/8]</code>. The tag is underlined because it's also a button:
+click it to survey the moment, exactly as <code>N</code> does.</li>
 <li><strong><code>,</code> / <code>.</code></strong> jump to the first photo of the previous / next moment,
 skipping single photos — in the normal view, the Grid, and Survey
 (where they deal that moment instead). The status line counts along:
@@ -333,7 +347,7 @@ elsewhere arrives here already Picked. One axis, two names.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.10.0</span>
+  <span>© Sander Mertens · culler v0.11.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

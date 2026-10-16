@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
     </div>
   </details>
 </header>
@@ -141,17 +141,24 @@ there's never a doubt about which file you're grading.</p>
 style recorded in the file (<strong>Vivid</strong> today) and an exposure fitted to
 that shot, so switching from the camera JPEG to the RAW changes the
 picture as little as possible. The camera JPEG stays up until that look
-is ready, then the RAW takes over.</p>
+is ready, then the RAW takes over. While the panel is open, the photos
+either side of the current one are prepared in the background, so
+stepping to them lands on their look straight away.</p>
 <p>This is a <strong>starting point, not an edit</strong>: every slider sits at 0, the
 photo isn't marked as edited, and nothing is written until you change
 something. Your sliders work <em>on top of</em> the look, and <strong>Reset</strong> returns
 to it. To start from the flat RAW instead, choose <strong>Neutral</strong> in the
-look picker. Photos you developed before this release keep the picture
+look picker — or, for every RAW you haven't edited, set <strong>RAW opens in</strong>
+to <em>Neutral</em> in Settings (<code>Cmd+,</code> → RAW files). Photos you developed before this release keep the picture
 they had; Reset puts them on the camera look too.</p>
+<p><code>J</code> on an untouched photo exports what you see: a RAW with its camera
+JPEG beside it ships that JPEG, and a RAW on its own renders in the
+camera look, fitted against the preview the camera stored inside it.</p>
 <p>The look approximates the camera's rendering, so some difference
 remains: in-camera dynamic range optimisation, local adjustments,
 noise reduction and sharpening aren't reproduced. A RAW from a camera
-culler has no look for opens flat — darker and flatter than its JPEG,
+culler has no look for opens on its JPEG's <strong>exposure</strong> alone — the
+picker reads <strong>Camera exposure</strong> — with contrast and colour left flat,
 the neutral rendition your adjustments build on. Lens correction is
 applied from the file's own parameters (see the slider list below). The
 histogram and its tone curve describe what's on screen, look included.</p>
@@ -176,32 +183,110 @@ Incremental pair, and neither ever touches the other.</p>
 <p>The live RGB histogram at the top reflects your adjustments, and you can
 grab it directly:</p>
 <ul>
-<li>Drag in the <strong>left third</strong> to move Shadows, the <strong>middle</strong> for
-Exposure, the <strong>right third</strong> for Highlights. The tone you press on
-tracks the pointer — it feels like dragging the histogram mass itself.</li>
-<li><strong>Double-click</strong> a zone to reset that parameter.</li>
+<li>It has five zones, left to right: <strong>Blacks</strong>, <strong>Shadows</strong>,
+<strong>Exposure</strong> (the wide middle), <strong>Highlights</strong> and <strong>Whites</strong>, split
+by four faint lines. Drag in a zone to move its slider; the tone you
+press on tracks the pointer — it feels like dragging the histogram
+mass itself. The histogram's bottom line names the zone and its value
+as you go, and pressing a zone aims its slider. The small triangles in
+the two top corners are the clipping indicators' own (below) — a press
+there never moves Blacks or Whites.</li>
+<li><strong>See clipping as it happens.</strong> While you drag a zone — or move
+Exposure, Highlights, Whites, Shadows, Blacks, <strong>Curve highlights</strong> or
+<strong>Curve shadows</strong>, by dragging or by scrolling over the slider — the
+bottom right of the histogram reads <code>clipped 0.8 %</code>: how much of the
+photo that end blows out (the highlight sliders, the middle and right
+zones) or crushes (the shadow sliders, the two left zones). It counts the
+same pixels the corner triangles light on, turns amber past 0.5 %, and
+goes a moment after you stop.</li>
+<li><strong>Double-click</strong> a zone to reset that parameter; <strong>Shift+double-click</strong>
+the Blacks or Whites zone to set it to the clipping point (see
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#the-sliders">Whites / Blacks</a>).</li>
 <li>The histogram is computed over the <strong>cropped region</strong>, so it describes
 the photo you're actually keeping.</li>
+<li>It shows what's on screen, untouched photos included: an untouched
+photo's white sits at the right edge, where it renders. On a RAW, the highlights brighter than the display's white
+— detail the sensor kept — appear where the picture puts them, packed
+toward the right edge, rather than stacked in one spike.</li>
 </ul>
 <h3 id="the-curve">The curve</h3>
 <p>The white line across the histogram is the <strong>tone curve</strong>: for every
 input tone (left = black, right = white) it shows the tone your sliders
 turn it into (bottom = black, top = white). Untouched, it lies on the
-faint diagonal — except a small dip near white, the built-in highlight
-shoulder that rolls bright pushes off softly instead of clipping them.
-Raise Exposure and the whole line lifts; add Contrast and it steepens
+faint diagonal: untouched, white stays white. Push Exposure up and the
+line bends over near the top instead of running into it, so the brightest
+tones compress toward white rather than clipping. On a RAW the line follows the RAW's own rendering, so with the camera's
+look on it keeps climbing toward white instead of going flat across the
+top. Raise Exposure and the whole line lifts; add Contrast and it steepens
 into an S; pull Highlights and the top end bends down. While you drag a
 tonal slider the line brightens to the accent color, and dragging one of
 the four <strong>Tone curve</strong> sliders also thickens the stretch of the curve
-that slider owns, so you can see exactly where "Darks" ends and "Lights"
-begins. White balance, Vibrance/Saturation and Vignette don't move the
+that slider owns, so you can see exactly where "Curve darks" ends and
+"Curve lights" begins. White balance, Vibrance/Saturation and Vignette don't move the
 line — they change color or corners, not tones.</p>
+<h2 id="working-a-slider">Working a slider</h2>
+<p>Each slider is a label, its value and a track. The short tick on the
+track marks the slider's default — where a <strong>double-click</strong> returns it —
+so a slider you haven't touched is just the line and its tick. Move it
+and a blue fill grows from the tick to the value, a small knob marks
+where it sits, and the value brightens; sliders that go both ways say
+which way they went (<code>+15</code>, <code>−8</code>, and Exposure in stops, <code>+0.67 EV</code>).
+Hovering a row shows the knob full size and draws a field around the
+value: <strong>click the value and type</strong> an exact number (<code>Enter</code> keeps it,
+<code>Esc</code> puts the old one back).</p>
 <p>Sliders drag <strong>relative to where you grab</strong> — the value moves with your
 pointer's travel, damped so a wide drag is a moderate change, which makes
-fine adjustment easier and means a stray click never jumps the value.
-For an exact number, <strong>click the value and type it</strong>; <strong>double-click</strong> the
-track to reset; and hovering a slider and <strong>scrolling</strong> nudges it — slower
-still, for the finest work.</p>
+fine adjustment easier and means a stray click never jumps the value
+(Settings → Slider drag speed sets how far a drag goes).</p>
+<p>Hold <strong><code>⌥</code> (Option)</strong> for fine control and <strong><code>⇧</code> (Shift)</strong> for coarse:
+while it's held, a drag moves the value a tenth as far — or four times as
+far — as it otherwise would, and so does dragging in the histogram (the
+scroll wheel and the step keys below take a finer or a coarser step). The knob shrinks for fine and grows for
+coarse, and a <code>fine</code> or <code>coarse</code> caption appears beside the value. Press
+or let go of the key in the middle of a drag and the value carries on
+from where it is — it never jumps.</p>
+<h3 id="the-aimed-slider">The aimed slider</h3>
+<p>One slider at a time can be <strong>aimed</strong> — its row tints, a blue bar marks
+it at the card's edge, and its knob stays visible. Everything precise
+acts on the aimed slider: the keys, the scroll wheel, and typing a value.
+A slider is aimed when you let go of a drag on it, click its track or its
+value, or press in its zone of the histogram (Shadows, Exposure or
+Highlights) — and from the keyboard:</p>
+<table><thead><tr><th>Key</th><th>Does</th></tr></thead><tbody>
+<tr><td><code>[</code> / <code>]</code></td><td>aim the previous / next slider (with nothing aimed, the first: Exposure)</td></tr>
+<tr><td><code>-</code> / <code>=</code></td><td>step the aimed slider down / up — with nothing aimed, <code>=</code> and <code>-</code> step Exposure and aim it</td></tr>
+<tr><td><code>⌥</code> / <code>⇧</code> with <code>-</code> <code>=</code></td><td>the fine / coarse step</td></tr>
+<tr><td><code>Enter</code></td><td>type a value into the aimed slider (<code>Enter</code> keeps it, <code>Esc</code> puts the old one back)</td></tr>
+<tr><td><code>⌫</code></td><td>reset the aimed slider (like a double-click)</td></tr>
+<tr><td><code>Esc</code></td><td>let go of the aimed slider</td></tr>
+</tbody></table>
+<p>The steps are in the slider's own units, and work on the number you see
+(a Contrast showing <code>14</code> steps to <code>19</code>):</p>
+<table><thead><tr><th>Slider</th><th><code>⌥</code> fine</th><th>plain</th><th><code>⇧</code> coarse</th></tr></thead><tbody>
+<tr><td>Exposure</td><td>0.01 EV</td><td>0.10 EV</td><td>0.40 EV</td></tr>
+<tr><td>every ±100 slider, Vignette, Denoise</td><td>1</td><td>5</td><td>20</td></tr>
+<tr><td>Temp on a RAW (Kelvin)</td><td>0.2 %</td><td>1 %</td><td>4 %</td></tr>
+</tbody></table>
+<p>Hold a step key and it repeats; the edit is saved — and goes into the
+history as one step — a moment after you let go. Denoise waits for the
+presses to stop before it re-renders.</p>
+<p><strong>The scroll wheel edits only the aimed slider</strong> (with the pointer over
+it), or any slider while you hold <code>⌥</code>; anywhere else in the panel it
+scrolls the panel, so a swipe meant to reach Color Mix can't move a
+slider on the way. A notch is half a key step — 0.05 EV, or 2 on a ±100
+slider (<code>⌥</code> and <code>⇧</code> scale it too) — and a trackpad moves the same amount
+per distance, smoothly. Whatever a swipe starts on keeps it until the
+wheel falls quiet for a moment, so a flick's momentum never jumps from
+the panel onto a slider or off one.</p>
+<p>The aim stays while you step through your photos — nudge Exposure on each
+frame of a series without reaching for the mouse. It goes when you press
+<code>Esc</code>, close the panel, collapse its section, enter crop, Compare, Survey
+or the Grid, or pick up the white-balance eyedropper; inside a series,
+the Look tab keeps it and the Align tab lets go.</p>
+<p>The line at the foot of the panel, above <strong>Copy</strong>, <strong>Paste</strong> and
+<strong>B / A</strong>, changes with what you're doing: at rest it names the aim keys
+and <code>W</code>, while you drag a slider it lists the modifiers, and with a slider
+aimed it lists that slider's keys.</p>
 <h2 id="sections">Sections</h2>
 <p>The sliders live in four collapsible sections — <strong>Tone</strong> (Exposure,
 Contrast, Highlights, Shadows), <strong>Color</strong> (Temp, Tint, Vibrance,
@@ -209,10 +294,15 @@ Saturation), <strong>Color Mix</strong> (per-hue Hue/Saturation/Luminance) and
 <strong>Curve &amp; Effects</strong> (the tone curve regions, Vignette, and — while a RAW
 is on screen — Denoise and Lens
 correction). Click a header to collapse or expand it; the app remembers
-your arrangement across restarts. On a fresh install only Tone is open —
+your arrangement across restarts. <strong>Option-click</strong> (<code>⌥</code>) a header to see
+only that section: it opens and the other three fold away (the History
+and Snapshots cards stay as they are). On a fresh install only Tone is open —
 the every-photo section — keeping the pane compact. A collapsed section
 can never hide an edit silently: a small accent dot on the header means
 something inside is off its default.</p>
+<p>Every slider in the pane has its own name — the tone curve's four say
+<strong>Curve highlights / Curve lights / Curve darks / Curve shadows</strong>, so
+they never read as Tone's Highlights and Shadows.</p>
 <h2 id="the-sliders">The sliders</h2>
 <ul>
 <li>
@@ -233,27 +323,49 @@ whole series shot in the same light, pick once and use <code>Shift+C</code> /
 <code>Shift+V</code> to copy the settings along.</p>
 </li>
 <li>
-<p><strong>Exposure</strong> — brightness in EV, in linear light, with a soft shoulder
-so pushed highlights bloom instead of clipping flat.</p>
+<p><strong>Exposure</strong> — brightness in EV, in linear light. Pushed up, the
+brightest tones roll off smoothly into white instead of clipping flat,
+and colours keep their hue as they brighten (skin doesn't turn yellow,
+skies don't turn cyan). On a RAW, pulling <strong>Highlights</strong> down also
+brings back detail the sensor kept above the display's white.</p>
 </li>
 <li>
 <p><strong>Contrast</strong> — an S-curve around the midtones.</p>
 </li>
 <li>
 <p><strong>Highlights / Shadows</strong> — recover the bright end or lift the dark end.
-Up to ±50 the effect follows each pixel's own tone; <strong>beyond ±50 it
-becomes neighborhood-aware</strong>: a strong shadow lift brightens a dark
-doorway without washing out the bright wall next to it — strong pulls stay
-local instead of flattening the frame.</p>
+Each follows the pixel's own tone at any strength, so the histogram
+shows exactly what you get. Highlights works on the bright tones below
+white and leaves white itself alone: pulled all the way down it never
+turns a blown sky or window grey, never swaps light and dark tones, and
+draws no halo round clouds. On a RAW, pulling it down also brings back
+detail the sensor kept above white.</p>
+</li>
+<li>
+<p><strong>Whites / Blacks</strong> — set the two ends. Whites up stretches the
+brightest tones toward white (all the way up, it clips the top on
+purpose); Whites down pulls them back — on a RAW it brings in detail
+the sensor kept above white, on a JPEG it dims white. Blacks down
+deepens the darkest tones toward black; Blacks up lifts black itself
+into a soft grey. Neither ever swaps light and dark tones.
+<strong>Shift+double-click</strong> either one (or its histogram zone) to <strong>set it
+to the clipping point</strong>: Whites so the brightest tenth of a percent
+just reaches the clipping level, Blacks so the darkest tenth just
+reaches black — the history names it "Whites (auto)". A plain
+double-click still resets it; hovering either row says so.</p>
 </li>
 <li>
 <p><strong>Vibrance / Saturation</strong> — Vibrance boosts muted colors more than
 already-vivid ones (protecting what's already saturated); Saturation is
-uniform. −100 Saturation is black &amp; white.</p>
+uniform. −100 Saturation is black &amp; white. On a RAW in the camera's
+look, Saturation scales the look's own colour, so −100 is still black &amp;
+white and every step up to +100 still adds colour.</p>
 </li>
 <li>
 <p><strong>Color Mix</strong> — eight per-hue bands (Red · Orange · Yellow · Green ·
-Aqua · Blue · Purple · Magenta), where <strong>Hue</strong> rotates a range of hues,
+Aqua · Blue · Purple · Magenta), each centred on the colour it's named
+for as you see it — Yellow moves yellows, skin sits in Orange, and a
+colour between two bands is shared by both. <strong>Hue</strong> rotates a range of hues,
 <strong>Saturation</strong> deepens or mutes it, and <strong>Luminance</strong> brightens or
 darkens it — leaving the other colors alone. Reach for it to lift a sky
 without touching skin, or calm one loud color. It works on any photo,
@@ -262,8 +374,9 @@ colour rendering rather than just its tone. A toggle at the top of the
 section picks how you steer the eight bands — and it <strong>remembers your
 choice</strong>:</p>
 <ul>
-<li><strong>Sliders</strong> — pick a swatch, then adjust its Hue / Saturation /
-Luminance. Precise and familiar, one band at a time.</li>
+<li><strong>Sliders</strong> — pick a swatch, then adjust its three rows, named for
+the colour — <strong>Orange hue</strong>, <strong>Orange saturation</strong>, <strong>Orange
+luminance</strong>. Precise and familiar, one band at a time.</li>
 <li><strong>Graph</strong> — one curve over a rainbow hue axis: drag a point up or down
 to boost or cut that hue. A Hue / Sat / Lum tab picks what the curve
 controls; you see all eight bands at once.</li>
@@ -273,7 +386,8 @@ single shared hue bar, nothing hidden.</li>
 <p>All three write the same values — the toggle only chooses the interface.</p>
 </li>
 <li>
-<p><strong>Tone curve</strong> (Highlights / Lights / Darks / Shadows) — four regions
+<p><strong>Tone curve</strong> (Curve highlights / Curve lights / Curve darks / Curve
+shadows) — four regions
 of a parametric curve, for shaping after the basic tone is set: lift
 the darks a touch, ease the lights, without touching exposure.</p>
 </li>
@@ -308,14 +422,39 @@ to see the naked lens. Files without correction data show a quiet
 to white glow red, pixels crushed to black glow blue — the classic
 clipping overlay, applied to the final render (so a heavy vignette can
 legitimately warn in the corners). The histogram's top corners carry
-small always-on indicators that light up whenever the current photo
-clips (shadows left, highlights right); clicking one toggles the same
-overlay, and while it's active they get an accent ring and the top
-overlay shows <code>[clipping]</code>. The warnings are near-clip rather than
-exact-255 — the develop pipeline's highlight shoulder deliberately
-rolls pushed whites off before they hard-clip, and the warning
-respects what your eyes actually get. Exports never include them.</p>
-<p><img src="../img/15-clipping.png" alt="Clipping warnings on a blown frame: the image paints red, the histogram corner indicator is lit and ringed" /></p>
+small always-on indicators (shadows left, highlights right) that light
+up when a real part of the photo reaches the level the overlay paints —
+at least one pixel in 2,000 — so a few specular glints or a dead pixel
+don't count, while anything big enough to see glowing lights its
+corner. Clicking one toggles the overlay, and while it's active they
+get an accent ring and the top overlay shows <code>[clipping]</code>. The warnings
+are near-clip rather than exact-255: red marks any channel at display
+level 250 or above, blue a pixel whose channels are all at 5 or below.
+Exports never include them.</p>
+<p><strong>Hold <code>⌥</code> (Option) to see exactly what clips.</strong> While a highlight
+slider — Exposure, Highlights, Whites or Curve highlights — is aimed,
+being dragged, stepped or scrolled, holding <code>⌥</code> replaces the photo with
+a clipping mask: the picture dims and only the clipping pixels show,
+each in the colour of the channels it lost — red, green or blue alone,
+yellow, cyan or magenta for two, and <strong>white for nothing left in any
+channel</strong>. On a RAW, a pixel blown on screen that the sensor still has
+detail for shows <strong>gold</strong> instead of white, so pulling Highlights or
+Exposure down visibly eats the gold first. On a shadow slider — Shadows,
+Blacks or Curve shadows — the mask is a white page with the crushed
+pixels in darker inks and <strong>black for nothing left</strong>. The panel's foot
+names the legend, the histogram's readout counts that end, and letting
+go of <code>⌥</code> brings the photo back. The mask wins over <code>W</code> while both are
+on, and exports never include it. Hovering alone never shows it (<code>⌥</code> is
+also how a dragged photo switches between Move and Copy).</p>
+<p><img src="../img/15-clipping-mask.png" alt="The Option clipping mask on a near-white RAW frame, Whites aimed: the photo dims to a grey ground and the part with nothing left on screen but detail in the sensor glows gold; the foot reads the legend and the histogram counts 57 % clipped" /></p>
+<p><strong>Tap to latch, hold to peek.</strong> A quick tap of <code>W</code> turns the warnings on
+(or off) and leaves them. Hold <code>W</code> instead to look for as long as you
+hold it — let go and they're gone again; with the warnings already on,
+holding <code>W</code> hides them for the look. <code>\</code> (before / after) works the same
+way. While you move a highlight or shadow slider, the histogram also
+counts what clips as you go (<code>clipped 0.8 %</code>, see
+<a href="https://mertenssander.github.io/culler-releases/manual/develop/#the-histogram-is-a-control">the histogram</a>).</p>
+<p><img src="../img/15-clipping.png" alt="Clipping warnings on a near-white RAW frame: only the part at level 250 and up glows — gold, because the sensor kept detail there — and the histogram corner indicator is lit and ringed" /></p>
 <p><strong>On a RAW render, blown isn't always gone.</strong> The sensor usually keeps
 detail past the point where the display clips, so in <code>[RAW]</code> mode the
 warnings split: <strong>gold</strong> marks highlights that are blown on screen but
@@ -334,23 +473,24 @@ describes the plain camera JPEG, so a sky can read blown while culling
 yet recoverable the moment you press <code>E</code>. That's the two files talking,
 not a bug.</p>
 <h2 id="auto-shift-a">Auto: <code>Shift+A</code></h2>
-<p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) does the smart thing for the
-photo in front of you. On a RAW the camera shot in a look culler has a
-profile for, it <strong>returns the photo to that camera look</strong> — the same
-result as picking it from the dropdown. On
-everything else — a JPEG, or a RAW with no recognized look — it falls back
-to <strong>auto tone</strong>: a starting point computed from the histogram (exposure
+<p><code>Shift+A</code> (or the panel's <strong>Auto</strong> button) applies <strong>auto tone</strong>: a
+starting point computed from the histogram of what you see (exposure
 toward a balanced midtone, highlight/shadow rescues where mass piles up at
 the ends, a touch of contrast for flat frames), a nudge that only touches
 the four tonal sliders and leaves white balance, presence, curve and
-vignette alone. Either way it's an explicit press, so it applies over
-whatever's there; <strong>Reset</strong> clears everything.</p>
+vignette alone. On a RAW in its <a href="https://mertenssander.github.io/culler-releases/manual/develop/#the-camera-look">camera look</a> it's
+measured on that look and sits <strong>on top of it</strong> — the look stays, the
+sliders carry the nudge. It's an explicit press, so it applies over
+whatever's there; <strong>Reset</strong> returns to the camera look (or clears
+everything on a photo without one). To go back to the camera look after
+choosing another, pick <strong>Camera look (default)</strong> in the look picker.</p>
 <h2 id="camera-looks">Camera looks</h2>
 <p>The <strong>look</strong> picker (RAW mode only, the dropdown next to Auto and Reset)
 shows the look under the sliders and switches it in one click — a fixed,
 consistent grade rather than a per-photo guess. The camera's own look
-(marked <em>(from camera)</em>) is where a RAW starts; picking it puts the
-photo back on it. <strong>Neutral</strong> starts flat. Pick a different look and
+is where a RAW starts — the closed picker reads, say, <strong>Vivid · camera</strong>
+— and <strong>Camera look (default)</strong>, the first row, puts the photo back on
+it. <strong>Neutral</strong> starts flat. Pick a different look and
 it's applied immediately: the develop sliders are set to that profile
 (contrast, a saturation push that ramps in with a color's own vividness —
 real color gets the boost, mist and gray cloud stay quiet — a gentle
@@ -364,10 +504,10 @@ undoes it. The picker appears the moment real RAW pixels are on screen
 (the same moment the <code>[RAW]</code> tag lights up).</p>
 <p><strong>It knows what the camera shot.</strong> If the RAW records an in-body creative
 look (Sony bodies do), culler reads it and opens the RAW in the matching
-profile, tagged <em>(from camera)</em> in the picker — so a Sony shot in Vivid
-opens in <strong>Vivid</strong>. A photo you've already graded keeps its grade. If the
+profile — so a Sony shot in Vivid opens in <strong>Vivid · camera</strong>. A photo you've already graded keeps its grade. If the
 camera used a look there's no profile for yet, the picker names it with a
-"no profile yet" line rather than guessing, and the RAW opens flat.</p>
+"no profile yet" line rather than guessing, and the RAW opens on its
+JPEG's exposure alone.</p>
 <p>A look is a starting point, not a pixel-for-pixel copy of the camera JPEG:
 in-camera noise reduction and sharpening aren't reproduced, and a few
 scenes (blown light sources, very high ISO) diverge more. <strong>Vivid</strong> ships
@@ -536,10 +676,14 @@ snapping to identical numbers.</p>
 fitted toward the reference — exposure, contrast and the two tail
 rescues, each from its own starting point. The fit reads each frame's
 histogram <em>and</em> its EXIF exposure settings, so a frame shot a stop
-darker (faster shutter, smaller aperture) gets the physical correction,
-while a frame where the scene genuinely changed (a shadow crossing, more
-sky) is only nudged, never forced — a sudden shadow is real, not a
-mistake. Don't like the result? <strong>Reset all</strong> puts every photo's tone
+darker (faster shutter, smaller aperture) gets the physical correction
+— exposure, and only exposure, when that is all that differs — while a
+frame where the scene genuinely changed (a shadow crossing, more sky)
+is only nudged, never forced — a sudden shadow is real, not a mistake.
+A tail rescue never moves any tone further than the difference it is
+nudging, and a part of the frame that is pure black or blown white on
+either side isn't chased at all: how far past the clip it went can't be
+measured. Don't like the result? <strong>Reset all</strong> puts every photo's tone
 back to how it was when you entered, without leaving and without
 touching the alignment. It's the same "starting point, not a pixel
 match" honesty as a camera look: the fit gets the set close, your eyes
@@ -570,7 +714,9 @@ first opens — a few seconds, one at a time (the pending pill counts
 them: <em>"Preparing thumbnails"</em>) — into live renders that track every
 slider move, so a matched set visibly matches without leaving the panel.
 They revert to their normal plain thumbnails the moment the session
-ends.</p>
+ends. Each RAW shows in its own <a href="https://mertenssander.github.io/culler-releases/manual/develop/#the-camera-look">camera look</a>, as it
+does outside the session, and <strong>Done</strong> saves every changed photo with
+that look kept under its sliders.</p>
 <p>The panel changes shape for the session: <strong>Auto</strong> and the <strong>look</strong>
 picker step aside (they'd drag the whole group through an unrelated
 fit), <strong>Copy</strong> and <strong>Paste</strong> leave its foot (a paste would write the
@@ -644,6 +790,14 @@ and writes that state back to the sidecar, so undo is as durable as any
 other edit. (Steps recorded by a version of culler from before landmark
 points joined the history don't know the points: stepping onto one
 leaves them as they are.)</p>
+<p>One undo step is <strong>one stretch of work on one control</strong>. Drag Exposure,
+look, nudge it again — that's one step, and a held key or a burst of the
+scroll wheel counts the same. The stretch ends when you pause for 8
+seconds, move to another control, go to another photo, or quit; the next
+change starts a new step. So five Exposure tweaks spread over a coffee
+undo one at a time, not all at once. A named action — Reset (develop and
+crop each on their own), Auto, a look, a paste, restoring a snapshot — is
+always a step of its own, however quickly the next one follows.</p>
 <p>The develop panel shows the full trail. Two cards at the bottom of the
 panel — collapsed by default, click the header to open — make it visible:</p>
 <ul>
@@ -753,7 +907,7 @@ kinds. To turn an edit into an actual JPEG, see
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.10.0</span>
+  <span>© Sander Mertens · culler v0.11.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

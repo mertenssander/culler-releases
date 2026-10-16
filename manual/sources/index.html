@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
     </div>
   </details>
 </header>
@@ -179,6 +179,29 @@ plugging in a drive, say).</p>
 like the unpinned one. To unpin, click the pin again (or untick the
 setting): the pane closes, and <code>S</code> opens it as before. Pinning is off by
 default.</p>
+<h2 id="right-click-a-row">Right-click a row</h2>
+<p>Right-click a row (<code>Ctrl</code>+click on a Mac) for a menu of exactly the keys
+that row answers to — the strip at the pane's foot, as clickable rows. It
+works in the ordinary pane and in a pinned one, and it never opens the
+row or moves the keyboard into the pane: the row keeps its highlight
+while the menu is open, and each menu row does what its key would do on
+that row.</p>
+<table><thead><tr><th>Row</th><th>Its menu</th></tr></thead><tbody>
+<tr><td>A folder source</td><td><strong>Open</strong> (<code>Enter</code>; <strong>Rescan</strong> on the source you have open), <strong>New folder…</strong> (the open source), <strong>Rename label</strong> (<code>R</code>), <strong>Show in Finder</strong>, <strong>Remove from list</strong> (<code>⌫</code>)</td></tr>
+<tr><td>A folder inside it</td><td><strong>Open</strong>, <strong>New subfolder…</strong>, <strong>Rename…</strong> (<code>R</code>), <strong>Show in Finder</strong>, <strong>Delete empty folder</strong> (<code>⌫</code>)</td></tr>
+<tr><td>A server</td><td><strong>Open</strong> / <strong>Rescan</strong>, <strong>Show albums</strong> / <strong>Hide albums</strong> (<code>→</code>/<code>←</code>), <strong>New album…</strong>, <strong>Rename…</strong> (<code>R</code>), <strong>Remove from list</strong> (<code>⌫</code>)</td></tr>
+<tr><td>An album</td><td><strong>Open</strong>, <strong>Rename…</strong> and <strong>Delete album…</strong> where the album lets you</td></tr>
+<tr><td>A tether session</td><td><strong>Open</strong>, <strong>Rename…</strong>, <strong>Show in Finder</strong>, <strong>Delete session…</strong></td></tr>
+<tr><td>The camera</td><td><strong>Shoot</strong>, or <strong>End session</strong> while one runs</td></tr>
+</tbody></table>
+<p>The destructive rows ask first, inside the menu: the first click turns
+the row red and says what the next click does — <em>Click again to remove
+this source from the list</em>, <em>Click again to delete this album — 96
+photos stay on the server</em> — and a second click on it does it. Any
+other click, or <code>Esc</code>, leaves things as they were. A row the key would
+refuse (a folder that still has photos, an album that isn't yours)
+refuses the same way, on the status line, instead of arming. The <code>+ New</code>
+rows have no menu: click them.</p>
 <h2 id="dragging-photos-onto-folders-and-albums">Dragging photos onto folders and albums</h2>
 <p>With the pane pinned and docked, its rows take photos. Press on a
 thumbnail in the filmstrip or the Grid — or on the photo itself, while
@@ -530,8 +553,12 @@ have access to it", the row drops out of the list, and the server's own
 row stays as it was — one dead album doesn't mark the server as failing.</p>
 <h3 id="stacks-g">Stacks: <code>G</code></h3>
 <p>Stacked assets (RAW+JPEG groups, edit versions) show their cover with a
-member-count badge. <code>G</code> steps into the stack — the members become the
-view — and <code>G</code> or <code>Esc</code> steps back out. Rejecting inside a stack stays
+member-count badge — <code>×4</code> in the filmstrip's corner, <code>STACK · 4 photos</code>
+under the photo's name. <code>G</code> steps into the stack — the members become
+the view — and <code>G</code> or <code>Esc</code> steps back out. With the mouse, click the
+<code>×4</code> badge (the cursor moves to that photo first) or the <code>STACK · 4 photos</code> line to step in, and the overlay's <code>[stack]</code> tag to step out;
+they're plain text in Compare and Survey, and while a stack's members
+are still loading. Rejecting inside a stack stays
 local until you archive or trash via the
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">apply panel</a>; some actions (Compare, Survey,
 the apply panel itself) are unavailable inside a stack.</p>
@@ -795,7 +822,7 @@ in the list.</p>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.10.0</span>
+  <span>© Sander Mertens · culler v0.11.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

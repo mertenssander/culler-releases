@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
     </div>
   </details>
 </header>
@@ -157,11 +157,23 @@ along the top — Done, Peek, Keep one, Promote and the rest, each
 showing its key (<a href="https://mertenssander.github.io/culler-releases/manual/viewing/#grid-view-k">Viewing</a>) — and while
 you peek at a photo from the Grid or Survey the rail adds a <strong>Back</strong>
 button.</li>
+<li><strong>Right-click a photo</strong> — in the filmstrip, the Grid, or the photo
+itself — for <a href="https://mertenssander.github.io/culler-releases/manual/culling/#right-click-menus">its menu</a>: mark, rate, label,
+select, add to an album, batch, and on the loupe copy and paste
+settings, rotate, undo and export. On a Mac, <code>Ctrl</code>+click does the
+same.</li>
 <li><strong>The stars in the top-left overlay</strong> become five click targets while
 the pointer is moving — hover previews, clicking sets the rating, and
 clicking the same star again clears it, exactly like the number keys.</li>
 <li><strong>Hover a side edge of the photo</strong> for previous/next arrows (at fit
 zoom; when zoomed in, the mouse pans instead).</li>
+<li><strong>Click a tag on the photo</strong> that wears an underline: <code>[moment 3/8]</code>
+surveys the moment (as <code>N</code> does), <code>STACK · 4 photos</code> steps into the
+stack and <code>[stack]</code> back out (as <code>G</code> does), and a saved filter's tag
+opens the list of saved filters. In the filmstrip, a stack's <strong><code>×4</code></strong>
+badge steps into it too. Tags you can click show a faint underline
+that lights up under the pointer; in Compare, Survey and a Match
+series they're plain text.</li>
 <li><strong>Drag a thumbnail</strong> from the filmstrip or the Grid — or the photo
 itself, at fit zoom — onto a folder or an album in the
 <a href="https://mertenssander.github.io/culler-releases/manual/sources/#dragging-photos-onto-folders-and-albums">pinned sources pane</a>
@@ -175,6 +187,51 @@ you to start; a folder dragged in from Finder opens like <code>O</code>.</li>
 overlay, and collapsing it gets you within three pixels of a bare
 photo. The first launch shows a one-line hint beside the rail, once,
 and never again.</p>
+<h2 id="right-click-menus">Right-click menus</h2>
+<p>Right-click a photo — a filmstrip thumbnail, a Grid cell, or the photo
+in the loupe (the Grid's peek too) — and a small menu opens at the
+pointer with what you can do to it. On a Mac, <code>Ctrl</code>+click is the same
+gesture. The right-click is also a click: the cursor moves to that photo
+first, and your <a href="https://mertenssander.github.io/culler-releases/manual/culling/#selecting-a-set">selection</a> is left exactly as it
+was.</p>
+<p>Every row is a key you could have pressed, and its keycap is on the
+right so the menu teaches as you use it:</p>
+<ul>
+<li><strong>Pick</strong>, <strong>Reject</strong> and <strong>Clear flag</strong> (<code>P</code> <code>X</code> <code>U</code> — Clear only when
+there is a flag to clear). A check beside Pick or Reject means the
+photo already has it: clicking clears it, like the key.</li>
+<li><strong>Rating</strong> — five stars (hover one to preview, click to set, click the
+same star again to clear; the <strong>×</strong> clears) — and <strong>Label</strong>, four
+colour discs (<code>6</code>–<code>9</code>; the ringed one is the photo's label).</li>
+<li><strong>Select photo</strong> / <strong>Deselect photo</strong> (<code>Y</code>), <strong>Select all</strong> (<code>⌘A</code>) and
+<strong>Deselect all</strong> (<code>⌘D</code>).</li>
+<li>In the loupe and the filmstrip: <strong>Undo</strong> (named after the edit it
+steps back over), <strong>Copy settings</strong> and <strong>Paste settings</strong> (<code>⇧C</code> /
+<code>⇧V</code>), and two <strong>rotate</strong> arrows (<code>R</code> / <code>⇧R</code>).</li>
+<li><strong>Open stack</strong> / <strong>Leave stack</strong> (<code>G</code>), <strong>Survey this moment</strong> (<code>N</code>,
+on a photo in a moment), <strong>Add to album…</strong> (<code>⇧I</code>, on a server),
+<strong>Show in Finder</strong> (a folder's photo — both files of a RAW+JPEG
+pair), <strong>Export JPEG</strong> (<code>J</code>; on a server <strong>Save edit</strong>, when it has
+unsaved edits, and <strong>Discard edits</strong>), and <strong>Batch…</strong> (<code>A</code>), which
+opens the batch panel already aimed at this photo.</li>
+</ul>
+<p>Right-click a photo that is part of the selection and the menu acts on
+the <strong>whole selection</strong> — its header says <em>12 selected photos</em>, the
+marking rows mark all of them, <strong>Batch selection…</strong> opens the batch
+panel on exactly those photos, and the rows that only make sense for
+one photo (copy and paste, rotate, undo, export, the stack, Show in
+Finder) aren't there. Right-click a photo outside the selection and the
+menu is about that photo alone; the selection stays as it is.</p>
+<p>The rows that set a mark move on to the next photo when auto-advance
+is on, just as the keys do. From the keyboard, <code>↑</code>/<code>↓</code> walk the rows,
+<code>←</code>/<code>→</code> pick a star, disc or arrow, and <code>Enter</code> runs the row; <code>Esc</code>
+closes the menu and nothing else — a pivot, a stack or the Grid behind
+it stays. A click anywhere outside closes it without doing anything
+else, and a right-click elsewhere opens the menu there instead. There is
+no menu in Compare, Survey, a Match series or crop, and in sort mode a
+right-click only moves the cursor. Sources rows and saved filters have
+menus of their own (<a href="https://mertenssander.github.io/culler-releases/manual/sources/#right-click-a-row">Sources</a>, and
+<a href="https://mertenssander.github.io/culler-releases/manual/culling/#saved-filters-cmd-f">saved filters</a> below).</p>
 <h2 id="selecting-a-set">Selecting a set</h2>
 <p>Sometimes the thing you want to act on isn't "all my picks" but <em>these
 twelve, exactly</em>. Build a <strong>selection</strong> in the filmstrip or the Grid
@@ -187,6 +244,17 @@ building); click a selected photo's check to deselect it.
 <code>Shift</code>+click the box selects the run from the photo you're on. The
 box is a pointing aid: it fades when the mouse rests, so it never
 follows you while you work from the keyboard.</li>
+<li><strong>Drag a rubber band in the Grid:</strong> press on empty space — a gap
+between thumbnails, the margins, past the last photo — and drag. Every
+photo the band touches shows a check as you go, and a pill beside the
+pointer says what letting go will do (<code>Select 12 photos</code>). Let go and
+those photos become the selection; hold <code>Shift</code> or <code>Cmd/Ctrl</code> as you
+let go to add them to it instead (<code>Add 12 photos to the 5 already selected</code>). Nothing changes until you let go — <code>Esc</code> cancels and the
+selection is exactly as it was, and a band over no photos changes
+nothing. Drag to the top or bottom edge and the grid scrolls on, the
+band growing with it. A drag that starts on a thumbnail moves the
+photo instead (<a href="https://mertenssander.github.io/culler-releases/manual/sources/#dragging-photos-onto-folders-and-albums">drag and drop</a>),
+and a plain click on empty space never clears the selection.</li>
 <li><strong><code>Cmd/Ctrl</code>+click</strong> a thumbnail to select or deselect it;
 <strong><code>Shift</code>+click</strong> selects the whole run from the photo you're on to
 the one you clicked. From the keyboard, <strong><code>Y</code></strong> toggles the current
@@ -215,7 +283,8 @@ on is part of the selection, <code>P</code> / <code>X</code> / <code>U</code>, t
 color labels mark the <em>whole</em> set at once (the status line confirms,
 e.g. <code>Rejected 12 selected</code>). If every selected photo already carries
 the value, the same key clears it from all of them — the familiar
-toggle, set-wide. And in the batch panel (<code>A</code>), the Scope menu gains
+toggle, set-wide (the <a href="https://mertenssander.github.io/culler-releases/manual/culling/#right-click-menus">right-click menu</a> of a
+selected photo does the same). And in the batch panel (<code>A</code>), the Scope menu gains
 <strong>Selected (N)</strong> so copy, move, export, upload — any batch action —
 can run on exactly the set you built (see
 <a href="https://mertenssander.github.io/culler-releases/manual/batch-and-export/">Batch operations</a>). Dragging one of the
@@ -321,6 +390,11 @@ the ones that change are tinted — so you can read off which digit will
 do what before you let go. Letting go saves the new order once and the
 status line names the new number ("Sony 7 IV, no stars is now on 2").
 A row can't go above <strong>All photos</strong>, which isn't part of the list.
+Right-click a filter in the list for its own menu: <strong>Show</strong> (its digit),
+<strong>Edit…</strong> (<code>E</code>), <strong>Move up</strong> / <strong>Move down</strong> (<code>Shift+↑</code>/<code>Shift+↓</code>) and
+<strong>Delete filter…</strong> (<code>⌫</code>) — Delete asks first, in the menu itself
+("Click again to delete this filter"), and any other click stands it
+down. <code>Esc</code> closes the menu and leaves the list open.
 <code>Esc</code> while dragging puts everything back (a second <code>Esc</code> closes the
 list), and so does letting go away from the list — a "Let go to
 cancel" label says so first. With a single filter, or a list written by
@@ -433,7 +507,7 @@ server as you press the keys (<a href="https://mertenssander.github.io/culler-re
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.10.0</span>
+  <span>© Sander Mertens · culler v0.11.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>

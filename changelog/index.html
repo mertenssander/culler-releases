@@ -22,14 +22,14 @@
   <nav class="nav-links">
     <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
     <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+    <a class="btn btn--accent" href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
   </nav>
   <details class="nav-menu">
     <summary aria-label="Menu">Menu</summary>
     <div class="nav-menu-panel">
       <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
       <a href="https://mertenssander.github.io/culler-releases/changelog/">Changelog</a>
-      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.10.0</a>
+      <a href="https://mertenssander.github.io/culler-releases/#download">Download v0.11.0</a>
     </div>
   </details>
 </header>
@@ -38,14 +38,235 @@
 <div class="docs docs--index">
   <article class="prose changelog">
     <h1>Changelog</h1>
-    <h2 id="0-10-0-2026-10-15">0.10.0 — 2026-10-15</h2>
+    <h2 id="0-11-0-2026-10-16">0.11.0 — 2026-10-16</h2>
+<p><strong>Heads-up before you update: this version changes how photos look in
+Develop.</strong> The tone maths behind Exposure, Highlights and white is new,
+RAWs in the camera's look open in a refitted Vivid look, and the Color
+Mix bands moved to the colours they're named for. Photos you've already
+edited will look different when you open them in Develop — mostly in
+their brightest tones — and Color Mix adjustments shift by a shade or
+so. Photos you've already exported or saved to a server keep their saved
+picture until you export or save them again (see Changed).</p>
+<h3 id="new">New</h3>
+<ul>
+<li><strong>Whites and Blacks sliders.</strong> The Tone card gains Whites and Blacks
+after Shadows, for setting the two ends of the picture. Whites up
+stretches the brightest tones to white; down it brings back a RAW's
+detail above white. Blacks deepens or lifts the darkest tones. Neither
+ever swaps light and dark tones. Shift+double-click either one — or
+its part of the histogram — to set it to the clipping point. Photos
+whose sidecars carry Whites or Blacks from another editing tool now
+show them, and culler keeps them when it saves.</li>
+<li><strong>The histogram has five zones.</strong> Blacks, Shadows, Exposure,
+Highlights and Whites, left to right: drag one to move its slider,
+double-click to reset it.</li>
+<li><strong>Hold Option to see exactly what clips.</strong> While a highlight or shadow
+slider is in use, holding Option dims the photo and shows only the
+pixels that clip, each in the colour of the channels it lost — white
+means nothing is left. On a RAW, gold marks blown areas the sensor can
+still recover.</li>
+<li><strong>Right-click menus.</strong> Right-click a photo — in the filmstrip, the
+Grid or the loupe — for a menu of what you can do to it: pick, reject,
+rate with stars, set a colour label, select, add to an album, open the
+batch panel on it, and in the loupe copy and paste settings, rotate,
+undo and export. On a photo that's part of your selection the menu
+acts on the whole selection. A right-click moves to the photo like a
+click and never changes the selection. Sources rows and saved filters
+have menus too — a row's menu offers exactly its keys, and deleting
+asks first, right in the menu. On a Mac, <code>Ctrl</code>+click works the same.</li>
+<li><strong>Select photos in the Grid by dragging a box.</strong> Press on empty space
+between the thumbnails and drag across the photos you want: each one
+the box touches shows a check as you go, and letting go selects them
+(hold <code>Shift</code> or <code>Cmd</code> as you let go to add them to what's already
+selected). <code>Esc</code> cancels; nothing changes until you let go. Drag to the
+top or bottom edge and the grid scrolls on. And the tags on a photo
+are buttons now: click <code>[moment 3/8]</code> to survey the moment, the
+filmstrip's <code>×4</code> or <code>STACK · 4 photos</code> to step into a stack, <code>[stack]</code>
+to step back out.</li>
+<li><strong>See how much is clipping while you adjust.</strong> While you move
+Exposure, Highlights, Shadows, Curve highlights or Curve shadows —
+dragging, scrolling over the slider, or dragging in the histogram — the
+bottom right of the histogram reads <code>clipped 0.8 %</code>: how much of the
+photo that end blows out or crushes, counted the way the corner
+triangles count it. It turns amber past 0.5 %.</li>
+<li><strong>Fine and coarse control on every develop slider.</strong> Hold <code>Option</code>
+while you drag a slider or drag in the histogram and it moves a tenth
+as far; hold <code>Shift</code> and it moves four times as far — and with the
+scroll wheel or the step keys they pick a fine or a big step. The
+slider's knob shrinks or grows and a <code>fine</code> / <code>coarse</code> caption appears
+beside its value while the key is down.</li>
+<li><strong>Steer a develop slider from the keyboard.</strong> Let go of a drag, click a
+slider's track or value, or press <code>[</code> / <code>]</code>, and that slider is aimed —
+its row lights up. Then <code>-</code> and <code>=</code> step it in its own units (Exposure
+0.10 EV, the other sliders 5; hold <code>Option</code> for the finest step, <code>Shift</code>
+for a big one), <code>Enter</code> types a value, <code>Backspace</code> resets it and <code>Esc</code>
+lets go. With nothing aimed, <code>=</code> and <code>-</code> step Exposure. The aim stays
+while you move from photo to photo, so you can nudge each frame of a
+series in turn.</li>
+<li><strong>Option-click a develop section's header to see only that section.</strong>
+Option-click Tone, Color, Color Mix or Curve &amp; Effects and that section
+opens while the other three fold away. A plain click still opens or
+closes just the one.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>RAWs in the Vivid look open much closer to the camera's own
+picture — this changes how RAW photos look.</strong> The Vivid look now
+carries the camera's tone shape: shadows are no longer lifted and
+milky, the bright midtones no longer sit dull, and colours are closer
+to the camera's while grey cloud and mist stay grey. Measured against
+the camera's JPEGs on 24 test photos, every one came out closer.
+Untouched RAWs and RAWs edited on the camera look both open in the new
+look (their brightness refits once, automatically); photos already
+exported or saved to a server keep their saved picture until you save
+them again.</li>
+<li><strong>Color Mix bands now move the colour they're named for — this changes
+how existing Color Mix edits look.</strong> Each band is centred on its
+colour as you see it: Yellow moves yellows (it used to leave a typical
+yellow untouched while Orange moved it), skin sits in Orange, and
+Hue turns a colour by the same visible amount whatever its brightness.
+Photos you've already adjusted in Color Mix will look different when
+you open them in Develop — usually only slightly: the adjusted colours
+shift by a shade or so, rarely more.</li>
+<li><strong>Saturation −100 is black and white on every photo.</strong> On a RAW
+opening in the camera's look, Saturation now scales the look's own
+colour instead of adding to it, so −100 is fully black and white and
+every step of the slider — all the way to +100 — changes the picture.</li>
+<li><strong>Highlights no longer turns blown areas grey or leaves halos.</strong>
+Pulling Highlights down compresses the bright tones below white and
+leaves white itself alone, so a blown sky or window stays white instead
+of going flat grey, light and dark tones never swap places even at −100,
+and there are no more dark rims round clouds. Strong pulls are a little
+gentler than before; photos you've edited with Highlights near either
+end will look slightly different.</li>
+<li><strong>White stays white, and pushed highlights no longer clip — this
+changes how existing edits look.</strong> An untouched photo's white now
+renders at full white (it used to stop just short), raising Exposure
+rolls the brightest tones smoothly into white instead of flattening
+them, and colours keep their hue as they brighten. On a RAW, pulling
+Highlights down now brings back detail the sensor kept above white.
+<strong>Photos you've already edited will look different when you open them
+in Develop</strong>: anything pushed more than about one stop brighter keeps
+more highlight detail and reads slightly darker in the bright midtones,
+and every edited photo's whites move a few levels up. A RAW following
+the camera's look refits its brightness once, automatically. Photos
+already exported or saved to a server keep their saved picture until
+you export or save them again. The clipping warnings (<code>W</code>) now mark
+exactly display level 250 and up.</li>
+<li><strong>Hold <code>W</code> or <code>\</code> to peek.</strong> A quick tap still turns the clipping
+warnings or before / after on and off. Holding the key now shows it
+only while you hold it — or, when it was on, hides it — and letting go
+puts it back.</li>
+<li><strong>Sliders you can read at a glance.</strong> Every slider shows its track,
+with a small tick where a double-click returns it; once you move it, a
+fill grows from that tick to the value and a knob marks the spot.
+Values say which way they went and in what unit (<code>+15</code>, <code>−8</code>,
+<code>+0.67 EV</code>), and hovering one draws a field around it — click and type
+an exact number.</li>
+<li><strong>Scrolling over the develop panel scrolls it.</strong> The scroll wheel now
+edits only the slider you've aimed (or any slider while you hold
+<code>Option</code>), so a swipe on your way down to Color Mix no longer moves the
+slider it passes over. Each notch is a finer step than before — 0.05 EV,
+or 2 on the other sliders.</li>
+<li><strong>A slimmer foot to the develop panel.</strong> The line at the bottom now
+changes with what you're doing — while you drag a slider it lists the
+keys that steer it — and the sliders get back the room the old caption
+under the buttons took (it was cut off at the window's edge anyway).</li>
+<li><strong>Every develop slider has its own name.</strong> The tone curve's four
+sliders are now Curve highlights, Curve lights, Curve darks and Curve
+shadows, so they no longer read as Tone's Highlights and Shadows, and
+the Color Mix rows name their colour — Orange hue, Orange saturation,
+Orange luminance.</li>
+<li><strong>Settings → RAW files → RAW opens in.</strong> Choose whether a RAW you
+haven't edited opens in your camera's look (the default) or as the
+flat RAW. Photos you've already edited keep their look.</li>
+<li><strong>RAWs from any camera open at their JPEG's brightness.</strong> A RAW from a
+camera culler has no look for used to open about a stop darker than its
+JPEG; it now opens matched to the JPEG's exposure (the picker reads
+<strong>Camera exposure</strong>), with contrast and colour still flat.</li>
+<li><strong>Stepping through RAWs in the develop panel is quicker.</strong> The photos
+either side of the one you're on are prepared in the background, so
+the next RAW lands on its camera look straight away, and a photo you've
+already left stops being refined.</li>
+<li><strong>Auto works on top of the camera's look.</strong> On a RAW in its camera
+look, <code>Shift+A</code> and the Auto button now tune the tone measured on that
+look and keep it — instead of only switching back to the look. Use
+<strong>Camera look (default)</strong> in the look picker to get back to the look.</li>
+<li><strong>The look picker says when you're on the camera's look.</strong> It reads
+<strong>Vivid · camera</strong> while a RAW shows its camera look, and the list
+starts with <strong>Camera look (default)</strong> to get back to it.</li>
+<li><strong>Undo takes back one stretch of work at a time.</strong> Several tweaks to
+the same slider used to undo all at once, however far apart you made
+them. Now one undo step ends when you pause for 8 seconds, move to
+another control, go to another photo, or quit — so a nudge you made a
+minute later undoes on its own. Reset, Auto, a look, a paste and a
+snapshot restore are always one step each, even back to back.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>A slider you scroll is saved on its own photo.</strong> Scrolling a develop
+slider and stepping to the next photo straight away used to leave the
+edit unsaved, and could nudge the next photo instead. The edit is now
+written to the photo you made it on — also when you close the panel,
+open another source or quit right after.</li>
+<li><strong>Match no longer wrecks a series shot at different exposures.</strong> In a
+Match series session, pressing <strong>Match</strong> on a frame shot brighter or
+darker than the reference used to push Contrast, Highlights and
+Shadows to their limits and overshoot the exposure — the "it messes up
+the whole series" result. A frame that differs only in exposure now
+gets exposure alone, one that differs only in contrast gets contrast,
+and a frame whose darkest or brightest parts really changed is still
+only nudged — never by more than the difference itself, and never
+chasing a part that is pure black or blown white.</li>
+<li><strong>The histogram shows where a RAW's highlights really are.</strong> With the
+camera's look on, the brightest parts of a RAW used to pile up in one
+false spike well short of white, and the curve over the histogram went
+flat across its top, while the picture kept all that detail; both now
+follow the picture. An untouched photo's histogram matches the screen
+too, so the smallest exposure nudge no longer makes it jump. And the
+clipping triangles in the histogram's corners ignore a few bright
+glints: they light when a real part of the photo — at least one pixel
+in 2,000 — reaches the level the <code>W</code> clipping overlay paints.</li>
+<li><strong>Match series shows RAWs in their camera look.</strong> Inside a series
+session RAW photos used to drop back to the flat RAW; each now keeps
+its camera look, and Done saves the changed photos with it.</li>
+<li><strong>A RAW without a camera JPEG exports in the camera's look.</strong> Pressing
+<code>J</code> on an untouched lone RAW used to render it flat, even though the
+develop panel showed it in the camera's look; it now exports the
+picture you see.</li>
+<li><strong>Dragging with the right mouse button no longer picks up the photo</strong>
+(or pans a zoomed one) — only the left button drags. The previous and
+next arrows at the photo's edges no longer swallow a right-click.</li>
+<li><strong>Undo survives a server library that's still loading.</strong> Editing a photo
+while a large Immich library was still streaming in used to drop that
+photo's undo history and snapshots the moment loading finished (the edit
+itself was kept). They stay now.</li>
+<li><strong>Opening a server source again keeps your saved edit history.</strong>
+Refreshing an Immich source, or coming back to it from another source,
+used to bring back the photos you had already looked at without the
+undo history and snapshots you saved with <code>J</code> — and a photo with a saved
+snapshot then counted as unsaved — until culler restarted. They come
+back now, as they do at launch.</li>
+<li><strong>The sources panel's folder check no longer goes missing.</strong> Closing the
+panel before its quick "is this folder still there?" check finished left
+an unplugged drive's folder unmarked until the panel opened again; the
+mark now lands either way.</li>
+<li><strong>Develop sliders are more precise.</strong> A quick, small drag used to lose
+its first few points of travel, so a nudge moved a slider much less than
+your hand did; every point counts now. Double-clicking a slider's track
+resets it on every develop slider, as it always should have (most of
+them ignored it). And scrolling over the RAW Temperature slider now
+moves by the same share of its scale wherever it sits, instead of a
+big jump in warm light and a tiny one in cool.</li>
+</ul>
+<h2 id="0-10-0-2026-10-15">0.10.0 — 2026-10-15</h2>
 <p><strong>Heads-up before you update:</strong> RAW photos now open with <strong>Denoise at 0</strong>.
 RAWs you developed earlier that relied on the automatic noise reduction
 render without it until you turn Denoise up (see Changed). And a series
 aligned with this version keeps its landmark points in a new form: an
 older culler reading it may place points on server photos you saved with
 <code>J</code> in the wrong spot (see Fixed).</p>
-<h3 id="new">New</h3>
+<h3 id="new-1">New</h3>
 <ul>
 <li><strong>RAW photos open in the camera's look.</strong> Opening the develop panel
 on a RAW the camera shot in Vivid now shows it in that look, matched
@@ -107,7 +328,7 @@ you let go. Letting go saves the new order and the status line names
 the new number ("Portraits is now on 2"); <code>Esc</code>, or letting go away
 from the card, puts everything back.</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li><strong>Landmark points are part of a photo's undo history.</strong> Each step now
 holds a photo's frame <em>and</em> its alignment points, so <code>Cmd/Ctrl+Z</code> on an
@@ -147,7 +368,7 @@ Match series — as the remote shutter already did. The camera's
 settings still show; the controls come back when you return to the
 photos.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>
 <p><strong>Blown highlights in a RAW no longer turn black.</strong> A burnt-out window
@@ -190,7 +411,7 @@ status lines and the batch panel.</p>
 </li>
 </ul>
 <h2 id="0-9-0-2026-10-03">0.9.0 — 2026-10-03</h2>
-<h3 id="new-1">New</h3>
+<h3 id="new-2">New</h3>
 <ul>
 <li><strong>The sources panel can stay open.</strong> Click the new pin at the top of
 the sources pane — or turn on <strong>Settings → Sources → Keep the sources
@@ -338,7 +559,7 @@ a matching <strong>Discard unsaved edits</strong> batch action to revert a whole
 scope at once (skipping, and naming, any photo it hasn't yet checked
 against the server). A photo you never saved reverts to the original.</li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li><strong><code>J</code> on a photo you've only cropped now keeps the camera's look.</strong> A
 photo with no grade — no develop slider moved; a crop on its own isn't
@@ -400,7 +621,7 @@ source and moving on to another before it had finished loading made it
 forget the photo and filter you had left it on. It now remembers them
 until you have actually been there again.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li><strong>Switching source while a <code>J</code> is still uploading no longer puts the
 result in the wrong place.</strong> A <code>J</code> (or "Save edits to server") that
@@ -1263,7 +1484,7 @@ copy/move/trash/upload.</li>
 
 </main>
 <footer class="footer">
-  <span>© Sander Mertens · culler v0.10.0</span>
+  <span>© Sander Mertens · culler v0.11.0</span>
   <a href="https://github.com/mertenssander/culler-releases/releases">All releases</a>
   <a href="https://mertenssander.github.io/culler-releases/manual/">Manual</a>
 </footer>
